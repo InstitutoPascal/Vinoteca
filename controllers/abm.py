@@ -45,16 +45,18 @@ def get_header_labels(table=None):
 
 def edicion():
     tabla_req = request.args[0]
-    form=SQLFORM(db[tabla_req], request.args[1], submit_button='Guardar',id_label='Número')
+    form=SQLFORM(db[tabla_req], request.args[1], submit_button=T('Save'))
+    #,buttons=[TAG.button('Guardar',_type="submit"),A("Volver",_class='btn btn-default',_onClick="return confirm('desea volver')", _href=URL('abm','%sAbm'%tabla_req ))])
+
     if form.accepts(request.vars,session):
-        response.flash=' Modificado correctamente '
-        redirect(URL('abm', '%sAbm'%tabla_req, vars={'formu':'ok'} ))
+        session.flash=' Modificado correctamente '
+        redirect(URL('abm', '%sAbm'%tabla_req ))
     elif form.errors:
         response.flash=' Complete el formulario '
     else:
         pass
-
-    form.add_button('Volver', URL('abm','%sAbm'%tabla_req ))
+    form.add_button('Cancelar', "javascript:return confirmarCancelar('%s');"%URL('abm','%sAbm'%tabla_req ), _class="resetType" )
+    
     t = obtenerTitulo(tabla_req)
     titulo = T(' Modificación de %s' % t)
     return locals()#{'titulo': titulo, 'form':form }

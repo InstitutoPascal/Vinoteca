@@ -137,8 +137,7 @@ auth.settings.reset_password_requires_verification = True
 db.define_table('categoria',
     Field('nombre', 'string', required=True, notnull=True, label=T('Nombre') ),
     )
-db.categoria.nombre.requires=[IS_NOT_EMPTY(error_message='Falta ingresar el nombre'),
-                              IS_NOT_IN_DB(db, 'categoria.nombre',error_message='Ya existe')]
+db.categoria.nombre.requires=[IS_NOT_EMPTY(), IS_NOT_IN_DB(db, 'categoria.nombre',error_message='Ya existe')]
 db.categoria.id.label='Número'
 
 #TipoVinos : blanco, oporto, rosado, dulces, tardio, tinto, etc.

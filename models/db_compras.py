@@ -13,7 +13,7 @@ db.define_table("zona",
                 )
 db.zona.descripcion.requires = [IS_NOT_EMPTY(error_message=' Falta ingresar descripción '),
                                 IS_NOT_IN_DB(db, 'zona.descripcion', error_message=' Ya existe ')]
-
+db.zona.id.label='Número'
 
 #Domicilios
 db.define_table("domicilio",
@@ -28,7 +28,7 @@ db.define_table("domicilio",
 db.domicilio.idCliente.requires = [IS_NOT_EMPTY(error_message=' Falta ingresar descripción '),
                                    IS_IN_DB(db, "auth_user.id"," %(last_name)s - %(first_name)s ")]
 db.domicilio.idZona.requires = IS_IN_DB(db, 'zona.id', " %(descripcion)s" )
-
+db.domicilio.id.label='Número'
 
 ############################################################################################################################
 #ventas basico
