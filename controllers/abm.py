@@ -3,6 +3,7 @@ def bodegaAbm(): return abm('bodega')
 
 def categoriaAbm(): return abm('categoria')
 
+
 def eventoAbm(): return abm('evento')
 
 def promocionAbm(): return abm('promocion')
