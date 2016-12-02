@@ -31,7 +31,7 @@ db.domicilio.idZona.requires = IS_IN_DB(db, 'zona.id', " %(descripcion)s" )
 db.domicilio.id.label='Número'
 
 ############################################################################################################################
-#ventas basico
+#ventas basico  db.tabla.campo.default = auth.user_id if auth.user else 0
 db.define_table("venta",
     Field("idCliente", 'reference auth_user', required=True, notnull=True, label=T('Cliente Nro') ),
     Field("tipoFactura","string", required=True, notnull=True, label=T('Tipo de Factura') ),

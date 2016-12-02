@@ -29,8 +29,7 @@ response.google_analytics_id = None
 # ----------------------------------------------------------------------------------------------------------------------
 
 response.menu = [
-    (T('Home'), False, URL('default', 'index'), []),
-    (T('Catálogo'), False, '#', [
+        (T('Catálogo'), False, '#', [
             (T('Ver'), False, URL('default','index') ),
             ]),
         (T('Eventos'), False, '#', [
@@ -41,6 +40,7 @@ response.menu = [
         ]),
         (T('Noticias'), False, '#', [
             (T('Ver'), False, URL('default','index') ),
+            (T('Administrar'), False, URL('noticia','index') ),
         ]),
         (T('Contacto'), False, '#', [
             (T('Ver'), False, URL('default','index') ),
@@ -77,19 +77,10 @@ def _():
         (T('desarrollador'), False, '#', [
             #http://127.0.0.1:8000/admin/default/design/Vinoteca
             (T('Design'), False, URL('admin', 'default', 'design/%s' % app)), LI(_class="divider"),
-            (T('Controller'), False,
-             URL( #http://127.0.0.1:8000/admin/default/edit/Vinoteca/controllers/default.py
-                  #http://127.0.0.1:8000/admin/default/edit/Vinoteca/controllers/abmCategoria.py
-                 'admin', 'default', 'edit/%s/controllers/%s.py' % (app, ctr))),
-            (T('View'), False,
-             URL(
-                 'admin', 'default', 'edit/%s/views/%s' % (app, response.view))),
-            (T('DB Model'), False,
-             URL(
-                 'admin', 'default', 'edit/%s/models/db.py' % app)),
-            (T('Menu Model'), False,
-             URL(
-                 'admin', 'default', 'edit/%s/models/menu.py' % app)),
+            (T('Controller'), False, URL('admin', 'default', 'edit/%s/controllers/%s.py' % (app, ctr))),
+            (T('View'), False, URL('admin', 'default', 'edit/%s/views/%s' % (app, response.view))),
+            (T('DB Model'), False, URL('admin', 'default', 'edit/%s/models/db.py' % app)),
+            (T('Menu Model'), False, URL('admin', 'default', 'edit/%s/models/menu.py' % app)),
             (T('Eliminar BD'), False, URL('desarrollador', 'admin')), LI(_class="divider"),
 
             ]),

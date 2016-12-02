@@ -1,5 +1,6 @@
 databases
 private
+errors
 progress.log
 sessions
 **/*.bak

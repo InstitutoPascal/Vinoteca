@@ -133,16 +133,18 @@ auth.settings.reset_password_requires_verification = True
 
 #unique=True, bug https://groups.google.com/forum/#!topic/web2py/PLoVjDti-lE
 #db.categoria.truncate()
+
 #Categoria: vinos/accesorios/espumantes/
 db.define_table('categoria',
     Field('nombre', 'string', required=True, notnull=True, label=T('Nombre') ),
     )
-db.categoria.nombre.requires=[IS_NOT_EMPTY(), IS_NOT_IN_DB(db, 'categoria.nombre',error_message='Ya existe')]
+db.categoria.nombre.requires=[IS_NOT_EMPTY(error_message='Falta ingresar el tipo'),
+                              IS_NOT_IN_DB(db, 'categoria.nombre',error_message='Ya existe')]
 db.categoria.id.label='Número'
 
 #TipoVinos : blanco, oporto, rosado, dulces, tardio, tinto, etc.
 db.define_table('tipoVino',
-    Field('tipo', 'string',  required=True, notnull=True, label=T('Tipo') ),
+    Field('tipo', 'string',  required=True, notnull=True, label=T('Tipo de vino') ),
     )
 db.tipoVino.tipo.requires = [IS_NOT_EMPTY(error_message='Falta ingresar el tipo'),
                              IS_NOT_IN_DB(db, 'tipoVino.tipo',error_message='Ya existe')]
@@ -164,6 +166,9 @@ db.define_table('bodega',
 db.bodega.nombre.requires = [IS_NOT_EMPTY(error_message='Falta ingresar el nombre'),
                              IS_NOT_IN_DB(db, 'bodega.nombre',error_message='Ya existe')]
 db.bodega.id.label='Número'
+db.bodega.nombre.writable = True
+db.bodega.descripcion.writable = True
+
 #noticias
 db.define_table('noticia',
     Field('titulo', 'string', required=True, notnull=True, label=T('Titulo') ),
