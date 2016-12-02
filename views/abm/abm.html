@@ -1,0 +1,9 @@
+{{extend 'layout.html'}}
+<h2>{{=titulo}}</h2>
+
+{{=SQLTABLE(regs, headers = headersT, linkto='edicion')}}
+
+<br>
+<hr>
+<br>
+{{=form}}

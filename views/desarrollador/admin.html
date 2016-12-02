@@ -1,0 +1,22 @@
+{{extend 'layout.html'}}
+<h1>{{=titulo}}</h1>
+<!--<div class="panel-heading">
+{{=A('borrarBase', callback=URL('borrarbase'), target="t")}}
+</div-->
+<div class="panel-heading">{{=A('limpiarbodega', callback=URL('limpiarbodega'), target="t")}}</div>
+<div class="panel-heading">{{=A('limpiarcategoria', callback=URL('limpiarcategoria'), target="t")}}</div>
+<div class="panel-heading">{{=A('limpiarevento', callback=URL('limpiarevento'), target="t")}}</div>
+<div class="panel-heading">{{=A('limpiarpromocion', callback=URL('limpiarpromocion'), target="t")}}</div>
+<div class="panel-heading">{{=A('limpiartipoVino', callback=URL('limpiartipoVino'), target="t")}}</div>
+<div class="panel-heading">{{=A('limpiarvarietal', callback=URL('limpiarvarietal'), target="t")}}</div>
+<div class="panel-heading">{{=A('limpiarformaPago', callback=URL('limpiarformaPago'), target="t")}}</div>
+<div class="panel-heading">{{=A('limpiarzona', callback=URL('limpiarzona'), target="t")}}</div>
+<div class="panel-heading">{{=A('limpiarnoticia', callback=URL('limpiarnoticia'), target="t")}}</div>
+<div class="panel-heading">{{=A('limpiarproducto', callback=URL('limpiarproducto'), target="t")}}</div>
+<div class="panel-heading">{{=A('limpiardomicilio', callback=URL('limpiardomicilio'), target="t")}}</div>
+<div class="panel-heading">{{=A('limpiarventa', callback=URL('limpiarventa'), target="t")}}</div>
+<div class="panel-heading">{{=A('limpiardetalleVenta', callback=URL('limpiardetalleVenta'), target="t")}}</div>
+
+<h1>Cuidado, vas a borrar todo con el siguiente Link</h1>
+
+<div class="panel-heading">{{=A('limpiarTODO', callback=URL('limpiarTODO'), target="t")}}</div>

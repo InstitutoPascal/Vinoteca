@@ -1,0 +1,5 @@
+databases
+private
+progress.log
+sessions
+**/*.bak
