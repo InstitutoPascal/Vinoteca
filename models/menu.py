@@ -46,12 +46,14 @@ response.menu = [
             (T('Ver'), False, URL('default','index') ),
         ]),
         (T('Administrar'), False, '#', [
-            (T('Categorias'), False, URL('abm', 'categoriaAbm')), LI(_class="divider"),
-            (T('Eventos'), False, URL('abm', 'eventoAbm')), LI(_class="divider"),
-            (T('Noticias'), False, URL('abm', 'noticiaAbm')), LI(_class="divider"),
-            (T('Promociones'), False, URL('abm', 'promocionAbm')), LI(_class="divider"),
-            (T('Tipos de Vino'), False, URL('abm', 'tipoVinoAbm')), LI(_class="divider"),
-            (T('Varietales'), False, URL('abm', 'varietalAbm')), LI(_class="divider"),
+            (T('Bodega'), False, URL('abm', 'bodegaAbm')), LI(_class="divider"),
+            (T('Categoria'), False, URL('abm', 'categoriaAbm')), LI(_class="divider"),
+            (T('Evento'), False, URL('abm', 'eventoAbm')), LI(_class="divider"),
+            (T('Formas de Pago'), False, URL('abm', 'formaPagoAbm')), LI(_class="divider"),
+            (T('Promocion'), False, URL('abm', 'promocionAbm')), LI(_class="divider"),
+            (T('Tipo de Vino'), False, URL('abm', 'tipoVinoAbm')), LI(_class="divider"),
+            (T('Varietal'), False, URL('abm', 'varietalAbm')), LI(_class="divider"),
+            (T('Zonas de envío'), False, URL('abm', 'zonaAbm')), LI(_class="divider"),
         ]),
 ]
 

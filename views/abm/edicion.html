@@ -1,3 +1,13 @@
 {{extend 'layout.html'}}
 <h2>{{=titulo}}</h2>
 {{=form}}
+<script>
+document.getElementsByClassName('resetType')[0].type='reset';
+function confirmarCancelar(url) {
+    var x = confirm('Desea volver sin guardar los cambios?');
+    if (x) {
+        window.location = url;
+    }
+    return x;
+}
+</script>
