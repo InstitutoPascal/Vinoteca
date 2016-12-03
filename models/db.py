@@ -181,9 +181,7 @@ auth.settings.reset_password_requires_verification = True
 # -------------------------------------------------------------------------
 # auth.enable_record_versioning(db)
 
-<<<<<<< HEAD
 '''
-=======
 #unique=True, bug https://groups.google.com/forum/#!topic/web2py/PLoVjDti-lE
 #db.categoria.truncate()
 
@@ -293,4 +291,4 @@ db.promocion.id.label='Número'
 #                                                    maximum=None,
 #                                                    error_message='Debe ser mayor a %s' form.vars.fechaDesde.strftime('%d-%m-%Y') if form.vars.fechaDesde else 'Fecha desde es obligatoria'
 ########################################################################
->>>>>>> 08cec34e69e9e64513d34edf3d87f4b446be2f71
+
