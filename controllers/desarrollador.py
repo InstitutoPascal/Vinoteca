@@ -54,6 +54,10 @@ def limpiardetalleVenta():
 	db.detalleVenta.truncate()
 	response.flash='Tabla truncada'
 	return True
+def limpiarUsers():
+	db.auth_user.truncate()
+	response.flash='Tabla usuarios truncada'
+	return True
 
 def limpiarTODO():
     db.bodega.truncate()

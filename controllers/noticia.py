@@ -1,8 +1,14 @@
 # -*- coding: utf-8 -*-
-
 def index():
-    titulo = T(' Administración de XXXXXXXX' )
-    grid = SQLFORM.grid(db.bodega, deletable = False, csv = False)
+    titulo = T(' Listado de noticias' )
+    grid = SQLFORM.grid(db.noticia, deletable = False, editable=False, details=True, csv = False)
+    return locals()
+
+
+
+def admin():
+    titulo = T(' Administración de noticias' )
+    grid = SQLFORM.grid(db.noticia, deletable = False, csv = True)
     return locals()
 
 ##################################################################################
