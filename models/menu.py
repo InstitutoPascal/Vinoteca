@@ -39,11 +39,15 @@ response.menu = [
             (T('Ver'), False, URL('default','index') ),
         ]),
         (T('Noticias'), False, '#', [
-            (T('Ver'), False, URL('default','index') ),
-            (T('Administrar'), False, URL('noticia','index') ),
+            (T('Ver'), False, URL('noticia','index') ),
+            (T('Administrar'), False, URL('noticia','admin') ),
         ]),
         (T('Contacto'), False, '#', [
             (T('Ver'), False, URL('default','index') ),
+        ]),
+        (T('Productos'), False, '#', [
+            (T('Listado'), False, URL('producto','index') ),
+            (T('Administrar productos'), False, URL('producto','admin') ),
         ]),
         (T('Administrar'), False, '#', [
             (T('Bodega'), False, URL('abm', 'bodegaAbm')), LI(_class="divider"),

@@ -75,3 +75,7 @@ def limpiarTODO():
     db.detalleVenta.truncate()
     response.flash='Todas las tablas fueron truncadas'
     return True
+
+def poblarTablasGenericas():
+    #db.categoria.insert(nombre="Vinos")
+    return True
