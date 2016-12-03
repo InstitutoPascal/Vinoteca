@@ -162,6 +162,7 @@ db.varietal.id.label='Número'
 db.define_table('bodega',
     Field('nombre', 'string', required=True, notnull=True, label=T('Nombre') ),
     Field('descripcion', 'text', label=T('Descripción')),
+    Field('web', 'string', label=T('Página Web')),
     )
 db.bodega.nombre.requires = [IS_NOT_EMPTY(error_message='Falta ingresar el nombre'),
                              IS_NOT_IN_DB(db, 'bodega.nombre',error_message='Ya existe')]
@@ -196,6 +197,7 @@ db.evento.nombre.requires = [IS_NOT_EMPTY(error_message='Falta ingresar el nombr
                              IS_NOT_IN_DB(db, 'evento.nombre', error_message=' Ya existe ')]
 db.evento.duracion.requires = IS_DECIMAL_IN_RANGE(0,200)
 db.evento.id.label='Número'
+
 
 #Productos: vinos, copas, etc.
 db.define_table('producto',
@@ -234,5 +236,7 @@ db.define_table('promocion',
 db.promocion.promo.requires = [IS_NOT_EMPTY(error_message=' Falta ingresar la promo'),
                               IS_NOT_IN_DB(db, 'promocion.promo', error_message=' Ya existe ')]
 db.promocion.id.label='Número'
-
+#db.promocion.fechaHasta.requires = IS_DATE_IN_RANGE(format=T('%d-%m-%y'), minimum=form.vars.fechaDesde if form.vars.fechaDesde else None,
+#                                                    maximum=None,
+#                                                    error_message='Debe ser mayor a %s' form.vars.fechaDesde.strftime('%d-%m-%Y') if form.vars.fechaDesde else 'Fecha desde es obligatoria'
 ########################################################################
