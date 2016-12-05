@@ -35,4 +35,4 @@ def abm(tabla_req=None):
 
     regs=db(db[tabla_req].id>0).select()
 
-    return locals()#{'titulo': titulo, 'regs':regs, 'form':form, 'headersT':headersT}
+    return locals()

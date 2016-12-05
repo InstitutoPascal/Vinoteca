@@ -282,6 +282,7 @@
 'HTML': 'HTML',
 'HTML export of visible columns': 'Exportar HTML de las columnas visibles',
 'htmledit': 'htmledit',
+'Id': 'Id',
 'Imagen': 'Imagen',
 'Impersonate': 'Suplantar',
 'import': 'importar',

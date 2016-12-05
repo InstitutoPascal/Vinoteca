@@ -44,7 +44,7 @@ db.define_table("venta",
     Field("costoEntrega", 'integer', required=True, notnull=True, label=T('Costo de entrega') ),
     Field("idDomicilio", "reference domicilio", label=T('Domicilio')),
     Field("descuento","integer", label=T('Descuento') ),
-    format = '%(id)s - %(fechaPedido)s ')
+    format = '%(id)s  - %(idCliente)s - %(fechaPedido)s ')
 
 db.venta.idCliente.requires = IS_IN_DB(db, 'auth_user.id',' %(last_name)s - %(first_name)s ')
 db.venta.tipoFactura.requires=IS_IN_SET(["A","B"])
@@ -61,10 +61,6 @@ db.define_table("detalleVenta",
     Field("precioUnitario","double", label=T('Precio unidad ') ),
     Field("precioXcantidad","double", label=T('Precio*Cantidad') ),
     )
-
-
 db.detalleVenta.idProducto.requires = IS_IN_DB(db,'producto.idProducto', ' %(nombre)s' )
 db.detalleVenta.idVenta.requires = IS_IN_DB(db,'venta.id', '%(id)s - %(fechaPedido)s ' )
-#db.detalleVenta.precioUnitario.requires = IS_IN_DB(db,"producto.precio_venta","%(precio_venta)s")
-#db.detalleVenta.id_venta.requires = IS_IN_DB(db,"ventas.id","%(numero_factura)s-%(tipo_de_factura)s")
 db.detalleVenta.id.label ='Número'
