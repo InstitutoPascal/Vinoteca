@@ -238,9 +238,19 @@ def poblarBodegas():
     return True
 
 def poblarFormaPago():
-    db.formaPago.insert(descripcion = 'Efectivo')
-    db.formaPago.insert(descripcion = 'Depósito')
-    db.formaPago.insert(descripcion = 'Tarjeta de Crédito')
     db.formaPago.insert(descripcion = 'Cheque')
+    db.formaPago.insert(descripcion = 'Depósito')
+    db.formaPago.insert(descripcion = 'Efectivo')
+    db.formaPago.insert(descripcion = 'Tarjeta de Crédito')
     response.flash='Fue poblada formaPago'
+    return True
+
+def poblarZonas():
+    db.zona.insert(descripcion='A', precio='50', dia='Lunes')
+    db.zona.insert(descripcion='B', precio='70', dia='Martes')
+    db.zona.insert(descripcion='C', precio='80', dia='Miércoles')
+    db.zona.insert(descripcion='D', precio='40', dia='Jueves')
+    db.zona.insert(descripcion='E', precio='50', dia='Viernes')
+    db.zona.insert(descripcion='F', precio='30', dia='Lunes Viernes')
+    response.flash='Fue poblada zona'
     return True

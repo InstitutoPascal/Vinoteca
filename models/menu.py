@@ -30,7 +30,9 @@ response.google_analytics_id = None
 
 response.menu = [
         (T('Catálogo'), False, '#', [
-            (T('Ver'), False, URL('default','index') ),
+            (T('Vinos'), False, URL('default','index') ),
+            (T('Espumantes'), False, URL('default','index') ),
+            (T('Accesorios'), False, URL('default','index') ),
             ]),
         (T('Eventos'), False, '#', [
             (T('Ver'), False, URL('default','index') ),
