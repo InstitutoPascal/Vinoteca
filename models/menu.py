@@ -24,7 +24,8 @@ response.menu = [
             (T('Ver'), False, URL('default','index') ),
             ]),
         (T('Promociones'), False, '#', [
-            (T('Ver'), False, URL('default','index') ),
+            (T('Ver'), False, URL('promocion','index') ),
+            (T('Administrar promociones'), False, URL('promocion','admin') ),
         ]),
         (T('Noticias'), False, '#', [
             (T('Ver'), False, URL('noticia','index') ),
