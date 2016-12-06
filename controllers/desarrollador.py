@@ -56,6 +56,9 @@ def limpiardetalleVenta():
 	return True
 def limpiarUsers():
 	db.auth_user.truncate()
+    #db.auth_group.truncate()
+    #db.auth_membership.truncate()
+    #db.auth_permission.truncate()
 	response.flash='Tabla usuarios truncada'
 	return True
 
