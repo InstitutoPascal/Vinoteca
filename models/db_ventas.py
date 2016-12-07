@@ -46,7 +46,7 @@ db.define_table("venta",
     Field("descuento","integer", label=T('Descuento') ),
     format = '%(id)s  - %(idCliente)s - %(fechaPedido)s ')
 
-db.venta.idCliente.requires = IS_IN_DB(db, 'auth_user.id',' %(last_name)s - %(first_name)s ')
+db.venta.idCliente.requires = IS_IN_DB(db, 'auth_user.id','%(nombre)s - %(apellido)s')
 db.venta.tipoFactura.requires=IS_IN_SET(["A","B"])
 db.venta.formaPago.requires = IS_IN_DB(db, 'formaPago.id',' %(descripcion)s ')
 db.venta.id.label ='Número'

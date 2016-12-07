@@ -27,14 +27,43 @@ auth = Auth(db, host_names=myconf.get('host.names'))
 service = Service()
 plugins = PluginManager()
 
+db.define_table(
+    auth.settings.table_user_name,
+    Field('nombre',  label=T('Nombre/s')),
+    Field('apellido',  label=T('Apellido/s')),
+    Field('email', required=True, notnull=True, label=T('Correo Electrónico') ), # requerido
+    Field('password', 'password', readable=False, label='Password'),
+    Field('nacimiento','date', label=T('Fecha de Nacimiento')),
+    Field('ciudad', 'string', label=T('Ciudad') ),
+    Field('telefono', 'integer', label=T('Teléfono')),
+    Field('registration_key', length=512, writable=False, readable=False, default=''),#no quitar ni tocar
+    Field('reset_password_key', length=512, writable=False, readable=False, default=''), #no quitar ni tocar
+    Field('registration_id', length=512, writable=False, readable=False, default=''), #no quitar ni tocar
+    Field('novedades', 'boolean', default=True, label=T('¿Desea recibir novedades y eventos de la página?') ),
+    format = '%(nombre)s - %(apellido)s'
+)
+
+## no te olvides de los validadores
+auth_table_especial = db[auth.settings.table_user_name] # obtiene auth_table_especial
+auth_table_especial.nombre.requires =   IS_NOT_EMPTY(error_message=auth.messages.is_empty)
+auth_table_especial.apellido.requires =   IS_NOT_EMPTY(error_message=auth.messages.is_empty)
+auth_table_especial.password.requires = [IS_STRONG(), CRYPT()]
+auth_table_especial.email.requires = [IS_EMAIL(error_message=auth.messages.invalid_email),
+                                      IS_NOT_IN_DB(db, auth_table_especial.email)]
+
+auth.settings.table_user = auth_table_especial # le dice a auth que use la tabla especial
+
+##
+
+
+
 # -------------------------------------------------------------------------
 # create all tables needed by auth if not custom tables
 # -------------------------------------------------------------------------
 auth.define_tables(username=False, signature=False)
 auth.settings.create_user_groups = False
-auth.settings.everybody_group_id = 3
+auth.settings.everybody_group_id = 3 # = auth nuevo seteo grupo: ('Usuarios(3)')
 auth.settings.password_min_length = 6
-#auth.add_membership('Usuarios')
 # -------------------------------------------------------------------------
 # configure email
 # -------------------------------------------------------------------------
