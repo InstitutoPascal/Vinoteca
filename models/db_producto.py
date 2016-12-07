@@ -68,6 +68,7 @@ db.producto.tipo.writable = True
 #Promociones por compras en la página
 db.define_table('promocion',
     Field('promo', 'string', required=True, notnull=True, label=T('Promoción') ),
+    Field('porcentaje', 'integer', label=T('Porcentaje')),
     Field('descripcion', 'string', label=T('Descripción')),
     Field('letraChica', 'string', label=T('Lectra chica')),
     Field('fechaDesde', 'date', label=T('Fecha desde')),
@@ -75,6 +76,11 @@ db.define_table('promocion',
     )
 db.promocion.promo.requires = [IS_NOT_EMPTY(error_message=' Falta ingresar la promo'),
                               IS_NOT_IN_DB(db, 'promocion.promo', error_message=' Ya existe ')]
+db.promocion.fechaDesde.requires = IS_DATE(error_message='Ingrese una fecha con formato 24/10/2016')
+db.promocion.fechaHasta.requires = IS_DATE(error_message='Ingrese una fecha con formato 24/10/2016')
+db.promocion.porcentaje.requires = IS_INT_IN_RANGE(1, 99,error_message='Ingrese un número del 1 al 99');
+
+
 db.promocion.id.label='Número'
 #db.promocion.fechaHasta.requires = IS_DATE_IN_RANGE(format=T('%d-%m-%y'),
 #                                                    minimum=form.vars.fechaDesde,

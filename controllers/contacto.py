@@ -7,3 +7,8 @@ def index():
 #    Tel: 011-4951-2236
 #    Cel:15-4787-7909
     return dict(message="hello from cantacto.py")
+
+#@auth.requires_login()
+def administrar_usuarios():
+    grid = SQLFORM.grid(db.auth_user)
+    return locals()

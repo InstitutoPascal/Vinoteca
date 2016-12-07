@@ -29,8 +29,8 @@ plugins = PluginManager()
 
 db.define_table(
     auth.settings.table_user_name,
-    Field('nombre',  label=T('Nombre/s')),
-    Field('apellido',  label=T('Apellido/s')),
+    Field('first_name', label=T('Nombre/s')),
+    Field('last_name', label=T('Apellido/s')),
     Field('email', required=True, notnull=True, label=T('Correo Electrónico') ), # requerido
     Field('password', 'password', readable=False, label='Password'),
     Field('nacimiento','date', label=T('Fecha de Nacimiento')),
@@ -40,13 +40,13 @@ db.define_table(
     Field('reset_password_key', length=512, writable=False, readable=False, default=''), #no quitar ni tocar
     Field('registration_id', length=512, writable=False, readable=False, default=''), #no quitar ni tocar
     Field('novedades', 'boolean', default=True, label=T('¿Desea recibir novedades y eventos de la página?') ),
-    format = '%(nombre)s - %(apellido)s'
+    format = '%(first_name)s - %(last_name)s'
 )
 
 ## no te olvides de los validadores
 auth_table_especial = db[auth.settings.table_user_name] # obtiene auth_table_especial
-auth_table_especial.nombre.requires =   IS_NOT_EMPTY(error_message=auth.messages.is_empty)
-auth_table_especial.apellido.requires =   IS_NOT_EMPTY(error_message=auth.messages.is_empty)
+auth_table_especial.first_name.requires =   IS_NOT_EMPTY(error_message=auth.messages.is_empty)
+auth_table_especial.last_name.requires =   IS_NOT_EMPTY(error_message=auth.messages.is_empty)
 auth_table_especial.password.requires = [IS_STRONG(), CRYPT()]
 auth_table_especial.email.requires = [IS_EMAIL(error_message=auth.messages.invalid_email),
                                       IS_NOT_IN_DB(db, auth_table_especial.email)]
@@ -116,13 +116,13 @@ auth.messages.invalid_login = 'Falló la autenticación'
 auth.messages.invalid_user = 'El usuario especificado no es válido'
 auth.messages.is_empty = "No puede ser vacío"
 auth.messages.mismatched_password = "Los campos de contraseña no coinciden"
-auth.messages.verify_email = "Verifique su casilla de correo electrónico"
+#auth.messages.verify_email = "Verifique su casilla de correo electrónico"
 auth.messages.verify_email_subject = 'Verificación de contraseña'
 auth.messages.new_password_sent = 'Se ha enviado una nueva contraseña a su correo'
 auth.messages.password_changed = 'Contraseña modificada'
 auth.messages.retrieve_password = 'Su contraseña de usuario es: %(password)s'
 auth.messages.retrieve_password_subject = 'Recuperar contraseña'
-auth.messages.reset_password = "Verifique su casilla de correo electrónico"
+#auth.messages.reset_password = "Verifique su casilla de correo electrónico"
 auth.messages.reset_password_subject = 'Restablecer contraseña'
 auth.messages.invalid_reset_password = 'Nueva contraseña inválida'
 auth.messages.profile_updated = 'Perfil actualizado'
@@ -139,27 +139,5 @@ auth.messages.reset_password_log = 'Usuario %(id)s contraseña restablecida'
 auth.messages.change_password_log = 'Usuario %(id)s se cambió la contraseña'
 auth.messages.add_group_log = 'Grupo %(group_id)s creado'
 auth.messages.del_group_log = 'Grupo %(group_id)s eliminado'
-auth.messages.add_membership_log = None
-auth.messages.del_membership_log = None
-auth.messages.has_membership_log = None
-auth.messages.add_permission_log = None
-auth.messages.del_permission_log = None
-auth.messages.has_permission_log = None
-auth.messages.label_first_name = 'Nombre'
-auth.messages.label_last_name = 'Apellido'
-auth.messages.label_email = 'Correo Electrónico'
-auth.messages.label_password = 'Contraseña'
-auth.messages.label_registration_key = 'Clave de registro de usuario'
-auth.messages.label_reset_password_key = 'Clave para restablecer contraseña'
-auth.messages.label_registration_id = 'Identificador del registro de usuario'
-auth.messages.label_role = 'Rol'
-auth.messages.label_description = 'Descripción'
-auth.messages.label_user_id = 'ID del Usuario'
-auth.messages.label_group_id = 'ID del Grupo'
-auth.messages.label_name = 'Nombre'
-auth.messages.label_table_name = 'Nombre de Tabla'
-auth.messages.label_record_id = 'ID del Registro'
-auth.messages.label_time_stamp = 'Fecha y Hora'
-auth.messages.label_client_ip = 'IP del Cliente'
-auth.messages.label_origin = 'Origen'
+
 auth.messages.label_remember_me = "Recordarme (por 30 días)"
