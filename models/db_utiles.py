@@ -36,3 +36,26 @@ def abm(tabla_req=None):
     regs=db(db[tabla_req].id>0).select()
 
     return locals()
+
+def getModal(id, titulo, mensaje, textoAccion):
+    return '''
+<div class="modal fade" id="%s" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">%s</h4>
+            </div>
+        
+            <div class="modal-body">
+                %s
+            </div>
+            
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <a class="btn btn-danger btn-ok" data-dismiss="modal" >%s</a>
+            </div>
+        </div>
+    </div>
+</div>
+    '''%(id,titulo,mensaje,textoAccion)
