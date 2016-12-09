@@ -50,7 +50,7 @@ db.define_table('producto',
     Field('cantidad', 'integer', label=T('Cantidad') ),
     Field('precioCompra', 'decimal(9,2)', label=T('Precio compra') ),
     Field('precioVenta', 'decimal(9,2)', label=T('Precio venta') ),
-    Field('imagen', 'upload', label=T('Imagen'),autodelete=True),#, uploadfolder=os.path.join(request.folder,'static/temp') ),
+    Field('imagen', 'upload', label=T('Imagen'),autodelete=True, default='upload/'),#, uploadfolder=os.path.join(request.folder,'static/productos') ),
     )
 db.producto.nombre.requires = [IS_NOT_EMPTY(error_message=' Falta ingresar el nombre '),
                                IS_NOT_IN_DB(db, 'producto.nombre', error_message=' Ya existe ')]

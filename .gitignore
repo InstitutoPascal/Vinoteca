@@ -1,5 +1,6 @@
 .vscode
 databases
+uploads
 private
 errors
 progress.log
