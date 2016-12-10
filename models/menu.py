@@ -32,7 +32,7 @@ response.menu = [
             (T('Administrar'), False, URL('noticia','admin') ),
         ]),
         (T('Contacto'), False, '#', [
-            (T('Ver'), False, URL('default','index') ),
+            (T('Ver'), False, URL('contacto','index') ),
         ]),
         (T('Productos'), False, '#', [
             (T('Listado'), False, URL('producto','index') ),

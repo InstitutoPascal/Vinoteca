@@ -27,3 +27,20 @@ db.evento.nombre.requires = [IS_NOT_EMPTY(error_message='Falta ingresar el nombr
                              IS_NOT_IN_DB(db, 'evento.nombre', error_message=' Ya existe ')]
 db.evento.duracion.requires = IS_DECIMAL_IN_RANGE(0,200)
 db.evento.id.label='Número'
+
+contacto = db.define_table('contacto',
+    Field('nombre'),
+    Field('apellido'),
+    Field('telefono'),
+    Field('email'),
+    Field('motivo','text'),
+    Field('fecha', 'datetime'),
+    Field('hora','time')
+    )
+
+contacto.nombre.requires = IS_NOT_EMPTY(error_message=T('Falta ingresar el nombre'))
+# contacto.apellido.requires = IS_NOT_EMPTY(error_message=T('Falta ingresar el apellido')
+# contacto.telefono.requires = IS_NOT_EMPTY(error_message=T('Falta ingresar el telefono'))
+# contacto.email.requires = IS_NOT_EMPTY(error_message=T('Falta ingresar el email'))
+# contacto.motivo.requires = IS_NOT_EMPTY(error_message=T('Falta ingresar el motivo'))
+
