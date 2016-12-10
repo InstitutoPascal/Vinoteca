@@ -36,6 +36,8 @@ db.define_table(
     Field('nacimiento','date', label=T('Fecha de Nacimiento')),
     Field('ciudad', 'string', label=T('Ciudad') ),
     Field('telefono', 'integer', label=T('Teléfono')),
+    Field('fecha_alta', 'datetime', default=request.now, update=request.now, writable=False),
+    Field('fecha_baja', 'datetime', update=request.now, writable=False),
     Field('registration_key', length=512, writable=False, readable=False, default=''),#no quitar ni tocar
     Field('reset_password_key', length=512, writable=False, readable=False, default=''), #no quitar ni tocar
     Field('registration_id', length=512, writable=False, readable=False, default=''), #no quitar ni tocar
@@ -43,8 +45,8 @@ db.define_table(
     format = '%(first_name)s - %(last_name)s'
 )
 
-## no te olvides de los validadores
-auth_table_especial = db[auth.settings.table_user_name] # obtiene auth_table_especial
+
+auth_table_especial = db[auth.settings.table_user_name]
 auth_table_especial.first_name.requires =   IS_NOT_EMPTY(error_message=auth.messages.is_empty)
 auth_table_especial.last_name.requires =   IS_NOT_EMPTY(error_message=auth.messages.is_empty)
 auth_table_especial.password.requires = [IS_STRONG(), CRYPT()]
@@ -68,7 +70,7 @@ auth.settings.password_min_length = 6
 # configure email
 # -------------------------------------------------------------------------
 mail = auth.settings.mailer
-mail.settings.server = 'logging'#myconf.get('smtp.server')
+mail.settings.server = 'logging'#myconf.get('smtp.server')#
 mail.settings.sender = myconf.get('smtp.sender')
 mail.settings.login = myconf.get('smtp.login')
 mail.settings.tls = myconf.get('smtp.tls') or False

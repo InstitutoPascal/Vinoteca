@@ -7,7 +7,6 @@ db.define_table('noticia',
     Field('cuerpo', 'text', label=T('Cuerpo')),
     Field('autor', 'string', label=T('Autor')),
     Field('fecha', 'date', label=T('Fecha')),
-    #Verificar como se guardan las imagenes
     Field('imagen', 'upload', label=T('Imagen'), autodelete=True),
     format = '%(titulo)s')
 db.noticia.titulo.requires = [IS_NOT_EMPTY(error_message=' Falta ingresar el titulo'),
@@ -25,5 +24,6 @@ db.define_table('evento',
     )
 db.evento.nombre.requires = [IS_NOT_EMPTY(error_message='Falta ingresar el nombre'),
                              IS_NOT_IN_DB(db, 'evento.nombre', error_message=' Ya existe ')]
+db.evento.hora.requires = IS_TIME(error_message='Debe ser HH:MM:SS!')
 db.evento.duracion.requires = IS_DECIMAL_IN_RANGE(0,200)
 db.evento.id.label='Número'

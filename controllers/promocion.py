@@ -24,7 +24,8 @@ def agregar():
     form = SQLFORM(db.promocion)
     if form.process(onvalidation=validateDates).accepted:
         session.flash = 'Registro insertado'
-        redirect(URL('promocion','index'))
+        envioMail('promocion', form.vars.id)
+        redirect(URL('promocion','admin'))
     form.add_button('Cancelar', "javascript:return confirmarCancelar('%s', this);"%URL('admin'))
     mimodal=getModal('volverConfirmacion', 'Volver', '<p>Desea volver, perdera los cambios</p>','Volver')
     return locals()

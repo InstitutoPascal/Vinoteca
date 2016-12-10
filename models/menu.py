@@ -22,6 +22,7 @@ response.menu = [
             ]),
         (T('Eventos'), False, '#', [
             (T('Ver'), False, URL('default','index') ),
+            (T('Administrar eventos'), False, URL('evento','admin') ),
             ]),
         (T('Promociones'), False, '#', [
             (T('Ver'), False, URL('promocion','index') ),
