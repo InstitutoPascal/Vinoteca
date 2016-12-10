@@ -1,11 +1,21 @@
-<HTML>
-    <HEAD>
-        <TITLE>{{=informa.promo}}</TITLE>
-    </HEAD>
-
-    <BODY>
-        Estimado {{=usuario.first_name}},
-            Ha ganado el segundo premio, un set de cuchillos para asado.
-
-    </BODY>
-</HTML>
+<html>
+    <body>
+        <div>
+            <table>
+                <tr>
+                    <td> Estimado {{=usuario.first_name}},
+                                            Le informamos de la siguiente promocion.
+                    </td>
+                    <td> {{=informa.promo}}
+                    </td>
+                    <td> {{=informa.descripcion}}
+                    </td>
+                    <td> {{=informa.fechaDesde}}
+                    </td>
+                    <td> {{=informa.fechaHasta}}
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

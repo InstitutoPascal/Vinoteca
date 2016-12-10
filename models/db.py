@@ -37,7 +37,7 @@ db.define_table(
     Field('ciudad', 'string', label=T('Ciudad') ),
     Field('telefono', 'integer', label=T('Teléfono')),
     Field('fecha_alta', 'datetime', default=request.now, update=request.now, writable=False),
-    Field('fecha_baja', 'datetime', update=request.now, writable=False),
+    Field('fecha_baja', 'datetime', default = '', writable=True),
     Field('registration_key', length=512, writable=False, readable=False, default=''),#no quitar ni tocar
     Field('reset_password_key', length=512, writable=False, readable=False, default=''), #no quitar ni tocar
     Field('registration_id', length=512, writable=False, readable=False, default=''), #no quitar ni tocar
@@ -47,18 +47,13 @@ db.define_table(
 
 
 auth_table_especial = db[auth.settings.table_user_name]
-auth_table_especial.first_name.requires =   IS_NOT_EMPTY(error_message=auth.messages.is_empty)
-auth_table_especial.last_name.requires =   IS_NOT_EMPTY(error_message=auth.messages.is_empty)
-auth_table_especial.password.requires = [IS_STRONG(), CRYPT()]
-auth_table_especial.email.requires = [IS_EMAIL(error_message=auth.messages.invalid_email),
+auth_table_especial.first_name.requires =   IS_NOT_EMPTY(error_message = auth.messages.is_empty)
+auth_table_especial.last_name.requires =   IS_NOT_EMPTY(error_message = auth.messages.is_empty)
+auth_table_especial.password.requires = [IS_STRONG(error_message = 'La longitud mínima es 8 caracteres. Debe incluir al menos 1 minúscula, 1 mayúscula, 1 número y un simbolo. Ej: Pepe!001'), CRYPT()]
+auth_table_especial.email.requires = [IS_EMAIL(error_message = auth.messages.invalid_email),
                                       IS_NOT_IN_DB(db, auth_table_especial.email)]
 
-auth.settings.table_user = auth_table_especial # le dice a auth que use la tabla especial
-
-##
-
-
-
+auth.settings.table_user = auth_table_especial
 # -------------------------------------------------------------------------
 # create all tables needed by auth if not custom tables
 # -------------------------------------------------------------------------
@@ -70,7 +65,7 @@ auth.settings.password_min_length = 6
 # configure email
 # -------------------------------------------------------------------------
 mail = auth.settings.mailer
-mail.settings.server = 'logging'#myconf.get('smtp.server')#
+mail.settings.server = myconf.get('smtp.server')#'logging'#
 mail.settings.sender = myconf.get('smtp.sender')
 mail.settings.login = myconf.get('smtp.login')
 mail.settings.tls = myconf.get('smtp.tls') or False

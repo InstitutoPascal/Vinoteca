@@ -9,7 +9,7 @@ def index():
 def admin():
     titulo = T(' Administración de promociones' )
     grid = SQLFORM.grid(db.promocion, deletable = True, csv = False , editable=False, create=False, details=True, )
-    agregar = A('Agregar promocion', _href=URL('agregar'), _class='btn btn-default btn-large')
+    agregar = A('Agregar promoción', _href=URL('agregar'), _class='btn btn-default btn-large')
     return locals()
 
 def validateDates(form):
@@ -20,12 +20,12 @@ def validateDates(form):
 
 
 def agregar():
-    titulo = T('Agregar promocion')
+    titulo = T('Agregar promoción')
     form = SQLFORM(db.promocion)
     if form.process(onvalidation=validateDates).accepted:
         session.flash = 'Registro insertado'
         envioMail('promocion', form.vars.id)
         redirect(URL('promocion','admin'))
     form.add_button('Cancelar', "javascript:return confirmarCancelar('%s', this);"%URL('admin'))
-    mimodal=getModal('volverConfirmacion', 'Volver', '<p>Desea volver, perdera los cambios</p>','Volver')
+    #comento el boton que se supone que no hace nada mimodal=getModal('volverConfirmacion', 'Volver', '<p>Desea volver, perdera los cambios</p>','Volver')
     return locals()

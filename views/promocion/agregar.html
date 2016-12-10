@@ -1,7 +1,5 @@
 {{extend 'layout.html'}}
 <h1>{{=titulo}}</h1>
-<a href="#" data-toggle="modal" data-target="#volverConfirmacion" class="btn btn-default">mi modal<i class="fa fa-trash" aria-hidden="true"  data-toggle="tooltip" data-placement="bottom" title="Eliminar" ></i></a>
-<script>document.write('{{=mimodal}}')</script>
 {{=form}}
 <script>
 function confirmarCancelar(url, obj) {
@@ -13,4 +11,3 @@ function confirmarCancelar(url, obj) {
     return x;
 }
 </script>
-
