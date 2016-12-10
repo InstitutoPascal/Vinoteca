@@ -37,6 +37,39 @@ def abm(tabla_req=None):
 
     return locals()
 
+########################################################################################################################
+########### recibe desde donde se invoca y el id del registro nuevo   ##################################################
+def envioMail(tipoMail=None, id = None):
+    try:
+        if tipoMail == 'evento':
+            mensaje = 'mailNovedadEvento.html'
+            subject = 'No te pierdas el nuevo evento'
+            tabla = 'evento'
+        elif tipoMail == 'promocion':
+            mensaje = 'mailNovedadPromo.html'
+            subject = 'Gran PROMOCIÓN'
+            tabla = 'promocion'
+        else:
+            mensaje = 'mailNovedadEvento.html'
+            subject = 'test'
+            tabla = ''
+
+        for usuario in db(db.auth_user.novedades == True).select():
+            print 'Usuario: '+ usuario.last_name
+            context = dict(usuario=usuario,informa=db(db[tabla]._id==id).select().first())
+            mensaje = response.render(mensaje, context)
+            mail.send(to=usuario.email,
+                      subject=subject,
+                      message=mensaje)
+    except Exception, e:
+        print 'Fallo: %s' % e
+    else:
+        print 'sin problemas'
+    finally:
+        print 'listo'
+    return None
+
+###############################################################################################################
 def getModal(id, titulo, mensaje, textoAccion):
     return '''
 <div class="modal fade" id="%s" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -46,11 +79,9 @@ def getModal(id, titulo, mensaje, textoAccion):
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title" id="myModalLabel">%s</h4>
             </div>
-        
             <div class="modal-body">
                 %s
             </div>
-            
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                 <a class="btn btn-danger btn-ok" data-dismiss="modal" >%s</a>
