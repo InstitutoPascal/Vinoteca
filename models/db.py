@@ -70,11 +70,15 @@ auth.settings.password_min_length = 6
 # configure email
 # -------------------------------------------------------------------------
 mail = auth.settings.mailer
-mail.settings.server = 'logging'#myconf.get('smtp.server')#
+mail.settings.server = myconf.get('smtp.server')#'logging'
 mail.settings.sender = myconf.get('smtp.sender')
 mail.settings.login = myconf.get('smtp.login')
 mail.settings.tls = myconf.get('smtp.tls') or False
 mail.settings.ssl = myconf.get('smtp.ssl') or False
+
+# def usuarioBaneado():
+#     return URL('contacto','index')
+# auth.settings.login_onvalidation = [usuarioBaneado, URL('contacto','index')] 
 
 # -------------------------------------------------------------------------
 # configure auth policy

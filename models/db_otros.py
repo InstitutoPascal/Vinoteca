@@ -28,19 +28,23 @@ db.evento.hora.requires = IS_TIME(error_message='Debe ser HH:MM:SS!')
 db.evento.duracion.requires = IS_DECIMAL_IN_RANGE(0,200)
 db.evento.id.label='Número'
 
+
+
 contacto = db.define_table('contacto',
     Field('nombre'),
     Field('apellido'),
     Field('telefono'),
     Field('email'),
+    Field('estado'),
     Field('motivo','text'),
-    Field('fecha', 'datetime'),
+    Field('fecha', 'date'),
     Field('hora','time')
     )
 
 contacto.nombre.requires = IS_NOT_EMPTY(error_message=T('Falta ingresar el nombre'))
-# contacto.apellido.requires = IS_NOT_EMPTY(error_message=T('Falta ingresar el apellido')
-# contacto.telefono.requires = IS_NOT_EMPTY(error_message=T('Falta ingresar el telefono'))
-# contacto.email.requires = IS_NOT_EMPTY(error_message=T('Falta ingresar el email'))
-# contacto.motivo.requires = IS_NOT_EMPTY(error_message=T('Falta ingresar el motivo'))
+contacto.apellido.requires = IS_NOT_EMPTY(error_message=T('Falta ingresar el apellido'))
+contacto.telefono.requires = IS_NOT_EMPTY(error_message=T('Falta ingresar el telefono'))
+contacto.email.requires = IS_NOT_EMPTY(error_message=T('Falta ingresar el email'))
+contacto.email.requires = IS_EMAIL(error_message=T('No tiene formato de email'))
+contacto.motivo.requires = IS_NOT_EMPTY(error_message=T('Falta ingresar el motivo'))
 

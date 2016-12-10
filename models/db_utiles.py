@@ -90,3 +90,8 @@ def getModal(id, titulo, mensaje, textoAccion):
     </div>
 </div>
     '''%(id,titulo,mensaje,textoAccion)
+
+
+def desuscribirse():
+    username = login.first_name
+    return locals()

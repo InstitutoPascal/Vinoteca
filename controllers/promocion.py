@@ -4,12 +4,19 @@ def index():
     grid = SQLFORM.grid(db.promocion, deletable = False, editable=False, details=True, csv = False)
     return locals()
 
-
+def editar():
+    titulo = T(' Administración de promociones' )
+    grid = SQLFORM.grid(db.promocion, deletable = True, csv = False , editable=False, create=False, details=True, selecteable )
+    agregar = A('Agregar promocion', _href=URL('agregar'), _class='btn btn-default btn-large')
+    editar = A('Agregar promocion', _href=URL('agregar','editar'), _class='btn btn-default btn-large')
+    return locals()
+    
 
 def admin():
     titulo = T(' Administración de promociones' )
-    grid = SQLFORM.grid(db.promocion, deletable = True, csv = False , editable=False, create=False, details=True, )
+    grid = SQLFORM.grid(db.promocion, deletable = True, csv = False , editable=False, create=False, details=True, selecteable )
     agregar = A('Agregar promocion', _href=URL('agregar'), _class='btn btn-default btn-large')
+    editar = A('Agregar promocion', _href=URL('agregar','editar',), _class='btn btn-default btn-large')
     return locals()
 
 def validateDates(form):
@@ -27,5 +34,4 @@ def agregar():
         envioMail('promocion', form.vars.id)
         redirect(URL('promocion','admin'))
     form.add_button('Cancelar', "javascript:return confirmarCancelar('%s', this);"%URL('admin'))
-    mimodal=getModal('volverConfirmacion', 'Volver', '<p>Desea volver, perdera los cambios</p>','Volver')
     return locals()
