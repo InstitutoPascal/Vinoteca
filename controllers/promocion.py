@@ -1,14 +1,41 @@
 # -*- coding: utf-8 -*-
+from datetime import date
+
 def index():
+    date = date.today()
     titulo = T(' Listado de promociones' )
-    grid = SQLFORM.grid(db.promocion, deletable = False, editable=False, details=True, csv = False)
+    grid = SQLFORM.grid(db.promocion, db.promocion.fechaHasta <date,
+                        deletable = True,
+                        create=False,
+                        editable=False,
+                        details=True,
+                        csv = True,
+                        paginate=15,
+                        exportclasses = dict(cvs = False,
+                                             xml = False,
+                                             csv_with_hidden_cols = False,
+                                             tsv_with_hidden_cols = False,
+                                             tsv = False,
+                                             json = False))
     return locals()
 
 
 
 def admin():
     titulo = T(' Administración de promociones' )
-    grid = SQLFORM.grid(db.promocion, deletable = True, csv = False , editable=False, create=False, details=True, )
+    grid = SQLFORM.grid(db.promocion,
+                        deletable = True,
+                        editable=False,
+                        create=False,
+                        details=True,
+                        csv = True,
+                        paginate=15,
+                        exportclasses = dict(cvs = False,
+                                             xml = False,
+                                             csv_with_hidden_cols = False,
+                                             tsv_with_hidden_cols = False,
+                                             tsv = False,
+                                             json = False))
     agregar = A('Agregar promoción', _href=URL('agregar'), _class='btn btn-default btn-large')
     return locals()
 

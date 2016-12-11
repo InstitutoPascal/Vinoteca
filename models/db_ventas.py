@@ -44,6 +44,7 @@ db.define_table("venta",
     Field("costoEntrega", 'integer', required=True, notnull=True, label=T('Costo de entrega') ),
     Field("idDomicilio", "reference domicilio", label=T('Domicilio')),
     Field("descuento","integer", label=T('Descuento') ),
+    Field("estado","integer", label=T('Estado') ),
     format = '%(id)s  - %(idCliente)s - %(fechaPedido)s ')
 
 db.venta.idCliente.requires = IS_IN_DB(db, 'auth_user.id','%(first_name)s - %(last_name)s')
@@ -62,5 +63,5 @@ db.define_table("detalleVenta",
     Field("precioXcantidad","double", label=T('Precio*Cantidad') ),
     )
 db.detalleVenta.idProducto.requires = IS_IN_DB(db,'producto.idProducto', ' %(nombre)s' )
-db.detalleVenta.idVenta.requires = IS_IN_DB(db,'venta.id', '%(id)s - %(fechaPedido)s ' )
+db.detalleVenta.idVenta.requires = IS_IN_DB(db,'venta.id', '%(id)s  - %(idCliente)s - %(fechaPedido)s ' )
 db.detalleVenta.id.label ='Número'

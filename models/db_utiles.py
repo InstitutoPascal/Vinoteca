@@ -41,6 +41,7 @@ def abm(tabla_req=None):
 ########### recibe desde donde se invoca y el id del registro nuevo   ##################################################
 def envioMail(tipoMail=None, id = None):
     try:
+        ok = True
         if tipoMail == 'evento':
             mensaje = 'mailNovedadEvento.html'
             subject = 'No te pierdas el nuevo evento'
@@ -49,18 +50,22 @@ def envioMail(tipoMail=None, id = None):
             mensaje = 'mailNovedadPromo.html'
             subject = 'Gran PROMOCIÓN'
             tabla = 'promocion'
+        elif tipoMail == 'noticia':
+            mensaje = 'mailNovedadNoticia.html'
+            subject = 'Novedades!'
+            tabla = 'noticia'
         else:
-            mensaje = 'mailNovedadEvento.html'
-            subject = 'test'
-            tabla = ''
-
-        for usuario in db(db.auth_user.novedades == True).select():
-            print 'Usuario: '+ usuario.last_name
-            context = dict(usuario=usuario,informa=db(db[tabla]._id==id).select().first())
-            mensaje = response.render(mensaje, context)
-            mail.send(to=usuario.email,
-                      subject=subject,
-                      message=mensaje)
+            ok = False
+        if ok:
+            for usuario in db(db.auth_user.novedades == True).select():
+                print 'Usuario: '+ usuario.last_name
+                context = dict(usuario=usuario,informa=db(db[tabla]._id==id).select().first())
+                mensaje = response.render(mensaje, context)
+                mail.send(to=usuario.email,
+                          subject=subject,
+                          message=mensaje)
+        else:
+            print 'Llamaste a la funcion de envio de mail con una opcion no valida. chequealo antes dolobu'
     except Exception, e:
         print 'Fallo: %s' % e
     else:
