@@ -133,7 +133,7 @@ div.error {
 .topbar {
     padding:10px 0;
     width:100%;
-    color:#959595;
+    color:#000;
     vertical-align:middle;
     padding:auto;
     background-image:-khtml-gradient(linear,left top,left bottom,from(#333333),to(#222222));
@@ -150,7 +150,7 @@ div.error {
 }
 
 .topbar a {
-    color:#e1e1e1;
+    color:#e50d9d;
 }
 
 #navbar {float:right; padding:5px; /* same as superfish */}
@@ -188,12 +188,12 @@ div.error {
 .web2py_grid .web2py_form td {vertical-align: top;}
 
 .web2py_grid thead th,.web2py_grid tfoot td {
-    background-color:#EAEAEA;
+    background-color:#def4de;
     padding:10px 5px 10px 5px;
 }
 
-.web2py_grid tr.odd {background-color:#F9F9F9}
-.web2py_grid tr:hover {background-color:#F5F5F5}
+.web2py_grid tr.odd {background-color:#def4de}
+.web2py_grid tr:hover {background-color:#def4de}
 
 /*
 .web2py_breadcrumbs a {
