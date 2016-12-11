@@ -315,3 +315,9 @@ td.w2p_fc,
 input[type=checkbox], input[type=radio] {
     margin: 4px 4px 0 0;
 }
+.web2py_htmltable table th a {
+    color : blueviolet;
+}
+.navbar-default {
+    background-color: #321f59 !important;
+}
