@@ -1,36 +1,57 @@
 {{extend 'layout.html'}}
-<h4>{{=titulo}}</h4>
-<div class="panel-heading" style='position:relative'>
-{{=A('limpiarbodega', callback=URL('limpiarbodega'), target="t")}}
-{{=A('limpiarcategoria', callback=URL('limpiarcategoria'), target="t")}}
-{{=A('limpiarevento', callback=URL('limpiarevento'), target="t")}}
-{{=A('limpiarpromocion', callback=URL('limpiarpromocion'), target="t")}}</div>
-<div class="panel-heading" style='position:relative'>
-{{=A('limpiartipoVino', callback=URL('limpiartipoVino'), target="t")}}
-{{=A('limpiarvarietal', callback=URL('limpiarvarietal'), target="t")}}
-{{=A('limpiarformaPago', callback=URL('limpiarformaPago'), target="t")}}
-{{=A('limpiarzona', callback=URL('limpiarzona'), target="t")}}</div>
-<div class="panel-heading" style='position:relative'>
-{{=A('limpiarnoticia', callback=URL('limpiarnoticia'), target="t")}}
-{{=A('limpiarproducto', callback=URL('limpiarproducto'), target="t")}}
-{{=A('limpiardomicilio', callback=URL('limpiardomicilio'), target="t")}}
-{{=A('limpiarventa', callback=URL('limpiarventa'), target="t")}}
-{{=A('limpiardetalleVenta', callback=URL('limpiardetalleVenta'), target="t")}}</div>
+<style>
+    .panel-heading a {
+        display: inline;
+        width: 115px;
+        height: 25px;
+        background: grey;
+        padding: 10px;
+        text-align: center;
+        border-radius: 5px;
+        color: white;
+        font-weight: bold;
+        position: relative;
+    }
+</style>
 
-<h4>Cuidado, vas a borrar todo con el siguiente Link</h4>
+<h2>{{=titulo}}</h2>
+<div class="panel-heading" >
+    {{=A('limpiarbodega', callback=URL('limpiarbodega'), target="t")}}
+    {{=A('limpiarcategoria', callback=URL('limpiarcategoria'), target="t")}}
+    {{=A('limpiarevento', callback=URL('limpiarevento'), target="t")}}
+    {{=A('limpiarpromocion', callback=URL('limpiarpromocion'), target="t")}}
+</div>
+<div class="panel-heading" >
+    {{=A('limpiartipoVino', callback=URL('limpiartipoVino'), target="t")}}
+    {{=A('limpiarvarietal', callback=URL('limpiarvarietal'), target="t")}}
+    {{=A('limpiarformaPago', callback=URL('limpiarformaPago'), target="t")}}
+    {{=A('limpiarzona', callback=URL('limpiarzona'), target="t")}}
+</div>
+<div class="panel-heading" >
+    {{=A('limpiarnoticia', callback=URL('limpiarnoticia'), target="t")}}
+    {{=A('limpiarproducto', callback=URL('limpiarproducto'), target="t")}}
+    {{=A('limpiardomicilio', callback=URL('limpiardomicilio'), target="t")}}
+    {{=A('limpiarventa', callback=URL('limpiarventa'), target="t")}}
+    {{=A('limpiardetalleVenta', callback=URL('limpiardetalleVenta'), target="t")}}
+</div>
+
+<h2>Cuidado, vas a borrar todo con el siguiente Link</h2>
 <div class="panel-heading">{{=A('limpiarTODO', callback=URL('limpiarTODO'), target="t")}}</div>
 <div class="panel-heading">{{=A('limpiarUsers', callback=URL('limpiarUsers'), target="t")}}</div>
 
-<h4>Poblacion de tablas</h4>
-{{=A('poblarCategoria', callback=URL('poblarCategoria'), target="t")}}
-{{=A('poblarVarietal', callback=URL('poblarVarietal'), target="t")}}
-{{=A('poblarTipoVino', callback=URL('poblarTipoVino'), target="t")}}
-{{=A('poblarBodegas', callback=URL('poblarBodegas'), target="t")}}
-{{=A('poblarFormaPago', callback=URL('poblarFormaPago'), target="t")}}
-{{=A('poblarZonas', callback=URL('poblarZonas'), target="t")}}
+<div class="panel-heading">
+    <h2>Poblacion de tablas</h2>
+    {{=A('poblarCategoria',callback=URL('poblarCategoria'), target="t")}} 
+    {{=A('poblarVarietal',callback=URL('poblarVarietal'), target="t")}} 
+    {{=A('poblarTipoVino',callback=URL('poblarTipoVino'), target="t")}}
+    {{=A('poblarBodegas', callback=URL('poblarBodegas'), target="t")}}
+    {{=A('poblarFormaPago', callback=URL('poblarFormaPago'), target="t")}}
+    {{=A('poblarZonas', callback=URL('poblarZonas'), target="t")}}
+</div>
 
 <div class="panel-heading">
-{{=A('poblarProd2', callback=URL('poblarProd2'), target="t")}}
-{{=A('poblarProductos', callback=URL('poblarProductos'), target="t")}}
-{{=A('poblarPro3', callback=URL('poblarPro3'), target="t")}}
+    {{=A('poblarProd2', callback=URL('poblarProd2'), target="t")}}
+    {{=A('poblarProductos', callback=URL('poblarProductos'), target="t")}}
+    {{=A('poblarPro3', callback=URL('poblarPro3'), target="t")}}
+    {{=A('desuscribirse', callback=URL('unsuscribe'), target='t')}}
 </div>

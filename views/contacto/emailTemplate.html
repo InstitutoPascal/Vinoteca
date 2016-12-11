@@ -1,7 +1,20 @@
 <html>
-    Buenas tardes {{=nombre}}
-        Su {{=consultaSugerencia}} del dia {{=fecha}} a sido procesada y sera contestada a la brevedad por los administradores de <strong>Vinoteca Bukino</strong>
-    Agradecemos su aporte.
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <style>
+            .derecha {
+                text-align: right;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Consulta</h1>
+        <p>Hola {{=nombre}}</p>
+        <p class='letter'>Su {{=consultaSugerencia}} del día {{=fecha}} a sido procesada y sera contestada a la brevedad por los administradores
+            de <strong>Vinoteca Bukino</strong>.<br />
+        Agradecemos su aporte.</p>
 
-    Saluda atentamente, <strong>Vinoteca Bukino</strong>
+        <p>Saluda atentamente</p>
+        <p class='derecha'><strong>Vinoteca Bukino</strong></p>
+    </body>
 </html>

@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-# -*- coding: utf-8 -*-
 # intente algo como
 
 
@@ -18,7 +17,8 @@ def index():
 
 #@auth.requires_login()
 def admin():
-    grid = SQLFORM.grid(contacto)
+    contacto.id.readable=False
+    grid = SQLFORM.grid(contacto, editable=False, deletable=False, create=False, csv=False)
     titulo = 'Consultas o sugerencias'
     return locals()
 
@@ -31,29 +31,10 @@ def sendMail(form):
         
         message = response.render('contacto/emailTemplate.html', context)
 
-        result = mail.send(to=form.vars.email, subject='Gracias por su consulta', message=message)
+        result = mail.send(to=form.vars.email, subject='Gracias por su consulta', message=message, headers=dict(contentType='text/html; charset="UTF-8"'))
         if result:
             print 'se envio'
         else:
             print 'no se envio'
     except Exception as e:
         print e
-    finally:
-        print 'salimo'
-
-'''
-
-    Field('nombre'),
-    Field('apellido'),
-    Field('telefono'),
-    Field('email'),
-    Field('motivo','text'),
-    Field('fecha', 'date'),
-    Field('hora','time')
-
-            context = dict(usuario=usuario,informa=db(db[tabla]._id==id).select().first())
-            mensaje = response.render(mensaje, context)
-            mail.send(to=usuario.email,
-                      subject=subject,
-                      message=mensaje)
-'''

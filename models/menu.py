@@ -22,7 +22,7 @@ response.menu = [
             (T('Vinos'), False, URL('default','index') ),
             ]),
         (T('Contacto'), False, '#', [
-            (T('Ver'), False, URL('default','index') ),
+            (T('Ver'), False, URL('contacto','index') ),
         ]),
         (T('Eventos'), False, '#', [
             (T('Ver'), False, URL('default','index') ),
@@ -31,9 +31,6 @@ response.menu = [
         (T('Noticias'), False, '#', [
             (T('Ver'), False, URL('noticia','index') ),
             (T('Administrar'), False, URL('noticia','admin') ),
-        ]),
-        (T('Contacto'), False, '#', [
-            (T('Ver'), False, URL('contacto','index') ),
         ]),
         (T('Productos'), False, '#', [
             (T('Listado'), False, URL('producto','index') ),

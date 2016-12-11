@@ -6,7 +6,7 @@ def index():
 
 def editar():
     titulo = T(' Administración de promociones' )
-    grid = SQLFORM.grid(db.promocion, deletable = True, csv = False , editable=False, create=False, details=True, selecteable )
+    grid = SQLFORM.grid(db.promocion, deletable = True, csv = False , editable=False, create=False, details=True )
     agregar = A('Agregar promocion', _href=URL('agregar'), _class='btn btn-default btn-large')
     editar = A('Agregar promocion', _href=URL('agregar','editar'), _class='btn btn-default btn-large')
     return locals()

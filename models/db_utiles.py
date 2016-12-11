@@ -93,5 +93,19 @@ def getModal(id, titulo, mensaje, textoAccion):
 
 
 def desuscribirse():
-    username = login.first_name
-    return locals()
+    resultado = ''
+    if auth == None or auth.user == None:
+        resultado = 'No esta logueado'
+    elif auth.user.novedades:
+        try:
+            result = db(db.auth_user.id==auth.user.id).select().first().update_record(novedades=False)
+            if result:
+                resultado = 'desuscripto'
+            else:
+                resultado = 'no desuscripto'
+        except Exception as e:
+            resultado = 'ocurrio un error %s '%e
+            print e
+    else:
+        resultado = 'No esta suscrito'
+    return resultado

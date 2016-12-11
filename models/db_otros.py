@@ -31,14 +31,13 @@ db.evento.id.label='Número'
 
 
 contacto = db.define_table('contacto',
-    Field('nombre'),
-    Field('apellido'),
-    Field('telefono'),
-    Field('email'),
-    Field('estado'),
+    Field('nombre', notnull=True),
+    Field('apellido', notnull=True),
+    Field('telefono', notnull=True),
+    Field('email', notnull=True),
+    Field('estado', 'boolean', default=True, readable=False, writable=False),
     Field('motivo','text'),
-    Field('fecha', 'date'),
-    Field('hora','time')
+    Field('fecha', 'datetime', notnull=True, readable=False, default=request.now, writable=False)
     )
 
 contacto.nombre.requires = IS_NOT_EMPTY(error_message=T('Falta ingresar el nombre'))

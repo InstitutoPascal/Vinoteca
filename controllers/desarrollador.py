@@ -3260,3 +3260,8 @@ def poblarPro3():
         print 'listo'
     response.flash='Fue poblada Producto'
     return True
+
+
+def unsuscribe():
+    response.flash = desuscribirse()
+    return True

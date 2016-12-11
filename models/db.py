@@ -37,7 +37,7 @@ db.define_table(
     Field('ciudad', 'string', label=T('Ciudad') ),
     Field('telefono', 'integer', label=T('Teléfono')),
     Field('fecha_alta', 'datetime', default=request.now, update=request.now, writable=False),
-    Field('fecha_baja', 'datetime', default = '', writable=True),
+    Field('fecha_baja', 'datetime', default = None, writable=True, readable=False),
     Field('registration_key', length=512, writable=False, readable=False, default=''),#no quitar ni tocar
     Field('reset_password_key', length=512, writable=False, readable=False, default=''), #no quitar ni tocar
     Field('registration_id', length=512, writable=False, readable=False, default=''), #no quitar ni tocar
@@ -59,21 +59,31 @@ auth.settings.table_user = auth_table_especial
 # -------------------------------------------------------------------------
 auth.define_tables(username=False, signature=False)
 auth.settings.create_user_groups = False
-auth.settings.everybody_group_id = 3 # = auth nuevo seteo grupo: ('Usuarios(3)')
+auth.settings.everybody_group_id = 3 # = autuevo seteo grupo: ('Usuarios(3)')
 auth.settings.password_min_length = 6
 # -------------------------------------------------------------------------
 # configure email
 # -------------------------------------------------------------------------
 mail = auth.settings.mailer
-mail.settings.server = myconf.get('smtp.server')#'logging'#
+mail.settings.server = 'logging'#myconf.get('smtp.server')#
 mail.settings.sender = myconf.get('smtp.sender')
 mail.settings.login = myconf.get('smtp.login')
 mail.settings.tls = myconf.get('smtp.tls') or False
 mail.settings.ssl = myconf.get('smtp.ssl') or False
 
-# def usuarioBaneado():
-#     return URL('contacto','index')
-# auth.settings.login_onvalidation = [usuarioBaneado, URL('contacto','index')] 
+
+def usuarioBaneado(form):
+    if db(db.auth_user.email == form.vars.email).select(db.auth_user.fecha_baja).first().fecha_baja <> None:
+        form.errors.email = 'El usuario esta dado de baja por el administrador'
+    
+    
+
+auth.settings.login_onvalidation = usuarioBaneado
+
+# auth.settings.on_failed_authentication=lambda form 
+# auth.settings.login_url = URL('default','login')
+
+
 
 # -------------------------------------------------------------------------
 # configure auth policy
