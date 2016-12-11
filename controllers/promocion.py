@@ -1,22 +1,18 @@
 # -*- coding: utf-8 -*-
-from datetime import date
+
 
 def index():
+    from datetime import date
     date = date.today()
     titulo = T(' Listado de promociones' )
-    grid = SQLFORM.grid(db.promocion, db.promocion.fechaHasta <date,
+    grid = SQLFORM.grid(db.promocion.fechaHasta<date,
                         deletable = True,
+                        searchable=False,
                         create=False,
                         editable=False,
                         details=True,
-                        csv = True,
-                        paginate=15,
-                        exportclasses = dict(cvs = False,
-                                             xml = False,
-                                             csv_with_hidden_cols = False,
-                                             tsv_with_hidden_cols = False,
-                                             tsv = False,
-                                             json = False))
+                        csv = False,
+                        paginate=15)
     return locals()
 
 
@@ -24,8 +20,8 @@ def index():
 def admin():
     titulo = T(' Administración de promociones' )
     grid = SQLFORM.grid(db.promocion,
-                        deletable = True,
-                        editable=False,
+                        deletable = False,
+                        editable=True,
                         create=False,
                         details=True,
                         csv = True,
