@@ -1,13 +1,3 @@
 {{extend 'layout.html'}}
 <h1>{{=titulo}}</h1>
 {{=form}}
-<script>
-function confirmarCancelar(url, obj) {
-    obj.type='reset';
-    var x = confirm('Desea volver sin guardar los cambios?');
-    if (x) {
-        window.location = url;
-    }
-    return x;
-}
-</script>

@@ -22,7 +22,6 @@ def edicion():
     tabla_req = request.args[0]
     form=SQLFORM(db[tabla_req], request.args[1], submit_button=T('Save'))
     #,buttons=[TAG.button('Guardar',_type="submit"),A("Volver",_class='btn btn-default',_onClick="return confirm('desea volver')", _href=URL('abm','%sAbm'%tabla_req ))])
-
     if form.accepts(request.vars,session):
         session.flash=' Modificado correctamente '
         redirect(URL('abm', '%sAbm'%tabla_req ))
@@ -30,7 +29,7 @@ def edicion():
         response.flash=' Complete el formulario '
     else:
         pass
-    form.add_button('Cancelar', "javascript:return confirmarCancelar('%s');"%URL('abm','%sAbm'%tabla_req ), _class="resetType" )
+    form.add_button('Cancelar', "javascript:return confirmarCancelar('%s', this);"%URL('abm','%sAbm'%tabla_req ))
     t = obtenerTitulo(tabla_req)
     titulo = T(' Modificación de %s' % t)
     return locals()#{'titulo': titulo, 'form':form }

@@ -184,6 +184,7 @@ div.error_wrapper {
 }
 .copyright {
     float: left;
+    color: #9cd17d !important;
 }
 #poweredBy {
     float: right;
@@ -213,8 +214,8 @@ div.error_wrapper {
     margin: 0;
 }
 .web2py_search_actions {
-    float: left;
-    text-align: left;
+    float: center;
+    text-align: center;
     width: 100%;
 }
 .web2py_grid .row_buttons {
@@ -315,9 +316,35 @@ td.w2p_fc,
 input[type=checkbox], input[type=radio] {
     margin: 4px 4px 0 0;
 }
-.web2py_htmltable table th a {
-    color : blueviolet;
+.web2py_grid a {
+    color : blueviolet !important;
 }
-.navbar-default {
+.navbar-default, 
+.footer,
+a.button.btn.btn-default,
+a.button.btn.btn-default.btn-large,
+div.w2p_export_menu a, div.w2p_wiki_tags a, div.w2p_cloud a,
+input.btn.btn-default {
     background-color: #321f59 !important;
+    color: #9cd17d !important;
+}
+
+.web2py_paginator {
+    background-color: #e1f7de;
+} 
+a, a:hover {
+    color: #9cd17d !important;
+}
+
+.dropdown-menu {
+    background-color: rgba(50, 31, 89, 0.78);
+}
+h1 {
+    text-align: center;
+}
+body {
+    background-color: aliceblue;
+}
+.web2py_console {
+
 }

@@ -27,6 +27,7 @@
     <!-- All JavaScript at the bottom, except for Modernizr which enables
          HTML5 elements & feature detects -->
     <script src="{{=URL('static','js/modernizr-2.8.3.min.js')}}"></script>
+    <script src="{{=URL('static','js/vinoteca.js')}}"></script>
     <!--[if lt IE 9]>
         <script src="{{=URL('static','js/respond-1.4.2.min.js')}}"></script>
         <![endif]-->
@@ -63,6 +64,9 @@
           <ul class="nav navbar-nav navbar-right">
             {{='auth' in globals() and auth.navbar('Welcome',mode='dropdown') or ''}}
           </ul>
+    <script>
+      agregarMenuIngresar('Contactenos',"{{=URL('contacto','index')}}", 'holo');
+    </script>
           {{if response.menu:}}
           {{=MENU(response.menu, _class='nav navbar-nav',li_class='dropdown',ul_class='dropdown-menu')}}
           {{pass}}
@@ -105,10 +109,10 @@
     <footer class="footer">
       <div class="container-fluid">
         <div class="copyright pull-left">{{=T('Copyright')}} &#169; {{=request.now.year}}</div>
-          <div id="poweredBy" class="pull-right">
-            {{=T('Creado por')}}
-            <a href="mailto:villan.laura@gmail.com?Subject=Buenas">LaliCalipso</a>
-          </div>
+        <div id="poweredBy" class="pull-right">
+          {{=T('Creado por')}}
+          <a href="mailto:villan.laura@gmail.com?Subject=Buenas">LaliCalipso</a>
+        </div>
       </div>
     </footer>
     {{end}}

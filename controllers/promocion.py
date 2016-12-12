@@ -62,5 +62,4 @@ def agregar():
         envioMail('promocion', form.vars.id)
         redirect(URL('promocion','admin'))
     form.add_button('Cancelar', "javascript:return confirmarCancelar('%s', this);"%URL('admin'))
-    #comento el boton que se supone que no hace nada mimodal=getModal('volverConfirmacion', 'Volver', '<p>Desea volver, perdera los cambios</p>','Volver')
     return locals()
