@@ -4,7 +4,7 @@
 def index():
     from datetime import date
     date = date.today()
-    titulo = T(' Listado de promociones' )
+    titulo = T(' Listado de promociones no vigentes' )
     grid = SQLFORM.grid(db.promocion.fechaHasta<date,
                         deletable = True,
                         searchable=False,
@@ -21,7 +21,7 @@ def editar():
     agregar = A('Agregar promocion', _href=URL('agregar'), _class='btn btn-default btn-large')
     editar = A('Agregar promocion', _href=URL('agregar','editar'), _class='btn btn-default btn-large')
     return locals()
-    
+
 
 def admin():
     titulo = T(' Administración de promociones' )
@@ -42,8 +42,14 @@ def admin():
     return locals()
 
 def validateDates(form):
+    from datetime import date
+    date = date.today()
+
     fd = form.vars.fechaDesde
     fh = form.vars.fechaHasta
+    if fd < date:
+        form.errors.fechaDesde = 'La fecha desde tiene que ser mayor al dia de hoy'
+
     if fd > fh:
         form.errors.fechaHasta = 'La fecha desde tiene que ser anterior a la fecha hasta'
 
