@@ -8,6 +8,7 @@ def index():
                         editable=True,
                         details=True,
                         csv = True,
+                        user_signature = False,
                         exportclasses = dict(cvs = False,
                                              xml = False,
                                              csv_with_hidden_cols = False,
@@ -22,7 +23,9 @@ def index():
 
 def admin():
     titulo = T(' Administración de productos' )
-    grid = SQLFORM.grid(db.producto, deletable = False, csv = True,exportclasses = dict(cvs = False,
+    grid = SQLFORM.grid(db.producto, deletable = False,
+                            user_signature = False,
+                            csv = True,exportclasses = dict(cvs = False,
                                                                                         xml = False,
                                                                                         csv_with_hidden_cols = False,
                                                                                         tsv_with_hidden_cols = False,
