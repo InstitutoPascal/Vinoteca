@@ -18,7 +18,9 @@ response.menu = [
         (T('Catálogo'), False, '#', [
             (T('Accesorios'), False, URL('producto','productosListados/1') ),
             (T('Cristalería'), False, URL('producto','productosListados/2') ),
+            (T('Cofres'), False, URL('producto','productosListados/6') ),
             (T('Espumantes'), False, URL('producto','productosListados/4') ),
+            (T('Estuches'), False, URL('producto','productosListados/5') ),
             (T('Vinos'), False, URL('producto','productosListados/3') ),
             ]),
         (T('Contacto'), False, '#', [
