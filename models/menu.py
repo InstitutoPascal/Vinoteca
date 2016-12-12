@@ -16,10 +16,10 @@ response.google_analytics_id = None
     #response.menu.extend([(T('Admin?'), False, URL(c='appadmin'), [])])
 response.menu = [
         (T('Catálogo'), False, '#', [
-            (T('Accesorios'), False, URL('default','index') ),
-            (T('Cristalería'), False, URL('default','index') ),
-            (T('Espumantes'), False, URL('default','index') ),
-            (T('Vinos'), False, URL('default','index') ),
+            (T('Accesorios'), False, URL('producto','productosListados/1') ),
+            (T('Cristalería'), False, URL('producto','productosListados/2') ),
+            (T('Espumantes'), False, URL('producto','productosListados/4') ),
+            (T('Vinos'), False, URL('producto','productosListados/3') ),
             ]),
         (T('Contacto'), False, '#', [
             (T('Ver'), False, URL('contacto','index') ),

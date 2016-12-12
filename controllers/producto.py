@@ -31,34 +31,25 @@ def admin():
     return locals()
 
 def productosListados():
-    form = SQLFORM.factory(
-        Field('nombre','string',label='Nombre:', default=None),
-        Field('precioMenor','integer', label='Precio desde:', default=0),
-        Field('precioMayor','integer', label='Precio hasta:', default=None),
-        Field('varietal', 'string',label='Varietal:', default=None),
-        submit_button='Buscar')
+    try:
+        categoria = request.args[0]
+        form = SQLFORM.factory(
+            Field('nombre','string',label='Nombre:', default=None),
+            Field('precioMenor','int', label='Precio desde:', default=None),
+            Field('precioMayor','int', label='Precio hasta:', default=None),
+            Field('varietal', label='Varietal:', requires= IS_EMPTY_OR(IS_IN_DB(db,db.varietal,'%(tipoVarietal)s', zero=''))),
+            submit_button='Buscar')
 
-    if form.process().accepted:
-        query =  armaQuery(form)
-        print query
-        productos = db(query).select(orderby = db.producto.precioVenta)
-        response.flash = None
-    else:
-        productos = db(db.producto.id>5711).select(orderby = db.producto.precioVenta)
-
-    return locals()
-def armaQuery(form = None):
-    query=None
-    if form.vars.nombre != None:
-        query = db.producto.nombre.like('%'+form.vars.nombre+'%')
-    print form.vars.precioMenor
-    if form.vars.precioMenor != 0:
-        if query != None:
-            query &= ( db.producto.precioVenta >= form.vars.precioMenor )
+        if form.process().accepted:
+            query = armarQuery(form,categoria)
+            productos = db(query).select(orderby = db.producto.precioVenta)
+            response.flash = None
         else:
-            query = ( db.producto.precioVenta >= form.vars.precioMenor )
+            productos = db(db.producto.categoria == categoria).select(orderby = db.producto.precioVenta)
 
-    return query
+    except Exception as blumba:
+        print blumba
+    return locals()
 
 def comprarEste():
     titulo = "Próximamente"
@@ -66,5 +57,40 @@ def comprarEste():
 
 def detalleProducto():
     titulo = T('Detalle de  producto')
-    
+    producto = request.args[0]
+    registro = db(db.producto.id == producto).select()
     return locals()
+
+def armarQuery(form = None, categoria = None):
+    try:
+        query=None
+        print '1' + form.vars.nombre
+        print '2' + form.vars.precioMenor
+        print '3' + form.vars.precioMayor
+        if form.vars.nombre != '':
+            query = (db.producto.nombre.like('%'+form.vars.nombre+'%'))
+
+        if form.vars.precioMenor != '' and form.vars.precioMayor != '':
+            query = isNoneConcat(query,(db.producto.precioVenta >= form.vars.precioMenor) & (db.producto.precioVenta <= form.vars.precioMayor))
+        elif form.vars.precioMenor != '':
+            query = isNoneConcat(query,(db.producto.precioVenta >= form.vars.precioMenor))
+        elif form.vars.precioMayor != '':
+            query = isNoneConcat(query,(db.producto.precioVenta <= form.vars.precioMayor))
+        else:
+            pass
+
+        if form.vars.nombre != '':
+            query = (db.producto.nombre.like('%'+form.vars.nombre+'%'))
+
+        print query
+        query = isNoneConcat(query,db.producto.categoria == categoria)
+    except Exception as blumba:
+        print 'No le gusto:' + blumba
+    return query
+
+def isNoneConcat(resultado, consulta):
+    if resultado != None:
+        resultado &=  consulta
+    else:
+        resultado = consulta
+    return resultado

@@ -4,10 +4,11 @@
         width: 200px;
         padding: 50px;
         display: inline-block;
+        vertical-align:top;
     }
 </style>
 
-<h1>Está es la plantilla producto/productosListados.html</h1>
+<h1>Vinos</h1>
 
 {{=form}}
 
@@ -18,7 +19,7 @@
           <div>
             <img src="/Vinoteca/producto/admin/download/producto.imagen.ae89179f0bc58ab1.7468756d625f33393534335f64656661756c745f6d656469756d2e6a706567.jpeg?_signature=30139af598178ca1d4ad1a4c2c3b0bb64b3bd1db" width="150px">
             <div class="name">
-              <h4><a href="producto/productosListados"><span>{{=producto.nombre}}</span></a></h4>
+              <h4><a href="{{=URL('detalleProducto/%s'%producto.id)}}"><span>{{=producto.nombre}}</span></a></h4>
             </div>
             {{=producto.descripcion}}
             <div class="lower-container">
@@ -26,8 +27,7 @@
                 <div itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
                   <span class="product-price">$ {{=producto.precioVenta}}</span>
                 </div>
-                  {{=A('Detalle', _href=URL('producto/admin/view/producto/%s'%producto.id), _class="buy-btn small" )}}
-                  <a href="{{=URL('producto/admin/view/producto/%s'%producto.id)}}" class="buy-btn small" rel="nofollow">DetalleB</a>
+                  {{=A('Detalle', _href=URL('detalleProducto/%s'%producto.id), _class="buy-btn small" )}}
               </div>
             </div>
           </div>
@@ -36,10 +36,21 @@
     {{pass}}
 </div>
 
+
 {{block right_sidebar}}
 <div class="panel panel-info">
+  <div class="panel-heading"><h3 class="panel-title"><a class="btn-block"
+      href="{{=URL('admin','default','index')}}">
+      <i class="glyphicon glyphicon-cog"></i>
+      {{=T("admin")}}
+    </a></h3></div>
   <div class="panel-body">
-    Proximamente Carrito
+    {{=T("Don't know what to do?")}}
   </div>
+  <ul class="list-group">
+    <li class="list-group-item">{{=A(T("Online examples"), _href=URL('examples','default','index'))}}</li>
+    <li class="list-group-item"><a href="http://web2py.com">web2py.com</a></li>
+    <li class="list-group-item"><a href="http://web2py.com/book">{{=T('Documentation')}}</a></li>
+  </ul>
 </div>
 {{end}}
