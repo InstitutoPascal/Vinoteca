@@ -35,9 +35,9 @@ contacto = db.define_table('contacto',
     Field('apellido', notnull=True),
     Field('telefono', notnull=True),
     Field('email', notnull=True),
-    Field('estado', 'boolean', default=True, readable=False, writable=False),
+    Field('estado', 'boolean', notnull=True, default=False, readable=False, writable=False),
     Field('motivo','text'),
-    Field('fecha', 'datetime', notnull=True, readable=False, default=request.now, writable=False)
+    Field('fecha', 'datetime', notnull=True, readable=False, writable=False, default=request.now,requires = IS_DATE(format=('%d-%m-%Y')))
     )
 
 contacto.nombre.requires = IS_NOT_EMPTY(error_message=T('Falta ingresar el nombre'))
