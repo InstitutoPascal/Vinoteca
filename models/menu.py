@@ -23,6 +23,7 @@ response.menu = [
             ]),
         (T('Contacto'), False, '#', [
             (T('Ver'), False, URL('contacto','index') ),
+            (T('Admin'), False, URL('contacto','admin') ),
         ]),
         (T('Eventos'), False, '#', [
             (T('Ver'), False, URL('default','index') ),

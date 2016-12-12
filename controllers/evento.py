@@ -14,7 +14,7 @@ def admin():
 def agregar():
     titulo = T('Agregar evento')
     form = SQLFORM(db.evento)
-    if form.process(onvalidation=validateDates).accepted:
+    if form.process().accepted:
         session.flash = 'Registro insertado'
         envioMail('evento', form.vars.id)
         redirect(URL('evento','admin'))
