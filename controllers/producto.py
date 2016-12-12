@@ -40,7 +40,7 @@ def productosListados():
             Field('nombre','string',label='Nombre:', default=None),
             Field('precioMenor','int', label='Precio desde:', default=None),
             Field('precioMayor','int', label='Precio hasta:', default=None),
-            Field('varietal', label='Varietal:', requires= IS_EMPTY_OR(IS_IN_DB(db,db.varietal,'%(tipoVarietal)s', zero=''))),
+            #Field('varietal', label='Varietal:', requires= IS_EMPTY_OR(IS_IN_DB(db,db.varietal,'%(tipoVarietal)s', zero=''))),
             submit_button='Buscar')
 
         if form.process().accepted:
@@ -81,9 +81,6 @@ def armarQuery(form = None, categoria = None):
             query = isNoneConcat(query,(db.producto.precioVenta <= form.vars.precioMayor))
         else:
             pass
-
-        if form.vars.nombre != '':
-            query = (db.producto.nombre.like('%'+form.vars.nombre+'%'))
 
         print query
         query = isNoneConcat(query,db.producto.categoria == categoria)
