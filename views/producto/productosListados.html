@@ -1,0 +1,45 @@
+{{extend 'layout.html'}}
+<style>
+    div.static {
+        width: 200px;
+        padding: 50px;
+        display: inline-block;
+    }
+</style>
+
+<h1>Está es la plantilla producto/productosListados.html</h1>
+
+{{=form}}
+
+<div class="product-list">
+    {{for producto in productos:}}
+      <div class="static">
+        <div class="row">
+          <div>
+            <img src="/Vinoteca/producto/admin/download/producto.imagen.ae89179f0bc58ab1.7468756d625f33393534335f64656661756c745f6d656469756d2e6a706567.jpeg?_signature=30139af598178ca1d4ad1a4c2c3b0bb64b3bd1db" width="150px">
+            <div class="name">
+              <h4><a href="producto/productosListados"><span>{{=producto.nombre}}</span></a></h4>
+            </div>
+            {{=producto.descripcion}}
+            <div class="lower-container">
+              <div class="small-buy">
+                <div itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+                  <span class="product-price">$ {{=producto.precioVenta}}</span>
+                </div>
+                  {{=A('Detalle', _href=URL('producto/admin/view/producto/%s'%producto.id), _class="buy-btn small" )}}
+                  <a href="{{=URL('producto/admin/view/producto/%s'%producto.id)}}" class="buy-btn small" rel="nofollow">DetalleB</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {{pass}}
+</div>
+
+{{block right_sidebar}}
+<div class="panel panel-info">
+  <div class="panel-body">
+    Proximamente Carrito
+  </div>
+</div>
+{{end}}

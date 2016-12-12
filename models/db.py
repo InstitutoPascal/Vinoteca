@@ -37,7 +37,7 @@ db.define_table(
     Field('ciudad', 'string', label=T('Ciudad') ),
     Field('telefono', 'integer', label=T('Teléfono')),
     Field('fecha_alta', 'datetime', default=request.now, update=request.now, writable=False),
-    Field('fecha_baja', 'datetime', default = None, writable=True, readable=False),
+    Field('fecha_baja', 'datetime', default = None, writable=True, readable=True),
     Field('registration_key', length=512, writable=False, readable=False, default=''),#no quitar ni tocar
     Field('reset_password_key', length=512, writable=False, readable=False, default=''), #no quitar ni tocar
     Field('registration_id', length=512, writable=False, readable=False, default=''), #no quitar ni tocar
@@ -74,9 +74,9 @@ mail.settings.ssl = myconf.get('smtp.ssl') or False
 
 def usuarioBaneado(form):
     if db(db.auth_user.email == form.vars.email).select(db.auth_user.fecha_baja).first().fecha_baja <> None:
-        form.errors.email = 'El usuario esta dado de baja por el administrador'
-    
-    
+        form.errors.email = 'El usuario está dado de baja por el administrador'
+
+
 
 auth.settings.login_onvalidation = usuarioBaneado
 
