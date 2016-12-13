@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-# intente algo como
 
 
 def index():
@@ -42,7 +41,7 @@ def sendMail(form):
         context['nombre'] = form.vars.nombre
         context['consultaSugerencia'] = "consulta"
         context['fecha'] = date.strftime("%d/%m/%y")
-        
+
         message = response.render('contacto/emailTemplate.html', context)
 
         result = mail.send(to=form.vars.email, subject='Gracias por su consulta', message=message, headers=dict(contentType='text/html; charset="UTF-8"'))

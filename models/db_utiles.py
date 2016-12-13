@@ -10,11 +10,13 @@ def get_header_labels(table=None):
 #transforma los titulos de los formularios genericos
 def obtenerTitulo(titulo=None):
     if titulo =='tipoVino':
-       titulo = 'tipo de vino'
+        titulo = 'tipo de vino'
     elif  titulo =='formaPago':
-       titulo = 'Forma de Pago'
+        titulo = 'Forma de Pago'
+    elif  titulo =='zona':
+        titulo = 'Zonas de Envío'
     else:
-       pass
+        pass
     return titulo
 
 ##############################################################################
@@ -98,6 +100,7 @@ def getModal(id, titulo, mensaje, textoAccion):
 
 def setSuscripcion(suscribir):
     resultado = ''
+
     print 'suscribir: %s'%suscribir
     try:
         user_row = db(db.auth_user.id==auth.user.id).select().first()
@@ -106,9 +109,9 @@ def setSuscripcion(suscribir):
         auth.user.novedades = suscribir
         auth.user.update()
         if result:
-            resultado = T('Suscripcion correcta') if suscribir else T('Desuscripcion correcta') 
+            resultado = T('Suscripcion correcta') if suscribir else T('Desuscripcion correcta')
         else:
-            resultado = T('No se pudo suscribir') if suscribir else T('No se pudo desuscribir') 
+            resultado = T('No se pudo suscribir') if suscribir else T('No se pudo desuscribir')
     except Exception as e:
         resultado = T('Ocurrio un error al acutalizar la suscripcion a novedades: ') + e
         print e

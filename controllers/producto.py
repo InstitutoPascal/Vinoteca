@@ -35,12 +35,28 @@ def admin():
 
 def productosListados():
     try:
-        categoria = request.args[0]
+        categoria = request.args(0) or redirect(URL('default', 'index'))
+        print categoria
+        titulo = 'Catalogo de'
+        if categoria == '1':
+            titulo += ' accesorios '
+        elif categoria == '2':
+            titulo += ' cristalería '
+        elif categoria == '3':
+            titulo += ' vinos '
+        elif categoria == '4':
+            titulo += ' espumantes'
+        elif categoria == '5':
+            titulo += ' estuches '
+        elif categoria == '6':
+            titulo += ' cofres '
+        else:
+            titulo = ' El link ingresado no es correcto '
+
         form = SQLFORM.factory(
             Field('nombre','string',label='Nombre:', default=None),
             Field('precioMenor','int', label='Precio desde:', default=None),
             Field('precioMayor','int', label='Precio hasta:', default=None),
-            #Field('varietal', label='Varietal:', requires= IS_EMPTY_OR(IS_IN_DB(db,db.varietal,'%(tipoVarietal)s', zero=''))),
             submit_button='Buscar')
 
         if form.process().accepted:
@@ -50,8 +66,11 @@ def productosListados():
         else:
             productos = db(db.producto.categoria == categoria).select(orderby = db.producto.precioVenta)
 
+
     except Exception as blumba:
         print blumba
+        titulo = ' El link ingresado no es correcto o falló la consulta'
+        producto = None
     return locals()
 
 def comprarEste():
@@ -67,9 +86,9 @@ def detalleProducto():
 def armarQuery(form = None, categoria = None):
     try:
         query=None
-        print '1' + form.vars.nombre
-        print '2' + form.vars.precioMenor
-        print '3' + form.vars.precioMayor
+        print '1 - ' + form.vars.nombre
+        print '2 - ' + form.vars.precioMenor
+        print '3 - ' + form.vars.precioMayor
         if form.vars.nombre != '':
             query = (db.producto.nombre.like('%'+form.vars.nombre+'%'))
 
@@ -85,7 +104,7 @@ def armarQuery(form = None, categoria = None):
         print query
         query = isNoneConcat(query,db.producto.categoria == categoria)
     except Exception as blumba:
-        print 'No le gusto:' + blumba
+        print blumba
     return query
 
 def isNoneConcat(resultado, consulta):
@@ -94,3 +113,6 @@ def isNoneConcat(resultado, consulta):
     else:
         resultado = consulta
     return resultado
+
+def getTitulo(cat):
+    return titulo
