@@ -1,7 +1,7 @@
 def subscribe():
-    suscribir = False
-    if len(request.args) > 0:
-        suscribir = bool(request.args[0])
-    print suscribir
+    ''' 
+    Por defecto es True
+    '''
+    suscribir = len(request.args) == 0 or request.args[0]==str(True)
     response.flash = setSuscripcion(suscribir)
     return True
