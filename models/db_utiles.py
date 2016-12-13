@@ -98,21 +98,22 @@ def getModal(id, titulo, mensaje, textoAccion):
 </div>
     '''%(id,titulo,mensaje,textoAccion)
 
-
-def desuscribirse():
+def setSuscripcion(suscribir):
     resultado = ''
-    if auth == None or auth.user == None:
-        resultado = 'No esta logueado'
-    elif auth.user.novedades:
-        try:
-            result = db(db.auth_user.id==auth.user.id).select().first().update_record(novedades=False)
-            if result:
-                resultado = 'desuscripto'
-            else:
-                resultado = 'no desuscripto'
-        except Exception as e:
-            resultado = 'ocurrio un error %s '%e
-            print e
-    else:
-        resultado = 'No esta suscrito'
+
+    print 'suscribir: %s'%suscribir
+    try:
+        user_row = db(db.auth_user.id==auth.user.id).select().first()
+        user_row.novedades = suscribir
+        auth.user = user_row
+        result = user_row.update_record()
+        print auth.user.novedades
+        print 'novedades auth:%s,record:%s'%(user_row.novedades,auth.user.novedades)
+        if result:
+            resultado = T('Suscripcion correcta') if suscribir else T('Desuscripcion correcta')
+        else:
+            resultado = T('No se pudo suscribir') if suscribir else T('No se pudo desuscribir')
+    except Exception as e:
+        resultado = T('Ocurrio un error al acutalizar la suscripcion a novedades: ') + e
+        print e
     return resultado

@@ -2,9 +2,13 @@
 /**
  * Para agregar un item al menu ingresar del layout 
  */
-function agregarMenuIngresar(texto,url,icono) {
+function agregarMenuIngresar(contenido,iconos,url) {
     var divisor = $('.navbar-nav li ul li.divider')[0];
-    var elem = $('<li><a href="'+url+'" rel="nofollow"><i class="icon icon-envelope glyphicon glyphicon-envelope"></i> '+texto+'</a></li>')[0];
+    var elem = undefined
+    if (url==undefined)
+        elem = $('<li>'+contenido+'</li>')[0];
+    else
+        elem = $('<li><a href="'+url+'" rel="nofollow"><i class="'+iconos+'"></i> '+contenido+'</a></li>')[0];
     divisor.parentNode.insertBefore(elem, divisor);
 }
 
