@@ -26,32 +26,18 @@ def admin():
     grid = SQLFORM.grid(db.producto, deletable = False,
                             user_signature = False,
                             csv = True,exportclasses = dict(cvs = False,
-                                                                                        xml = False,
-                                                                                        csv_with_hidden_cols = False,
-                                                                                        tsv_with_hidden_cols = False,
-                                                                                        tsv = False,
-                                                                                        json = False ))
+                                                            xml = False,
+                                                            csv_with_hidden_cols = False,
+                                                            tsv_with_hidden_cols = False,
+                                                            tsv = False,
+                                                            json = False ))
     return locals()
 
 def productosListados():
     try:
+
         categoria = request.args(0) or redirect(URL('default', 'index'))
-        print categoria
-        titulo = 'Catalogo de'
-        if categoria == '1':
-            titulo += ' accesorios '
-        elif categoria == '2':
-            titulo += ' cristalería '
-        elif categoria == '3':
-            titulo += ' vinos '
-        elif categoria == '4':
-            titulo += ' espumantes'
-        elif categoria == '5':
-            titulo += ' estuches '
-        elif categoria == '6':
-            titulo += ' cofres '
-        else:
-            titulo = ' El link ingresado no es correcto '
+        titulo = tituloCategoria(categoria)
 
         form = SQLFORM.factory(
             Field('nombre','string',label='Nombre:', default=None),
@@ -66,21 +52,26 @@ def productosListados():
         else:
             productos = db(db.producto.categoria == categoria).select(orderby = db.producto.precioVenta)
 
+        #Inicio -Verifica si tiene algo en el carrito#
+        if auth.user:
+            cantidad = db((db.venta.idCliente == auth.user.id) & (db.venta.estado != 'Pendiente')).count()
+            print cantidad
+            if cantidad != 0:
+                tieneCompraVigente = True
+                titulo2='Prueba / luego cambiar'
+            else:
+                tieneCompraVigente = False
+
+        else:
+            tieneCompraVigente = False
+        #FIN - Verifica si tiene algo en el carrito#
 
     except Exception as blumba:
         print blumba
-        titulo = ' El link ingresado no es correcto o falló la consulta'
-        producto = None
     return locals()
 
 def comprarEste():
     titulo = "Próximamente"
-    return locals()
-
-def detalleProducto():
-    titulo = T('Detalle de  producto')
-    producto = request.args[0]
-    registro = db(db.producto.id == producto).select()
     return locals()
 
 def armarQuery(form = None, categoria = None):
@@ -102,7 +93,7 @@ def armarQuery(form = None, categoria = None):
             pass
 
         print query
-        query = isNoneConcat(query,db.producto.categoria == categoria)
+        query = isNoneConcat(query,(db.producto.categoria == categoria)&(db.producto.cantidad > 0))
     except Exception as blumba:
         print blumba
     return query
@@ -114,5 +105,11 @@ def isNoneConcat(resultado, consulta):
         resultado = consulta
     return resultado
 
-def getTitulo(cat):
-    return titulo
+##Pantalla de Detalle de producto
+def detalleProducto():
+    titulo = T('Detalle de producto')
+    #filtro = request.args[0]
+    filtro = 2931
+    producto = db(db.producto.id == filtro).select().first()
+    tieneCompraVigente = False
+    return locals()

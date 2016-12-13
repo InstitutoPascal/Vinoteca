@@ -1,0 +1,23 @@
+{{right_sidebar_enabled=tieneCompraVigente}}
+{{extend 'layout.html'}}
+<h2>Detalle de Producto: </h2>
+
+<img src="{{=URL('producto','admin/download/%s'%producto.imagen)}}" width="150px">
+<div class="static">
+    <div class="row">
+      <div>
+        <div><h4><span>{{=producto.nombre}}</span></h4></div>
+          <div>  <strong>Descripción: </strong>{{=producto.descripcion}} </div>
+          <div>  <strong>Cantidad: </strong>{{=producto.cantidad}}</div>
+          <div>  <strong>Precio: </strong>{{=producto.precioVenta}}</div>
+        <div class="static">
+            <div class="row">
+                {{=A('Agregar al Carrito', _href=URL('detalleProducto/%s'%producto.id), _class="btn btn-primary" )}}
+            </div>
+            <div class="row">
+                {{=A('Volver', _href=URL('detalleProducto/%s'%producto.id), _class="w2p-form-button btn btn-default" )}}
+            </div>
+          </div>
+      </div>
+    </div>
+</div>

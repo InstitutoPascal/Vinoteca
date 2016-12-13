@@ -35,8 +35,7 @@ db.domicilio.id.label='Número'
 #ventas basico  db.tabla.campo.default = auth.user_id if auth.user else 0
 db.define_table("venta",
     Field("idCliente", 'reference auth_user', label=T('Cliente Nro') ),
-    Field("tipoFactura","string", required=True, notnull=True, label=T('Tipo de Factura') ),
-    Field("fechaPedido","date", required=True, notnull=True, label=T('Fecha Pedido') ),
+    Field("fechaPedido","datetime", default=request.now, label=T('Fecha Pedido') ),
     Field("importeSinDesc","string", required=True, notnull=True, label=T('Importe Sin Descuento') ),
     Field("importeTotal","string", required=True, notnull=True, label=T('Importe Total') ),
     Field("formaPago", 'reference formaPago',  label=T('Forma de pago') ),
@@ -48,7 +47,6 @@ db.define_table("venta",
     format = '%(id)s  - %(idCliente)s - %(fechaPedido)s ')
 
 db.venta.idCliente.requires = IS_IN_DB(db, 'auth_user.id','%(first_name)s - %(last_name)s')
-db.venta.tipoFactura.requires=IS_IN_SET(["A","B"])
 db.venta.formaPago.requires = IS_IN_DB(db, 'formaPago.id',' %(descripcion)s ')
 db.venta.id.label ='Número'
 db.venta.formaEntrega.requires=IS_IN_SET(["Retiro en local","Entrega a domicilio"])
