@@ -102,10 +102,9 @@ def setSuscripcion(suscribir):
     try:
         user_row = db(db.auth_user.id==auth.user.id).select().first()
         user_row.novedades = suscribir
-        auth.user = user_row
         result = user_row.update_record()
-        print auth.user.novedades
-        print 'novedades auth:%s,record:%s'%(user_row.novedades,auth.user.novedades)
+        auth.user.novedades = suscribir
+        auth.user.update()
         if result:
             resultado = T('Suscripcion correcta') if suscribir else T('Desuscripcion correcta') 
         else:

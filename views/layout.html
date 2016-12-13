@@ -67,11 +67,10 @@
       agregarMenuIngresar('Contactenos','glyphicon glyphicon-envelope',"{{=URL('contacto','index')}}");
       agregarMenuIngresar('Direcciones','glyphicon glyphicon-home',"{{=URL('contacto','index')}}");
       {{if auth.user:}}
-        {{print auth.user.novedades}}
         {{if auth.user.novedades:}}
-      agregarMenuIngresar('{{=A(I(_class="glyphicon glyphicon-remove-sign"),' Desuscribirse', callback=URL('utiles','subscribe/False'), target='t')}}');
+      agregarMenuIngresar('{{=A(I(_class="glyphicon glyphicon-remove-sign"),' Desuscribirse', callback=URL('utiles','subscribe/False'), _onClick="location.reload()",  target='t')}}');
         {{else:}}
-      agregarMenuIngresar('{{=A(I(_class="glyphicon glyphicon-plus-sign"),' Suscribirse', callback=URL('utiles','subscribe/True'), target='t')}}');
+      agregarMenuIngresar('{{=A(I(_class="glyphicon glyphicon-plus-sign"),' Suscribirse', callback=URL('utiles','subscribe/True'), _onClick="location.reload()", target='t')}}');
         {{pass}}
       {{pass}}
     </script>
