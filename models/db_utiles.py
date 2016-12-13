@@ -10,11 +10,13 @@ def get_header_labels(table=None):
 #transforma los titulos de los formularios genericos
 def obtenerTitulo(titulo=None):
     if titulo =='tipoVino':
-       titulo = 'tipo de vino'
+        titulo = 'tipo de vino'
     elif  titulo =='formaPago':
-       titulo = 'Forma de Pago'
+        titulo = 'Forma de Pago'
+    elif  titulo =='zona':
+        titulo = 'Zonas de Envío'
     else:
-       pass
+        pass
     return titulo
 
 ##############################################################################
