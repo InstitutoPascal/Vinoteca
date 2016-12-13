@@ -3262,6 +3262,3 @@ def poblarPro3():
     return True
 
 
-def unsuscribe():
-    response.flash = desuscribirse()
-    return True

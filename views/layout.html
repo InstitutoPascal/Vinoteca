@@ -27,7 +27,6 @@
     <!-- All JavaScript at the bottom, except for Modernizr which enables
          HTML5 elements & feature detects -->
     <script src="{{=URL('static','js/modernizr-2.8.3.min.js')}}"></script>
-    <script src="{{=URL('static','js/vinoteca.js')}}"></script>
     <!--[if lt IE 9]>
         <script src="{{=URL('static','js/respond-1.4.2.min.js')}}"></script>
         <![endif]-->
@@ -65,7 +64,16 @@
             {{='auth' in globals() and auth.navbar('Welcome',mode='dropdown') or ''}}
           </ul>
     <script>
-      agregarMenuIngresar('Contactenos',"{{=URL('contacto','index')}}", 'holo');
+      agregarMenuIngresar('Contactenos','glyphicon glyphicon-envelope',"{{=URL('contacto','index')}}");
+      agregarMenuIngresar('Direcciones','glyphicon glyphicon-home',"{{=URL('contacto','index')}}");
+      {{if auth.user:}}
+        {{print auth.user.novedades}}
+        {{if auth.user.novedades:}}
+      agregarMenuIngresar('{{=A(I(_class="glyphicon glyphicon-remove-sign"),' Desuscribirse', callback=URL('utiles','subscribe/False'), target='t')}}');
+        {{else:}}
+      agregarMenuIngresar('{{=A(I(_class="glyphicon glyphicon-plus-sign"),' Suscribirse', callback=URL('utiles','subscribe/True'), target='t')}}');
+        {{pass}}
+      {{pass}}
     </script>
           {{if response.menu:}}
           {{=MENU(response.menu, _class='nav navbar-nav',li_class='dropdown',ul_class='dropdown-menu')}}
