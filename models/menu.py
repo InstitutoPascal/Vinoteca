@@ -24,7 +24,7 @@ response.menu = [
             (T('Vinos'), False, URL('producto','productosListados/3') ),
             ]),
         (T('Contacto'), False, '#', [
-            (T('Ver'), False, URL('contacto','index') ),
+            (T('Ver'), False, URL('contacto','agregar') ),
             (T('Admin'), False, URL('contacto','admin') ),
         ]),
         (T('Eventos'), False, '#', [

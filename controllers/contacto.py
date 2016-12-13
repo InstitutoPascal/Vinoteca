@@ -2,13 +2,25 @@
 
 
 def index():
+    return locals()
+
+def agregar():
     '''TODO: luego agregar los datos de contacto es un fromularion con consultas
     Bukino Vinoteca
     Tel: 011-4951-2236
     Cel:15-4787-7909
     '''
     titulo = 'Consultas o sugerencias'
-    form = SQLFORM(contacto)
+    if auth.user:
+        form = SQLFORM(contacto)
+        form.vars.nombre = auth.user.first_name
+        form.vars.apellido = auth.user.last_name
+        form.vars.telefono = auth.user.telefono
+        form.vars.email = auth.user.email
+        
+        pass
+    else:
+        form = SQLFORM(contacto)
     if form.process().accepted:
         sendMail(form)
     form.add_button('Cancelar', "javascript:return confirmarCancelar('%s', this);"%URL('default','index'))
@@ -16,7 +28,6 @@ def index():
 
 #@auth.requires_login()
 def admin():
-    print request.args
     args = request.args
     if len(args) >= 3 and args[0] == 'edit' and args[1] == 'contacto':
         # se espera un id en el indice 2

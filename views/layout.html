@@ -64,8 +64,8 @@
             {{='auth' in globals() and auth.navbar('Welcome',mode='dropdown') or ''}}
           </ul>
     <script>
-      agregarMenuIngresar('Contactenos','glyphicon glyphicon-envelope',"{{=URL('contacto','index')}}");
-      agregarMenuIngresar('Direcciones','glyphicon glyphicon-home',"{{=URL('contacto','index')}}");
+      agregarMenuIngresar('Contactenos','glyphicon glyphicon-envelope',"{{=URL('contacto','agregar')}}");
+      agregarMenuIngresar('Direcciones','glyphicon glyphicon-home',"{{=URL('contacto','agregar')}}");
       {{if auth.user:}}
         {{if auth.user.novedades:}}
       agregarMenuIngresar('{{=A(I(_class="glyphicon glyphicon-remove-sign"),' Desuscribirse', callback=URL('utiles','subscribe/False'), _onClick="location.reload()",  target='t')}}');
