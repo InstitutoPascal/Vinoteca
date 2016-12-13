@@ -1,4 +1,4 @@
-{{right_sidebar_enabled=True}}
+{{right_sidebar_enabled=tieneCompraVigente}}
 {{extend 'layout.html'}}
 <style>
     div.static {
@@ -19,35 +19,45 @@
 {{end}}
 
 <div>
-        {{for producto in productos:}}
-          <div class="static">
-            <div class="row">
-              <div>
-                <img src="{{=URL('producto','admin/download/%s'%producto.imagen)}}" width="150px">
-                <div class="name">
-                  <h4><a href="{{=URL('detalleProducto/%s'%producto.id)}}"><span>{{=producto.nombre}}</span></a></h4>
+    {{for producto in productos:}}
+      <div class="static">
+        <div class="row">
+          <div>
+            <img src="{{=URL('producto','admin/download/%s'%producto.imagen)}}" width="150px">
+            <div class="name">
+              <h4><a href="{{=URL('detalleProducto/%s'%producto.id)}}"><span>{{=producto.nombre}}</span></a></h4>
+            </div>
+            {{=producto.descripcion}}
+            <div class="lower-container">
+              <div class="small-buy">
+                <div>
+                  <span class="product-price">$ {{=producto.precioVenta}}</span>
                 </div>
-                {{=producto.descripcion}}
-                <div class="lower-container">
-                  <div class="small-buy">
-                    <div itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
-                      <span class="product-price">$ {{=producto.precioVenta}}</span>
-                    </div>
-                      {{=A('Detalle', _href=URL('detalleProducto/%s'%producto.id), _class="buy-btn small" )}}
-                  </div>
-                </div>
+                  {{=A('Detalle', _href=URL('detalleProducto/%s'%producto.id), _class="buy-btn small" )}}
               </div>
             </div>
           </div>
-        {{pass}}
+        </div>
+      </div>
+    {{pass}}
 
 </div>
 
 {{if right_sidebar_enabled:}}
-<div class="span3">
+
     {{block right_sidebar}}
-    <h3>Barra lateral derecha</h3>
-    <p></p>
+    <div class="panel panel-success">
+      <div class="panel-heading">
+          <h3 class="panel-title">Carrito de Compra</h3>
+      </div>
+      <div class="panel-body">
+        Items
+      </div>
+      <ul class="list-group">
+        <li class="list-group-item">{{=A(T("Ver detalles / Finalizar "), _href=URL('venta', 'index'))}}</li>
+        <li class="list-group-item">{{=A(T("Cancelar Compra"), _href=URL('venta', 'index'))}}</li>
+      </ul>
+    </div>
     {{end}}
-</div>
+
 {{pass}}

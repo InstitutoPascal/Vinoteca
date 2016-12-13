@@ -117,3 +117,22 @@ def setSuscripcion(suscribir):
         resultado = T('Ocurrio un error al acutalizar la suscripcion a novedades: ') + e
         print e
     return resultado
+
+def tituloCategoria(categoria):
+    print categoria
+    titulo = 'Catalogo de'
+    if categoria == '1':
+        titulo += ' accesorios '
+    elif categoria == '2':
+        titulo += ' cristalería '
+    elif categoria == '3':
+        titulo += ' vinos '
+    elif categoria == '4':
+        titulo += ' espumantes'
+    elif categoria == '5':
+        titulo += ' estuches '
+    elif categoria == '6':
+        titulo += ' cofres '
+    else:
+        titulo = ' El link ingresado no es correcto '
+    return titulo
