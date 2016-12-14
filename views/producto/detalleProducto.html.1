@@ -1,5 +1,5 @@
-{{right_sidebar_enabled=tieneCompraVigente}}
 {{extend 'layout.html'}}
+{{right_sidebar_enabled=False}}
 <style>
     div.static {
             width: 200px;
@@ -14,6 +14,12 @@
         text-align:center;
     }
 </style>
+
+{{if not argumentosValidos:}}
+        <h3>Error, usted modificó la url. Pulse el siguiente link para volver a la página principal.</h3>
+        <p>{{=A(T("Volver a la página"), _href=URL('default', 'index'))}}</p>
+{{else:}}
+{{right_sidebar_enabled=tieneCompraVigente}}
 
 <div>
 
@@ -57,11 +63,6 @@
             </div>
         </div>
 
-
-    </div>
-
-</div>
-
         <div>
             {{if right_sidebar_enabled:}}
 
@@ -82,3 +83,9 @@
 
             {{pass}}
         </div>
+
+    </div>
+
+</div>
+
+{{pass}}

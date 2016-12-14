@@ -33,7 +33,7 @@
                 <div>
                   <span class="product-price">$ {{=producto.precioVenta}}</span>
                 </div>
-                  {{=A('Detalle', _href=URL('detalleProducto/%s'%producto.id), _class="buy-btn small" )}}
+                  {{=A('Detalle', _href=URL('producto/detalleProducto/%s'%producto.id,'/%s'%categoria), _class="buy-btn small" )}}
               </div>
             </div>
           </div>
