@@ -22,21 +22,23 @@ def obtenerTitulo(titulo=None):
 ##############################################################################
 ################## Metodo utilizado en ABM.py ################################
 def abm(tabla_req=None):
-    response.view = "%s/%s.%s" % (request.controller, 'abm', request.extension)
+    try:
+        response.view = "%s/%s.%s" % (request.controller, 'abm', request.extension)
 
-    form=SQLFORM(db[tabla_req], submit_button='Enviar')
-    if form.accepts(request.vars,session):
-        response.flash='Registro ingresado exitosamente '
-    elif form.errors:
-        response.flash='Complete el formulario '
-    else:
-        pass
-    t = obtenerTitulo(tabla_req)
-    titulo = T(' Administración de %s' % t)
-    headersT = get_header_labels(tabla_req)
+        form=SQLFORM(db[tabla_req], submit_button='Enviar')
+        if form.accepts(request.vars,session):
+            response.flash='Registro ingresado exitosamente '
+        elif form.errors:
+            response.flash='Complete el formulario '
+        else:
+            pass
+        t = obtenerTitulo(tabla_req)
+        titulo = T(' Administración de %s' % t)
+        headersT = get_header_labels(tabla_req)
 
-    regs=db(db[tabla_req].id>0).select()
-
+        regs=db(db[tabla_req].id>0).select()
+    except Exception, e:
+        print 'Fallo: %s' % e
     return locals()
 
 ########################################################################################################################
@@ -135,3 +137,34 @@ def tituloCategoria(categoria):
     else:
         titulo = ' El link ingresado no es correcto '
     return titulo
+
+def armarQuery(form = None, categoria = None):
+    try:
+        query=None
+        print '1 - ' + form.vars.nombre
+        print '2 - ' + form.vars.precioMenor
+        print '3 - ' + form.vars.precioMayor
+        if form.vars.nombre != '':
+            query = (db.producto.nombre.like('%'+form.vars.nombre+'%'))
+
+        if form.vars.precioMenor != '' and form.vars.precioMayor != '':
+            query = isNoneConcat(query,(db.producto.precioVenta >= form.vars.precioMenor) & (db.producto.precioVenta <= form.vars.precioMayor))
+        elif form.vars.precioMenor != '':
+            query = isNoneConcat(query,(db.producto.precioVenta >= form.vars.precioMenor))
+        elif form.vars.precioMayor != '':
+            query = isNoneConcat(query,(db.producto.precioVenta <= form.vars.precioMayor))
+        else:
+            pass
+
+        print query
+        query = isNoneConcat(query,(db.producto.categoria == categoria)&(db.producto.cantidad > 0))
+    except Exception as blumba:
+        print blumba
+    return query
+
+def isNoneConcat(resultado, consulta):
+    if resultado != None:
+        resultado &=  consulta
+    else:
+        resultado = consulta
+    return resultado
