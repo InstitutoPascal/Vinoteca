@@ -50,8 +50,13 @@
                       <div><strong>Precio: </strong>{{=producto.precioVenta}}</div>
                   </div>
               {{pass}}
-              <div class="row">
-                  {{=A('Agregar al Carrito', _href=URL('detalleProducto/%s'%producto.id), _class="btn btn-primary" )}}
+              <div>
+                  <form action="{{=URL('venta','impactarProducto')}}" >
+                      <input type="hidden" name="idProducto" value= "{{=producto.id}}" />
+                      <input type="hidden" name="categoria" value= "{{=categoria}}" />
+                      <input type="number" id="cantidad" name="cantidad" min="0" max="{{=producto.cantidad}}" />
+                      <input type="submit" value="Agregar al Carrito" class="btn btn-primary" />
+                  </form>
                   {{=A('Volver', _href=URL('productosListados/%s' %categoria), _class="w2p-form-button btn btn-default" )}}
               </div>
             </div>
@@ -62,23 +67,23 @@
 
 </div>
 
-        <div>
-            {{if right_sidebar_enabled:}}
+    <div>
+        {{if right_sidebar_enabled:}}
 
-                {{block right_sidebar}}
-                <div class="panel panel-success">
-                  <div class="panel-heading">
-                      <h3 class="panel-title">Carrito de Compra</h3>
-                  </div>
-                  <div class="panel-body">
-                    Items
-                  </div>
-                  <ul class="list-group">
-                    <li class="list-group-item">{{=A(T("Ver compra / Finalizar "), _href=URL('venta', 'index'))}}</li>
-                    <li class="list-group-item">{{=A(T("Cancelar Compra"), _href=URL('venta', 'index'))}}</li>
-                  </ul>
-                </div>
-                {{end}}
+            {{block right_sidebar}}
+            <div class="panel panel-success">
+              <div class="panel-heading">
+                  <h3 class="panel-title">Carrito de Compra</h3>
+              </div>
+              <div class="panel-body">
+                Items
+              </div>
+              <ul class="list-group">
+                <li class="list-group-item">{{=A(T("Ver compra / Finalizar "), _href=URL('venta', 'index'))}}</li>
+                <li class="list-group-item">{{=A(T("Cancelar Compra"), _href=URL('venta', 'index'))}}</li>
+              </ul>
+            </div>
+            {{end}}
 
-            {{pass}}
-        </div>
+        {{pass}}
+    </div>

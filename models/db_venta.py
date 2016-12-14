@@ -36,21 +36,21 @@ db.domicilio.id.label='Número'
 db.define_table("venta",
     Field("idCliente", 'reference auth_user', label=T('Cliente Nro') ),
     Field("fechaPedido","datetime", default=request.now, label=T('Fecha Pedido') ),
-    Field("importeSinDesc","string", required=True, notnull=True, label=T('Importe Sin Descuento') ),
-    Field("importeTotal","string", required=True, notnull=True, label=T('Importe Total') ),
     Field("formaPago", 'reference formaPago',  label=T('Forma de pago') ),
-    Field("formaEntrega", 'string', required=True, notnull=True, label=T('Forma de entrega') ),
-    Field("costoEntrega", 'integer', required=True, notnull=True, label=T('Costo de entrega') ),
+    Field("importeTotal","string", label=T('Importe Total') ),
+    Field("formaEntrega", 'string',  label=T('Forma de entrega') ),
+    Field("fechaEntrega","datetime", default=request.now, update=request.now, writable=False, label=T('Fecha Pedido') ),
+    Field("costoEntrega", 'integer',  label=T('Costo de entrega') ),
     Field("idDomicilio", "reference domicilio", label=T('Domicilio')),
-    Field("descuento","integer", label=T('Descuento') ),
     Field("estado","string", label=T('Estado') ),
     format = '%(id)s  - %(idCliente)s - %(fechaPedido)s ')
 
 db.venta.idCliente.requires = IS_IN_DB(db, 'auth_user.id','%(first_name)s - %(last_name)s')
-db.venta.formaPago.requires = IS_IN_DB(db, 'formaPago.id',' %(descripcion)s ')
+db.venta.formaPago.requires = IS_EMPTY_OR(IS_IN_DB(db, 'formaPago.id',' %(descripcion)s '))
 db.venta.id.label ='Número'
-db.venta.formaEntrega.requires=IS_IN_SET(["Retiro en local","Entrega a domicilio"])
-db.venta.idDomicilio.requires = IS_IN_DB(db, 'domicilio.id','%(calle)s - %(numero)s - %(idZona)s')
+db.venta.formaEntrega.requires= IS_EMPTY_OR(IS_IN_SET(["Acordar con el vendedor","Entrega a domicilio"]))
+db.venta.idDomicilio.requires = IS_EMPTY_OR([IS_IN_DB(db, 'domicilio.id', '%(calle)s - %(numero)s - %(idZona)s')])
+db.venta.estado.requires= IS_IN_SET(["Pendiente", "Finalizado", "Pendiente confirmar fecha", "Delivery", "Retira", "Entergado", "Algo fallo"])
 
 #Detalle ventas
 db.define_table("detalleVenta",
