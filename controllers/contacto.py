@@ -17,7 +17,6 @@ def agregar():
         form.vars.apellido = auth.user.last_name
         form.vars.telefono = auth.user.telefono
         form.vars.email = auth.user.email
-        
         pass
     else:
         form = SQLFORM(contacto)
