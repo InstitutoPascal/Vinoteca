@@ -3,13 +3,7 @@ def index():
     try:
 
         db.venta.insert(idCliente = 4,
-                        formaPago = None,
-                        importeTotal = None,
-                        formaEntrega = None,
-                        fechaEntrega = None,
-                        costoEntrega = None,
-                        idDomicilio = None,
-                        estado = None)
+                        estado = 'Pendiente')
 
         print 'paso'
     except Exception as blumba:
