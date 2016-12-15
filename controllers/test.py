@@ -1,18 +1,17 @@
 # -*- coding: utf-8 -*-
 def index():
     try:
-        if auth.user:
-            cantidad = db((db.venta.idCliente == auth.user.id) & (db.venta.estado != 'Pendiente')).count()
-            print cantidad
-            if cantidad != 0:
-                tieneCompraVigente = True
 
-            else:
-                tieneCompraVigente = False
+        db.venta.insert(idCliente = 4,
+                        formaPago = None,
+                        importeTotal = None,
+                        formaEntrega = None,
+                        fechaEntrega = None,
+                        costoEntrega = None,
+                        idDomicilio = None,
+                        estado = None)
 
-        else:
-            tieneCompraVigente = False
-        print tieneCompraVigente
+        print 'paso'
     except Exception as blumba:
         print blumba
     return tieneCompraVigente

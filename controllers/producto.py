@@ -35,11 +35,6 @@ def admin():
 
 def productosListados():
     try:
-        '''tieneArgs = len(request.args)
-        if tieneArgs < 1:
-            print 'Args < al requerido'
-            pass
-        '''
         categoria = request.args[0]
         titulo = tituloCategoria(categoria)
 
@@ -58,9 +53,9 @@ def productosListados():
 
         #Inicio -Verifica si tiene algo en el carrito#
         if auth.user:
-            cantidad = db((db.venta.idCliente == auth.user.id) & (db.venta.estado != 'Pendiente')).count()
-            print cantidad
-            if cantidad != 0:
+            registro = db((db.venta.idCliente == auth.user.id) & (db.venta.estado != 'Pendiente')).select()
+            #print registro
+            if len(registro) != 0:
                 tieneCompraVigente = True
                 titulo2='Prueba / luego cambiar'
             else:
@@ -78,11 +73,13 @@ def productosListados():
 ##Pantalla de Detalle de producto
 def detalleProducto():
     try:
-            titulo = T('Detalle de producto')
-            filtro = request.args[0]
-            categoria = request.args[1]
-            producto = db(db.producto.id == filtro).select().first()
-            tieneCompraVigente = True
+        titulo = T('Detalle de producto')
+        filtro = request.args[0]
+        categoria = request.args[1]
+        producto = db(db.producto.id == filtro).select().first()
+        tieneCompraVigente = True
+        cantidad=0
+
     except Exception as blumba:
         print blumba
     return locals()

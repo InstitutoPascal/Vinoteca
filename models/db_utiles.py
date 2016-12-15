@@ -119,6 +119,8 @@ def setSuscripcion(suscribir):
         print e
     return resultado
 
+
+################# Ventas #######
 def tituloCategoria(categoria):
     print categoria
     titulo = 'Catalogo de'
@@ -169,6 +171,17 @@ def isNoneConcat(resultado, consulta):
         resultado = consulta
     return resultado
 
+
+def tieneVentaVigente(user):
+    try:
+        tiene = False
+        cantidad = db((db.venta.idCliente == user) & (db.venta.estado != 'Pendiente')).count()
+        if  cantidad > 0:
+            tiene = True
+
+    except Exception as blumba:
+        print blumba
+    return tiene
 
 # def enviarEmail(contexto, template, destino, mensaje = None, formatoFecha=None):
 #     try:
