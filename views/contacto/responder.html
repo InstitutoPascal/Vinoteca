@@ -1,6 +1,5 @@
 {{extend 'layout.html'}}
-{{from datetime import date}}
-<h1>{{=titulo}}</h1>
+
 <style>
     .en-fila {
         display: inline-block;
@@ -39,17 +38,17 @@
 
 <div class="contenedor" >
     <div class="contenido">
-    {{for r in rows:}}
         <div class="bloque col-md-9 center">
             <div class="en-fila col-md-offset-3 col-md-3">
-                <p>{{=r.motivo}}</p>
+                <p>{{=datos.motivo}}</p>
                 <br />
-                <label>Autor:</label><strong>{{=A('%s %s'%(r.nombre,r.apellido), _href='mailto:%s'%r.email)}}</strong><br />
-                <label>Fecha:</label><strong>{{=r.fecha.strftime("%d/%m/%y")}}</strong>
+                <label>Autor:</label><strong>{{=A('%s %s'%(datos.nombre,datos.apellido), _href='mailto:%s'%datos.email)}}</strong><br />
+                <label>Fecha:</label><strong>{{=datos.fecha.strftime("%d/%m/%y")}}</strong>
                 
             </div>
-            <div class="en-fila col-md-9">{{=A('Responder',_href=URL('contacto','responder/%s'%r.id),_class='btn btn-primary')}}</div>
-        </div> 
-    {{pass}}
+        </div>
+        <div class="bloque col-md-9 center">
+            {{=form}}
+        </div>
     </div>
 </div>
