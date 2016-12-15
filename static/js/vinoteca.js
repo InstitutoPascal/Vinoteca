@@ -1,6 +1,5 @@
-
 /**
- * Para agregar un item al menu ingresar del layout 
+ * Para agregar un item al menu ingresar del layout
  */
 function agregarMenuIngresar(contenido,iconos,url) {
     var divisor = $('.navbar-nav li ul li.divider')[0];
@@ -15,7 +14,7 @@ function agregarMenuIngresar(contenido,iconos,url) {
 function confirmarCancelar(url, obj) {
     obj.type='reset';
     var x = confirm('Desea volver sin guardar los cambios?');
-    if (x) {
+    if (x&&url==null) {
         window.location = url;
     }
     return x;

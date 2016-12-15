@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
 def index():
     try:
+        registro = db((db.venta.idCliente == auth.user.id) & (db.venta.estado == 'Pendiente')).select().first()
+        print registro
+        if registro != None:
+            tieneCompraVigente = True
+            print 'tiene'
+        else:
+            print  'no tiene'
 
-        db.venta.insert(idCliente = 4,
-                        estado = 'Pendiente')
-
-        print 'paso'
     except Exception as blumba:
         print blumba
-    return tieneCompraVigente
+    return locals()

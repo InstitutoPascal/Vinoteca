@@ -176,7 +176,7 @@ def isNoneConcat(resultado, consulta):
 def tieneVentaVigente(user):
     try:
         tiene = False
-        cantidad = db((db.venta.idCliente == user) & (db.venta.estado != 'Pendiente')).count()
+        cantidad = db((db.venta.idCliente == user) & (db.venta.estado == 'Pendiente')).count()
         if  cantidad > 0:
             tiene = True
 

@@ -37,6 +37,7 @@ def productosListados():
     try:
         categoria = request.args[0]
         titulo = tituloCategoria(categoria)
+        detVenta = None
 
         form = SQLFORM.factory(
             Field('nombre','string',label='Nombre:', default=None),
@@ -49,22 +50,28 @@ def productosListados():
             productos = db(query).select(orderby = db.producto.precioVenta)
             response.flash = None
         else:
-            productos = db(db.producto.categoria == categoria).select(orderby = db.producto.precioVenta)
-
+            productos = db((db.producto.categoria == categoria)&(db.producto.cantidad > 0)).select(orderby = db.producto.precioVenta)
+        print '###################################################'
         #Inicio -Verifica si tiene algo en el carrito#
         if auth.user:
-            registro = db((db.venta.idCliente == auth.user.id) & (db.venta.estado != 'Pendiente')).select()
+            registro = db((db.venta.idCliente == auth.user.id) & (db.venta.estado == 'Pendiente')).select().first()
             #print registro
-            if len(registro) != 0:
+            if registro != None:
                 tieneCompraVigente = True
-                titulo2='Prueba / luego cambiar'
+                print registro
+                detVenta = db((db.detalleVenta.idVenta == registro.id)&(db.producto.id==db.detalleVenta.idProducto)).select()
+                importeTotal = 0
+                for row in detVenta:
+                    importeTotal += (row.detalleVenta.cantidad * row.producto.precioVenta)
+                idVenta = registro.id
+                #print 'Importe Total:'+ str(importeTotal)
             else:
                 tieneCompraVigente = False
 
         else:
             tieneCompraVigente = False
         #FIN - Verifica si tiene algo en el carrito#
-
+        print tieneCompraVigente
     except Exception as blumba:
         print blumba
     return locals()
@@ -78,7 +85,28 @@ def detalleProducto():
         categoria = request.args[1]
         producto = db(db.producto.id == filtro).select().first()
         tieneCompraVigente = True
-        cantidad=0
+        cantidad = 0
+        precio = 0
+        detVenta = None
+        #Inicio -Verifica si tiene algo en el carrito#
+        if auth.user:
+            registro = db((db.venta.idCliente == auth.user.id) & (db.venta.estado == 'Pendiente')).select().first()
+            #print registro
+            if registro != None:
+                tieneCompraVigente = True
+                print registro
+                detVenta = db((db.detalleVenta.idVenta == registro.id)&(db.producto.id==db.detalleVenta.idProducto)).select()
+                importeTotal = 0
+                for row in detVenta:
+                    importeTotal += (row.detalleVenta.cantidad * row.producto.precioVenta)
+
+                print 'Importe Total:'+ str(importeTotal)
+            else:
+                tieneCompraVigente = False
+
+        else:
+            tieneCompraVigente = False
+        #FIN - Verifica si tiene algo en el carrito#
 
     except Exception as blumba:
         print blumba

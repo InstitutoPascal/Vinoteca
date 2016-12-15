@@ -1,16 +1,21 @@
 # -*- coding: utf-8 -*-
 def impactarProducto():
 #    try:
+    print 'llegó'
+    print request.vars.idProducto
+    print request.vars.cantidad
+    print request.vars.categoria
+    print request.vars.precio
     producto = request.vars.idProducto
     cantidad = request.vars.cantidad
     categoria = request.vars.categoria
+    precio = request.vars.precio
     if auth.user:
         if tieneVentaVigente(auth.user.id):
             #do update
             print 'tiene'
-            ventaVigente = db((db.venta.idCliente == auth.user.id) & (db.venta.estado == 'Pendiente')).select(db.venta.id).first()
-            resultadoDet = db.detalleVenta.insert(idVenta = ventaVigente, idProducto = producto, cantidad = cantidad)
-            if resultadoDet != None:
+            resultado = db.detalleVenta.insert(idVenta = resultado, idProducto = producto, cantidad = cantidad, precioUnitario = precio)
+            if resultado != 0:
                 print 'insertó'
                 response.flash = 'Artículo agregado al carrito de compra.'
             redirect(URL('producto', 'productosListados/%s'%categoria ))
@@ -19,9 +24,9 @@ def impactarProducto():
             print 'no tiene venta vigente'
             resultado = db.venta.insert(idCliente = auth.user.id, estado = 'Pendiente')
             print resultado
-            if resultado  != None:
-                resultadoDet = db.detalleVenta.insert(idVenta = resultado, idProducto = producto, cantidad = cantidad)
-                if resultadoDet  != None:
+            if resultado != 0:
+                resultado = db.detalleVenta.insert(idVenta = resultado, idProducto = producto, cantidad = cantidad, precioUnitario = precio)
+                if resultado != 0:
                     print 'insertó'
                     response.flash = 'Artículo agregado al carrito de compra.'
                 else:
@@ -45,17 +50,4 @@ def impactarProducto():
         #redirect(URL('producto', 'productosListados/%s'%categoria ))
 #    except Exception as blumba:
 #        print blumba
-    return locals()
-
-
-def cancela():
-    try:
-
-        print 'Paso a cancelar'
-        idVenta = request.args[0]
-        db(db.detalleVenta.id == idVenta).delete()
-        db(db.venta.id == idVenta).delete()
-    except Exception as blumba:
-        print blumba
-        redirect(URL('producto', 'productosListados/1' ))
     return locals()

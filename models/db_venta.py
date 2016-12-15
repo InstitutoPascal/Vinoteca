@@ -56,9 +56,7 @@ db.venta.estado.requires= IS_IN_SET(["Pendiente", "Finalizado", "Pendiente confi
 db.define_table("detalleVenta",
     Field("idVenta","integer", required=True, notnull=True, label=T('Nro de Venta ') ),
     Field("idProducto","integer", required=True, notnull=True, label=T('Producto ') ),
-    Field("cantidad","integer", required=True, label=T('Cantidad ') ),
-    Field("precioUnitario","double", label=T('Precio unidad ') ),
-    Field("precioXcantidad","double", label=T('Precio*Cantidad') ),
+    Field("cantidad","integer", required=True, label=T(' Cantidad ') ),
     )
 db.detalleVenta.idProducto.requires = IS_IN_DB(db,'producto.idProducto', ' %(nombre)s' )
 db.detalleVenta.idVenta.requires = IS_IN_DB(db,'venta.id', '%(id)s  - %(idCliente)s - %(fechaPedido)s ' )

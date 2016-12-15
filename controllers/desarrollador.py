@@ -47,11 +47,11 @@ def limpiardomicilio():
 	response.flash='Tabla truncada'
 	return True
 def limpiarventa():
-	db.venta.truncate()
+	db.venta.drop()
 	response.flash='Tabla truncada'
 	return True
 def limpiardetalleVenta():
-	db.detalleVenta.truncate()
+	db.detalleVenta.drop()
 	response.flash='Tabla truncada'
 	return True
 def limpiarUsers():
@@ -3262,3 +3262,11 @@ def poblarPro3():
     return True
 
 
+def insertVenta():
+    try:
+        resultado = db.venta.insert(idCliente = 4, estado = 'Pendiente')
+        print resultado
+    except Exception, e:
+        print 'fallo: %s' % e
+    response.flash='Fue poblada Producto'
+    return True
