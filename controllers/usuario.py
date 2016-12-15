@@ -14,3 +14,8 @@ def administrarUsuarios():
                                              json = False )
                        )
     return locals()
+
+def subscribe():
+    suscribir = len(request.args) == 0 or request.args[0]==str(True)
+    setSuscripcion(suscribir)
+    return True
