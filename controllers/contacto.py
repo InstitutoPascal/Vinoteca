@@ -17,34 +17,39 @@ def agregar():
         form.vars.apellido = auth.user.last_name
         form.vars.telefono = auth.user.telefono
         form.vars.email = auth.user.email
-        
         pass
     else:
         form = SQLFORM(contacto)
-    if form.process().accepted:
-        sendMail(form)
     form.add_button('Cancelar', "javascript:return confirmarCancelar('%s', this);"%URL('default','index'))
+    if form.process().accepted:
+        aceptacionConsulta(form)
+        redirect(URL('default','index'))
     return locals()
 
 #@auth.requires_login()
 def admin():
-    args = request.args
-    if len(args) >= 3 and args[0] == 'edit' and args[1] == 'contacto':
-        # se espera un id en el indice 2
-        print 'paso por aqui'
-        i = args[2]
-        titulo = 'editioninigg'
-    else:
-        contacto.id.readable=False
-        grid = SQLFORM.grid(contacto, editable=False, deletable=False, create=False, csv=False, user_signature=False)
-        titulo = 'Consultas o sugerencias'
+    rows = db((contacto.id > 0)& ~(contacto.estado==True)).select()
+    titulo = 'Consultas o sugerencias'
     return locals()
 
 def responder():
+    datos = contacto[request.args[0]]
+    form = FORM(
+                TEXTAREA(_name='respuesta', _class='col-md-offset-3 col-md-3'),
+                INPUT(_value='Enviar respuesta',_type='submit', _class='btn btn-primary bloque')) # ,,
+    if form.accepts(request,session):
+        datos.respuesta = form.vars.respuesta
+        datos.estado = True
+        datos.update_record()
+        respuestaConsulta(datos)
+        redirect(URL('contacto','admin'))
+    #     exito = True
+    # else:
+    #     pass
     return locals()
 
 
-def sendMail(form):
+def aceptacionConsulta(form):
     from datetime import date
     date = date.today()
     try:
@@ -53,7 +58,7 @@ def sendMail(form):
         context['consultaSugerencia'] = "consulta"
         context['fecha'] = date.strftime("%d/%m/%y")
 
-        message = response.render('contacto/emailTemplate.html', context)
+        message = response.render('contacto/emailAceptacionConsulta.html', context)
 
         result = mail.send(to=form.vars.email, subject='Gracias por su consulta', message=message, headers=dict(contentType='text/html; charset="UTF-8"'))
         if result:
@@ -62,3 +67,20 @@ def sendMail(form):
             print 'no se envio'
     except Exception as e:
         print e
+
+def respuestaConsulta(datos):
+    from datetime import date
+    date = date.today()
+    try:
+        context = dict(datos = datos, fecha = datos.fecha.strftime("%d/%m/%y"))
+
+        message = response.render('contacto/emailRespuestaConsulta.html', context)
+
+        result = mail.send(to=datos.email, subject='Gracias por su consulta', message=message, headers=dict(contentType='text/html; charset="UTF-8"'))
+        if result:
+            print 'se envio'
+        else:
+            print 'no se envio'
+    except Exception as e:
+        print e
+#enviarEmail(context,'contacto/emailRespuestaConsulta.html',destino=datos.email)

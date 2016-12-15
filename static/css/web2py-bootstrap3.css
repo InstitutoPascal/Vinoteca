@@ -342,9 +342,6 @@ table a:hover {
     color: black !important;
 }
 
-a, a:hover {
-    color: #9cd17d !important;
-}
 
 .dropdown-menu {
     background-color: rgba(50, 31, 89, 0.78);
@@ -356,13 +353,22 @@ a, a:hover {
 .dropdown-menu>li>a:focus {
     background-color: #321f59;
 }
+
+a.btn.btn-primary,
 .btn.btn-primary {
+    color: white !important;
     background-color: #45601d;
 }
 
 h1 {
     text-align: center;
 }
+
 body {
     background-color: honeydew;
 }
+
+a, a:hover {
+    color: #9cd17d !important;
+}
+

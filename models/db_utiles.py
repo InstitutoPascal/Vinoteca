@@ -172,7 +172,6 @@ def isNoneConcat(resultado, consulta):
     return resultado
 
 
-
 def tieneVentaVigente(user):
     try:
         tiene = False
@@ -183,3 +182,16 @@ def tieneVentaVigente(user):
     except Exception as blumba:
         print blumba
     return tiene
+
+# def enviarEmail(contexto, template, destino, mensaje = None, formatoFecha=None):
+#     try:
+#         if mensaje != None:
+#             contexto.mensaje = mensaje
+#         message = response.render(template, contexto)
+#         result = mail.send(to=destino, subject=motivo, message=message, headers=dict(contentType='text/html; charset="UTF-8"'))
+#         if result:
+#             print 'Email enviado'
+#         else:
+#             print 'No se pudo enviar el email'
+#     except Exception as e:
+#         print 'Ocurrio un error al enviar el email: %s '%e
