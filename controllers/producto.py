@@ -94,6 +94,7 @@ def detalleProducto():
             #print registro
             if registro != None:
                 tieneCompraVigente = True
+                idVenta = registro.id
                 print registro
                 detVenta = db((db.detalleVenta.idVenta == registro.id)&(db.producto.id==db.detalleVenta.idProducto)).select()
                 importeTotal = 0

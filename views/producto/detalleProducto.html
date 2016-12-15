@@ -90,21 +90,27 @@
                       <tr>
                           <td>{{=row.producto.nombre}} </td>
                           <td>{{=row.detalleVenta.cantidad}}</td>
-                          <td style='text-align:right;'>{{=row.producto.precioVenta}}</td>
+                          <td style='text-align:right;'>{{=(row.producto.precioVenta*row.detalleVenta.cantidad)}}</td>
                       </tr>
                       {{pass}}
 
                   {{pass}}
                       <tr>
                           <td> </td>
-                          <td><b>Total: </b></td>
+                          <td> </td>
+                          <td> </td>
+                      </tr>
+                      <tr>
+                          <td><b>Total compra: </b></td>
+                          <td> </td>
                           <td style='text-align:right;'>{{=importeTotal}} </td>
                       </tr>
               </table>
       </div>
       <ul class="list-group">
-        <li class="list-group-item">{{=A(T("Ver detalles / Finalizar "), _href=URL('venta', 'index'))}}</li>
-        <li class="list-group-item">{{=A(T("Cancelar compra"), _href=URL('venta', 'cancela'))}}</li>
+         <li class="list-group-item">{{=A(T("Ver detalles / Finalizar "), _href=URL('venta', 'detalleVentaCliente/%s'%idVenta))}}</li>
+        <!--li class="list-group-item">{{=A(T("Cancelar compra"), _href=URL('venta', 'cancela/%s'%idVenta), _click='return confirm("¿Desea cancelar la compra?");')}}</li-->
+          <li class="list-group-item">{{=A(T("Cancelar compra"), _href=URL('venta', 'cancela/%s'%idVenta))}}</li>
       </ul>
     </div>
     {{end}}

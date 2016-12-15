@@ -1,0 +1,31 @@
+{{extend 'layout.html'}}
+<h1>Detalle de Compra</h1>
+<table style="width:80%">
+  <tr style="text-align:center;">
+          <td><b>Producto</b></td>
+          <td><b>Cantidad</b></td>
+          <td><b>Precio*Unidad</b></td>
+          <td><b>Precio</b></td>
+  </tr>
+  {{if detVenta != None:}}
+      {{for row in detVenta:}}
+      <tr>
+          <td>{{=row.producto.nombre}} </td>
+          <td style='text-align:center;'>{{=row.detalleVenta.cantidad}}</td>
+          <td style='text-align:right;'>{{=row.producto.precioVenta}}</td>
+          <td style='text-align:right;'>{{=(row.producto.precioVenta*row.detalleVenta.cantidad)}}</td>
+      </tr>
+      {{pass}}
+
+  {{pass}}
+      <tr>
+          <td> </td>
+          <td> </td>
+          <td><b>Total: </b></td>
+          <td style='text-align:right;'>{{=importeTotal}} </td>
+      </tr>
+</table>
+<div style='text-align:center;'>
+    {{=A('Finalizar', _href=URL('productosListados/%s' %idVenta), _class="btn btn-primary" )}}
+    {{=A('Volver', _href=URL('productos','productosListados/1'), _class="w2p-form-button btn btn-default" )}}
+</div>

@@ -1,7 +1,5 @@
-# response.logo = A(B('Vinoteca Bukino'), XML('&trade;&nbsp;'),
-#                  _class="navbar-brand", _href="http://localhost:8080/Vinoteca",
-#                  _id="web2py-logo")
-response.title = request.application.replace('_', ' ').title()
+response.logo = A(IMG(_src=URL('static', 'images/BukinoLogo.jpg'), _href=URL('default', 'index'), _class="navbar-brand" ))
+response.title = request.application.replace('_', 'Bukino').title()
 response.subtitle = ''
 
 response.meta.author = myconf.get('app.author')

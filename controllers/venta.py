@@ -49,13 +49,35 @@ def impactarProducto():
 
 
 def cancela():
-    try:
+    print 'Paso a cancelar'
+    idVenta = request.args[0]
+    print idVenta
+    db(db.detalleVenta.idVenta== idVenta).delete()
+    db(db.venta.id == idVenta).delete()
+    redirect(URL('producto', 'productosListados/1' ))
+    return locals()
 
-        print 'Paso a cancelar'
-        idVenta = request.args[0]
-        db(db.detalleVenta.id == idVenta).delete()
-        db(db.venta.id == idVenta).delete()
-    except Exception as blumba:
-        print blumba
-        redirect(URL('producto', 'productosListados/1' ))
+def detalleVentaCliente():
+    print 'Paso a cancelar'
+    idVenta = request.args[0]
+    #Inicio -Verifica si tiene algo en el carrito#
+    if auth.user:
+        registro = db((db.venta.id == idVenta) & (db.venta.estado == 'Pendiente')).select().first()
+        #print registro
+        if registro != None:
+
+            idVenta = registro.id
+            print registro
+            detVenta = db((db.detalleVenta.idVenta == registro.id)&(db.producto.id==db.detalleVenta.idProducto)).select()
+            importeTotal = 0
+            for row in detVenta:
+                importeTotal += (row.detalleVenta.cantidad * row.producto.precioVenta)
+
+            print 'Importe Total:'+ str(importeTotal)
+        else:
+            redirect(URL('default', 'index' ))
+
+    else:
+        redirect(URL('default', 'index' ))
+    #FIN - Verifica si tiene algo en el carrito#
     return locals()
