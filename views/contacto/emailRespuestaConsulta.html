@@ -2,19 +2,28 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <style>
-            .derecha {
-                text-align: right;
+            .firma {
+                position: absolute;
+                font-weight: bold;
+                right: 0;
+                bottom: 0; 
+                height: 50px; 
+                width: 50%;
             }
         </style>
     </head>
     <body>
         <h1>Consulta</h1>
-        <p>Hola {{=datos.nombre}} {{=datos.apellido}}</p>
-        <p class='letter'>Su consulta del día {{=datos.fecha}} a sido procesada <br />
+        <p>Hola {{=datos.nombre}} {{=datos.apellido}}</p>ga
+        <p class='letter'>Su consulta del día {{=datos.fecha.day}}/{{=datos.fecha.month}}/{{=datos.fecha.year}} a sido procesada <br />
         
         <p>{{=datos.respuesta}}</p>
 
         <p>Saluda atentamente</p>
-        <p class='derecha'><strong>Vinoteca Bukino</strong></p>
+        <div class='firma'>
+            Bukino Vinoteca <br />
+            Tel: 011-4951-2236 <br />
+            Cel:15-4787-7909<br />
+        </div>
     </body>
 </html>
