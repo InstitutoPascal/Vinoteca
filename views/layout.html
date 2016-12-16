@@ -36,7 +36,7 @@
     {{
     # using sidebars need to know what sidebar you want to use
     mc0 = 'col-md-12'
-    mc1 = 'col-md-9'
+    mc1 = 'col-md-7'
     mc2 = 'col-md-6'
     left_sidebar_enabled = globals().get('left_sidebar_enabled', False)
     right_sidebar_enabled = globals().get('right_sidebar_enabled', False)
@@ -66,7 +66,7 @@
     <script>
       agregarMenuIngresar('Contactenos','glyphicon glyphicon-envelope',"{{=URL('contacto','agregar')}}");
       {{if auth.user:}}
-      agregarMenuIngresar('Direcciones','glyphicon glyphicon-home',"{{=URL('usuario','listarDirecciones')}}");
+      agregarMenuIngresar('Domicilio','glyphicon glyphicon-home',"{{=URL('usuario','listarDirecciones')}}");
         {{if auth.user.novedades:}}
       agregarMenuIngresar('{{=A(I(_class="glyphicon glyphicon-remove-sign"),' Desuscribirse', callback=URL('usuario','subscribe/False'), _onClick="location.reload()",  target='t')}}');
         {{else:}}
