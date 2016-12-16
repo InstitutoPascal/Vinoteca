@@ -20,6 +20,7 @@ def subscribe():
     setSuscripcion(suscribir)
     return True
 
+@auth.requires_login()
 def listarDirecciones():
     if auth.user:
         grid = SQLFORM.grid(
@@ -34,6 +35,7 @@ def listarDirecciones():
         agregar = A(T('Agregar'), _href=URL('agregarDireccion/%s'%auth.user.id), _class='btn btn-primary')
     return locals()
 
+@auth.requires_login()
 def agregarDireccion():
     if auth.user:
         form = SQLFORM.factory(

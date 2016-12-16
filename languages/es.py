@@ -174,12 +174,9 @@
 'click to check for upgrades': 'haga clic para buscar actualizaciones',
 'client': 'cliente',
 'Client IP': 'IP del Cliente',
-<<<<<<< HEAD
 'Cliente': 'Cliente',
 'Cliente Nro ': 'Cliente Nro ',
-=======
 'Cliente Nro': 'Cliente Nro',
->>>>>>> f2ef80eac50702761f9a6ccc77007af86c6e71f7
 'Close': 'Cerrar',
 'Cofres': 'Cofres',
 'Comma-separated export including columns not shown; fields from other tables are exported as raw values for faster export': 'Comma-separated export including columns not shown; fields from other tables are exported as raw values for faster export',
