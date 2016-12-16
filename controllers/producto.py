@@ -41,7 +41,7 @@ def productosListados():
         form = SQLFORM.factory(
             Field('nombre','string',label='Nombre:', default=None),
             Field('precioMenor','int', label='Precio desde:', default=None),
-            Field('precioMayor','int', label='Precio hasta:', default=None),
+            Field('precioMayor','int', label='Precio hasta:', default=None),]\
             submit_button='Buscar')
 
         if form.process().accepted:
