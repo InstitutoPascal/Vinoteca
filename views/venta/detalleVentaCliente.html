@@ -18,6 +18,12 @@
       {{pass}}
 
   {{pass}}
+
+      <tr>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+      </tr>
       <tr>
           <td> </td>
           <td> </td>
@@ -25,7 +31,10 @@
           <td style='text-align:right;'>{{=importeTotal}} </td>
       </tr>
 </table>
+<div>
+    {{=form}}
+</div>
 <div style='text-align:center;'>
-    {{=A('Finalizar', _href=URL('productosListados/%s' %idVenta), _class="btn btn-primary" )}}
-    {{=A('Volver', _href=URL('productos','productosListados/1'), _class="w2p-form-button btn btn-default" )}}
+    {{=A('Finalizar', _href=URL('cargarDetalleVenta/%s' %idVenta), _class="btn btn-primary" )}}
+    {{=A('Volver', _href=URL('producto','productosListados/1'), _class="w2p-form-button btn btn-default" )}}
 </div>

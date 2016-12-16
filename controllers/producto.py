@@ -38,7 +38,12 @@ def productosListados():
         categoria = request.args[0]
         titulo = tituloCategoria(categoria)
         detVenta = None
-
+        # Verificar /0/1 (0 para paginado 1 para categoria)
+        '''if len(request.args): pagina=int(request.args[0])
+        else: pagina=0
+        elementos_por_pagina=20
+        limitby=(pagina*elementos_por_pagina, (pagina+1)*elementos_por_pagina+1)
+        '''
         form = SQLFORM.factory(
             Field('nombre','string',label='Nombre:', default=None),
             Field('precioMenor','int', label='Precio desde:', default=None),
@@ -58,7 +63,7 @@ def productosListados():
             #print registro
             if registro != None:
                 tieneCompraVigente = True
-                print registro
+                #print registro
                 detVenta = db((db.detalleVenta.idVenta == registro.id)&(db.producto.id==db.detalleVenta.idProducto)).select()
                 importeTotal = 0
                 for row in detVenta:
@@ -84,6 +89,9 @@ def detalleProducto():
         filtro = request.args[0]
         categoria = request.args[1]
         producto = db(db.producto.id == filtro).select().first()
+        print producto.varietal
+        varietal = db(db.varietal.id == producto.varietal).select(db.varietal.tipoVarietal)
+        print varietal.tipoVarietal
         tieneCompraVigente = True
         cantidad = 0
         precio = 0
@@ -95,7 +103,7 @@ def detalleProducto():
             if registro != None:
                 tieneCompraVigente = True
                 idVenta = registro.id
-                print registro
+                #print registro
                 detVenta = db((db.detalleVenta.idVenta == registro.id)&(db.producto.id==db.detalleVenta.idProducto)).select()
                 importeTotal = 0
                 for row in detVenta:

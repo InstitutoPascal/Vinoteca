@@ -49,7 +49,7 @@ def impactarProducto():
 
 
 def cancela():
-    print 'Paso a cancelar'
+    print 'Paso - Cancela compra'
     idVenta = request.args[0]
     print idVenta
     db(db.detalleVenta.idVenta== idVenta).delete()
@@ -58,26 +58,49 @@ def cancela():
     return locals()
 
 def detalleVentaCliente():
-    print 'Paso a cancelar'
+    print 'Detalle venta Cliente'
     idVenta = request.args[0]
     #Inicio -Verifica si tiene algo en el carrito#
     if auth.user:
-        registro = db((db.venta.id == idVenta) & (db.venta.estado == 'Pendiente')).select().first()
-        #print registro
-        if registro != None:
+        cantDomicilio = db(db.domicilio.idCliente == auth.user.id).count()
+        print cantDomicilio
+        if (cantDomicilio != None)&(cantDomicilio > 0 ) :
+            registro = db((db.venta.id == idVenta) & (db.venta.estado == 'Pendiente')).select().first()
+            #print registro
+            if registro != None:
 
-            idVenta = registro.id
-            print registro
-            detVenta = db((db.detalleVenta.idVenta == registro.id)&(db.producto.id==db.detalleVenta.idProducto)).select()
-            importeTotal = 0
-            for row in detVenta:
-                importeTotal += (row.detalleVenta.cantidad * row.producto.precioVenta)
+                idVenta = registro.id
+                print registro
+                detVenta = db((db.detalleVenta.idVenta == registro.id)&(db.producto.id==db.detalleVenta.idProducto)).select()
+                importeTotal = 0
+                for row in detVenta:
+                    importeTotal += (row.detalleVenta.cantidad * row.producto.precioVenta)
 
-            print 'Importe Total:'+ str(importeTotal)
+                print 'Importe Total:'+ str(importeTotal)
+                print 'Formulario cargar detalles de venta - cliente'
+
+                form  = SQLFORM.factory(
+                    Field("formaPago",requires=IS_IN_DB(db,db.formaPago.id, '%(descripcion)s', zero='Seleccionar')),
+                    Field("formaEntrega", 'string',  label=T('Forma de entrega') ),
+                    Field("idDomicilio", label=T('Domicilio'), requires=IS_EMPTY_OR(IS_IN_DB(db[db.domicilio.idCliente == auth.user.id],  '%(calle)s - %(numero)s - %(idZona)s'))),
+                    Field("costoEntrega", 'integer',  label=T('Costo de entrega') ),
+                    Field("importeTotal","string", label=T('Importe Total') ),
+                    submit_button='Confirmar Compra')
+
+
+                if form.process().accepted:
+                    response.flash = "Se envió pedido."
+                else:
+                    pass
+            else:
+                response.flash = "Falló al obtener la compra."
+                redirect(URL('default', 'index' ))
         else:
+            #Redirigir a administracion de Domicilio
+            response.flash = "Debe cargar un domicilio antes de continuar con la compra."
             redirect(URL('default', 'index' ))
-
     else:
+        response.flash = "Usuario no logueado."
         redirect(URL('default', 'index' ))
     #FIN - Verifica si tiene algo en el carrito#
     return locals()
