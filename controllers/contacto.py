@@ -5,11 +5,6 @@ def index():
     return locals()
 
 def agregar():
-    '''TODO: luego agregar los datos de contacto es un fromularion con consultas
-    Bukino Vinoteca
-    Tel: 011-4951-2236
-    Cel:15-4787-7909
-    '''
     titulo = 'Consultas o sugerencias'
     if auth.user:
         form = SQLFORM(contacto)
@@ -28,7 +23,7 @@ def agregar():
 
 #@auth.requires_login()
 def admin():
-    rows = db((contacto.id > 0)& ~(contacto.estado==True)).select()
+    rows = db(contacto.estado==False).select()
     titulo = 'Consultas o sugerencias'
     return locals()
 

@@ -18,7 +18,8 @@ db.zona.id.label='Número'
 
 #Domicilios
 db.define_table("domicilio",
-                Field("idCliente", "reference auth_user", required=True, notnull=True, label=T('Cliente Nro ')),
+                Field("idCliente", "reference auth_user", required=True, notnull=True, label=T('Cliente'), writable=False),
+                Field("referencia", "string", required=True, notnull=True, label=T('Referencia del domicilio')),
                 Field("calle", "string", required=True, notnull=True, label=T('Calle')),
                 Field("numero", "integer", required=True, notnull=True, label=T('Nro ')),
                 Field("piso", "string", label=T('Piso')),
@@ -27,14 +28,16 @@ db.define_table("domicilio",
                 Field("idZona", "reference zona", label=T('Zona')),
                 format = '%(calle)s - %(numero)s - %(idZona)s')
 db.domicilio.idCliente.requires = [IS_NOT_EMPTY(error_message=' Falta ingresar descripción '),
-                                   IS_IN_DB(db, 'auth_user.id',' %(last_name)s - %(first_name)s ')]
+                                   IS_IN_DB(db, 'auth_user.id',' %(last_name)s %(first_name)s ')]
 db.domicilio.idZona.requires = IS_IN_DB(db, 'zona.id', ' %(descripcion)s')
+db.domicilio.referencia.requires = IS_NOT_IN_DB(db, db.domicilio.referencia, error_message=T('Esa referencia ya existe'))
 db.domicilio.id.label='Número'
+db.domicilio.id.readable=False
 
 ############################################################################################################################
 #ventas basico  db.tabla.campo.default = auth.user_id if auth.user else 0
 db.define_table("venta",
-    Field("idCliente", 'reference auth_user', label=T('Cliente Nro') ),
+    Field("idCliente", 'reference auth_user', label=T('Cliente Nro')),
     Field("fechaPedido","datetime", default=request.now, label=T('Fecha Pedido') ),
     Field("formaPago", 'reference formaPago',  label=T('Forma de pago') ),
     Field("importeTotal","string", label=T('Importe Total') ),

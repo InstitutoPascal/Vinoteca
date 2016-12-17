@@ -1,4 +1,56 @@
 {{extend 'layout.html'}}
-<h1>{{=titulo}}</h1>
+<style>
+    .en-fila {
+        display: inline-block;
+        padding: 50px;
+    }
 
-{{=form}}
+    .derecha {
+        position: relative; 
+        height: 558px; 
+        text-align: left;
+    }
+    .arriba {
+        height: 50%;
+        position: absolute;
+        top: 0px;
+    }
+    .abajo {
+        position: absolute;
+        font-weight: bold;
+        right: 0;
+        bottom: 0; 
+        height: 50px; 
+        width: 50%;
+    }
+    * {
+        -webkit-box-sizing: border-box;
+           -moz-box-sizing: border-box;
+                box-sizing: border-box;
+    }
+    
+</style>
+
+
+<h1>{{=titulo}}</h1>
+<div class='center'>
+    <div class='col-md-offset-1 col-md-4 col-sm-offset-1 col-md-5'>
+    <br />
+    <br />
+    <br />
+    {{=form}}
+    </div>
+    <div class='derecha col-md-offset-1 col-md-5'>
+        <div class='arriba'>
+            <h3>Quienes somos</h3>
+            <p> js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths
+            <p> js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths
+            <p> js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths</p>
+        </div>
+        <div class='abajo'>
+            Bukino Vinoteca <br />
+            Tel: 011-4951-2236 <br />
+            Cel:15-4787-7909<br />
+        </div>
+    </div>
+</div>
