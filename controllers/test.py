@@ -16,11 +16,12 @@ def index():
 
 
 def listaProds():
-
-    if len(request.args): pagina=int(request.args[0])
-    else: pagina=0
-    elementos_por_pagina=20
-    limitby=(pagina*elementos_por_pagina, (pagina+1)*elementos_por_pagina+1)
-    registros=db().select(db.producto.ALL, limitby=limitby)
+    if request.vars.pagina != None:
+        pagina = int(request.vars.pagina)
+    else:
+        pagina = 0
+    elementos_por_pagina = 5
+    limitby = (pagina*elementos_por_pagina, (pagina+1)*elementos_por_pagina + 1)
+    registros = db().select(db.producto.ALL, limitby=limitby)
     categoria = 2
     return locals()
