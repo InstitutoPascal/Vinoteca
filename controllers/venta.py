@@ -78,11 +78,14 @@ def detalleVentaCliente():
 
                 print 'Importe Total:'+ str(importeTotal)
                 print 'Formulario cargar detalles de venta - cliente'
-
+#                subset=db(db.person.id>100)
+#                db.dog.owner.requires = IS_IN_DB(db, 'person.id', '%(name)s',
+#                                                 _and=IS_NOT_IN_DB(subset,'person.id'))
+                consultaCombo = db.domicilio.idCliente == auth.user.id
                 form  = SQLFORM.factory(
-                    Field("formaPago",requires=IS_IN_DB(db,db.formaPago.id, '%(descripcion)s', zero='Seleccionar')),
-                    Field("formaEntrega", 'string',  label=T('Forma de entrega') ),
-                    Field("idDomicilio", label=T('Domicilio'), requires=IS_EMPTY_OR(IS_IN_DB(db[db.domicilio.idCliente == auth.user.id],  '%(calle)s - %(numero)s - %(idZona)s'))),
+                    Field("formaPago", label=T('Forma de pago'), requires=IS_IN_DB(db,db.formaPago.id, '%(descripcion)s', zero='Seleccionar')),
+                    Field("formaEntrega", 'string',  label=T('Forma de entrega'), requires=IS_IN_SET(["Acordar con el vendedor","Entrega a domicilio"])),
+                    Field("idDomicilio", label=T('Domicilio'), requires=IS_EMPTY_OR(IS_IN_DB(db(consultaCombo), db.domicilio.id, '%(calle)s - %(numero)s - %(idZona)s'))),
                     Field("costoEntrega", 'integer',  label=T('Costo de entrega') ),
                     Field("importeTotal","string", label=T('Importe Total') ),
                     submit_button='Confirmar Compra')

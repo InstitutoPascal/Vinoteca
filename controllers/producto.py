@@ -89,10 +89,10 @@ def detalleProducto():
         filtro = request.args[0]
         categoria = request.args[1]
         producto = db(db.producto.id == filtro).select().first()
-        print producto.varietal
-        varietal = db(db.varietal.id == producto.varietal).select(db.varietal.tipoVarietal)
-        print varietal.tipoVarietal
-        tieneCompraVigente = True
+        #print producto.varietal
+        #varietal = db(db.varietal.id == producto.varietal).select(db.varietal.tipoVarietal)
+        #print varietal.tipoVarietal
+        tieneCompraVigente = False
         cantidad = 0
         precio = 0
         detVenta = None
