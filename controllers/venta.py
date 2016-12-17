@@ -57,6 +57,13 @@ def cancela():
     redirect(URL('producto', 'productosListados/1' ))
     return locals()
 
+def validateDomicilio():
+    formaEntrega = form.vars.formaEntrega
+    domiEntrega = form.vars.idDomicilio
+    if formaEntrega == "Entrega a domicilio" and domiEntrega == None:
+        form.errors.idDomicilio = "Para *Entrega a domicilio* se requiere un domicilio."
+
+
 def detalleVentaCliente():
     print 'Detalle venta Cliente'
     idVenta = request.args[0]
@@ -86,12 +93,12 @@ def detalleVentaCliente():
                     Field("formaPago", label=T('Forma de pago'), requires=IS_IN_DB(db,db.formaPago.id, '%(descripcion)s', zero='Seleccionar')),
                     Field("formaEntrega", 'string',  label=T('Forma de entrega'), requires=IS_IN_SET(["Acordar con el vendedor","Entrega a domicilio"])),
                     Field("idDomicilio", label=T('Domicilio'), requires=IS_EMPTY_OR(IS_IN_DB(db(consultaCombo), db.domicilio.id, '%(calle)s - %(numero)s - %(idZona)s'))),
-                    Field("costoEntrega", 'integer',  label=T('Costo de entrega') ),
-                    Field("importeTotal","string", label=T('Importe Total') ),
+                    #Field("costoEntrega", 'integer',  label=T('Costo de entrega') ),
+                    #Field("importeTotal","string", label=T('Importe Total') ),
                     submit_button='Confirmar Compra')
 
 
-                if form.process().accepted:
+                if form.process().accepted:#onvalidation=validateDomicilio
                     response.flash = "Se envió pedido."
                 else:
                     pass

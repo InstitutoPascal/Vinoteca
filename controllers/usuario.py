@@ -42,16 +42,16 @@ def agregarDireccion():
             Field("referencia", "string", required=True, notnull=True, label=T('Referencia del domicilio: '),
                 requires=IS_NOT_EMPTY(error_message=T('Falta ingresar la referencia al domicilio'))
             ),
-            Field("calle", "string", required=True, notnull=True, 
-                requires=IS_NOT_EMPTY(error_message=T('Falta ingresar la calle')) ,label=T('Calle: ') 
+            Field("calle", "string", required=True, notnull=True,
+                requires=IS_NOT_EMPTY(error_message=T('Falta ingresar la calle')) ,label=T('Calle: ')
             ),
             Field("numero", "integer", required=True, label=T('Nro: '),
-                notnull=True, requires=IS_NOT_EMPTY(error_message=T('Falta ingresar la calle')) 
+                notnull=True, requires=IS_NOT_EMPTY(error_message=T('Falta ingresar la calle'))
             ),
             Field("piso", "string", label=T('Piso: ')),
             Field("departamento", "string", label=T('Depto: ')),
             Field("otros", "string", label=T('Otros ')),
-            Field("idZona", "integer", required=True, notnull=True, label=T('Zona'), 
+            Field("idZona", "integer", required=True, notnull=True, label=T('Zona'),
                 requires=IS_IN_DB(db, 'zona.id', ' %(descripcion)s', error_message=T('Falta ingresar la zona'))
             ),
         )
@@ -62,7 +62,7 @@ def agregarDireccion():
             redirect(URL('listarDirecciones'))
         else:
             response.flash = T('ingrese los campos requeridos.')
-        
+
     return locals()
 
 def test():

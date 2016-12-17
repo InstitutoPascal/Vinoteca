@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+@auth.requires(auth.user_id==5 , requires_login=True)
 def index():
     try:
         idVenta = request.args[0]
@@ -14,10 +15,10 @@ def index():
         print blumba
     return locals()
 
-
+@auth.requires(auth.user_id==5 , requires_login=True)
 def listaProds():
 
-    if len(request.args): pagina=int(request.args[0])
+    if len(request.args): pagina=int(request.vars.pagina)
     else: pagina=0
     elementos_por_pagina=20
     limitby=(pagina*elementos_por_pagina, (pagina+1)*elementos_por_pagina+1)

@@ -46,10 +46,10 @@
                 <br />
                 <label>Autor:</label><strong>{{=A('%s %s'%(r.nombre,r.apellido), _href='mailto:%s'%r.email)}}</strong><br />
                 <label>Fecha:</label><strong>{{=r.fecha.strftime("%d/%m/%y")}}</strong>
-                
+
             </div>
             <div class="en-fila col-md-9">{{=A('Responder',_href=URL('contacto','responder/%s'%r.id),_class='btn btn-primary')}}</div>
-        </div> 
+        </div>
     {{pass}}
     </div>
 </div>
