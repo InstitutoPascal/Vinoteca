@@ -34,6 +34,7 @@ def admin():
     return locals()
 
 def productosListados():
+    tieneCompraVigente = False
     try:
         categoria = request.args[0]
         titulo = tituloCategoria(categoria)
@@ -70,11 +71,6 @@ def productosListados():
                     importeTotal += (row.detalleVenta.cantidad * row.producto.precioVenta)
                 idVenta = registro.id
                 #print 'Importe Total:'+ str(importeTotal)
-            else:
-                tieneCompraVigente = False
-
-        else:
-            tieneCompraVigente = False
         #FIN - Verifica si tiene algo en el carrito#
         print tieneCompraVigente
     except Exception as blumba:
@@ -85,6 +81,7 @@ def productosListados():
 ##Pantalla de Detalle de producto
 def detalleProducto():
     try:
+        tieneCompraVigente = False
         titulo = T('Detalle de producto')
         filtro = request.args[0]
         categoria = request.args[1]
@@ -110,11 +107,6 @@ def detalleProducto():
                     importeTotal += (row.detalleVenta.cantidad * row.producto.precioVenta)
 
                 print 'Importe Total:'+ str(importeTotal)
-            else:
-                tieneCompraVigente = False
-
-        else:
-            tieneCompraVigente = False
         #FIN - Verifica si tiene algo en el carrito#
 
     except Exception as blumba:

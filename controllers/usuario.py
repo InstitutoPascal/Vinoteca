@@ -38,9 +38,13 @@ def listarDirecciones():
 @auth.requires_login()
 def agregarDireccion():
     if auth.user:
+        subset=db(db.domicilio.idCliente==auth.user.id)
         form = SQLFORM.factory(
             Field("referencia", "string", required=True, notnull=True, label=T('Referencia del domicilio: '),
-                requires=IS_NOT_EMPTY(error_message=T('Falta ingresar la referencia al domicilio'))
+                requires=[
+                    IS_NOT_EMPTY(error_message=T('Falta ingresar la referencia al domicilio')), 
+                    IS_NOT_IN_DB(subset,'domicilio.referencia', error_message=T('Elija otra referencia'))
+                ]
             ),
             Field("calle", "string", required=True, notnull=True,
                 requires=IS_NOT_EMPTY(error_message=T('Falta ingresar la calle')) ,label=T('Calle: ')
