@@ -14,7 +14,7 @@ function agregarMenuIngresar(contenido,iconos,url) {
 function confirmarCancelar(url, obj) {
     obj.type='reset';
     var x = confirm('Desea volver sin guardar los cambios?');
-    if (x&&url==null) {
+    if (x&&url!=null) {
         window.location = url;
     }
     return x;
