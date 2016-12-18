@@ -23,7 +23,7 @@ if auth.has_membership(role="Administrador"):
                 ]),
             (T('Consultas'), False, '#', [
                 (T('Administrar consultas'), False, URL('contacto','admin') ),
-                (T('Ver'), False, URL('contacto','agregar') ),
+                (T('Consultas o sugerencias'), False, URL('contacto','agregar') ),
             ]),
             (T('Eventos'), False, '#', [
                 (T('Administrar eventos'), False, URL('evento','admin') ),
@@ -39,7 +39,7 @@ if auth.has_membership(role="Administrador"):
             ]),
             (T('Promociones'), False, '#', [
                 (T('Administrar promociones'), False, URL('promocion','admin') ),
-                (T('Ver'), False, URL('promocion','index') ),
+                (T('No vigentes'), False, URL('promocion','index') ),
             ]),
             (T('Usuarios'), False, '#', [
                 (T('Administrar usuarios'), False, URL('usuario','administrarUsuarios') ),
@@ -65,14 +65,13 @@ elif auth.has_membership(role="Usuario"):
                 (T('Vinos'), False, URL('producto','productosListados/3') ),
                 ]),
             (T('Contacto'), False, '#', [
-                (T('Ver'), False, URL('contacto','agregar') ),
+                (T('Consultas o sugerencias'), False, URL('contacto','agregar') ),
             ]),
             (T('Eventos'), False, '#', [
                 (T('Ver'), False, URL('default','index') ),
                 ]),
             (T('Noticias'), False, '#', [
                 (T('Ver'), False, URL('noticia','index') ),
-                (T('Administrar'), False, URL('noticia','admin') ),
             ]),
             (T('Promociones'), False, '#', [
                 (T('Ver'), False, URL('promocion','index') ),
@@ -91,7 +90,7 @@ elif auth.has_membership(role="Desarrollador"):
                 ]),
             (T('Contacto'), False, '#', [
                 (T('Administrar'), False, URL('contacto','admin') ),
-                (T('Ver'), False, URL('contacto','agregar') ),
+                (T('Consultas o Sugerencias'), False, URL('contacto','agregar') ),
             ]),
             (T('Eventos'), False, '#', [
                 (T('Administrar eventos'), False, URL('evento','admin') ),
@@ -143,6 +142,9 @@ else:
                 (T('Estuches'), False, URL('producto','productosListados/5') ),
                 (T('Vinos'), False, URL('producto','productosListados/3') ),
                 ]),
+            (T('Contacto'), False, '#', [
+                (T('Consultas o sugerencias'), False, URL('contacto','agregar') ),
+            ]),
             (T('Eventos'), False, '#', [
                 (T('Ver'), False, URL('default','index') ),
                 ]),

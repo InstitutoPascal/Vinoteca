@@ -39,29 +39,11 @@ def productosListados():
         categoria = request.args[0]
         titulo = tituloCategoria(categoria)
         detVenta = None
-        # Verificar /0/1 (0 para paginado 1 para categoria)
-        '''if len(request.args): pagina=int(request.args[0])
-        else: pagina=0
-        elementos_por_pagina=20
-        limitby=(pagina*elementos_por_pagina, (pagina+1)*elementos_por_pagina+1)
-        '''
-        form = SQLFORM.factory(
-            Field('nombre','string',label='Nombre:', default=None),
-            Field('precioMenor','int', label='Precio desde:', default=None),
-            Field('precioMayor','int', label='Precio hasta:', default=None),
-            submit_button='Buscar')
 
-        if form.process().accepted:
-            query = armarQuery(form,categoria)
-            productos = db(query).select(orderby = db.producto.precioVenta)
-            response.flash = None
-        else:
-            productos = db((db.producto.categoria == categoria)&(db.producto.cantidad > 0)).select(orderby = db.producto.precioVenta)
-        print '###################################################'
         #Inicio -Verifica si tiene algo en el carrito#
         if auth.user:
             registro = db((db.venta.idCliente == auth.user.id) & (db.venta.estado == 'Pendiente')).select().first()
-            #print registro
+
             if registro != None:
                 tieneCompraVigente = True
                 #print registro
@@ -72,7 +54,28 @@ def productosListados():
                 idVenta = registro.id
                 #print 'Importe Total:'+ str(importeTotal)
         #FIN - Verifica si tiene algo en el carrito#
-        print tieneCompraVigente
+
+        if request.vars.pagina != None:
+            pagina = int(request.vars.pagina)
+        else:
+            pagina = 0
+        elementos_por_pagina = 9 if tieneCompraVigente else 10
+        limitby = (pagina*elementos_por_pagina, (pagina+1)*elementos_por_pagina + 1)
+
+
+        form = SQLFORM.factory(
+            Field('nombre','string',label='Nombre:', default=None),
+            Field('precioMenor','int', label='Precio desde:', default=None),
+            Field('precioMayor','int', label='Precio hasta:', default=None),
+            submit_button='Buscar')
+
+        if form.process().accepted:
+            query = armarQuery(form,categoria)
+            productos = db(query).select(orderby = db.producto.precioVenta,limitby=limitby)
+            response.flash = None
+        else:
+            productos = db((db.producto.categoria == categoria)&(db.producto.cantidad > 0)).select(orderby = db.producto.precioVenta,limitby=limitby)
+
     except Exception as blumba:
         print blumba
     return locals()

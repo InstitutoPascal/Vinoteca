@@ -20,7 +20,10 @@
 {{end}}
 
 <div style="width:100%;text-align:center;">
-    {{for producto in productos:}}
+
+    {{for i, producto in enumerate(productos):}}
+     {{if i==elementos_por_pagina: break}}
+
       <div class="static">
         <div class="row">
           <div>
@@ -43,7 +46,16 @@
     {{pass}}
 
 </div>
+<div>
+    {{if pagina:}}
+    <a href="{{=URL(args = categoria, vars=dict(pagina=pagina-1))}}" class="btn btn-default">previa</a>
+    {{pass}}
 
+    {{if len(productos)>elementos_por_pagina:}}
+    <a href="{{=URL(args = categoria, vars=dict(pagina=pagina+1))}}" class="btn btn-default">próxima</a>
+    {{pass}}
+
+</div>
 
 {{if right_sidebar_enabled:}}
 

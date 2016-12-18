@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-@auth.requires(auth.user_id==5 , requires_login=True)
+@auth.requires_membership('Desarrollador')
 def index():
     try:
         idVenta = request.args[0]
@@ -15,7 +15,7 @@ def index():
         print blumba
     return locals()
 
-@auth.requires(auth.user_id==5 , requires_login=True)
+@auth.requires_membership('Desarrollador')
 def listaProds():
     if request.vars.pagina != None:
         pagina = int(request.vars.pagina)

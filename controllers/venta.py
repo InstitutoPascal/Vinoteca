@@ -40,29 +40,33 @@ def impactarProducto():
         redirect(URL('producto', 'productosListados/%s'%categoria ))
 
 
-        #session.flash = 'Paso'
-
-        #redirect(URL('producto', 'productosListados/%s'%categoria ))
 #    except Exception as blumba:
 #        print blumba
     return locals()
 
 
 def cancela():
-    print 'Paso - Cancela compra'
+    #print 'Paso - Cancela compra'
     idVenta = request.args[0]
-    print idVenta
+    #print idVenta
     db(db.detalleVenta.idVenta== idVenta).delete()
     db(db.venta.id == idVenta).delete()
     redirect(URL('producto', 'productosListados/1' ))
     return locals()
 
-def validateDomicilio():
+def validateDomicilio(form):
+    formaPago = form.vars.formaPago
     formaEntrega = form.vars.formaEntrega
     domiEntrega = form.vars.idDomicilio
-    if formaEntrega == "Entrega a domicilio" and domiEntrega == None:
+    print formaPago
+    print formaEntrega
+    print domiEntrega
+    if formaPago == 3 and (formaEntrega != None or domiEntrega != None):
+        form.errors.formaPago = "Para *Entrega a domicilio* se requiere un domicilio."
+    if (formaEntrega == "Entrega a domicilio") and (domiEntrega == None):
         form.errors.idDomicilio = "Para *Entrega a domicilio* se requiere un domicilio."
-
+    else:
+        pass
 
 def detalleVentaCliente():
     print 'Detalle venta Cliente'
@@ -70,12 +74,10 @@ def detalleVentaCliente():
     #Inicio -Verifica si tiene algo en el carrito#
     if auth.user:
         cantDomicilio = db(db.domicilio.idCliente == auth.user.id).count()
-        print cantDomicilio
         if (cantDomicilio != None)&(cantDomicilio > 0 ) :
             registro = db((db.venta.id == idVenta) & (db.venta.estado == 'Pendiente')).select().first()
             #print registro
             if registro != None:
-
                 idVenta = registro.id
                 print registro
                 detVenta = db((db.detalleVenta.idVenta == registro.id)&(db.producto.id==db.detalleVenta.idProducto)).select()
@@ -83,23 +85,20 @@ def detalleVentaCliente():
                 for row in detVenta:
                     importeTotal += (row.detalleVenta.cantidad * row.producto.precioVenta)
 
-                print 'Importe Total:'+ str(importeTotal)
-                print 'Formulario cargar detalles de venta - cliente'
-#                subset=db(db.person.id>100)
-#                db.dog.owner.requires = IS_IN_DB(db, 'person.id', '%(name)s',
-#                                                 _and=IS_NOT_IN_DB(subset,'person.id'))
+                #print 'Importe Total:'+ str(importeTotal)
+                #print 'Formulario cargar detalles de venta - cliente'
+
                 consultaCombo = db.domicilio.idCliente == auth.user.id
                 form  = SQLFORM.factory(
                     Field("formaPago", label=T('Forma de pago'), requires=IS_IN_DB(db,db.formaPago.id, '%(descripcion)s', zero='Seleccionar')),
-                    Field("formaEntrega", 'string',  label=T('Forma de entrega'), requires=IS_IN_SET(["Acordar con el vendedor","Entrega a domicilio"])),
+                    Field("formaEntrega", 'string',  label=T('Forma de entrega'), requires=IS_EMPTY_OR(IS_IN_SET(["Acordar con el vendedor","Entrega a domicilio"]))),
                     Field("idDomicilio", label=T('Domicilio'), requires=IS_EMPTY_OR(IS_IN_DB(db(consultaCombo), db.domicilio.id, '%(calle)s - %(numero)s - %(idZona)s'))),
-                    #Field("costoEntrega", 'integer',  label=T('Costo de entrega') ),
-                    #Field("importeTotal","string", label=T('Importe Total') ),
                     submit_button='Confirmar Compra')
 
-
-                if form.process().accepted:#onvalidation=validateDomicilio
+                form.add_button('Cancelar', "javascript:return confirmarCancelar('%s', this);"%URL('default','index'))
+                if form.process(onvalidation=validateDomicilio).accepted:
                     response.flash = "Se envió pedido."
+                    redirect(URL('default', 'index' ))
                 else:
                     pass
             else:
@@ -108,7 +107,7 @@ def detalleVentaCliente():
         else:
             #Redirigir a administracion de Domicilio
             response.flash = "Debe cargar un domicilio antes de continuar con la compra."
-            redirect(URL('default', 'index' ))
+            redirect(URL('usuario', 'listarDirecciones' ))
     else:
         response.flash = "Usuario no logueado."
         redirect(URL('default', 'index' ))
