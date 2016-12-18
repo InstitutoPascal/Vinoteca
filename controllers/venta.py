@@ -58,18 +58,16 @@ def validateDomicilio(form):
     formaPago = form.vars.formaPago
     formaEntrega = form.vars.formaEntrega
     domiEntrega = form.vars.idDomicilio
-    print formaPago
-    print formaEntrega
-    print domiEntrega
-    if formaPago == 3 and (formaEntrega != None or domiEntrega != None):
-        form.errors.formaPago = "Para *Entrega a domicilio* se requiere un domicilio."
+
+    if formaEntrega == None:
+        form.errors.formaEntrega = "Debe seleccionar una forma de entrega."
     if (formaEntrega == "Entrega a domicilio") and (domiEntrega == None):
         form.errors.idDomicilio = "Para *Entrega a domicilio* se requiere un domicilio."
     else:
         pass
 
 def detalleVentaCliente():
-    print 'Detalle venta Cliente'
+    #print 'Detalle venta Cliente'
     idVenta = request.args[0]
     #Inicio -Verifica si tiene algo en el carrito#
     if auth.user:
@@ -79,7 +77,7 @@ def detalleVentaCliente():
             #print registro
             if registro != None:
                 idVenta = registro.id
-                print registro
+                #print registro
                 detVenta = db((db.detalleVenta.idVenta == registro.id)&(db.producto.id==db.detalleVenta.idProducto)).select()
                 importeTotal = 0
                 for row in detVenta:
@@ -90,15 +88,15 @@ def detalleVentaCliente():
 
                 consultaCombo = db.domicilio.idCliente == auth.user.id
                 form  = SQLFORM.factory(
-                    Field("formaPago", label=T('Forma de pago'), requires=IS_IN_DB(db,db.formaPago.id, '%(descripcion)s', zero='Seleccionar')),
+                    Field("formaPago", label=T('Forma de pago'), requires=IS_IN_DB(db,db.formaPago.id, '%(descripcion)s', zero='Seleccionar',error_message="Ingrese una forma de pago.")),
                     Field("formaEntrega", 'string',  label=T('Forma de entrega'), requires=IS_EMPTY_OR(IS_IN_SET(["Acordar con el vendedor","Entrega a domicilio"]))),
                     Field("idDomicilio", label=T('Domicilio'), requires=IS_EMPTY_OR(IS_IN_DB(db(consultaCombo), db.domicilio.id, '%(calle)s - %(numero)s - %(idZona)s'))),
                     submit_button='Confirmar Compra')
 
                 form.add_button('Cancelar', "javascript:return confirmarCancelar('%s', this);"%URL('default','index'))
                 if form.process(onvalidation=validateDomicilio).accepted:
-                    response.flash = "Se envió pedido."
-                    redirect(URL('default', 'index' ))
+                    impactarCompra(idVenta,importeTotal,form)
+                    redirect(URL('venta', 'mostrarCompraRealizada/%s' %idVenta))
                 else:
                     pass
             else:
@@ -106,10 +104,64 @@ def detalleVentaCliente():
                 redirect(URL('default', 'index' ))
         else:
             #Redirigir a administracion de Domicilio
-            response.flash = "Debe cargar un domicilio antes de continuar con la compra."
+            session.flash = "Debe cargar un domicilio antes de continuar con la compra."
             redirect(URL('usuario', 'listarDirecciones' ))
     else:
         response.flash = "Usuario no logueado."
         redirect(URL('default', 'index' ))
     #FIN - Verifica si tiene algo en el carrito#
+    return locals()
+
+def impactarCompra(idVenta,importe,form):
+    try:
+        #print 'ingresa'
+        productosVendidos = db(db.detalleVenta.idVenta == idVenta).select()
+        #print productosVendidos
+        for prodVendido in productosVendidos:
+            #print prodVendido.idProducto
+            producto = db(db.producto.id == prodVendido.idProducto).select().first()
+            print "pasa a borrar"
+            #print prodVendido.idProducto
+            stock = producto.cantidad-prodVendido.cantidad
+            #db(db.producto.id == prodVendido.idProducto).update(cantidad = stock)
+            #descomentar la linea de arriba
+        print "fin cantidad"
+
+        from datetime import date
+        date = date.today()
+        formaPago = form.vars.formaPago
+        formaEntrega = form.vars.formaEntrega
+        domiEntrega = form.vars.idDomicilio
+        venta = db(db.venta.id == idVenta).select().first()
+        venta.fechaPedido = date
+        venta.formaPago = formaPago
+        venta.formaEntrega = formaEntrega
+        venta.idDomicilio = domiEntrega
+        #venta.estado = "Finalizado"
+        #descomentar esta linea
+
+
+        if formaEntrega == 'Entrega a domicilio':
+            zonaDomicilio = db((db.zona.id == db.domicilio.idZona) & (db.domicilio.id == domiEntrega)).select().first()
+            #print zonaDomicilio
+            venta.costoEntrega = zonaDomicilio.zona.precio
+            venta.importeTotal = importe + zonaDomicilio.zona.precio
+        else:
+            venta.importeTotal = importe
+        venta.update_record()
+        #print venta
+    except Exception as blumba:
+        print blumba
+
+
+def mostrarCompraRealizada():
+    idVenta = request.args[0]
+    # = db(db.venta.id == idVenta).select().first()
+    detVenta = db((db.detalleVenta.idVenta == idVenta)&(db.producto.id==db.detalleVenta.idProducto)).select()
+    importeTotal = 0
+    for row in detVenta:
+        importeTotal += (row.detalleVenta.cantidad * row.producto.precioVenta)
+
+    formVenta = SQLFORM(db.venta,  idVenta, readonly=True)
+    
     return locals()

@@ -1,74 +1,74 @@
 # -*- coding: utf-8 -*-
-@auth.requires_membership('Desarrollador'):
+@auth.requires_membership('Desarrollador')
 def admin():
     return {'titulo': 'Administrar DB'}
 
-@auth.requires_membership('Desarrollador'):
+@auth.requires_membership('Desarrollador')
 def limpiarbodega():
 	db.bodega.truncate()
 	response.flash='Tabla truncada'
 	return True
-@auth.requires_membership('Desarrollador'):
+@auth.requires_membership('Desarrollador')
 def limpiarcategoria():
 	db.categoria.truncate()
 	response.flash='Tabla truncada'
 	return True
-@auth.requires_membership('Desarrollador'):
+@auth.requires_membership('Desarrollador')
 def limpiarevento():
 	db.evento.truncate()
 	response.flash='Tabla truncada'
 	return True
-@auth.requires_membership('Desarrollador'):
+@auth.requires_membership('Desarrollador')
 def limpiarpromocion():
 	db.promocion.truncate()
 	response.flash='Tabla truncada'
 	return True
-@auth.requires_membership('Desarrollador'):
+@auth.requires_membership('Desarrollador')
 def limpiartipoVino():
 	db.tipoVino.truncate()
 	response.flash='Tabla truncada'
 	return True
-@auth.requires_membership('Desarrollador'):
+@auth.requires_membership('Desarrollador')
 def limpiarvarietal():
 	db.varietal.truncate()
 	response.flash='Tabla truncada'
 	return True
-@auth.requires_membership('Desarrollador'):
+@auth.requires_membership('Desarrollador')
 def limpiarformaPago():
 	db.formaPago.truncate()
 	response.flash='Tabla truncada'
 	return True
-@auth.requires_membership('Desarrollador'):
+@auth.requires_membership('Desarrollador')
 def limpiarzona():
 	db.zona.truncate()
 	response.flash='Tabla truncada'
 	return True
-@auth.requires_membership('Desarrollador'):
+@auth.requires_membership('Desarrollador')
 def limpiarnoticia():
 	db.noticia.truncate()
 	response.flash='Tabla truncada'
 	return True
-@auth.requires_membership('Desarrollador'):
+@auth.requires_membership('Desarrollador')
 def limpiarproducto():
 	db.producto.truncate()
 	response.flash='Tabla truncada'
 	return True
-@auth.requires_membership('Desarrollador'):
+@auth.requires_membership('Desarrollador')
 def limpiardomicilio():
 	db.domicilio.truncate()
 	response.flash='Tabla truncada'
 	return True
-@auth.requires_membership('Desarrollador'):
+@auth.requires_membership('Desarrollador')
 def limpiarventa():
 	db.venta.drop()
 	response.flash='Tabla truncada'
 	return True
-@auth.requires_membership('Desarrollador'):
+@auth.requires_membership('Desarrollador')
 def limpiardetalleVenta():
 	db.detalleVenta.drop()
 	response.flash='Tabla truncada'
 	return True
-@auth.requires_membership('Desarrollador'):
+@auth.requires_membership('Desarrollador')
 def limpiarUsers():
 	db.auth_user.truncate()
     #db.auth_group.truncate()
@@ -77,7 +77,7 @@ def limpiarUsers():
 	response.flash='Tabla usuarios truncada'
 	return True
 
-@auth.requires_membership('Desarrollador'):
+@auth.requires_membership('Desarrollador')
 def limpiarTODO():
     db.bodega.truncate()
     db.categoria.truncate()
@@ -94,7 +94,7 @@ def limpiarTODO():
     db.detalleVenta.truncate()
     response.flash='Todas las tablas fueron truncadas'
     return True
-@auth.requires_membership('Desarrollador'):
+@auth.requires_membership('Desarrollador')
 def poblarCategoria():
     #Categorias
     db.categoria.insert(nombre='Accesorios')
@@ -102,7 +102,7 @@ def poblarCategoria():
     db.categoria.insert(nombre='Vinos')
     db.categoria.insert(nombre='Espumantes')
     return True
-@auth.requires_membership('Desarrollador'):
+@auth.requires_membership('Desarrollador')
 def poblarVarietal():
     #varieltal
     db.varietal.insert(tipoVarietal='Albariño')
@@ -128,7 +128,7 @@ def poblarVarietal():
     db.varietal.insert(tipoVarietal='No Aplica')
     response.flash='varietal fue poblada'
     return True
-@auth.requires_membership('Desarrollador'):
+@auth.requires_membership('Desarrollador')
 def poblarTipoVino():
     #tiposVino
     db.tipoVino.insert(tipo ='Blanco')
@@ -139,7 +139,7 @@ def poblarTipoVino():
     db.tipoVino.insert(tipo ='No aplica')
     response.flash='Fue poblada tipoVino'
     return True
-@auth.requires_membership('Desarrollador'):
+@auth.requires_membership('Desarrollador')
 def poblarBodegas():
     db.bodega.insert(nombre = 'Bodega Ruca Malen',
                      descripcion = 'Es una Bodega Boutique de capitales franceses. Su dueño Jean Pierre Thibaud fue presidente de Chandon Argentina por 10 años. Ubicada en la zona de Agrelo, Luján de Cuyo.',
@@ -263,7 +263,7 @@ def poblarBodegas():
                      web='')
     response.flash='Fue poblada bodega'
     return True
-@auth.requires_membership('Desarrollador'):
+@auth.requires_membership('Desarrollador')
 def poblarFormaPago():
     db.formaPago.insert(descripcion = 'Cheque')
     db.formaPago.insert(descripcion = 'Depósito')
@@ -271,7 +271,7 @@ def poblarFormaPago():
     db.formaPago.insert(descripcion = 'Tarjeta de Crédito')
     response.flash='Fue poblada formaPago'
     return True
-@auth.requires_membership('Desarrollador'):
+@auth.requires_membership('Desarrollador')
 def poblarZonas():
     db.zona.insert(descripcion='A', precio='50', dia='Lunes')
     db.zona.insert(descripcion='B', precio='70', dia='Martes')
@@ -281,7 +281,7 @@ def poblarZonas():
     db.zona.insert(descripcion='F', precio='30', dia='Lunes Viernes')
     response.flash='Fue poblada zona'
     return True
-@auth.requires_membership('Desarrollador'):
+@auth.requires_membership('Desarrollador')
 def poblarProductos():
     try:
         db.producto.insert(nombre = 'Octava Bassa Malbec' , categoria = 3 , tipo = 2 , varietal = 15 , descripcion = 'Octava Bassa Malbec' , origen = 'Mendoza' , anio = '1989' , bodega = 16 , cantidad = 7 , precioCompra = 279.3 , precioVenta = 294 , imagen = open('c:\\imagenes\\thumb_39543_default_medium.jpeg', 'rb'))
@@ -3030,7 +3030,7 @@ def poblarProductos():
     response.flash='Fue poblada Producto'
     return True
 
-@auth.requires_membership('Desarrollador'):
+@auth.requires_membership('Desarrollador')
 def poblarProd2():
     try:
         db.producto.insert(nombre = 'Cofre Alta Vista Premium x2' , categoria = 1 , tipo = 6 , varietal = 21 , descripcion = 'Cofre Alta Vista Premium x2' , origen = 'Alta Vista' , anio = '' , bodega = 40 , cantidad = 4 , precioCompra = 632.7 , precioVenta = 666 , imagen = open('c:\\imagenes\\thumb_53869_default_medium.jpeg', 'rb'))
@@ -3250,7 +3250,7 @@ def poblarProd2():
     response.flash='Fue poblada Producto'
     return True
 
-@auth.requires_membership('Desarrollador'):
+@auth.requires_membership('Desarrollador')
 def poblarPro3():
     try:
         db.producto.insert(nombre = 'BIANCHI EXTRA BRUT' , categoria = 4 , tipo = 2 , varietal = 21 , descripcion = 'BIANCHI EXTRA BRUT' , origen = 'Casa Bianchi' , anio = '' , bodega = 40 , cantidad = 16 , precioCompra = 208.05 , precioVenta = 219 , imagen = open('c:\\imagenes\\thumb_48775_default_medium.jpeg', 'rb'))
@@ -3280,7 +3280,7 @@ def poblarPro3():
     response.flash='Fue poblada Producto'
     return True
 
-@auth.requires_membership('Desarrollador'):
+@auth.requires_membership('Desarrollador')
 def insertVenta():
     try:
         resultado = db.venta.insert(idCliente = 4, estado = 'Pendiente')

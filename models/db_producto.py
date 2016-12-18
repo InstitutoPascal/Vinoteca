@@ -50,7 +50,7 @@ db.define_table('producto',
     Field('cantidad', 'integer', label=T('Cantidad') ),
     Field('precioCompra', 'decimal(9,2)', label=T('Precio compra') ),
     Field('precioVenta', 'decimal(9,2)', label=T('Precio venta') ),
-    Field('imagen', 'upload', label=T('Imagen'),autodelete=True, default='upload/'),#, uploadfolder=os.path.join(request.folder,'static/productos') ),
+    Field('imagen', 'upload', label=T('Imagen'),autodelete=True, default='upload/'),
     )
 db.producto.nombre.requires = [IS_NOT_EMPTY(error_message=' Falta ingresar el nombre '),
                                IS_NOT_IN_DB(db, 'producto.nombre', error_message=' Ya existe ')]
@@ -79,11 +79,4 @@ db.promocion.promo.requires = [IS_NOT_EMPTY(error_message=' Falta ingresar la pr
 db.promocion.fechaDesde.requires = IS_DATE(error_message='Ingrese una fecha con formato 24/10/2016')
 db.promocion.fechaHasta.requires = IS_DATE(error_message='Ingrese una fecha con formato 24/10/2016')
 db.promocion.porcentaje.requires = IS_INT_IN_RANGE(-1, 101,error_message='Ingrese un número del 1 al 99');
-
-
 db.promocion.id.label='Número'
-#db.promocion.fechaHasta.requires = IS_DATE_IN_RANGE(format=T('%d-%m-%y'),
-#                                                    minimum=form.vars.fechaDesde,
-#                                                    maximum=None,
-#                                                    error_message='a')
-########################################################################
