@@ -9,7 +9,7 @@ db.formaPago.id.label='Número'
 #zonas de entrega
 db.define_table("zona",
                 Field("descripcion", "string", required=True, notnull=True, label=T('Descripción')),
-                Field("precio", "string", required=True, notnull=True, label=T('Costo')),
+                Field("precio", "integer", required=True, notnull=True, label=T('Costo')),
                 Field("dia", "string", required=True, notnull=True, label=T('Día/s')),
                 format = '%(descripcion)s')
 db.zona.descripcion.requires = [IS_NOT_EMPTY(error_message=' Falta ingresar descripción '),

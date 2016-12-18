@@ -50,7 +50,7 @@ db.define_table('producto',
     Field('cantidad', 'integer', label=T('Cantidad') ),
     Field('precioCompra', 'decimal(9,2)', label=T('Precio compra') ),
     Field('precioVenta', 'decimal(9,2)', label=T('Precio venta') ),
-    Field('imagen', 'upload', label=T('Imagen'),autodelete=True, default='upload/'),#, uploadfolder=os.path.join(request.folder,'static/productos') ),
+    Field('imagen', 'upload', label=T('Imagen'),autodelete=True, default='upload/'),
     )
 db.producto.nombre.requires = [IS_NOT_EMPTY(error_message=' Falta ingresar el nombre '),
                                IS_NOT_IN_DB(db, 'producto.nombre', error_message=' Ya existe ')]
@@ -85,13 +85,4 @@ db.promocion.producto.requires = IS_EMPTY_OR(IS_IN_DB(db,db.producto.id,'%(nombr
 db.promocion.varietal.requires = IS_EMPTY_OR(IS_IN_DB(db,db.varietal.id,'%(tipoVarietal)s'))
 db.promocion.producto.widget = SQLFORM.widgets.autocomplete(request, db.producto.nombre, id_field=db.producto.id)
 #.autocomplete(request, db.producto.nombre, id_field=db.producto.id)
-
-
-
-
 db.promocion.id.label='Número'
-#db.promocion.fechaHasta.requires = IS_DATE_IN_RANGE(format=T('%d-%m-%y'),
-#                                                    minimum=form.vars.fechaDesde,
-#                                                    maximum=None,
-#                                                    error_message='a')
-########################################################################
