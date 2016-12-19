@@ -23,12 +23,6 @@
         height: 50px;
         width: 50%;
     }
-    * {
-        -webkit-box-sizing: border-box;
-           -moz-box-sizing: border-box;
-                box-sizing: border-box;
-    }
-
 </style>
 
 
@@ -52,4 +46,9 @@
             Tel: 011-4951-2236  - Cel:15-4787-7909 - Local: Av. Salmón 1919 Entre calles Av. Bagre y Tiburoncin<br />
         </div>
     </div>
+    <script>
+        if (({=disableInputs}}) {
+            $('input').disabled = true;
+        }
+    </script>
 </div>

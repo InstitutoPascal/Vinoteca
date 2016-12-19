@@ -11,7 +11,7 @@ def oncreateNoticia(form):
 
 def admin():
     titulo = T(' Administración de noticias' )
-    grid = SQLFORM.grid(db.noticia, deletable = False, csv = True, oncreate=lambda form: oncreateNoticia(form) )
+    grid = SQLFORM.grid(db.noticia, deletable = False, csv = True,  user_signature = False, oncreate=lambda form: oncreateNoticia(form) )
     return locals()
 
 ##################################################################################
@@ -34,3 +34,18 @@ def myonupdate(form):
 def myondelete(table, id):
     print 'delete!'
     print table, id
+
+def listado():
+    from datetime import datetime
+    noticias = db(db.noticia.fecha<datetime.today()).select()
+    return locals()
+
+def detalle():
+    if len(request.args) > 0:
+        noticiaId = request.args[0]
+        noticia = db(db.noticia.id==noticiaId).select().first()
+        volver = A('Volver',_href=URL('listado'),_class='btn btn-default')
+    else:
+        session.flash = 'No se ingreso una promo'
+        redirect(request.env.http_referer)
+    return locals()

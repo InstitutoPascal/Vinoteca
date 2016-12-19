@@ -6,13 +6,13 @@ def index():
 
 def agregar():
     titulo = 'Consultas o sugerencias'
+    disableInputs = 'false'
     if auth.user:
         form = SQLFORM(contacto)
         form.vars.nombre = auth.user.first_name
         form.vars.apellido = auth.user.last_name
         form.vars.telefono = auth.user.telefono
         form.vars.email = auth.user.email
-        pass
     else:
         form = SQLFORM(contacto)
     form.add_button('Cancelar', "javascript:return confirmarCancelar('%s', this);"%URL('default','index'))

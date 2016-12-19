@@ -1,0 +1,39 @@
+{{extend 'layout.html'}}
+<style>
+    .contenedor {
+        width:100%;
+        text-align:center;
+    }
+    .noticia {
+        text-align: left !important;
+        width: 20%;
+        width: 20%;
+        display: inline-block;
+        padding: 50px;
+        position: relative;
+        vertical-align: top;
+        box-sizing: border-box;
+        box-shadow: 3px 3px 2px #6b9430;
+        margin: 50px;
+    }
+    .noticia small {
+        font-size: 0.5em;
+    }
+    h4 span {
+        color: darkviolet;
+    }
+
+</style>
+<h1> Noticias increibles</h1>
+
+<div class='contenedor'>
+{{for i, n in enumerate(noticias):}}
+    <div class="noticia" onclick="window.location='{{=URL('detalle/%s'%n.id)}}'">
+        <h4><span>{{=n.titulo}}</span></h4> 
+        <h6>{{=n.copete}}</h6>
+        <i>escrito en {{=n.fecha}} por {{=n.autor}} </i>
+        
+    </div>
+{{pass}}
+</div>
+

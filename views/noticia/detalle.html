@@ -1,0 +1,41 @@
+{{extend 'layout.html'}}
+<style>
+    .contenedor {
+        width:100%;
+        text-align:center;
+    }
+    .noticia small {
+        font-size: 0.5em;
+    }
+    .noticia > div {
+        padding:50px; 
+        margin: 10px;
+    }
+    .noticia img {
+        width: 200px;
+        float: left;
+        margin-left: 10px;
+        margin-bottom: 10px;
+    }
+</style>
+
+<h1>{{=noticia.titulo}}</h1>
+
+<div class="noticia col-md-offset-3 col-md-6" >
+    <div class="col-md-12">
+        <h2>{{=noticia.copete}}</h2>
+        <br />
+        {{if noticia.imagen:}}
+        <img src="{{=URL('noticia','admin/download/%s'%noticia.imagen)}}" >
+        {{pass}}
+        <i>{{=noticia.cuerpo}} </i>
+        <br />
+        <br />
+        <br />
+        <div style="align-content: flex-end;"><cite>Escrito el {{=noticia.fecha}} por {{=noticia.autor}}</cite></div>
+        <div>
+            {{=volver}}
+        </div>
+    </div>
+</div>
+

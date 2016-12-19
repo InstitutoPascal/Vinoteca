@@ -21,3 +21,21 @@ def agregar():
     form.add_button('Cancelar', "javascript:return confirmarCancelar('%s', this);"%URL('admin'))
 
     return locals()
+
+def listado():
+    from datetime import datetime
+    eventos = db(db.evento.fecha>datetime.today()).select()
+    return locals()
+
+def detalle():
+    return locals()
+
+def detalle():
+    if len(request.args) > 0:
+        eventoId = request.args[0]
+        evento = db(db.evento.id==eventoId).select().first()
+        volver = A('Volver',_href=URL('listado'),_class='btn btn-default')
+    else:
+        session.flash = 'No se ingreso una promo'
+        redirect(request.env.http_referer)
+    return locals()

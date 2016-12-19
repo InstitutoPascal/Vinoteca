@@ -26,7 +26,7 @@ def editar():
 def admin():
     titulo = T(' Administración de promociones' )
     grid = SQLFORM.grid(db.promocion,
-                        deletable = False,
+                        deletable = True,
                         editable=True,
                         create=False,
                         details=True,
@@ -62,4 +62,28 @@ def agregar():
         envioMail('promocion', form.vars.id)
         redirect(URL('promocion','admin'))
     form.add_button('Cancelar', "javascript:return confirmarCancelar('%s', this);"%URL('admin'))
+    return locals()
+
+
+def listado():
+    from datetime import datetime
+    promociones = db(db.promocion.fechaDesde>datetime.today()).select()
+    return locals()
+
+def detalle():
+    if len(request.args) > 0:
+        promoId = request.args[0]
+        promo = db(db.promocion.id==promoId).select().first()
+        descripcion = XML(promo.descripcion, sanitize=True)
+        producto = db(db.producto.id == promo.producto).select().first()
+        if (promo.producto!=None):
+            producto = producto.nombre
+        varietal = db(db.varietal.id == promo.varietal).select().first()
+        if (promo.varietal!=None):
+            varietal = varietal.tipoVarietal
+        volver = A('Volver',_href=URL('listado'),_class='btn btn-default')
+    else:
+        session.flash = 'No se ingreso una promo'
+        redirect(request.env.http_referer)
+
     return locals()

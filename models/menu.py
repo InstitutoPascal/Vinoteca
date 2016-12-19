@@ -31,11 +31,11 @@ if auth.has_membership(role="Administrador"):
             ]),
             (T('Eventos'), False, '#', [
                 (T('Administrar eventos'), False, URL('evento','admin') ),
-                (T('Ver'), False, URL('default','index') ),
+                (T('Ver'), False, URL('evento','listado') ),
                 ]),
             (T('Noticias'), False, '#', [
                 (T('Administrar noticias'), False, URL('noticia','admin') ),
-                (T('Ver'), False, URL('noticia','index') ),
+                (T('Ver'), False, URL('noticia','listado') ),
             ]),
             (T('Productos'), False, '#', [
                 (T('Administrar productos'), False, URL('producto','admin') ),
@@ -44,6 +44,7 @@ if auth.has_membership(role="Administrador"):
             (T('Promociones'), False, '#', [
                 (T('Administrar promociones'), False, URL('promocion','admin') ),
                 (T('No vigentes'), False, URL('promocion','index') ),
+                (T('Listado'), False, URL('promocion','listado') ),
             ]),
             (T('Usuarios'), False, '#', [
                 (T('Baja usuario'), False, URL('usuario','bajaAltaUsuario') ),
@@ -75,13 +76,13 @@ elif auth.has_membership(role="Usuario"):
                 (T('Compras realizadas'), False, URL('compra','listadoCompras') ),
             ]),
             (T('Eventos'), False, '#', [
-                (T('Ver'), False, URL('default','index') ),
+                (T('Ver'), False, URL('evento','listado') ),
                 ]),
             (T('Noticias'), False, '#', [
-                (T('Ver'), False, URL('noticia','index') ),
+                (T('Ver'), False, URL('noticia','listado') ),
             ]),
             (T('Promociones'), False, '#', [
-                (T('Ver'), False, URL('promocion','index') ),
+                (T('Ver'), False, URL('promocion','listado') ),
             ]),
     ]
 
@@ -102,10 +103,12 @@ elif auth.has_membership(role="Desarrollador"):
             (T('Eventos'), False, '#', [
                 (T('Administrar eventos'), False, URL('evento','admin') ),
                 (T('Ver'), False, URL('default','index') ),
+                (T('Listado'), False, URL('evento','listado') ),
                 ]),
             (T('Noticias'), False, '#', [
                 (T('Administrar noticias'), False, URL('noticia','admin') ),
                 (T('Ver'), False, URL('noticia','index') ),
+                (T('Listado'), False, URL('noticia','listado') ),
             ]),
             (T('Productos'), False, '#', [
                 (T('Administrar productos'), False, URL('producto','admin') ),
@@ -114,6 +117,7 @@ elif auth.has_membership(role="Desarrollador"):
             (T('Promociones'), False, '#', [
                 (T('Administrar promociones'), False, URL('promocion','admin') ),
                 (T('Ver'), False, URL('promocion','index') ),
+                (T('listado'), False, URL('promocion','listado') ),
             ]),
             (T('Usuarios'), False, '#', [
                 (T('Baja usuario'), False, URL('usuario','bajaAltaUsuario') ),
@@ -153,10 +157,13 @@ else:
                 (T('Consultas o sugerencias'), False, URL('contacto','agregar') ),
             ]),
             (T('Eventos'), False, '#', [
-                (T('Ver'), False, URL('default','index') ),
+                (T('Ver'), False, URL('evento','listado') ),
+                ]),
+            (T('Promociones'), False, '#', [
+                (T('Ver'), False, URL('promocion','listado') ),
                 ]),
             (T('Noticias'), False, '#', [
-                (T('Ver'), False, URL('noticia','index') ),
+                (T('Ver'), False, URL('noticia','listado') ),
             ]),
             (T('Promociones'), False, '#', [
                 (T('Ver'), False, URL('promocion','index') ),
