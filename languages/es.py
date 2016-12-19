@@ -189,6 +189,8 @@
 'compile': 'compilar',
 'compiled application removed': 'aplicación compilada eliminada',
 'Components and Plugins': 'Componentes y Plugins',
+'Compras': 'Compras',
+'Compras realizadas': 'Compras realizadas',
 'Config.ini': 'Config.ini',
 'Confirm Password': 'Confirmar Password',
 'Confirmar Compra': 'Confirmar Compra',

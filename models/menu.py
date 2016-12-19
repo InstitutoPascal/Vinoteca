@@ -21,9 +21,13 @@ if auth.has_membership(role="Administrador"):
                 (T('Estuches'), False, URL('producto','productosListados/5') ),
                 (T('Vinos'), False, URL('producto','productosListados/3') ),
                 ]),
-            (T('Consultas'), False, '#', [
-                (T('Administrar consultas'), False, URL('contacto','admin') ),
-                (T('Consultas o sugerencias'), False, URL('contacto','agregar') ),
+            (T('Ventas'), False, '#', [
+                (T('Lista Ventas'), False, URL('compra','index') ),
+                (T('Pendientes'), False, URL('compra','listadoCompras') ),#todo
+            ]),
+            (T('Compras'), False, '#', [
+                (T('Administrar productos'), False, URL('producto','admin') ),
+                (T('Listado productos faltantes'), False, URL('producto','index') ),
             ]),
             (T('Eventos'), False, '#', [
                 (T('Administrar eventos'), False, URL('evento','admin') ),
@@ -66,6 +70,9 @@ elif auth.has_membership(role="Usuario"):
                 ]),
             (T('Contacto'), False, '#', [
                 (T('Consultas o sugerencias'), False, URL('contacto','agregar') ),
+            ]),
+            (T('Compras'), False, '#', [
+                (T('Compras realizadas'), False, URL('compra','listadoCompras') ),
             ]),
             (T('Eventos'), False, '#', [
                 (T('Ver'), False, URL('default','index') ),
