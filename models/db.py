@@ -73,14 +73,15 @@ mail.settings.ssl = myconf.get('smtp.ssl') or False
 
 
 def usuarioBaneado(form):
-    if db(db.auth_user.email == form.vars.email).select(db.auth_user.fecha_baja).first().fecha_baja <> None:
+    reg = db(db.auth_user.email == form.vars.email).select(db.auth_user.fecha_baja).first()
+    if reg !=None and reg.fecha_baja <> None:
         form.errors.email = 'El usuario está dado de baja por el administrador'
 
 
 
 auth.settings.login_onvalidation = usuarioBaneado
 
-# auth.settings.on_failed_authentication=lambda form 
+# auth.settings.on_failed_authentication=` form 
 # auth.settings.login_url = URL('default','login')
 
 
