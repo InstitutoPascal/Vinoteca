@@ -143,9 +143,9 @@ def tituloCategoria(categoria):
 def armarQuery(form = None, categoria = None):
     try:
         query=None
-        print '1 - ' + form.vars.nombre
-        print '2 - ' + form.vars.precioMenor
-        print '3 - ' + form.vars.precioMayor
+        #print '1 - ' + form.vars.nombre
+        #print '2 - ' + form.vars.precioMenor
+        #print '3 - ' + form.vars.precioMayor
         if form.vars.nombre != '':
             query = (db.producto.nombre.like('%'+form.vars.nombre+'%'))
 
@@ -158,7 +158,7 @@ def armarQuery(form = None, categoria = None):
         else:
             pass
 
-        print query
+        #print query
         query = isNoneConcat(query,(db.producto.categoria == categoria)&(db.producto.cantidad > 0))
     except Exception as blumba:
         print blumba
@@ -195,3 +195,29 @@ def tieneVentaVigente(user):
 #             print 'No se pudo enviar el email'
 #     except Exception as e:
 #         print 'Ocurrio un error al enviar el email: %s '%e
+
+######## lista de compras ###########################
+
+def armarQueryCompra(form, idUser):
+    try:
+        query=None
+        #print '1 - ' + str(form.vars.fechaDesde)
+        #print '2 - ' + str(form.vars.fechaHasta)
+        #print '3 - ' + str(form.vars.estado)
+        if form.vars.estado != None:
+            query = (db.venta.estado.like('%'+str(form.vars.estado)+'%'))
+
+        if form.vars.fechaDesde != '' and form.vars.fechaHasta != '':
+            query = isNoneConcat(query,(db.venta.fechaPedido >= form.vars.fechaDesde) & (db.venta.fechaPedido <= form.vars.fechaHasta))
+        elif form.vars.fechaDesde != '':
+            query = isNoneConcat(query,(db.venta.fechaPedido >= form.vars.fechaDesde))
+        elif form.vars.fechaHasta != '':
+            query = isNoneConcat(query,(db.venta.fechaPedido <= form.vars.fechaHasta))
+        else:
+            pass
+
+        #print query
+        query = isNoneConcat(query,db.venta.idCliente == auth.user.id)
+    except Exception as blumba:
+        print blumba
+    return query

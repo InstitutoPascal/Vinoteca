@@ -37,7 +37,7 @@ db.define_table(
     Field('ciudad', 'string', label=T('Ciudad') ),
     Field('telefono', 'integer', label=T('Teléfono')),
     Field('fecha_alta', 'datetime', default=request.now, update=request.now, writable=False),
-    Field('fecha_baja', 'datetime', default = None, writable=True, readable=False),
+    Field('fecha_baja', 'datetime', writable=False, readable=False, default = None),
     Field('registration_key', length=512, writable=False, readable=False, default=''),#no quitar ni tocar
     Field('reset_password_key', length=512, writable=False, readable=False, default=''), #no quitar ni tocar
     Field('registration_id', length=512, writable=False, readable=False, default=''), #no quitar ni tocar

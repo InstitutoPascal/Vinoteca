@@ -43,8 +43,8 @@ if auth.has_membership(role="Administrador"):
                 (T('Listado'), False, URL('promocion','listado') ),
             ]),
             (T('Usuarios'), False, '#', [
-                (T('Administrar usuarios'), False, URL('usuario','administrarUsuarios') ),
-                (T('Listado usuarios'), False, URL('usuario','index') ),
+                (T('Baja usuario'), False, URL('usuario','bajaAltaUsuario') ),
+                (T('Listado de usuarios'), False, URL('usuario','administrarUsuarios') ),
             ]),
             (T('Administrar seleccionables'), False, '#', [
                 (T('Bodega'), False, URL('abm', 'bodegaAbm')), LI(_class="divider"),
@@ -113,8 +113,8 @@ elif auth.has_membership(role="Desarrollador"):
                 (T('listado'), False, URL('promocion','listado') ),
             ]),
             (T('Usuarios'), False, '#', [
-                (T('Administrar usuarios'), False, URL('usuario','administrarUsuarios') ),
-                (T('Listado usuarios'), False, URL('usuario','index') ),
+                (T('Baja usuario'), False, URL('usuario','bajaAltaUsuario') ),
+                (T('Listado de usuarios'), False, URL('usuario','administrarUsuarios') ),
             ]),
             (T('Seleccionables'), False, '#', [
                 (T('Bodega'), False, URL('abm', 'bodegaAbm')), LI(_class="divider"),
@@ -158,6 +158,9 @@ else:
             (T('Noticias'), False, '#', [
                 (T('Ver'), False, URL('noticia','listado') ),
             ]),
+            (T('Promociones'), False, '#', [
+                (T('Ver'), False, URL('promocion','index') ),
+                ]),
     ]
 
 DEVELOPMENT_MENU = False

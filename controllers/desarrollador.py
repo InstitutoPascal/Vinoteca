@@ -70,7 +70,7 @@ def limpiardetalleVenta():
 	return True
 @auth.requires_membership('Desarrollador')
 def limpiarUsers():
-	db.auth_user.truncate()
+	db.auth_user.drop()
     #db.auth_group.truncate()
     #db.auth_membership.truncate()
     #db.auth_permission.truncate()
