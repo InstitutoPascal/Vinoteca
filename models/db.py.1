@@ -37,7 +37,7 @@ db.define_table(
     Field('ciudad', 'string', label=T('Ciudad') ),
     Field('telefono', 'integer', label=T('Teléfono')),
     Field('fecha_alta', 'datetime', default=request.now, update=request.now, writable=False),
-    Field('fecha_baja', 'datetime', writable=False, readable=False, default = None),
+    Field('fecha_baja', 'datetime', writable=False, readable=False, default = None, update=request.now),
     Field('registration_key', length=512, writable=False, readable=False, default=''),#no quitar ni tocar
     Field('reset_password_key', length=512, writable=False, readable=False, default=''), #no quitar ni tocar
     Field('registration_id', length=512, writable=False, readable=False, default=''), #no quitar ni tocar
@@ -101,12 +101,6 @@ auth.messages.reset_password = 'Haz clic en el link http://' + \
     URL(r=request,c='default',f='user',args=['reset_password']) + \
     '/%(key)s para restablecer tu contraseña'
 
-
-#Para deshabilitar una acción agrega su nombre a la siguiente lista:
-#auth.settings.actions_disabled = []
-#Por ejemplo=  auth.settings.actions_disabled.append('register')
-
-#auth.settings.formstyle = 'table3cols' (puede ser "table2cols", "divs" y "ul")
 
 auth.messages.submit_button = 'Enviar'
 auth.messages.verify_password = 'Verificar contraseña'

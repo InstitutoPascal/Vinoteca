@@ -24,7 +24,7 @@ def subscribe():
 def listarDirecciones():
     if auth.user:
         grid = SQLFORM.grid(
-            db(db.domicilio.idCliente == auth.user.id), 
+            db(db.domicilio.idCliente == auth.user.id),
             create = False,
             deletable = True,
             editable=False,
@@ -71,3 +71,22 @@ def agregarDireccion():
 
 def test():
     return FORM(INPUT(_name="test"))
+
+
+def bajaAltaUsuario():
+    form = SQLFORM.factory(
+        Field("usuario", "string", required=True, notnull=True, label=T('Usuario: '), requires=IS_IN_DB(db,db.auth_user.id, '%(first_name)s - %(last_name)s', zero='',error_message="Ingrese un usuario.")),
+            Field("accion", "string", required=True, notnull=True,label=T('¿Qué desea hacer con la vigencia usuario?: '), requires=IS_IN_SET(["Bloquear","Desbloquear"],error_message="Ingrese la acción a realizar.") ),)
+    if form.process().accepted:
+        print "Paso"
+        usuario = db(db.auth_user.id == form.vars.usuario).select().first()
+        session.flash = T('Se realizó la operación con exito')
+        if (form.vars.accion == "Bloquear"):
+            from datetime import date
+            usuario.fecha_baja = date.today()
+        else:
+            usuario.fecha_baja = None
+        usuario.update_record()
+    else:
+        pass
+    return locals()

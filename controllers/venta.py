@@ -9,10 +9,17 @@ def impactarProducto():
             #do update
             print 'tiene'
             ventaVigente = db((db.venta.idCliente == auth.user.id) & (db.venta.estado == 'Pendiente')).select(db.venta.id).first()
-            resultadoDet = db.detalleVenta.insert(idVenta = ventaVigente, idProducto = producto, cantidad = cantidad)
-            if resultadoDet != None:
-                print 'insertó'
-                response.flash = 'Artículo agregado al carrito de compra.'
+            existe = db((db.detalleVenta.idVenta == ventaVigente)&(db.detalleVenta.idProducto == producto)).count()
+            print existe
+            if existe > 0:
+                print 'tiene en el carrito'
+                db((db.detalleVenta.idVenta == ventaVigente)&(db.detalleVenta.idProducto == producto)).update(cantidad = cantidad)
+                session.flash = 'El articulo ya se encuentra en el carrito. Se actualizó la cantidad requerida.'
+            else:
+                resultadoDet = db.detalleVenta.insert(idVenta = ventaVigente, idProducto = producto, cantidad = cantidad)
+                if resultadoDet != None:
+                    print 'insertó'
+                    session.flash = 'Artículo agregado al carrito de compra.'
             redirect(URL('producto', 'productosListados/%s'%categoria ))
         else:
             #do inserts venta- detalle
@@ -23,20 +30,20 @@ def impactarProducto():
                 resultadoDet = db.detalleVenta.insert(idVenta = resultado, idProducto = producto, cantidad = cantidad)
                 if resultadoDet  != None:
                     print 'insertó'
-                    response.flash = 'Artículo agregado al carrito de compra.'
+                    session.flash = 'Artículo agregado al carrito de compra.'
                 else:
-                    response.flash = 'Falló al  agregarlo.'
+                    session.flash = 'Falló al  agregarlo.'
 
                 redirect(URL('producto', 'productosListados/%s'%categoria ))
             else:
                 print 'fallo'
-                response.flash = 'Intentó realizar una acción que requiere que se encuentre logueado.'
+                session.flash = 'Intentó realizar una acción que requiere que se encuentre logueado.'
                 redirect(URL('producto', 'productosListados/%s'%categoria ))
 
 
     else:
         print 'Fallo'
-        response.flash = 'Intentó realizar una acción que requiere que se encuentre logueado.'
+        session.flash = 'Intentó realizar una acción que requiere que se encuentre logueado.'
         redirect(URL('producto', 'productosListados/%s'%categoria ))
 
 
@@ -137,7 +144,6 @@ def impactarCompra(idVenta,importe,form):
         venta.formaPago = formaPago
         venta.formaEntrega = formaEntrega
         venta.idDomicilio = domiEntrega
-        #venta.estado = "Finalizado"
         #descomentar esta linea
 
 
@@ -146,8 +152,12 @@ def impactarCompra(idVenta,importe,form):
             #print zonaDomicilio
             venta.costoEntrega = zonaDomicilio.zona.precio
             venta.importeTotal = importe + zonaDomicilio.zona.precio
+            #venta.estado = "Pendiente confirmar fecha"
+
         else:
             venta.importeTotal = importe
+            #venta.estado = "Finalizado"
+
         venta.update_record()
         #print venta
     except Exception as blumba:
@@ -163,5 +173,5 @@ def mostrarCompraRealizada():
         importeTotal += (row.detalleVenta.cantidad * row.producto.precioVenta)
 
     formVenta = SQLFORM(db.venta,  idVenta, readonly=True)
-    
+
     return locals()
