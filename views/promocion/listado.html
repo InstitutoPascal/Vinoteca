@@ -28,11 +28,11 @@
 <div class='contenedor'>
 {{for i, p in enumerate(promociones):}}
     <div class="promo" onclick="window.location='{{=URL('detalle/%s'%p.id)}}'">
-        <h4><span>{{=p.promo}}</span></h4> 
-        
+        <h4><span>{{=p.promo}}</span></h4>
+
         <small>desde {{=p.fechaDesde}} hasta {{=p.fechaHasta}} </small>
-        
+
     </div>
 {{pass}}
+<small>*Las promociones indicadas solo se aplican para las ventas en el local.</small>
 </div>
-
