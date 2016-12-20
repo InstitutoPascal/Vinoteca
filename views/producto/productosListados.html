@@ -90,9 +90,9 @@
               </table>
       </div>
       <ul class="list-group">
-        <li class="list-group-item">{{=A(T("Ver detalles / Finalizar "), _href=URL('venta', 'detalleVentaCliente/%s'%idVenta))}}</li>
-        <!--li class="list-group-item">{{=A(T("Cancelar compra"), _href=URL('venta', 'cancela/%s'%idVenta), _click='return confirm("¿Desea cancelar la compra?");')}}</li-->
-          <li class="list-group-item">{{=A(T("Cancelar compra"), _href=URL('venta', 'cancela/%s'%idVenta))}}</li>
+        <li class="list-group-item">{{=A(T("Ver detalles / Finalizar "), _href=URL('compra', 'detalleCompraCliente/%s'%idVenta, vars=dict(idCategoria=categoria)))}}</li>
+        <!--li class="list-group-item">{{=A(T("Cancelar compra"), _href=URL('compra', 'cancela/%s'%idVenta), _click='return confirm("¿Desea cancelar la compra?");')}}</li-->
+          <li class="list-group-item">{{=A(T("Cancelar compra"), _href=URL('compra', 'cancela/%s'%idVenta))}}</li>
       </ul>
     </div>
     {{end}}

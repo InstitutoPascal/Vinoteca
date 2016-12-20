@@ -1,0 +1,90 @@
+{{extend 'layout.html'}}
+<style>
+    div.static {
+        width: 300px;
+        padding: 20px;
+        display: inline-block;
+        vertical-align:top;
+    }
+    table.compra{
+        color: #FFFFFF;
+        background-color: #4CAF50;
+        width:80%;
+        border-style: solid;
+    }
+</style>
+
+
+
+<h4>Datos de Compra</h4>
+
+{{=formVenta.custom.begin}}
+<div>
+<div class="static"><b>Número </b>{{=formVenta.custom.widget.id}}</div>
+<div class="static"><b> Fecha Pedido</b> {{=formVenta.custom.widget.fechaPedido}}</div>
+</div>
+
+<div>
+<table class="compra">
+  <tr style="text-align:center;">
+          <td><b>Producto</b></td>
+          <td><b>Cantidad</b></td>
+          <td><b>Precio*Unidad</b></td>
+          <td><b>Precio</b></td>
+  </tr>
+  {{if detVenta != None:}}
+      {{for row in detVenta:}}
+      <tr>
+          <td>{{=row.producto.nombre}} </td>
+          <td style='text-align:center;'>{{=row.detalleVenta.cantidad}}</td>
+          <td style='text-align:right;'>{{=row.producto.precioVenta}}</td>
+          <td style='text-align:right;'>{{=(row.producto.precioVenta*row.detalleVenta.cantidad)}}</td>
+      </tr>
+      {{pass}}
+
+  {{pass}}
+
+      <tr>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+      </tr>
+      <tr style='text-align:right;'>
+          <td> </td>
+          <td> </td>
+          <td><b>Total: </b></td>
+          <td><b>{{=importeTotal}} </b></td>
+      </tr>
+</table>
+
+</div>
+
+
+<div>
+{{if formVenta.custom.widget.formaEntrega != None:}}
+    <div class="static"><b>Forma de entrega</b> {{=formVenta.custom.widget.formaEntrega}}</div>
+    {{if formVenta.custom.widget.idDomicilio != None:}}
+    <div class="static"><b>Domicilio </b>{{=formVenta.custom.widget.idDomicilio}}</div>
+    <div class="static"><b>Costo de entrega </b>{{=formVenta.custom.widget.costoEntrega}}</div>
+    {{pass}}
+    <div class="static"><b>Fecha Entrega </b>{{=formVenta.custom.widget.fechaEntrega}}</div>
+    </div>
+
+    <div>
+    <div class="static"><b>Forma de pago </b>{{=formVenta.custom.widget.formaPago}}</div>
+    <div class="static"><b>Importe Total </b>{{=formVenta.custom.widget.importeTotal}}</div>
+    </div>
+    {{if formVenta.custom.widget.idDomicilio != None:}}
+        <b>Importante=</b> Se revisará el pedido y se informará vía mail el día en que será entregado.
+    {{else:}}
+        <b>Importante=</b> comuniquese con nostros para arreglar la entrega o informarnos cuando pasará a retirar el pedido para tenerlo preparado.
+    {{pass}}
+{{pass}}
+
+{{=formVenta.custom.end}}
+
+
+
+<div>
+ {{=A('Volver', _href=URL('default','index'), _class="w2p-form-button btn btn-default" )}}
+</div>

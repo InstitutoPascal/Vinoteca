@@ -70,19 +70,16 @@
 </div>
 
 <div>
-<div class="static"><b>Forma de pago </b>{{=formVenta.custom.widget.formaPago}}</div>
-<div class="static"><b>Importe Total </b>{{=formVenta.custom.widget.importeTotal}}</div>
+<div class="static" ><b>Forma de pago </b>{{=formVenta.custom.widget.formaPago}}</div>
+<div class="static" ><b>Importe Total </b>{{=formVenta.custom.widget.importeTotal}}</div>
 </div>
-{{if formVenta.custom.widget.idDomicilio != None:}}
-    <b>Importante=</b> Se revisará el pedido y se informará vía mail el día en que será entregado.
-{{else:}}
-    <b>Importante=</b> comuniquese con nostros para arreglar la entrega o informarnos cuando pasará a retirar el pedido para tenerlo preparado.
-{{pass}}
 
+{{=formVenta.custom.submit}}
+ {{=A('Volver', _href=request.env.http_referer, _class="w2p-form-button btn btn-default" )}}
 {{=formVenta.custom.end}}
 
 
 
 <div>
- {{=A('Volver', _href=URL('default','index'), _class="w2p-form-button btn btn-default" )}}
+
 </div>
