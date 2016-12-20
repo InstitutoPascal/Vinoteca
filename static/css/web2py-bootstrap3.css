@@ -318,7 +318,7 @@ input[type=checkbox], input[type=radio] {
 }
 .web2py_grid a,
 table a {
-    color : blueviolet !important;
+    color : #730fcc !important;
 }
 .navbar-default, 
 .footer,

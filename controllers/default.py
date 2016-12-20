@@ -10,6 +10,20 @@
 
 
 def index():
+    vino = db(db.producto.categoria == 3).select(orderby=db.producto.id).last()
+    cofre = db(db.producto.categoria == 6).select(orderby=db.producto.id).last()
+    espumante = db(db.producto.categoria == 4).select(orderby=db.producto.id).last()
+    accesorio = db(db.producto.categoria == 1).select(orderby=db.producto.id).last()
+
+    evento = db(db.evento.id > 0).select(orderby=db.evento.id).last()
+    promo = db(db.promocion.id > 0 ).select(orderby=db.promocion.id).last()
+    noticia = db(db.noticia.id > 0).select(orderby=db.noticia.id).last()
+    aviso = None
+    if auth.user:
+        dir = db(db.domicilio.idCliente == auth.user.id).select().first()
+        if dir is None:
+            aviso = 'Recuerde que para realizar el pedido online deberá cargar un domicilio'
+
     """
     example action using the internationalization operator T and flash
     rendered by views/default/index.html or views/generic.html
@@ -18,7 +32,7 @@ def index():
     return auth.wiki()
     """
     #response.flash = T("Hello World")
-    return dict(message=T('Bukino'))
+    return locals()#dict(message=T('Bukino'))
 
 
 def user():
