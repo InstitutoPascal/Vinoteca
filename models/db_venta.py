@@ -33,6 +33,9 @@ db.domicilio.idZona.requires = IS_IN_DB(db, 'zona.id', ' %(descripcion)s')
 db.domicilio.referencia.requires = IS_NOT_IN_DB(db, db.domicilio.referencia, error_message=T('Esa referencia ya existe'))
 db.domicilio.id.label='Número'
 db.domicilio.id.readable=False
+db.domicilio.piso.represent = lambda v, r: '' if v is None else v
+db.domicilio.departamento.represent = lambda v, r: '' if v is None else v
+db.domicilio.otros.represent = lambda v, r: '' if v is None else v
 
 ############################################################################################################################
 #ventas basico  db.tabla.campo.default = auth.user_id if auth.user else 0
@@ -54,6 +57,9 @@ db.venta.id.label ='Número'
 db.venta.formaEntrega.requires= IS_EMPTY_OR(IS_IN_SET(["Acordar con el vendedor","Entrega a domicilio"]))
 db.venta.idDomicilio.requires = IS_EMPTY_OR([IS_IN_DB(db, 'domicilio.id', '%(calle)s - %(numero)s - %(idZona)s')])
 db.venta.estado.requires= IS_IN_SET(["Pendiente", "Finalizado", "Pendiente confirmar fecha", "Delivery", "Retira", "Entergado", "Algo fallo"])
+db.venta.costoEntrega.represent = lambda v, r: '' if v is None else v
+db.venta.idDomicilio.represent = lambda v, r: '' if v is None else v
+
 
 #Detalle ventas
 db.define_table("detalleVenta",

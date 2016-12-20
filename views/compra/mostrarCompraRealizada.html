@@ -65,7 +65,9 @@
     <div class="static"><b>Forma de entrega</b> {{=formVenta.custom.widget.formaEntrega}}</div>
     {{if formVenta.custom.widget.idDomicilio != None:}}
     <div class="static"><b>Domicilio </b>{{=formVenta.custom.widget.idDomicilio}}</div>
+    {{if formVenta.custom.widget.costoEntrega == None:}}
     <div class="static"><b>Costo de entrega </b>{{=formVenta.custom.widget.costoEntrega}}</div>
+    {{pass}}
     {{pass}}
     <div class="static"><b>Fecha Entrega </b>{{=formVenta.custom.widget.fechaEntrega}}</div>
     </div>

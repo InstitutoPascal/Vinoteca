@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# guarda en el carrito el producto ingresado
 def impactarProducto():
 #    try:
     producto = request.vars.idProducto
@@ -51,16 +52,7 @@ def impactarProducto():
 #        print blumba
     return locals()
 
-
-def cancela():
-    #print 'Paso - Cancela compra'
-    idVenta = request.args[0]
-    #print idVenta
-    db(db.detalleVenta.idVenta== idVenta).delete()
-    db(db.venta.id == idVenta).delete()
-    redirect(URL('producto', 'productosListados/1' ))
-    return locals()
-
+#valida la existencia de un domicilio
 def validateDomicilio(form):
     formaPago = form.vars.formaPago
     formaEntrega = form.vars.formaEntrega
@@ -73,104 +65,7 @@ def validateDomicilio(form):
     else:
         pass
 
-
-def impactarCompra(idVenta,importe,form):
-    try:
-        #print 'ingresa'
-        productosVendidos = db(db.detalleVenta.idVenta == idVenta).select()
-        #print productosVendidos
-        for prodVendido in productosVendidos:
-            #print prodVendido.idProducto
-            producto = db(db.producto.id == prodVendido.idProducto).select().first()
-            print "pasa a borrar"
-            #print prodVendido.idProducto
-            stock = producto.cantidad-prodVendido.cantidad
-            #db(db.producto.id == prodVendido.idProducto).update(cantidad = stock)
-            #descomentar la linea de arriba
-        print "fin cantidad"
-
-        from datetime import date
-        date = date.today()
-        formaPago = form.vars.formaPago
-        formaEntrega = form.vars.formaEntrega
-        domiEntrega = form.vars.idDomicilio
-        venta = db(db.venta.id == idVenta).select().first()
-        venta.fechaPedido = date
-        venta.formaPago = formaPago
-        venta.formaEntrega = formaEntrega
-        venta.idDomicilio = domiEntrega
-        #descomentar esta linea
-
-
-        if formaEntrega == 'Entrega a domicilio':
-            zonaDomicilio = db((db.zona.id == db.domicilio.idZona) & (db.domicilio.id == domiEntrega)).select().first()
-            #print zonaDomicilio
-            venta.costoEntrega = zonaDomicilio.zona.precio
-            venta.importeTotal = importe + zonaDomicilio.zona.precio
-            #venta.estado = "Pendiente confirmar fecha"
-        elif formaEntrega == 'Retira en local':
-            venta.importeTotal = importe
-            #venta.estado = "Retira"
-        else:
-            venta.importeTotal = importe
-            #venta.estado = "Finalizado"
-
-        venta.update_record()
-        #print venta
-    except Exception as blumba:
-        print blumba
-
-
-def mostrarCompraRealizada():
-    idVenta = request.args[0]
-    # = db(db.venta.id == idVenta).select().first()
-    detVenta = db((db.detalleVenta.idVenta == idVenta)&(db.producto.id==db.detalleVenta.idProducto)).select()
-    importeTotal = 0
-    for row in detVenta:
-        importeTotal += (row.detalleVenta.cantidad * row.producto.precioVenta)
-
-    formVenta = SQLFORM(db.venta,  idVenta, readonly=True)
-
-    return locals()
-
-
-#Listado del Usuario - podrá consultar #
-def listadoCompras():
-
-    form = SQLFORM.factory(
-            Field('fechaDesde','date', label='Fecha desde:', default=None),
-            Field('fechaHasta','date', label='Fecha hasta:', default=None),
-            Field('estado','string', label='Estado:', default=None, requires=IS_EMPTY_OR(IS_IN_SET(["Pendiente", "Finalizado",
-                                                                                                    "Pendiente confirmar fecha",
-                                                                                                    "Delivery", "Retira", "Entergado"]))),
-            submit_button='Buscar')
-
-    if form.process().accepted:
-        response.flash = None
-        query = armarQueryCompra(form,db.venta.idCliente == auth.user.id)
-        grid = SQLFORM.grid(query,
-                            create = False,
-                            deletable = False,
-                            editable=False,
-                            details=False,
-                            searchable=False,
-                            csv = False,
-                            links_in_grid=True,
-                            links = [dict(header=' ',body=lambda row: A('Ver detalle',_class="button btn btn-default",
-                                                                        _href=URL('compra','mostrarCompraRealizada/%s'%row.id) ))])
-    else:
-        grid = SQLFORM.grid((db.venta.idCliente == auth.user.id),
-                            create = False,
-                            deletable = False,
-                            editable=False,
-                            details=False,
-                            searchable=False,
-                            csv = False,
-                            links_in_grid=True,
-                            links = [dict(header=' ',body=lambda row: A('Ver detalle',_class="button btn btn-default",
-                                                                        _href=URL('compra','mostrarCompraRealizada/%s'%row.id) ))])
-    return locals()
-
+#Listado de detalle de compra habilita finalizar o volver
 def detalleCompraCliente():
     #print 'Detalle venta Cliente'
     idVenta = request.args[0]
@@ -220,4 +115,111 @@ def detalleCompraCliente():
         response.flash = "Usuario no logueado."
         redirect(URL('default', 'index' ))
     #FIN - Verifica si tiene algo en el carrito#
+    return locals()
+
+#Cancela la compra que se encuentra en el carrito
+def cancela():
+    #print 'Paso - Cancela compra'
+    idVenta = request.args[0]
+    #print idVenta
+    db(db.detalleVenta.idVenta== idVenta).delete()
+    db(db.venta.id == idVenta).delete()
+    redirect(URL('producto', 'productosListados/1' ))
+    return locals()
+
+
+#Finaliza la compra por parte del cliente
+def impactarCompra(idVenta,importe,form):
+    try:
+        #print 'ingresa'
+        productosVendidos = db(db.detalleVenta.idVenta == idVenta).select()
+        #print productosVendidos
+        for prodVendido in productosVendidos:
+            #print prodVendido.idProducto
+            producto = db(db.producto.id == prodVendido.idProducto).select().first()
+            print "pasa a borrar"
+            #print prodVendido.idProducto
+            stock = producto.cantidad-prodVendido.cantidad
+            #db(db.producto.id == prodVendido.idProducto).update(cantidad = stock)
+            #descomentar la linea de arriba
+        print "fin cantidad"
+
+        from datetime import date
+        date = date.today()
+        formaPago = form.vars.formaPago
+        formaEntrega = form.vars.formaEntrega
+        domiEntrega = form.vars.idDomicilio
+        venta = db(db.venta.id == idVenta).select().first()
+        venta.fechaPedido = date
+        venta.formaPago = formaPago
+        venta.formaEntrega = formaEntrega
+        venta.idDomicilio = domiEntrega
+
+        if formaEntrega == 'Entrega a domicilio':
+            zonaDomicilio = db((db.zona.id == db.domicilio.idZona) & (db.domicilio.id == domiEntrega)).select().first()
+            #print zonaDomicilio
+            venta.costoEntrega = zonaDomicilio.zona.precio
+            venta.importeTotal = importe + zonaDomicilio.zona.precio
+            #venta.estado = "Pendiente confirmar fecha"
+        elif formaEntrega == 'Retira en local':
+            venta.importeTotal = importe
+            #venta.estado = "Retira"
+        else:
+            venta.importeTotal = importe
+            #venta.estado = "Finalizado"
+
+        venta.update_record()
+        #print venta
+    except Exception as blumba:
+        print blumba
+
+
+def mostrarCompraRealizada():
+    idVenta = request.args[0]
+    # = db(db.venta.id == idVenta).select().first()
+    detVenta = db((db.detalleVenta.idVenta == idVenta)&(db.producto.id==db.detalleVenta.idProducto)).select()
+    importeTotal = 0
+    for row in detVenta:
+        importeTotal += (row.detalleVenta.cantidad * row.producto.precioVenta)
+
+    formVenta = SQLFORM(db.venta,  idVenta, readonly=True)
+
+    return locals()
+
+
+#Listado del Usuario - podrá consultar #
+def listadoCompras():
+
+    form = SQLFORM.factory(
+            Field('fechaDesde','date', label='Fecha desde:', default=None),
+            Field('fechaHasta','date', label='Fecha hasta:', default=None),
+            Field('estado','string', label='Estado:', default=None, requires=IS_EMPTY_OR(IS_IN_SET(["Pendiente", "Finalizado",
+                                                                                                    "Pendiente confirmar fecha",
+                                                                                                    "Delivery", "Retira", "Entergado"]))),
+            submit_button='Buscar')
+
+    if form.process().accepted:
+        response.flash = None
+        query = armarQueryCompra(form, auth.user.id)
+        grid = SQLFORM.grid(query,
+                            create = False,
+                            deletable = False,
+                            editable=False,
+                            details=False,
+                            searchable=False,
+                            csv = False,
+                            links_in_grid=True,
+                            links = [dict(header=' ',body=lambda row: A('Ver detalle',_class="button btn btn-default",
+                                                                        _href=URL('compra','mostrarCompraRealizada/%s'%row.id) ))])
+    else:
+        grid = SQLFORM.grid(((db.venta.idCliente == auth.user.id)&(db.venta.formaEntrega != None)),
+                            create = False,
+                            deletable = False,
+                            editable=False,
+                            details=False,
+                            searchable=False,
+                            csv = False,
+                            links_in_grid=True,
+                            links = [dict(header=' ',body=lambda row: A('Ver detalle',_class="button btn btn-default",
+                                                                        _href=URL('compra','mostrarCompraRealizada/%s'%row.id) ))])
     return locals()

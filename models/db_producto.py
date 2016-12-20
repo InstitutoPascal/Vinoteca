@@ -36,6 +36,8 @@ db.define_table('bodega',
 db.bodega.nombre.requires = [IS_NOT_EMPTY(error_message='Falta ingresar el nombre'),
                              IS_NOT_IN_DB(db, 'bodega.nombre',error_message='Ya existe')]
 db.bodega.id.label='Número'
+db.bodega.descripcion.represent = lambda v, r: '' if v is None else v
+db.bodega.web.represent = lambda v, r: '' if v is None else v
 
 #Productos: vinos, copas, etc.
 db.define_table('producto',

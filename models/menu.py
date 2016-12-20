@@ -1,4 +1,5 @@
-response.logo = A(IMG(_src=URL('static', 'images/BukinoLogo.jpg'), _href=URL('default', 'index'), _class="" ))
+response.logo = A(IMG(_src=URL('static', 'images/BukinoLogo.jpg'), _href=URL('default', 'index'),
+                      _class=("navbar-brand"if auth.has_membership(role="Desarrollador") else "" )))
 response.title = request.application.replace('_', 'Bukino').title()
 response.subtitle = ''
 
@@ -78,7 +79,7 @@ elif auth.has_membership(role="Usuario"):
                 (T('Ver'), False, URL('noticia','listado') ),
             ]),
             (T('Promociones'), False, '#', [
-                (T('Ver'), False, URL('promocion','listado') ),
+                (T('Listado'), False, URL('promocion','listado') ),
             ]),
     ]
 
@@ -163,7 +164,7 @@ else:
                 (T('Ver'), False, URL('noticia','listado') ),
             ]),
             (T('Promociones'), False, '#', [
-                (T('Ver'), False, URL('promocion','index') ),
+                (T('Listado'), False, URL('promocion','listado') ),
                 ]),
     ]
 

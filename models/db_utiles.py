@@ -216,7 +216,7 @@ def armarQueryCompra(form, idUser):
         else:
             pass
 
-        query = isNoneConcat(query,db.venta.idCliente == idUser)
+        query = isNoneConcat(query,(db.venta.idCliente == idUser) & (db.venta.formaEntrega != None))
         #print query
     except Exception as blumba:
         print blumba
@@ -226,6 +226,10 @@ def armarQueryCompra(form, idUser):
 def armarQueryVentas(form):
     try:
         query=None
+
+        if form.vars.cliente != None:
+            query = (db.venta.idCliente == form.vars.cliente)
+
         if form.vars.estado != None:
             query = (db.venta.estado.like('%'+str(form.vars.estado)+'%'))
 
@@ -237,8 +241,8 @@ def armarQueryVentas(form):
             query = isNoneConcat(query,(db.venta.fechaPedido <= form.vars.fechaHasta))
         else:
             pass
-        if query == None:
-            query = db.venta
+
+        query = isNoneConcat(query, (db.venta.formaEntrega != None))
         #print query
     except Exception as blumba:
         print blumba

@@ -59,27 +59,27 @@
 
 </div>
 
-{{if formVenta.custom.widget.formaEntrega != None:}}
 
-    <div>
-        <div class="static"><b>Forma de entrega</b> {{=formVenta.custom.widget.formaEntrega}}</div>
-        {{if formVenta.custom.widget.idDomicilio != None:}}
-        <div class="static"><b>Domicilio </b>{{=formVenta.custom.widget.idDomicilio}}</div>
-        <div class="static"><b>Costo de entrega </b>{{=formVenta.custom.widget.costoEntrega}}</div>
-        {{pass}}
-        <div class="static"><b>Fecha Entrega </b>{{=formVenta.custom.widget.fechaEntrega}}</div>
-    </div>
-    <div>
-        <div class="static"><b>Forma de pago </b>{{=formVenta.custom.widget.formaPago}}</div>
-        <div class="static"><b>Importe Total </b>{{=formVenta.custom.widget.importeTotal}}</div>
-    </div>
-
+<div>
+<div class="static"><b>Forma de entrega</b> {{=formVenta.custom.widget.formaEntrega}}</div>
+{{if formVenta.custom.widget.idDomicilio != None:}}
+<div class="static"><b>Domicilio </b>{{=formVenta.custom.widget.idDomicilio}}</div>
+<div class="static"><b>Costo de entrega </b>{{=formVenta.custom.widget.costoEntrega}}</div>
 {{pass}}
+<div class="static"><b>Fecha Entrega </b>{{=formVenta.custom.widget.fechaEntrega}}</div>
+</div>
 
+<div>
+<div class="static" ><b>Forma de pago </b>{{=formVenta.custom.widget.formaPago}}</div>
+<div class="static" ><b>Importe Total </b>{{=formVenta.custom.widget.importeTotal}}</div>
+</div>
+
+{{=formVenta.custom.submit}}
+{{=A('Volver', _href=request.env.http_referer, _class="w2p-form-button btn btn-default" )}}
 {{=formVenta.custom.end}}
 
 
 
 <div>
- {{=A('Volver', _href=request.env.http_referer, _class="w2p-form-button btn btn-default" )}}
+
 </div>

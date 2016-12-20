@@ -39,7 +39,7 @@ def listarDirecciones():
             if request.env.http_referer != None and request.env.http_host != None:
                 url = request.env.http_referer
         agregar = A(T('Agregar'), _href=URL('agregarDireccion/%s'%auth.user.id, vars=dict(volver=url)), _class='btn btn-primary')
-        volver = A(T('Volver'), _href=url, _class='btn btn-default') if url != None else ''
+        volver = A(T('Volver'), _href=url, _class='w2p-form-button btn btn-default') if url != None else ''
     return locals()
 
 @auth.requires_login()
