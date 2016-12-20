@@ -35,9 +35,11 @@ def listarDirecciones():
         if request.vars.volver != None:
             url = request.vars.volver
         else:
-            url = request.env.http_referer
+            if request.env.http_referer != None and request.env.http_host != None:
+                url = request.env.http_referer
+            
         agregar = A(T('Agregar'), _href=URL('agregarDireccion/%s'%auth.user.id, vars=dict(volver=url)), _class='btn btn-primary')
-        volver = A(T('Volver'), _href=URL(url), _class='btn btn-default')
+        volver = A(T('Volver'), _href=url, _class='btn btn-default') if url else ''
     return locals()
 
 @auth.requires_login()
@@ -68,24 +70,17 @@ def agregarDireccion():
             session.flash = T('Se ingreso una direccion con exito')
             form.vars.idCliente = auth.user.id
             id = db.domicilio.insert(**db.domicilio._filter_fields(form.vars))
-            if request.vars.volver != None:
-                redirect(URL('listarDirecciones',vars=dict(volver=request.vars.volver)))
-            else:
-                redirect(URL('listarDirecciones'))
-
+            redirect(URL('listarDirecciones',vars=dict(volver=request.vars.volver) if request.vars.volver != None else None))
         else:
             response.flash = T('ingrese los campos requeridos.')
 
     return locals()
 
-def test():
-    return FORM(INPUT(_name="test"))
-
 
 def bajaAltaUsuario():
     form = SQLFORM.factory(
         Field("usuario", "string", required=True, notnull=True, label=T('Usuario: '), requires=IS_IN_DB(db,db.auth_user.id, '%(first_name)s - %(last_name)s', zero='',error_message="Ingrese un usuario.")),
-            Field("accion", "string", required=True, notnull=True,label=T('¿Qué desea hacer con la vigencia usuario?: '), requires=IS_IN_SET(["Bloquear","Desbloquear"],error_message="Ingrese la acción a realizar.") ),)
+        Field("accion", "string", required=True, notnull=True,label=T('¿Qué desea hacer con la vigencia usuario?: '), requires=IS_IN_SET(["Bloquear","Desbloquear"],error_message="Ingrese la acción a realizar.") ),)
     if form.process().accepted:
         print "Paso"
         usuario = db(db.auth_user.id == form.vars.usuario).select().first()

@@ -613,6 +613,7 @@
 'Table name': 'Nombre de la tabla',
 'Telefono': 'Telefono',
 'Teléfono': 'Teléfono',
+'Test': 'Test',
 'test': 'probar',
 'Testing application': 'Probando aplicación',
 'The "query" is a condition like "db.table1.field1==\'value\'". Something like "db.table1.field1==db.table2.field2" results in a SQL JOIN.': 'La "consulta" es una condición como "db.tabla1.campo1==\'valor\'". Algo como "db.tabla1.campo1==db.tabla2.campo2" resulta en un JOIN SQL.',
