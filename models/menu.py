@@ -23,7 +23,7 @@ if auth.has_membership(role="Administrador"):
                 ]),
             (T('Ventas'), False, '#', [
                 (T('Lista Ventas'), False, URL('compra','index') ),
-                (T('Pendientes'), False, URL('compra','listadoCompras') ),#todo
+                (T('Pendientes'), False, URL('compra','listadoCompras') ),
             ]),
             (T('Compras'), False, '#', [
                 (T('Administrar productos'), False, URL('producto','admin') ),
@@ -37,10 +37,10 @@ if auth.has_membership(role="Administrador"):
                 (T('Administrar noticias'), False, URL('noticia','admin') ),
                 (T('Ver'), False, URL('noticia','listado') ),
             ]),
-            (T('Productos'), False, '#', [
-                (T('Administrar productos'), False, URL('producto','admin') ),
-                (T('Listado productos faltantes'), False, URL('producto','index') ),
-            ]),
+            #(T('Productos'), False, '#', [
+            #    (T('Administrar productos'), False, URL('producto','admin') ),
+            #    (T('Listado productos faltantes'), False, URL('producto','index') ),
+            #]),
             (T('Promociones'), False, '#', [
                 (T('Administrar promociones'), False, URL('promocion','admin') ),
                 (T('No vigentes'), False, URL('promocion','index') ),
@@ -100,6 +100,11 @@ elif auth.has_membership(role="Desarrollador"):
                 (T('Administrar'), False, URL('contacto','admin') ),
                 (T('Consultas o Sugerencias'), False, URL('contacto','agregar') ),
             ]),
+            (T('Ventas'), False, '#', [
+                (T('Lista Ventas'), False, URL('compra','index') ),
+                (T('Pendientes'), False, URL('compra','listadoCompras') ),
+                (T('Compras realizadas'), False, URL('compra','listadoCompras') ),
+            ]),
             (T('Eventos'), False, '#', [
                 (T('Administrar eventos'), False, URL('evento','admin') ),
                 (T('Ver'), False, URL('default','index') ),
@@ -158,9 +163,6 @@ else:
             ]),
             (T('Eventos'), False, '#', [
                 (T('Ver'), False, URL('evento','listado') ),
-                ]),
-            (T('Promociones'), False, '#', [
-                (T('Ver'), False, URL('promocion','listado') ),
                 ]),
             (T('Noticias'), False, '#', [
                 (T('Ver'), False, URL('noticia','listado') ),
