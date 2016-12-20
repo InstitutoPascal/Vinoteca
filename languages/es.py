@@ -425,6 +425,7 @@
 'License for': 'Licencia para',
 'listado': 'listado',
 'Listado': 'Listado',
+'Listado de usuarios': 'Listado de usuarios',
 'Listado productos faltantes': 'Listado productos faltantes',
 'Listado usuarios': 'Listado usuarios',
 'Live Chat': 'Chat en vivo',

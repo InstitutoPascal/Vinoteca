@@ -319,3 +319,6 @@ li.w2p_grid_breadcrumb_elem {
             box-sizing: border-box;
 }
 
+.navbar-brand {
+    height: 80px !important;
+}
