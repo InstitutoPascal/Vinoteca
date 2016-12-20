@@ -26,20 +26,20 @@ def listarDirecciones():
         grid = SQLFORM.grid(
             db(db.domicilio.idCliente == auth.user.id),
             create = False,
-            deletable = True,
+            deletable = False,
             editable=False,
             details=False,
             searchable=False,
             csv = False
         )
+        url = None
         if request.vars.volver != None:
             url = request.vars.volver
         else:
             if request.env.http_referer != None and request.env.http_host != None:
                 url = request.env.http_referer
-            
         agregar = A(T('Agregar'), _href=URL('agregarDireccion/%s'%auth.user.id, vars=dict(volver=url)), _class='btn btn-primary')
-        volver = A(T('Volver'), _href=url, _class='btn btn-default') if url else ''
+        volver = A(T('Volver'), _href=url, _class='btn btn-default') if url != None else ''
     return locals()
 
 @auth.requires_login()
