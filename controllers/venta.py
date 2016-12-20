@@ -96,7 +96,7 @@ def detalleVentaCliente():
                 consultaCombo = db.domicilio.idCliente == auth.user.id
                 form  = SQLFORM.factory(
                     Field("formaPago", label=T('Forma de pago'), requires=IS_IN_DB(db,db.formaPago.id, '%(descripcion)s', zero='Seleccionar',error_message="Ingrese una forma de pago.")),
-                    Field("formaEntrega", 'string',  label=T('Forma de entrega'), requires=IS_EMPTY_OR(IS_IN_SET(["Acordar con el vendedor","Entrega a domicilio"]))),
+                    Field("formaEntrega", 'string',  label=T('Forma de entrega'), requires=IS_EMPTY_OR(IS_IN_SET(["Acordar con el vendedor","Entrega a domicilio","Retira en local"]))),
                     Field("idDomicilio", label=T('Domicilio'), requires=IS_EMPTY_OR(IS_IN_DB(db(consultaCombo), db.domicilio.id, '%(calle)s - %(numero)s - %(idZona)s'))),
                     submit_button='Confirmar Compra')
 
@@ -153,7 +153,9 @@ def impactarCompra(idVenta,importe,form):
             venta.costoEntrega = zonaDomicilio.zona.precio
             venta.importeTotal = importe + zonaDomicilio.zona.precio
             #venta.estado = "Pendiente confirmar fecha"
-
+        elif formaEntrega == 'Retira en local':
+            venta.importeTotal = importe
+            #venta.estado = "Retira"
         else:
             venta.importeTotal = importe
             #venta.estado = "Finalizado"
@@ -174,4 +176,7 @@ def mostrarCompraRealizada():
 
     formVenta = SQLFORM(db.venta,  idVenta, readonly=True)
 
+    return locals()
+
+def unaFuncion():
     return locals()
