@@ -22,8 +22,8 @@ if auth.has_membership(role="Administrador"):
                 (T('Vinos'), False, URL('producto','productosListados/3') ),
                 ]),
             (T('Ventas'), False, '#', [
-                (T('Lista Ventas'), False, URL('compra','index') ),
-                (T('Pendientes'), False, URL('compra','listadoCompras') ),
+                (T('Lista Ventas'), False, URL('venta','index') ),
+                #(T('Pendientes'), False, URL('compra','listadoCompras') ),
             ]),
             (T('Compras'), False, '#', [
                 (T('Administrar productos'), False, URL('producto','admin') ),
@@ -37,10 +37,6 @@ if auth.has_membership(role="Administrador"):
                 (T('Administrar noticias'), False, URL('noticia','admin') ),
                 (T('Ver'), False, URL('noticia','listado') ),
             ]),
-            #(T('Productos'), False, '#', [
-            #    (T('Administrar productos'), False, URL('producto','admin') ),
-            #    (T('Listado productos faltantes'), False, URL('producto','index') ),
-            #]),
             (T('Promociones'), False, '#', [
                 (T('Administrar promociones'), False, URL('promocion','admin') ),
                 (T('No vigentes'), False, URL('promocion','index') ),
@@ -101,9 +97,8 @@ elif auth.has_membership(role="Desarrollador"):
                 (T('Consultas o Sugerencias'), False, URL('contacto','agregar') ),
             ]),
             (T('Ventas'), False, '#', [
-                (T('Lista Ventas'), False, URL('compra','index') ),
-                (T('Pendientes'), False, URL('compra','listadoCompras') ),
-                (T('Compras realizadas'), False, URL('compra','listadoCompras') ),
+                (T('Lista Ventas'), False, URL('venta','index') ),
+                #(T('Pendientes'), False, URL('compra','listadoCompras') ),
             ]),
             (T('Eventos'), False, '#', [
                 (T('Administrar eventos'), False, URL('evento','admin') ),
