@@ -1,7 +1,23 @@
 {{extend 'layout.html'}}
+<style>
+    div.static {
+        width: 300px;
+        padding: 20px;
+        display: inline-block;
+        vertical-align:top;
+    }
+    table.compra{
+        color: #FFFFFF;
+        background-color: #4CAF50;
+        width:80%;
+        border-style: solid;
+    }
+</style>
 
-<h1>Detalle de Compra</h1>
-<table style="width:80%">
+<h3 style="text-align:center;">Datos de Compra</h3>
+
+<div>
+<table class="compra">
   <tr style="text-align:center;">
           <td><b>Producto</b></td>
           <td><b>Cantidad</b></td>
@@ -33,7 +49,13 @@
       </tr>
 </table>
 
-<div style='text-align:center;width:50%;padding:50px;'>
-    {{=form}}
+</div>
 
+
+
+<div>
+
+</div>
+<div style="width:60%;">
+    {{=form}}
 </div>

@@ -5,7 +5,7 @@ def index():
         idVenta = request.args[0]
         db(db.detalleVenta.id == idVenta).delete()
         db(db.venta.id == idVenta).delete()
-        if registro != None:
+        if registro is not None:
             tieneCompraVigente = True
             print 'tiene'
         else:
@@ -17,7 +17,7 @@ def index():
 
 @auth.requires_membership('Desarrollador')
 def listaProds():
-    '''if request.vars.pagina != None:
+    '''if request.vars.pagina is not None:
         pagina = int(request.vars.pagina)
     else:
         pagina = 0

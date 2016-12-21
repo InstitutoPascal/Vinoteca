@@ -52,7 +52,9 @@ auth_table_especial.last_name.requires =   IS_NOT_EMPTY(error_message = auth.mes
 auth_table_especial.password.requires = [IS_STRONG(error_message = 'La longitud mínima es 8 caracteres. Debe incluir al menos 1 minúscula, 1 mayúscula, 1 número y un simbolo. Ej: Pepe!001'), CRYPT()]
 auth_table_especial.email.requires = [IS_EMAIL(error_message = auth.messages.invalid_email),
                                       IS_NOT_IN_DB(db, auth_table_especial.email)]
-
+auth_table_especial.nacimiento.represent = lambda v, r: '' if v is None else v
+auth_table_especial.ciudad.represent = lambda v, r: '' if v is None else v
+auth_table_especial.telefono.represent = lambda v, r: '' if v is None else v
 auth.settings.table_user = auth_table_especial
 # -------------------------------------------------------------------------
 # create all tables needed by auth if not custom tables

@@ -140,12 +140,14 @@ def tituloCategoria(categoria):
         titulo = ' El link ingresado no es correcto '
     return titulo
 
-def armarQuery(form = None, categoria = None):
+def armarQuery(form, categoria):
     try:
         query=None
         #print '1 - ' + form.vars.nombre
         #print '2 - ' + form.vars.precioMenor
         #print '3 - ' + form.vars.precioMayor
+        #, , 
+
         if form.vars.nombre != '':
             query = (db.producto.nombre.like('%'+form.vars.nombre+'%'))
 
@@ -158,14 +160,15 @@ def armarQuery(form = None, categoria = None):
         else:
             pass
 
-        #print query
         query = isNoneConcat(query,(db.producto.categoria == categoria)&(db.producto.cantidad > 0))
+        print query
+
     except Exception as blumba:
         print blumba
     return query
 
 def isNoneConcat(resultado, consulta):
-    if resultado != None:
+    if resultado is not None:
         resultado &=  consulta
     else:
         resultado = consulta
@@ -185,7 +188,7 @@ def tieneVentaVigente(user):
 
 # def enviarEmail(contexto, template, destino, mensaje = None, formatoFecha=None):
 #     try:
-#         if mensaje != None:
+#         if mensaje is not None:
 #             contexto.mensaje = mensaje
 #         message = response.render(template, contexto)
 #         result = mail.send(to=destino, subject=motivo, message=message, headers=dict(contentType='text/html; charset="UTF-8"'))
@@ -204,7 +207,7 @@ def armarQueryCompra(form, idUser):
         #print '1 - ' + str(form.vars.fechaDesde)
         #print '2 - ' + str(form.vars.fechaHasta)
         #print '3 - ' + str(form.vars.estado)
-        if form.vars.estado != None:
+        if form.vars.estado is not None:
             query = (db.venta.estado.like('%'+str(form.vars.estado)+'%'))
 
         if form.vars.fechaDesde != '' and form.vars.fechaHasta != '':
@@ -216,7 +219,7 @@ def armarQueryCompra(form, idUser):
         else:
             pass
 
-        query = isNoneConcat(query,db.venta.idCliente == idUser)
+        query = isNoneConcat(query,(db.venta.idCliente == idUser) & (db.venta.formaEntrega is not None))
         #print query
     except Exception as blumba:
         print blumba
@@ -226,7 +229,11 @@ def armarQueryCompra(form, idUser):
 def armarQueryVentas(form):
     try:
         query=None
-        if form.vars.estado != None:
+
+        if form.vars.cliente is not None:
+            query = (db.venta.idCliente == form.vars.cliente)
+
+        if form.vars.estado is not None:
             query = (db.venta.estado.like('%'+str(form.vars.estado)+'%'))
 
         if form.vars.fechaDesde != '' and form.vars.fechaHasta != '':
@@ -237,8 +244,8 @@ def armarQueryVentas(form):
             query = isNoneConcat(query,(db.venta.fechaPedido <= form.vars.fechaHasta))
         else:
             pass
-        if query == None:
-            query = db.venta
+
+        query = isNoneConcat(query, (db.venta.formaEntrega is not None))
         #print query
     except Exception as blumba:
         print blumba

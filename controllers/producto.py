@@ -35,49 +35,49 @@ def admin():
 
 def productosListados():
     tieneCompraVigente = False
-    try:
-        categoria = request.args[0]
-        titulo = tituloCategoria(categoria)
-        detVenta = None
+    #try:
+    categoria = request.args[0]
+    titulo = tituloCategoria(categoria)
+    detVenta = None
 
-        #Inicio -Verifica si tiene algo en el carrito#
-        if auth.user:
-            registro = db((db.venta.idCliente == auth.user.id) & (db.venta.estado == 'Pendiente')).select().first()
+    #Inicio -Verifica si tiene algo en el carrito#
+    if auth.user:
+        registro = db((db.venta.idCliente == auth.user.id) & (db.venta.estado == 'Pendiente')).select().first()
 
-            if registro != None:
-                tieneCompraVigente = True
-                #print registro
-                detVenta = db((db.detalleVenta.idVenta == registro.id)&(db.producto.id==db.detalleVenta.idProducto)).select()
-                importeTotal = 0
-                for row in detVenta:
-                    importeTotal += (row.detalleVenta.cantidad * row.producto.precioVenta)
-                idVenta = registro.id
-                #print 'Importe Total:'+ str(importeTotal)
-        #FIN - Verifica si tiene algo en el carrito#
+        if registro is not None:
+            tieneCompraVigente = True
+            #print registro
+            detVenta = db((db.detalleVenta.idVenta == registro.id)&(db.producto.id==db.detalleVenta.idProducto)).select()
+            importeTotal = 0
+            for row in detVenta:
+                importeTotal += (row.detalleVenta.cantidad * row.producto.precioVenta)
+            idVenta = registro.id
+            #print 'Importe Total:'+ str(importeTotal)
+    #FIN - Verifica si tiene algo en el carrito#
 
-        if request.vars.pagina != None:
-            pagina = int(request.vars.pagina)
-        else:
-            pagina = 0
-        elementos_por_pagina = 9 if tieneCompraVigente else 10
-        limitby = (pagina*elementos_por_pagina, (pagina+1)*elementos_por_pagina + 1)
+    if request.vars.pagina is not None:
+        pagina = int(request.vars.pagina)
+    else:
+        pagina = 0
+    elementos_por_pagina = 9 if tieneCompraVigente else 10
+    limitby = (pagina*elementos_por_pagina, (pagina+1)*elementos_por_pagina + 1)
 
 
-        form = SQLFORM.factory(
-            Field('nombre','string',label='Nombre:', default=None),
-            Field('precioMenor','int', label='Precio desde:', default=None),
-            Field('precioMayor','int', label='Precio hasta:', default=None),
-            submit_button='Buscar')
+    form = SQLFORM.factory(
+        Field('nombre','string',label='Nombre:', default=(None if session.nombre is None else session.nombre)),
+        Field('precioMenor','int', label='Precio desde:', default=(None if session.precioMenor is None else session.precioMenor)),
+        Field('precioMayor','int', label='Precio hasta:', default=(None if session.precioMayor is None else session.precioMayor)),
+        submit_button='Buscar')
 
-        if form.process().accepted:
-            query = armarQuery(form,categoria)
-            productos = db(query).select(orderby = db.producto.precioVenta,limitby=limitby)
-            response.flash = None
-        else:
-            productos = db((db.producto.categoria == categoria)&(db.producto.cantidad > 0)).select(orderby = db.producto.precioVenta,limitby=limitby)
+    if form.process().accepted:
+        query = armarQuery(form,categoria)
+        productos = db(query).select(orderby = db.producto.precioVenta)#,limitby=limitby)
+        response.flash = None
+    else:
+        productos = db((db.producto.categoria == categoria)&(db.producto.cantidad > 0)).select(orderby = db.producto.precioVenta,limitby=limitby)
 
-    except Exception as blumba:
-        print blumba
+    #except Exception as blumba:
+        #print blumba
     return locals()
 
 
@@ -100,7 +100,7 @@ def detalleProducto():
         if auth.user:
             registro = db((db.venta.idCliente == auth.user.id) & (db.venta.estado == 'Pendiente')).select().first()
             #print registro
-            if registro != None:
+            if registro is not None:
                 tieneCompraVigente = True
                 idVenta = registro.id
                 #print registro
