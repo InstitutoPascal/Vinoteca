@@ -10,22 +10,23 @@
 
 
 def index():
+    row,max = getMax('producto',db.producto.categoria == 3)
     productos = [
-        getMax('producto',db.producto.categoria == 3),
-        getMax('producto',db.producto.categoria == 6),
-        getMax('producto',db.producto.categoria == 4),
-        getMax('producto',db.producto.categoria == 1)
+        row,
+        getMax('producto',db.producto.categoria == 6)[0],
+        getMax('producto',db.producto.categoria == 4)[0],
+        getMax('producto',db.producto.categoria == 1)[0]
     ]
+    row,max=getMax('producto',(db.producto.categoria == 3)&(db.producto.id<max))
     productos2 = [
-        getMax('producto',(db.producto.categoria == 3)&(db.producto.id<session.maxid)),
-        getMax('producto',(db.producto.categoria == 3)&(db.producto.id<session.maxid)),
-        getMax('producto',(db.producto.categoria == 5)),
-        getMax('producto',(db.producto.categoria == 2))
+        row,
+        getMax('producto',(db.producto.categoria == 3)&(db.producto.id<max))[0],
+        getMax('producto',(db.producto.categoria == 5))[0],
+        getMax('producto',(db.producto.categoria == 2))[0]
     ]
-    evento = getMax('evento')
-    promo = getMax('promocion')
-    noticia = getMax('noticia')
-    session.maxid = None
+    # evento = getMax('evento').row
+    # promo = getMax('promocion').row
+    # noticia = getMax('noticia').row
 
     if auth.user:
         dir = db(db.domicilio.idCliente == auth.user.id).select().first()
@@ -37,8 +38,8 @@ def index():
 def getMax(tabla, query=None):
     max = db[tabla].id.max()
     maxid = db(query).select(max).first()[max]
-    session.maxid = maxid
-    return db[tabla][maxid]
+    row = db[tabla][maxid]
+    return [row,maxid]
 
 def user():
     """
