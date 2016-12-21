@@ -1,5 +1,34 @@
 {{left_sidebar_enabled,right_sidebar_enabled=False,('message' in globals())}}
 {{extend 'layout.html'}}
+<div class="bloque center">
+    {{for producto in productos:}}
+  <div class="promo" onclick="window.location='{{=URL('producto','/detalleProducto/%s/%s'%(producto.id,producto.categoria))}}'">
+      <div class="title"><h4><span>{{=producto.nombre}}</span></h4></div>
+      <figure class="contenedor" >
+      <img src="{{=URL('producto','admin/download/%s'%producto.imagen)}}" width="150px" alt="{{=producto.descripcion}}" />
+      </figure>
+      <div><b><i>${{=producto.precioVenta}}</i></b></div>
+  </div>
+  {{pass}}
+</div>
+<div class="bloque center">
+  <div class="promo" onclick="window.location='#'">
+      <h4><span>evento</span></h4>
+      <small>Aclaraciones</small>
+  </div>
+  <div class="promo" onclick="window.location='#'">
+      <h4><span>promo</span></h4>
+      <small>Aclaraciones</small>
+  </div>
+  <div class="promo" onclick="window.location='#'">
+      <h4><span>noticia</span></h4>
+      <small>Aclaraciones</small>
+  </div>
+  <div class="promo" onclick="window.location='#'">
+      <h4><span>noticia/alertaDireccion</span></h4>
+      <small>Aclaraciones</small>
+  </div>
+</div>
 
 {{if 'message' in globals():}}
 <h2>{{=message}}</h2>
@@ -29,3 +58,6 @@
 </div>
 -->
 {{end}}
+
+
+
