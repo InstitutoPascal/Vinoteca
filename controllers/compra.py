@@ -160,13 +160,13 @@ def impactarCompra(idVenta,importe,form):
             #print zonaDomicilio
             venta.costoEntrega = zonaDomicilio.zona.precio
             venta.importeTotal = importe + zonaDomicilio.zona.precio
-            #venta.estado = "Pendiente confirmar fecha"
+            venta.estado = "Pendiente confirmar fecha"
         elif formaEntrega == 'Retira en local':
             venta.importeTotal = importe
-            #venta.estado = "Retira"
+            venta.estado = "Retira"
         else:
             venta.importeTotal = importe
-            #venta.estado = "Finalizado"
+            venta.estado = "Espera acuerdo"
 
         venta.update_record()
         #print venta
@@ -195,7 +195,7 @@ def listadoCompras():
             Field('fechaHasta','date', label='Fecha hasta:', default=None),
             Field('estado','string', label='Estado:', default=None, requires=IS_EMPTY_OR(IS_IN_SET(["Pendiente", "Finalizado",
                                                                                                     "Pendiente confirmar fecha",
-                                                                                                    "Delivery", "Retira", "Entergado"]))),
+                                                                                                    "Delivery", "Retira", "Entregado"]))),
             submit_button='Buscar')
 
     if form.process().accepted:

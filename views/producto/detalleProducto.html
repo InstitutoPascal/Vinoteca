@@ -74,13 +74,13 @@
 {{if right_sidebar_enabled:}}
 
     {{block right_sidebar}}
-    <div class="panel panel-success" style="width:155%">
-      <div class="panel-heading ">
+    <div class="panel panel-success" style="width:155%;">
+      <div class="panel-heading">
           <h5 style="text-align:center;">Carrito de Compra</h5>
       </div>
       <div class="panel-body">
           <div class="small-buy">
-              <table style="width:100%">
+              <table style="width:100%;">
                   <tr style="text-align:center;">
                           <td><b>Producto</b></td>
                           <td><b>Cantidad</b></td>
@@ -110,8 +110,7 @@
       </div>
       <ul class="list-group">
          <li class="list-group-item">{{=A(T("Ver detalles / Finalizar "), _href=URL('compra', 'detalleCompraCliente/%s'%idVenta))}}</li>
-        <!--li class="list-group-item">{{=A(T("Cancelar compra"), _href=URL('compra', 'cancela/%s'%idVenta), _click='return confirm("¿Desea cancelar la compra?");')}}</li-->
-          <li class="list-group-item">{{=A(T("Cancelar compra"), _href=URL('compra', 'cancela/%s'%idVenta))}}</li>
+         <li class="list-group-item">{{=A(T("Cancelar compra"), _href=URL('compra', 'cancela/%s'%idVenta), _onclick="javascript:return confirm('Desea eliminar la venta?');")}}</li>
       </ul>
     </div>
     {{end}}
