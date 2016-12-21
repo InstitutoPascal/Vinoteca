@@ -24,7 +24,8 @@ db.define_table('evento',
     Field('hora', 'time', label=T('Horario')),
     Field('duracion', 'decimal(2,2)', label=T('Duración')),
     Field('direccion', 'string', label=T('Dirección')),
-    Field('precio', 'decimal(4,2)', label=T('Precio')),
+    Field('precio', 'string', label=T('Precio')),
+    Field('imagen', 'upload', label=T('Imagen')),
     )
 db.evento.nombre.requires = [IS_NOT_EMPTY(error_message='Falta ingresar el nombre'),
                              IS_NOT_IN_DB(db, 'evento.nombre', error_message=' Ya existe ')]
