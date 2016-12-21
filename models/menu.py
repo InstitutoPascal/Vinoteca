@@ -1,4 +1,4 @@
-response.logo = A(IMG(_src=URL('static', 'images/BukinoLogo.jpg'), _href=URL('default', 'index'), _class="" ))
+response.logo = A(IMG(_src=URL('static', 'images/BukinoLogo.jpg')), _href=URL('default', 'index'))
 response.title = request.application.replace('_', 'Bukino').title()
 response.subtitle = ''
 

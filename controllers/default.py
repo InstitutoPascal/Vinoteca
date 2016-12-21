@@ -10,10 +10,12 @@
 
 
 def index():
-    vino = db(db.producto.categoria == 3).select(orderby=db.producto.id).last()
-    cofre = db(db.producto.categoria == 6).select(orderby=db.producto.id).last()
-    espumante = db(db.producto.categoria == 4).select(orderby=db.producto.id).last()
-    accesorio = db(db.producto.categoria == 1).select(orderby=db.producto.id).last()
+    productos = [
+        db(db.producto.categoria == 3).select(orderby=db.producto.id).last(),
+        db(db.producto.categoria == 6).select(orderby=db.producto.id).last(),
+        db(db.producto.categoria == 4).select(orderby=db.producto.id).last(),
+        db(db.producto.categoria == 1).select(orderby=db.producto.id).last()
+    ]
 
     evento = db(db.evento.id > 0).select(orderby=db.evento.id).last()
     promo = db(db.promocion.id > 0 ).select(orderby=db.promocion.id).last()
