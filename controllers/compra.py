@@ -18,7 +18,7 @@ def impactarProducto():
                 session.flash = 'El articulo ya se encuentra en el carrito. Se actualizó la cantidad requerida.'
             else:
                 resultadoDet = db.detalleVenta.insert(idVenta = ventaVigente, idProducto = producto, cantidad = cantidad)
-                if resultadoDet != None:
+                if resultadoDet is not None:
                     print 'insertó'
                     session.flash = 'Artículo agregado al carrito de compra.'
             redirect(URL('producto', 'productosListados/%s'%categoria ))
@@ -27,9 +27,9 @@ def impactarProducto():
             print 'no tiene venta vigente'
             resultado = db.venta.insert(idCliente = auth.user.id, estado = 'Pendiente')
             print resultado
-            if resultado  != None:
+            if resultado  is not None:
                 resultadoDet = db.detalleVenta.insert(idVenta = resultado, idProducto = producto, cantidad = cantidad)
-                if resultadoDet  != None:
+                if resultadoDet  is not None:
                     print 'insertó'
                     session.flash = 'Artículo agregado al carrito de compra.'
                 else:
@@ -58,9 +58,9 @@ def validateDomicilio(form):
     formaEntrega = form.vars.formaEntrega
     domiEntrega = form.vars.idDomicilio
 
-    if formaEntrega == None:
+    if formaEntrega is None:
         form.errors.formaEntrega = "Debe seleccionar una forma de entrega."
-    if (formaEntrega == "Entrega a domicilio") and (domiEntrega == None):
+    if (formaEntrega == "Entrega a domicilio") and (domiEntrega is None):
         form.errors.idDomicilio = "Para *Entrega a domicilio* se requiere un domicilio."
     else:
         pass
@@ -72,10 +72,10 @@ def detalleCompraCliente():
     #Inicio -Verifica si tiene algo en el carrito#
     if auth.user:
         cantDomicilio = db(db.domicilio.idCliente == auth.user.id).count()
-        if (cantDomicilio != None)&(cantDomicilio > 0 ) :
+        if (cantDomicilio is not None)&(cantDomicilio > 0 ) :
             registro = db((db.venta.id == idVenta) & (db.venta.estado == 'Pendiente')).select().first()
             #print registro
-            if registro != None:
+            if registro is not None:
                 idVenta = registro.id
                 #print registro
                 detVenta = db((db.detalleVenta.idVenta == registro.id)&(db.producto.id==db.detalleVenta.idProducto)).select()
@@ -98,7 +98,7 @@ def detalleCompraCliente():
                 form.add_button('Cancelar',
                                 "javascript:return confirmarCancelar('%s', this);"
                                 %URL('producto','productosListados/%s'
-                                     %(request.vars.idCategoria if request.vars.idCategoria != None else 1)))
+                                     %(request.vars.idCategoria if request.vars.idCategoria is not None else 1)))
                 if form.process(onvalidation=validateDomicilio).accepted:
                     impactarCompra(idVenta,importeTotal,form)
                     redirect(URL('compra', 'mostrarCompraRealizada/%s' %idVenta))
@@ -122,7 +122,7 @@ def cancela():
     #print 'Paso - Cancela compra'
     idVenta = request.args[0]
     #print idVenta
-    db(db.detalleVenta.idVenta== idVenta).delete()
+    db(db.detalleVenta.idVenta == idVenta).delete()
     db(db.venta.id == idVenta).delete()
     redirect(URL('producto', 'productosListados/1' ))
     return locals()
@@ -212,7 +212,7 @@ def listadoCompras():
                             links = [dict(header=' ',body=lambda row: A('Ver detalle',_class="button btn btn-default",
                                                                         _href=URL('compra','mostrarCompraRealizada/%s'%row.id) ))])
     else:
-        grid = SQLFORM.grid(((db.venta.idCliente == auth.user.id)&(db.venta.formaEntrega != None)),
+        grid = SQLFORM.grid(((db.venta.idCliente == auth.user.id)&(db.venta.formaEntrega is not None)),
                             create = False,
                             deletable = False,
                             editable=False,

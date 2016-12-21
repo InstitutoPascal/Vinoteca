@@ -33,13 +33,13 @@ def listarDirecciones():
             csv = False
         )
         url = None
-        if request.vars.volver != None:
+        if request.vars.volver is not None:
             url = request.vars.volver
         else:
-            if request.env.http_referer != None and request.env.http_host != None:
+            if request.env.http_referer is not None and request.env.http_host is not None:
                 url = request.env.http_referer
         agregar = A(T('Agregar'), _href=URL('agregarDireccion/%s'%auth.user.id, vars=dict(volver=url)), _class='btn btn-primary')
-        volver = A(T('Volver'), _href=url, _class='w2p-form-button btn btn-default') if url != None else ''
+        volver = A(T('Volver'), _href=url, _class='w2p-form-button btn btn-default') if url is not None else ''
     return locals()
 
 @auth.requires_login()
@@ -70,7 +70,7 @@ def agregarDireccion():
             session.flash = T('Se ingreso una direccion con exito')
             form.vars.idCliente = auth.user.id
             id = db.domicilio.insert(**db.domicilio._filter_fields(form.vars))
-            redirect(URL('listarDirecciones',vars=dict(volver=request.vars.volver) if request.vars.volver != None else None))
+            redirect(URL('listarDirecciones',vars=dict(volver=request.vars.volver) if request.vars.volver is not None else None))
         else:
             response.flash = T('ingrese los campos requeridos.')
 

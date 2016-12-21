@@ -34,7 +34,7 @@ def index():
                                      dict(header=' ',body=lambda row: A('Modificar',_class="button btn btn-default",
                                                                         _href=URL('venta','editarVenta/%s'%row.id) ))])
     else:
-        grid = SQLFORM.grid((db.venta.formaEntrega != None),
+        grid = SQLFORM.grid((db.venta.formaEntrega is not None),
                             create = False,
                             deletable = False,
                             editable=False,
@@ -77,7 +77,24 @@ def editarVenta():
     importeTotal = 0
     for row in detVenta:
         importeTotal += (row.detalleVenta.cantidad * row.producto.precioVenta)
-
-    formVenta = SQLFORM(db.venta, idVenta)
-
+    venta = db.venta(idVenta)
+    #consultaCombo = db.domicilio.idCliente == venta.idCliente
+    form = SQLFORM(db.venta, venta)#,ignore_rw=True)
+    #form.vars.idDomicilio.requires=IS_EMPTY_OR(IS_IN_DB(db(consultaCombo), db.domicilio.id,'%(calle)s - %(numero)s - %(idZona)s'))
+    #print venta.idDomicilio
+    if form.process().accepted:
+        if form.vars.fechaEntrega is not None:
+            #envio mail
+            response.flash = "Modificado correctamente"
+            redirect(URL('venta', 'index'))
+        else:
+            response.flash = "Modificado correctamente"
+            redirect(URL('venta', 'index'))
+    elif form.errors:
+        response.flash=' Complete el formulario '
+    else:
+        pass
+    form.add_button('Eliminar venta',"javascript:return confirmarCancelar('%s', this);"
+                    %URL('producto','productosListados/%s' %(request.vars.idCategoria if request.vars.idCategoria is not None else 1)))
+    form.add_button('Cancelar', "javascript:return confirmarCancelar('%s', this);"%URL('venta','index'))
     return locals()

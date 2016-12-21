@@ -1,5 +1,4 @@
-response.logo = A(IMG(_src=URL('static', 'images/BukinoLogo.jpg'), _href=URL('default', 'index'),
-                      _class=("navbar-brand"if auth.has_membership(role="Desarrollador") else "" )))
+response.logo = A(IMG(_src=URL('static', 'images/BukinoLogo.jpg')), _href=URL('default', 'index'))
 response.title = request.application.replace('_', 'Bukino').title()
 response.subtitle = ''
 

@@ -40,26 +40,27 @@ db.domicilio.otros.represent = lambda v, r: '' if v is None else v
 ############################################################################################################################
 #ventas basico  db.tabla.campo.default = auth.user_id if auth.user else 0
 db.define_table("venta",
-    Field("idCliente", 'reference auth_user', label=T('Cliente Nro')),
-    Field("fechaPedido","datetime", default=request.now, label=T('Fecha Pedido') ),
+    Field("idCliente", 'reference auth_user', writable=False, readable=True, label=T('Cliente Nro')),
+    Field("fechaPedido","datetime", writable=False, readable=True, default=request.now, label=T('Fecha Pedido') ),
     Field("formaPago", 'reference formaPago',  label=T('Forma de pago') ),
     Field("importeTotal","string", label=T('Importe Total') ),
     Field("formaEntrega", 'string',  label=T('Forma de entrega') ),
-    Field("fechaEntrega","datetime", default=request.now, update=request.now, writable=False, label=T('Fecha Pedido') ),
+    Field("fechaEntrega","datetime", default=None, label=T('Fecha Pedido') ),
     Field("costoEntrega", 'integer',  label=T('Costo de entrega') ),
     Field("idDomicilio", "reference domicilio", label=T('Domicilio')),
     Field("estado","string", label=T('Estado') ),
+    Field("comentario", 'text',  label=T('Comentarios:') ),
     format = '%(id)s  - %(idCliente)s - %(fechaPedido)s ')
 
 db.venta.idCliente.requires = IS_IN_DB(db, 'auth_user.id','%(first_name)s - %(last_name)s')
 db.venta.formaPago.requires = IS_EMPTY_OR(IS_IN_DB(db, 'formaPago.id',' %(descripcion)s '))
 db.venta.id.label ='Número'
-db.venta.formaEntrega.requires= IS_EMPTY_OR(IS_IN_SET(["Acordar con el vendedor","Entrega a domicilio"]))
+db.venta.formaEntrega.requires= IS_EMPTY_OR(IS_IN_SET(["Acordar con el vendedor", "Entrega a domicilio", "Retira en local"]))
 db.venta.idDomicilio.requires = IS_EMPTY_OR([IS_IN_DB(db, 'domicilio.id', '%(calle)s - %(numero)s - %(idZona)s')])
 db.venta.estado.requires= IS_IN_SET(["Pendiente", "Finalizado", "Pendiente confirmar fecha", "Delivery", "Retira", "Entergado", "Algo fallo"])
 db.venta.costoEntrega.represent = lambda v, r: '' if v is None else v
-db.venta.idDomicilio.represent = lambda v, r: '' if v is None else v
-
+db.venta.fechaEntrega.represent = lambda v, r: '' if v is None else v
+db.venta.comentario.represent = lambda v, r: '' if v is None else v
 
 #Detalle ventas
 db.define_table("detalleVenta",

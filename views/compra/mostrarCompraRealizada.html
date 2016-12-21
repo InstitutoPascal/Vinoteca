@@ -32,7 +32,7 @@
           <td><b>Precio*Unidad</b></td>
           <td><b>Precio</b></td>
   </tr>
-  {{if detVenta != None:}}
+  {{if detVenta is not None:}}
       {{for row in detVenta:}}
       <tr>
           <td>{{=row.producto.nombre}} </td>
@@ -61,13 +61,12 @@
 
 
 <div>
-{{if formVenta.custom.widget.formaEntrega != None:}}
+{{if formVenta.custom.widget.formaEntrega is not None:}}
     <div class="static"><b>Forma de entrega</b> {{=formVenta.custom.widget.formaEntrega}}</div>
-    {{if formVenta.custom.widget.idDomicilio != None:}}
     <div class="static"><b>Domicilio </b>{{=formVenta.custom.widget.idDomicilio}}</div>
-    {{if formVenta.custom.widget.costoEntrega == None:}}
+    {{if formVenta.custom.widget.costoEntrega is None:}}
     <div class="static"><b>Costo de entrega </b>{{=formVenta.custom.widget.costoEntrega}}</div>
-    {{pass}}
+
     {{pass}}
     <div class="static"><b>Fecha Entrega </b>{{=formVenta.custom.widget.fechaEntrega}}</div>
     </div>
@@ -76,7 +75,7 @@
     <div class="static"><b>Forma de pago </b>{{=formVenta.custom.widget.formaPago}}</div>
     <div class="static"><b>Importe Total </b>{{=formVenta.custom.widget.importeTotal}}</div>
     </div>
-    {{if formVenta.custom.widget.idDomicilio != None:}}
+    {{if formVenta.custom.widget.idDomicilio is not None:}}
         <b>Importante=</b> Se revisará el pedido y se informará vía mail el día en que será entregado.
     {{else:}}
         <b>Importante=</b> comuniquese con nostros para arreglar la entrega o informarnos cuando pasará a retirar el pedido para tenerlo preparado.

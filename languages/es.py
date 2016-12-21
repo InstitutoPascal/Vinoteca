@@ -183,6 +183,7 @@
 'Cliente Nro ': 'Cliente Nro ',
 'Close': 'Cerrar',
 'Cofres': 'Cofres',
+'Comentarios:': 'Comentarios:',
 'Comma-separated export including columns not shown; fields from other tables are exported as raw values for faster export': 'Comma-separated export including columns not shown; fields from other tables are exported as raw values for faster export',
 'Comma-separated export of visible columns. Fields from other tables are exported as they appear on-screen but this may be slow for many rows': 'Comma-separated export of visible columns. Fields from other tables are exported as they appear on-screen but this may be slow for many rows',
 'Community': 'Comunidad',

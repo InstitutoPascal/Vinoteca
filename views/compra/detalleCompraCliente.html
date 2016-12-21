@@ -8,7 +8,7 @@
           <td><b>Precio*Unidad</b></td>
           <td><b>Precio</b></td>
   </tr>
-  {{if detVenta != None:}}
+  {{if detVenta is not None:}}
       {{for row in detVenta:}}
       <tr>
           <td>{{=row.producto.nombre}} </td>
