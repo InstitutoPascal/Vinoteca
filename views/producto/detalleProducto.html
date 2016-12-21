@@ -2,12 +2,14 @@
 {{extend 'layout.html'}}
 <style>
     div.static {
-            width: 200px;
+            width: 300px;
             padding: 20px;
             display: inline-block;
             vertical-align:top;
-        }
+            text-align: left;
+    }
     div.contenedor{
+        width: 800px;
         padding: 20px;
         text-align:center;
     }
@@ -30,7 +32,7 @@
 
 
         <div class="static">
-            <div class="row">
+            <div>
               {{if categoria=='3' :}}
                   <div>
                       <div><h4><span>{{=producto.nombre}}</span></h4></div>
@@ -56,11 +58,15 @@
                   <form action="{{=URL('compra','impactarProducto')}}" >
                       <input type="hidden" name="idProducto" value= "{{=producto.id}}" />
                       <input type="hidden" name="categoria" value= "{{=categoria}}" />
-                      <input type="number" id="cantidad" name="cantidad" min="0" max="{{=producto.cantidad}}" required />
-                      <input type="submit" value="Agregar al Carrito" class="btn btn-primary" />
+                      <div style="padding: 10px;">
+                          <input type="number" id="cantidad" name="cantidad" min="1" max="{{=producto.cantidad}}" required />
+                      </div>
+                      <div>
+                          <input type="submit" value="Agregar al Carrito" class="btn btn-primary" />
+                          {{=A('Volver', _href=URL('productosListados/%s' %categoria), _class="w2p-form-button btn btn-default" )}}
+                      </div>
                   </form>
                   {{pass}}
-                  {{=A('Volver', _href=URL('productosListados/%s' %categoria), _class="w2p-form-button btn btn-default" )}}
               </div>
             </div>
         </div>
@@ -74,13 +80,13 @@
 {{if right_sidebar_enabled:}}
 
     {{block right_sidebar}}
-    <div class="panel panel-success" style="width:155%">
-      <div class="panel-heading ">
+    <div class="panel panel-success" style="width:150%;padding: 10px;">
+      <div class="panel-heading">
           <h5 style="text-align:center;">Carrito de Compra</h5>
       </div>
       <div class="panel-body">
           <div class="small-buy">
-              <table style="width:100%">
+              <table style="width:100%;">
                   <tr style="text-align:center;">
                           <td><b>Producto</b></td>
                           <td><b>Cantidad</b></td>
@@ -110,8 +116,7 @@
       </div>
       <ul class="list-group">
          <li class="list-group-item">{{=A(T("Ver detalles / Finalizar "), _href=URL('compra', 'detalleCompraCliente/%s'%idVenta))}}</li>
-        <!--li class="list-group-item">{{=A(T("Cancelar compra"), _href=URL('compra', 'cancela/%s'%idVenta), _click='return confirm("¿Desea cancelar la compra?");')}}</li-->
-          <li class="list-group-item">{{=A(T("Cancelar compra"), _href=URL('compra', 'cancela/%s'%idVenta))}}</li>
+         <li class="list-group-item">{{=A(T("Cancelar compra"), _href=URL('compra', 'cancela/%s'%idVenta), _onclick="javascript:return confirm('Desea eliminar la venta?');")}}</li>
       </ul>
     </div>
     {{end}}

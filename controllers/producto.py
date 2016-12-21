@@ -109,7 +109,7 @@ def detalleProducto():
                 for row in detVenta:
                     importeTotal += (row.detalleVenta.cantidad * row.producto.precioVenta)
 
-                print 'Importe Total:'+ str(importeTotal)
+                #print 'Importe Total:'+ str(importeTotal)
         #FIN - Verifica si tiene algo en el carrito#
 
     except Exception as blumba:

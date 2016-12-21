@@ -10,13 +10,19 @@
     form div{
         display: inline-block;
         color: darkviolet;
+        padding: 10px;
+
+    }
+    #submit_record__row input{
+        vertical-align: top;
     }
 </style>
 
 {{block header}}
 
-    <h1>{{=titulo}}</h1>
-    {{=form}}
+<h1>{{=titulo}}</h1>
+{{=form}}
+
 {{end}}
 
 <div style="width:100%;text-align:center;">
@@ -60,7 +66,7 @@
 {{if right_sidebar_enabled:}}
 
     {{block right_sidebar}}
-    <div class="panel panel-success" style="width:155%">
+    <div class="panel panel-success" style="width:150%;padding: 10px;">
       <div class="panel-heading ">
           <h5 style="text-align:center;">Carrito de Compra</h5>
       </div>
@@ -91,9 +97,7 @@
       </div>
       <ul class="list-group">
         <li class="list-group-item">{{=A(T("Ver detalles / Finalizar "), _href=URL('compra', 'detalleCompraCliente/%s'%idVenta, vars=dict(idCategoria=categoria)))}}</li>
-        <li class="list-group-item">{{=A(T("Cancelar COMPRA"), _href=URL('compra', 'cancela/%s'%idVenta), _click="javascript:return confirm('Desea eliminar la venta?');")}}</li>
-
-          <li class="list-group-item">{{=A(T("Cancelar compra"), _href=URL('compra', 'cancela/%s'%idVenta))}}</li>
+        <li class="list-group-item">{{=A(T("Cancelar compra"), _href=URL('compra', 'cancela/%s'%idVenta), _onclick="javascript:return confirm('Desea eliminar la venta?');")}}</li>
       </ul>
     </div>
     {{end}}

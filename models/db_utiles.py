@@ -124,7 +124,6 @@ def armarQuery(form, categoria):
         #print '1 - ' + form.vars.nombre
         #print '2 - ' + form.vars.precioMenor
         #print '3 - ' + form.vars.precioMayor
-        #, , 
 
         if form.vars.nombre != '':
             query = (db.producto.nombre.like('%'+form.vars.nombre+'%'))
@@ -210,7 +209,30 @@ def armarQueryVentas(form):
         else:
             pass
 
-        query = isNoneConcat(query, (db.venta.formaEntrega is not None))
+        query = isNoneConcat(query, (db.venta.formaEntrega is not None) & (db.venta.estado != "Entregado"))
+        #print query
+    except Exception as blumba:
+        print blumba
+    return query
+
+
+def armarQueryReporte(form):
+    try:
+        query=None
+
+        if form.vars.cliente is not None:
+            query = (db.venta.idCliente == form.vars.cliente)
+
+        if form.vars.fechaDesde != '' and form.vars.fechaHasta != '':
+            query = isNoneConcat(query,(db.venta.fechaPedido >= form.vars.fechaDesde) & (db.venta.fechaPedido <= form.vars.fechaHasta))
+        elif form.vars.fechaDesde != '':
+            query = isNoneConcat(query,(db.venta.fechaPedido >= form.vars.fechaDesde))
+        elif form.vars.fechaHasta != '':
+            query = isNoneConcat(query,(db.venta.fechaPedido <= form.vars.fechaHasta))
+        else:
+            pass
+
+        query = isNoneConcat(query, (db.venta.estado == "Entregado"))
         #print query
     except Exception as blumba:
         print blumba

@@ -1,6 +1,5 @@
 <html>
     <head>
-        <title></title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <style>
             .firma {
@@ -10,20 +9,18 @@
                 bottom: 0;
                 height: 50px;
                 width: 50%;
+
             }
         </style>
     </head>
     <body>
-        Estimado {{=usuario.first_name}},
-        <p>Le informamos que contamos con un nuevo evento.
+        <h4>Pedido procesado!</h4>
+        <p>Hola {{=nombre}}</p>
+        <p class='letter'>El pedido número {{=numero}} del día {{=fechaPedido}} ha sido procesado.
+         El mismo será entregado el día {{=fechaEntrega}} en el rango de 14 a 18 hs.<br />
+        Cualquier inconveniente no dude en comunicarse con nosotros.
+        Desde ya muchas gracias y esperamos disfrute mucho los productos comprados.</p>
 
-            Nombre: <br />{{=informa.nombre}}
-            Detalles: <br />{{=informa.caracteristicas}}
-            Requisitos: <br />{{=informa.requisitos}}
-            Fecha:  <br />{{=informa.fecha}}
-            Hora:  <br />{{=informa.hora}}
-            Duracion estimada: <br />{{=informa.duracion}}
-        </p>
         <p>Saluda atentamente</p>
         <div class='firma'>
             Bukino Vinoteca <br />

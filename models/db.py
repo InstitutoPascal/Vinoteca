@@ -67,7 +67,7 @@ auth.settings.password_min_length = 6
 # configure email
 # -------------------------------------------------------------------------
 mail = auth.settings.mailer
-mail.settings.server = 'logging'#myconf.get('smtp.server')#
+mail.settings.server = myconf.get('smtp.server')#'logging'#
 mail.settings.sender = myconf.get('smtp.sender')
 mail.settings.login = myconf.get('smtp.login')
 mail.settings.tls = myconf.get('smtp.tls') or False

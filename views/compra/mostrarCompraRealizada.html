@@ -63,12 +63,16 @@
 <div>
 {{if formVenta.custom.widget.formaEntrega is not None:}}
     <div class="static"><b>Forma de entrega</b> {{=formVenta.custom.widget.formaEntrega}}</div>
-    <div class="static"><b>Domicilio </b>{{=formVenta.custom.widget.idDomicilio}}</div>
-    {{if formVenta.custom.widget.costoEntrega is None:}}
-    <div class="static"><b>Costo de entrega </b>{{=formVenta.custom.widget.costoEntrega}}</div>
-
+    {{if formVenta.custom.widget.idDomicilio is not None:}}
+        <div class="static"><b>Domicilio </b>{{=formVenta.custom.widget.idDomicilio}}</div>
     {{pass}}
-    <div class="static"><b>Fecha Entrega </b>{{=formVenta.custom.widget.fechaEntrega}}</div>
+    {{if formVenta.custom.widget.costoEntrega > 0:}}
+        <div class="static"><b>Costo de entrega </b>{{=formVenta.custom.widget.costoEntrega}}</div>
+    {{pass}}
+
+    {{if formVenta.custom.widget.costoEntrega != None:}}
+        <div class="static"><b>Fecha Entrega </b>{{=formVenta.custom.widget.fechaEntrega}}</div>
+    {{pass}}
     </div>
 
     <div>

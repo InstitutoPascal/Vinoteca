@@ -58,30 +58,35 @@
 </table>
 
 </div>
-
-{{if formVenta.custom.widget.formaEntrega is not None:}}
-
+    {{if formVenta.custom.widget.formaEntrega is not None:}}
     <div>
         <div class="static"><b>Forma de entrega</b> {{=formVenta.custom.widget.formaEntrega}}</div>
         {{if formVenta.custom.widget.idDomicilio is not None:}}
-        <div class="static"><b>Domicilio </b>{{=formVenta.custom.widget.idDomicilio}}</div>
-        <div class="static"><b>Costo de entrega </b>{{=formVenta.custom.widget.costoEntrega}}</div>
+            <div class="static"><b>Domicilio </b>{{=formVenta.custom.widget.idDomicilio}}</div>
         {{pass}}
-        <div class="static"><b>Fecha Entrega </b>{{=formVenta.custom.widget.fechaEntrega}}</div>
+        {{if formVenta.custom.widget.costoEntrega > 0:}}
+            <div class="static"><b>Costo de entrega </b>{{=formVenta.custom.widget.costoEntrega}}</div>
+        {{pass}}
+
+        {{if formVenta.custom.widget.costoEntrega != None:}}
+            <div class="static"><b>Fecha Entrega </b>{{=formVenta.custom.widget.fechaEntrega}}</div>
+        {{pass}}
     </div>
 
     <div>
-        <div class="static"><b>Comentario </b>{{=formVenta.custom.widget.Comentario}}</div>
+    <div class="static"><b>Forma de pago </b>{{=formVenta.custom.widget.formaPago}}</div>
+    <div class="static"><b>Importe Total </b>{{=formVenta.custom.widget.importeTotal}}</div>
     </div>
-
-    <div>
-        <div class="static"><b>Forma de pago </b>{{=formVenta.custom.widget.formaPago}}</div>
-        <div class="static"><b>Importe Total </b>{{=formVenta.custom.widget.importeTotal}}</div>
-    </div>
-
+    {{if formVenta.custom.widget.idDomicilio is not None:}}
+        <b>Importante=</b> Se revisará el pedido y se informará vía mail el día en que será entregado.
+    {{else:}}
+        <b>Importante=</b> comuniquese con nostros para arreglar la entrega o informarnos cuando pasará a retirar el pedido para tenerlo preparado.
+    {{pass}}
 {{pass}}
 
 {{=formVenta.custom.end}}
+
+
 
 
 
