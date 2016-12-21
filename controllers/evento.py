@@ -25,7 +25,7 @@ def agregar():
 def listado():
     from datetime import date
     date = date.today()
-    eventos = db(db.evento.fecha<date).select()
+    eventos = db(db.evento).select(orderby=~db.evento.fecha)
     return locals()
 
 def detalle():

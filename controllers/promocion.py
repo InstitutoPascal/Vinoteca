@@ -67,7 +67,7 @@ def agregar():
 
 def listado():
     from datetime import datetime
-    promociones = db(db.promocion.fechaDesde>datetime.today()).select()
+    promociones = db(db.promocion).select(orderby=~db.promocion.fechaDesde)
     return locals()
 
 def detalle():
