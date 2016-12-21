@@ -1,4 +1,3 @@
-{{left_sidebar_enabled,right_sidebar_enabled=False,('message' in globals())}}
 {{extend 'layout.html'}}
 <div class="bloque center">
     {{for producto in productos:}}
@@ -12,52 +11,13 @@
   {{pass}}
 </div>
 <div class="bloque center">
-  <div class="promo" onclick="window.location='#'">
-      <h4><span>evento</span></h4>
-      <small>Aclaraciones</small>
+    {{for producto in productos2:}}
+  <div class="promo" onclick="window.location='{{=URL('producto','/detalleProducto/%s/%s'%(producto.id,producto.categoria))}}'">
+      <div class="title"><h4><span>{{=producto.nombre}}</span></h4></div>
+      <figure class="contenedor" >
+      <img src="{{=URL('producto','admin/download/%s'%producto.imagen)}}" width="150px" alt="{{=producto.descripcion}}" />
+      </figure>
+      <div><b><i>${{=producto.precioVenta}}</i></b></div>
   </div>
-  <div class="promo" onclick="window.location='#'">
-      <h4><span>promo</span></h4>
-      <small>Aclaraciones</small>
-  </div>
-  <div class="promo" onclick="window.location='#'">
-      <h4><span>noticia</span></h4>
-      <small>Aclaraciones</small>
-  </div>
-  <div class="promo" onclick="window.location='#'">
-      <h4><span>noticia/alertaDireccion</span></h4>
-      <small>Aclaraciones</small>
-  </div>
+  {{pass}}
 </div>
-
-{{if 'message' in globals():}}
-<h2>{{=message}}</h2>
-<p class="lead">{{=T('...')}}</p>
-<ol>
-  <li>{{=T('ver si saco esto')}}</li>
-</ol>
-{{elif 'content' in globals():}}
-{{=content}}
-{{else:}}
-{{=BEAUTIFY(response._vars)}}
-{{pass}}
-<!--
-{{block right_sidebar}}
-<div class="panel panel-info">
-  <div class="panel-heading"><h3 class="panel-title"><a class="btn-block"
-      href="{{=URL('admin','default','index')}}">
-      <i class="glyphicon glyphicon-cog"></i>
-      {{=T("admin")}}
-    </a></h3></div>
-  <div class="panel-body">
-    {{=T("Don't know what to do?")}}
-  </div>
-  <ul class="list-group">
-    <li class="list-group-item"><a href="http://web2py.com/book">{{=T('Documentation')}}</a></li>
-  </ul>
-</div>
--->
-{{end}}
-
-
-

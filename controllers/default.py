@@ -16,20 +16,29 @@ def index():
         getMax('producto',db.producto.categoria == 4),
         getMax('producto',db.producto.categoria == 1)
     ]
+    productos2 = [
+        getMax('producto',(db.producto.categoria == 3)&(db.producto.id<session.maxid)),
+        getMax('producto',(db.producto.categoria == 3)&(db.producto.id<session.maxid)),
+        getMax('producto',(db.producto.categoria == 5)),
+        getMax('producto',(db.producto.categoria == 2))
+    ]
+    evento = getMax('evento')
+    promo = getMax('promocion')
+    noticia = getMax('noticia')
+    session.maxid = None
 
-    evento = getMax('evento')#db(db.evento.id > 0).select(orderby=db.evento.id).last()
-    promo = getMax('promocion')#db(db.promocion.id > 0 ).select(orderby=db.promocion.id).last()
-    noticia = getMax('noticia')#db(db.noticia.id > 0).select(orderby=db.noticia.id).last()
-    aviso = None
     if auth.user:
         dir = db(db.domicilio.idCliente == auth.user.id).select().first()
         if dir is None:
-            aviso = 'Recuerde que para realizar el pedido online deberá cargar un domicilio'
+            response.flash = 'Recuerde que para realizar el pedido online deberá cargar un domicilio'
+            
     return locals()
 
 def getMax(tabla, query=None):
     max = db[tabla].id.max()
-    return db[tabla][db(query).select(max).first()[max]]
+    maxid = db(query).select(max).first()[max]
+    session.maxid = maxid
+    return db[tabla][maxid]
 
 def user():
     """

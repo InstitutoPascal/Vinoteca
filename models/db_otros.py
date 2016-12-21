@@ -18,9 +18,13 @@ db.define_table('evento',
     Field('nombre', 'string', required=True, notnull=True, label=T('Nombre') ),
     Field('caracteristicas', 'text', label=T('Características')),
     Field('requisitos', 'text', label=T('Requisitos')),
+    Field('detalle', 'text', label=T('Detalle')),
     Field('fecha', 'date', label=T('Fecha')),
+    Field('fecha_fin', 'date', label=T('Fecha final')),
     Field('hora', 'time', label=T('Horario')),
     Field('duracion', 'decimal(2,2)', label=T('Duración')),
+    Field('direccion', 'string', label=T('Dirección')),
+    Field('precio', 'decimal(4,2)', label=T('Precio')),
     )
 db.evento.nombre.requires = [IS_NOT_EMPTY(error_message='Falta ingresar el nombre'),
                              IS_NOT_IN_DB(db, 'evento.nombre', error_message=' Ya existe ')]

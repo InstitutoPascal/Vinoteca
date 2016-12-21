@@ -78,28 +78,6 @@ def envioMail(tipoMail=None, id = None):
         print 'listo'
     return None
 
-###############################################################################################################
-def getModal(id, titulo, mensaje, textoAccion):
-    return '''
-<div class="modal fade" id="%s" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">%s</h4>
-            </div>
-            <div class="modal-body">
-                %s
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                <a class="btn btn-danger btn-ok" data-dismiss="modal" >%s</a>
-            </div>
-        </div>
-    </div>
-</div>
-    '''%(id,titulo,mensaje,textoAccion)
-
 def setSuscripcion(suscribir):
     resultado = ''
 
@@ -185,19 +163,6 @@ def tieneVentaVigente(user):
         print blumba
     return tiene
 
-# def enviarEmail(contexto, template, destino, mensaje = None, formatoFecha=None):
-#     try:
-#         if mensaje is not None:
-#             contexto.mensaje = mensaje
-#         message = response.render(template, contexto)
-#         result = mail.send(to=destino, subject=motivo, message=message, headers=dict(contentType='text/html; charset="UTF-8"'))
-#         if result:
-#             print 'Email enviado'
-#         else:
-#             print 'No se pudo enviar el email'
-#     except Exception as e:
-#         print 'Ocurrio un error al enviar el email: %s '%e
-
 ######## lista de compras ###########################
 
 def armarQueryCompra(form, idUser):
@@ -272,3 +237,42 @@ def armarQueryReporte(form):
     except Exception as blumba:
         print blumba
     return query
+
+
+def event_ins(nom,car,req,det,fe,fin,hora,dura,dir):
+    db.evento.insert(
+		nombre='%s'%nom,
+	    caracteristicas='%s'%car,
+	    requisitos='%s'%req,
+	    detalle='%s'%det,
+	    fecha='%s'%fe,
+	    fecha_fin='%s'%fin,
+	    hora='%s'%hora,
+	    duracion='%s'%dura,
+	    direccion='%s'%dir
+    )
+    return True
+
+def noti_ins(tit,cop,cue,aut,fec,fold,ima):
+    db.noticia.insert(
+        titulo='%s'%tit,
+        copete='%s'%cop,
+        cuerpo='%s'%cue,
+        autor='%s'%aut,
+        fecha='%s'%fec,
+        imagen=open('%s\%s'%(fold,ima), 'rb')
+    )
+    return True
+
+def prom_ins(pro,por,des,let,dde,has,prd,var):
+    db.promocion.insert(
+        promo='%s'%pro,
+        porcentaje='%s'%por,
+        descripcion='%s'%des,
+        letraChica='%s'%let,
+        fechaDesde='%s'%dde,
+        fechaHasta='%s'%has,
+        producto='%s'%prd,
+        varietal='%s'%var
+    )
+    return True

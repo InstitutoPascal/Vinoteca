@@ -75,7 +75,7 @@ db.define_table('promocion',
     Field('letraChica', 'string', label=T('Lectra chica')),
     Field('fechaDesde', 'date', label=T('Fecha desde')),
     Field('fechaHasta', 'date', label=T('Fecha hasta')),
-    Field('producto', 'string', label=T('Producto'), default=None),
+    Field('producto', 'reference producto', label=T('Producto'), default=None),
     Field('varietal', 'reference varietal', label=T('Varietal'), default=None),
     )
 db.promocion.promo.requires = [IS_NOT_EMPTY(error_message=' Falta ingresar la promo'),
