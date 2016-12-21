@@ -27,11 +27,11 @@ def index():
     noticia = getMax('noticia')
     session.maxid = None
 
-    aviso = None
     if auth.user:
         dir = db(db.domicilio.idCliente == auth.user.id).select().first()
         if dir is None:
-            aviso = 'Recuerde que para realizar el pedido online deberá cargar un domicilio'
+            response.flash = 'Recuerde que para realizar el pedido online deberá cargar un domicilio'
+            
     return locals()
 
 def getMax(tabla, query=None):
