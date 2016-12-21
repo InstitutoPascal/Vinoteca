@@ -61,13 +61,19 @@ def envioMail(tipoMail=None, id = None):
         else:
             ok = False
         if ok:
-            for usuario in db(db.auth_user.novedades == True).select():
-                print 'Usuario: '+ usuario.last_name
-                context = dict(usuario=usuario,informa=db(db[tabla]._id==id).select().first())
-                mensaje = response.render(mensaje, context)
-                mail.send(to=usuario.email,
-                          subject=subject,
-                          message=mensaje)
+            i=0
+            for usuario in db(db.auth_user.novedades == True).select():#TODO descomentar
+                if i==0:
+                    print 'Usuario: '+ usuario.last_name
+                    context = dict(usuario=usuario, informa=db(db[tabla]._id==id).select().first())
+                    mensaje = response.render(mensaje, context)
+                    print mensaje
+                    mail.send(to="villan.laura@gmail.com", #usuario.email,
+                              subject=subject,
+                              message=mensaje)
+                    i+=1
+                else:
+                    pass
         else:
             print 'Llamaste a la funcion de envio de mail con una opcion no valida. chequealo antes dolobu'
     except Exception, e:
@@ -76,7 +82,7 @@ def envioMail(tipoMail=None, id = None):
         print 'sin problemas'
     finally:
         print 'listo'
-    return None
+
 
 def setSuscripcion(suscribir):
     resultado = ''

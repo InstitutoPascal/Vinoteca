@@ -3,7 +3,7 @@ def administrarUsuarios():
     grid = SQLFORM.grid(db.auth_user,
         create = False,
         deletable = False,
-        editable=True,
+        editable=False,
         details=True,
         csv = True,
         exportclasses = dict(cvs = False,
