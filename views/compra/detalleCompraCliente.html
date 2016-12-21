@@ -1,12 +1,23 @@
 {{extend 'layout.html'}}
+<style>
+    table.compra{
+        color: #FFFFFF;
+        background-color: #4CAF50;
+        width:80%;
+        border-style: solid;
+    }
+</style>
 
 <h1>Detalle de Compra</h1>
-<table style="width:80%">
+<div id="miTabla">
+
+<table class="compra">
   <tr style="text-align:center;">
           <td><b>Producto</b></td>
           <td><b>Cantidad</b></td>
           <td><b>Precio*Unidad</b></td>
           <td><b>Precio</b></td>
+          <td></td>
   </tr>
   {{if detVenta is not None:}}
       {{for row in detVenta:}}
@@ -15,6 +26,8 @@
           <td style='text-align:center;'>{{=row.detalleVenta.cantidad}}</td>
           <td style='text-align:right;'>{{=row.producto.precioVenta}}</td>
           <td style='text-align:right;'>{{=(row.producto.precioVenta*row.detalleVenta.cantidad)}}</td>
+
+              <td style='text-align:right;'>{{=A('eliminar', callback=URL('eliminar/%s/%s'%(row.detalleVenta.idProducto,row.detalleVenta.idVenta)), delete='tr', cid='miTabla')}}</td>
       </tr>
       {{pass}}
 
@@ -24,15 +37,18 @@
           <td> </td>
           <td> </td>
           <td> </td>
+          <td> </td>
       </tr>
       <tr style='text-align:right;'>
           <td> </td>
           <td> </td>
           <td><b>Total: </b></td>
           <td><b>{{=importeTotal}} </b></td>
+          <td> </td>
       </tr>
 </table>
 
+</div>
 <div style='text-align:center;width:50%;padding:50px;'>
     {{=form}}
 

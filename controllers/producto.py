@@ -68,7 +68,8 @@ def productosListados():
         Field('precioMenor','int', label='Precio desde:', default=(None if session.precioMenor is None else session.precioMenor)),
         Field('precioMayor','int', label='Precio hasta:', default=(None if session.precioMayor is None else session.precioMayor)),
         submit_button='Buscar')
-
+    #if form['_action'] == "#":
+    #    form['_action'] =''
     if form.process().accepted:
         query = armarQuery(form,categoria)
         productos = db(query).select(orderby = db.producto.precioVenta)#,limitby=limitby)
@@ -76,8 +77,6 @@ def productosListados():
     else:
         productos = db((db.producto.categoria == categoria)&(db.producto.cantidad > 0)).select(orderby = db.producto.precioVenta,limitby=limitby)
 
-    #except Exception as blumba:
-        #print blumba
     return locals()
 
 
@@ -89,9 +88,14 @@ def detalleProducto():
         filtro = request.args[0]
         categoria = request.args[1]
         producto = db(db.producto.id == filtro).select().first()
-        #print producto.varietal
-        #varietal = db(db.varietal.id == producto.varietal).select(db.varietal.tipoVarietal)
-        #print varietal.tipoVarietal
+
+        if categoria == "3":
+            varietal = db(db.varietal.id == producto.varietal).select(db.varietal.tipoVarietal).first()
+            producto.varietal = varietal.tipoVarietal
+            tipo = db(db.tipoVino.id == producto.tipo).select(db.tipoVino.tipo).first()
+            producto.tipo = tipo.tipo
+            bodega = db(db.bodega.id == producto.bodega).select().first()
+            producto.bodega = bodega.nombre
         tieneCompraVigente = False
         cantidad = 0
         precio = 0

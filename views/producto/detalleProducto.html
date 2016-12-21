@@ -39,6 +39,7 @@
                       <div>  <strong>Descripción: </strong>{{=producto.descripcion}} </div>
                       <div>  <strong>Cantidad disponible: </strong>{{=producto.cantidad}}</div>
                       <div>  <strong>Tipo: </strong>{{=producto.tipo}}</div>
+                      <div>  <strong>Varietal: </strong>{{=producto.varietal}}</div>
                       <div>  <strong>Origen: </strong>{{=producto.origen}}</div>
                       <div>  <strong>Año: </strong>{{=producto.anio}}</div>
                       <div>  <strong>Bodega: </strong>{{=producto.bodega}}</div>
@@ -61,12 +62,11 @@
                       <div style="padding: 10px;">
                           <input type="number" id="cantidad" name="cantidad" min="1" max="{{=producto.cantidad}}" required />
                       </div>
-                      <div>
                           <input type="submit" value="Agregar al Carrito" class="btn btn-primary" />
-                          {{=A('Volver', _href=URL('productosListados/%s' %categoria), _class="w2p-form-button btn btn-default" )}}
-                      </div>
+                      {{pass}}
+                      {{=A('Volver', _href=URL('productosListados/%s' %categoria), _class="w2p-form-button btn btn-default" )}}
+
                   </form>
-                  {{pass}}
               </div>
             </div>
         </div>
