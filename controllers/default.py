@@ -11,31 +11,25 @@
 
 def index():
     productos = [
-        db(db.producto.categoria == 3).select(orderby=db.producto.id).last(),
-        db(db.producto.categoria == 6).select(orderby=db.producto.id).last(),
-        db(db.producto.categoria == 4).select(orderby=db.producto.id).last(),
-        db(db.producto.categoria == 1).select(orderby=db.producto.id).last()
+        getMax('producto',db.producto.categoria == 3),
+        getMax('producto',db.producto.categoria == 6),
+        getMax('producto',db.producto.categoria == 4),
+        getMax('producto',db.producto.categoria == 1)
     ]
 
-    evento = db(db.evento.id > 0).select(orderby=db.evento.id).last()
-    promo = db(db.promocion.id > 0 ).select(orderby=db.promocion.id).last()
-    noticia = db(db.noticia.id > 0).select(orderby=db.noticia.id).last()
+    evento = getMax('evento')#db(db.evento.id > 0).select(orderby=db.evento.id).last()
+    promo = getMax('promocion')#db(db.promocion.id > 0 ).select(orderby=db.promocion.id).last()
+    noticia = getMax('noticia')#db(db.noticia.id > 0).select(orderby=db.noticia.id).last()
     aviso = None
     if auth.user:
         dir = db(db.domicilio.idCliente == auth.user.id).select().first()
         if dir is None:
             aviso = 'Recuerde que para realizar el pedido online deberá cargar un domicilio'
+    return locals()
 
-    """
-    example action using the internationalization operator T and flash
-    rendered by views/default/index.html or views/generic.html
-
-    if you need a simple wiki simply replace the two lines below with:
-    return auth.wiki()
-    """
-    #response.flash = T("Hello World")
-    return locals()#dict(message=T('Bukino'))
-
+def getMax(tabla, query=None):
+    max = db[tabla].id.max()
+    return db[tabla][db(query).select(max).first()[max]]
 
 def user():
     """
