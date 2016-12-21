@@ -4,34 +4,46 @@
         width:100%;
         text-align:center;
     }
-    .evento small {
+    .noticia small {
         font-size: 0.5em;
     }
-    .evento > div {
-        padding:50px; 
+    .noticia > div {
+        padding:15px; 
         margin: 10px;
     }
-    .evento img {
-        width: 200px;
+    .noticia img {
+        width: 100%;
         float: left;
         margin-left: 10px;
         margin-bottom: 10px;
     }
 </style>
-
+{{from datetime import datetime}}
 <h1>{{=evento.nombre}}</h1>
+<div class="noticia col-md-offset-3 col-md-6" >
 
-<div class="evento col-md-offset-3 col-md-6" >
-    <div class="col-md-12">
-        <h4><i>{{=evento.caracteristicas}} </i></h4>
-        <br />
-        <br />
-        <b>Requisitos: {{=evento.requisitos}} </b>
-        <br />
-        <div style="align-content: flex-end;">A realizarse el {{=evento.fecha}} a las {{=evento.hora}} por {{=evento.duracion}} minutos</div>
-        <div>
-            {{=volver}}
+    <div  class="col-md-12">
+        <img src="{{=URL('evento','admin/download/%s'%evento.imagen)}}" >
+    </div>
+
+    <div>
+        <div class="col-md-12">
+            <h4><i>{{=evento.caracteristicas}} </i></h4>
+            <br />
+            <br />
+            <p>{{=evento.detalle}}</p>
+            <br />
+            {{if evento.requisitos is not None:}}
+            <b>Requisitos: {{=evento.requisitos}} </b>
+            {{pass}}
+            <br />
+            <div style="align-content: flex-end;">A realizarse 
+                {{='el %s'%evento.fecha.strftime('%d/%m/%Y') if evento.fecha is not None else ''}} 
+                {{='a las %s'%evento.hora if evento.hora is not None else ''}}
+                 {{='por %s minutos'%evento.duracion if evento.duracion is not None else ''}} </div>
+            <div>
+                {{=volver}}
+            </div>
         </div>
     </div>
 </div>
-

@@ -27,6 +27,7 @@ auth = Auth(db, host_names=myconf.get('host.names'))
 service = Service()
 plugins = PluginManager()
 
+
 db.define_table(
     auth.settings.table_user_name,
     Field('first_name', label=T('Nombre/s')),

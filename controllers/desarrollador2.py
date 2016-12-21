@@ -60,556 +60,9 @@ def insertEventos():
     from datetime import datetime
     fdate='%d/%m/%Y'
     try:
-        db.evento.insert(
-        fecha=datetime.strptime('15/9/2016',fdate),
-        fecha_fin=datetime.strptime('17/9/2016',fdate),
-        precio='$250',
-        direccion='La Rural, Predio Ferial de Buenos Aires',
-        detalle='''Del 15 al 17 de septiembre, de 18 a 23hs. en el Pabellón Frers, La Rural recibe al mundo del vino en la decimosexta edición de la feria Vinos &amp; Bodegas, un clásico que se renueva cada año para brindar a los visitantes una experiencia de disfrute única. Con las nuevas propuestas de más de 40 bodegas argentinas, catas guiadas, Dj´s, food trucks y mercado gourmet, este evento se consolida como el espacio de reunión por excelencia de los amantes del vino.
-        Vinos &amp; Bodegas invita a descubrir en un mismo lugar y a través de un recorrido temático las distintas regiones productoras de vino: la ruta del Malbec, cepa emblemática de la argentina; la ruta del Torrontés, una variedad blanca autóctona con gran presencia en el norte del país; la ruta Crianza pensada para conocer y entender las distintas denominaciones que encontramos en las etiquetas; la ruta de variedades no tradicionales, que transportan al Tempranillo, la Bonarda y el Cabernet Franc y la ruta de Dulces y Espumantes, una categoría ideal para cocktails, postres y festejos. Todo un recorrido organizado por la Escuela de Sommeliers del Gato Dumas, quienes a su vez, ofrecerán catas guiadas y maridajes, a cargo de sommeliers de su staff.
-        Entre las bodegas que participan, se encuentran: Bodega Altus, Bodega Fabre, Finca Sophenia, Bodegas Bianchi, Bodega del Fin del Mundo, Casarena Bodega y Viñedos, Bodega Norton, Viña las Perdices, Domaine Bousquet, Chakana Wines, Bodega Domingo Hermano, RPB, Bodega Tapiz, Bodega Trivento, Huarpe Wine, Bodega Salentein, Bodega Santa Julia, Bodega La Memé, Antonio Mas, RJ Viñedos, Bodega Riglos, JLW Wines, Estancia Mendoza, Viñas de UCO, Pontilli Wines, Mendoza Vineyards, Don Héctor, Bodega La Rural, Bodega Patritti, Bodega Schroeder, Bodega Secreto Patagónico, Escorihuela y Grupo Monet.
-        Dentro de las novedades de esta edición se destaca el desafío Vinos &amp; Bodegas Challenge, un concurso donde los asistentes podrán puntuar los vinos que van probando y así premiar a los favoritos. Mediante catas a ciegas podrán votar los vinos agrupados en diferentes categorías (mejor cepa, mejor relación precio/calidad, mejor blend, entre otras). Desarrollado por WineOn, la propuesta invitará a los visitantes a dar su opinión acerca de cada etiqueta.
-        Los más foodies también tendrán lugar en Vinos &amp; Bodegas, con muy buenas propuestas gastronómicas de los Food Trucks de Los Petersen, Guapaletas y Chivitos Rex, entre otros. También podrán acceder al Mercado Gourmet, que ofrecerá productos orgánicos así como aquellos seleccionados especialmente para la ocasión.
-        Vinos &amp; Bodegas es un evento social cuyo objetivo es que los consumidores puedan apreciar los vinos disfrutando de sus características, aromas y sabores, junto a la oferta gastronómica del sector de food trucks. En este sentido y fomentando un consumo moderado de alcohol a través del programa Wine in Moderation, cada asistente contará con 12 cupones de degustación, disfrutando así de un consumo responsable.
-
-        Organizadores: organiza Bodegas de Argentina y realiza La Rural S.A 
-        Sede: La Rural, Predio Ferial de Buenos Aires, Pabellón Frers. 
-        Ingresos: Av. Santa Fe 4363 
-        Estacionamiento: Av. Sarmiento 2704 y Av. Cerviño 4476 
-        Días: 15, 16 y 17 de septiembre 
-        Horario: 18 a 23hs. 
-        Valor de la entrada: $250.-. (Incluye 12 copas de degustación) 
-        Más información en: www.expovinosybodegas.com.ar'''
-        ,nombre = 'JUMBO DELI & WINE 2016',caracteristicas= ' Tribuna Plaza será la sede de la tradicional Feria Jumbo Deli & Wine, que cumple su quinto año consecutivo en Buenos Aires, presentando toda la propuesta gourmet y productos premium que ofrece en sus góndolas durante todo el año. Una vez más ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_18160_default_medium.jpeg','rb'))
-        db.evento.insert(
-        fecha=datetime.strptime('29/9/2016',fdate),
-        fecha_fin=datetime.strptime('30/9/2016',fdate),
-        direccion='Sheraton Mar del Plata Hotel',
-        detalle='''Expo Di Vino, es un concepto de feria creado para cumplir, satisfacer y superar las expectativas comerciales de los expositores. Así también, fue diseñada para que toda persona del trade y el público especializado pueda disfrutar, bajo condiciones óptimas, de los mejores vinos de Argentina.'''
-        ,nombre = 'SPARKLING NIGHTS 2016',caracteristicas= ' Sparkling Nights es la única feria de la Argentina dedicada exclusivamente a los espumantes. Esta será su octava edición. Durante 3 días, 35 de las bodegas más prestigiosas de la Argentina ofrecerán a los amantes del champagne la posibilidad ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_18166_default_medium.jpeg','rb'))
-        db.evento.insert(
-        fecha=datetime.strptime('12/8/2016',fdate),
-        fecha_fin=datetime.strptime('14/8/2016',fdate),
-        direccion='"Municipalidad de Bragado. Alsina 178, Bragado."',
-        detalle='''En Agosto llega la undécima edición de la exposición de vinos más reconocida del interior del país. Una propuesta cultural, turística y enogastronómica única en la provincia de Buenos Aires. 
-        Expovinos Bragado continúa con su objetivo de acercar el mundo del vino y el buen vivir al interior del país, generando un espacio de disfrute, promoción y divulgación. Del 12 al 14 de Agosto, la undécima edición de la exposición de vinos más reconocida tendrá lugar en el Palacio Municipal de Bragado (Alsina 178, Bragado, Provincia de Buenos Aires). 
-        Durante tres días los visitantes de Expovinos Bragado podrán disfrutar de las etiquetas de más de 20 bodegas, productos gourmet, aceites de oliva, un espacio de alta gama con etiquetas Premium, un almacén de promociones con importantes descuentos, muestras de arte y más. 
-        Más información en: www.expovinosbragado.com.ar'''
-        ,nombre = 'EXPO DI VINO',caracteristicas= ' Expo Di Vino, es un concepto de feria creado para cumplir, satisfacer y superar las expectativas comerciales de los expositores. Así también, fue diseñada para que toda persona del trade y el público especializado pueda disfrutar, bajo condicione ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_18168_default_medium.jpeg','rb'))
-        db.evento.insert(
-        fecha=datetime.strptime('18/8/2016',fdate),
-        fecha_fin=datetime.strptime('19/8/2016',fdate),
-        precio='$400',
-        direccion='"The Brick Hotel Buenos Aires (Posadas 1232),"',
-        detalle='''Por primera vez, desembarca en la gran capital latinoamericana esta feria que reúne eitquetas súper top, elaboradas a partir de la sapiencia de enólogos renombrados.
-        La locación elegida es el sofisticado The Brick Hotel Buenos Aires (miembro de la colección de hoteles MGallery by Sofitel, de Accorhotels), en el corazón de Recoleta, frente al Patio Bullrich.
-        La organización estará a cargo de Augusto Saracco y César Moreno, en tándem con Javier Menajovsky (Wine Revolution).'''
-        ,nombre = 'SEMINARIO DEL VINO ONLINE',caracteristicas= ' Con contenidos de alto interés para la gestión de la comunicación y el comercio digital, el lunes 26 de septiembre, de 8.30hs. a 18.00hs. tendrá lugar el Seminario del Vino Online en el Hotel Faena de Puerto Madero. En el encuentro s ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_18176_default_medium.jpeg','rb'))
-        db.evento.insert(
-        fecha=datetime.strptime('30/6/2016',fdate),
-        fecha_fin=datetime.strptime('30/6/2016',fdate),
-        precio='$600',
-        direccion='"La Bumón (Francisco Acuña de Figueroa 1800, CABA),"',
-        detalle='''Inédito encuentro entre salientes Productores Independientes de Paraje Altamira (PiPA), que desembarcan con sus interesantísimas etiquetas en Buenos Aires. Será una excelente oportunidad para descubrir bondades y secretos de este rincón especial del Valle de Uco mendocino.
-        La propuesta contará con más de 30 vinos (partidas limitadas, súper cuidadas), cuyo valor parte de los $250. Lo más jugoso será la presencia de propietarios y winemakers, que interactuarán de manera muy distendida con el público.
-        Atención: solo hay 70 lugares disponibles. ¿Qué bodegas darán el presente? Altos las Hormigas, Chakana, Fincas Adrián Río, Finca Beth, Finca La Igriega, Finca Las Glicinas, Finca Suarez, Lupa, Son Vida, Teho y Traslapiedra.Paraje Altamira.
-        La buena noticia es que habrá un maridaje para el churrete con exquisiteces de La Bumón, la nueva apuesta gastronómica de la city.
-        Reservas: entradas@parajealtamira.org'''
-        ,nombre = 'VINOS & BODEGAS 2016',caracteristicas= ' Del 15 al 17 de septiembre, de 18 a 23hs. en el Pabellón Frers, La Rural recibe al mundo del vino en la decimosexta edición de la feria Vinos & Bodegas, un clásico que se renueva cada año para brindar a los visitantes una experiencia de disfrute ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_18177_default_medium.jpeg','rb'))
-        db.evento.insert(
-        fecha=datetime.strptime('23/11/2016',fdate),
-        fecha_fin=datetime.strptime('25/11/2016',fdate),
-        precio='$450',
-        direccion='"Tribuna Plaza, Av. Del Libertador 4401, Palermo"',
-        detalle='''Tribuna Plaza será la sede de la tradicional Feria Jumbo Deli &amp; Wine, que cumple su quinto año consecutivo en Buenos Aires, presentando toda la propuesta gourmet y productos premium que ofrece en sus góndolas durante todo el año.
-        Una vez más disfrutar es la consigna; Jumbo Deli &amp; Wine invita a quienes la visiten a sumergirse en diferentes espacios gourmet que prometen el maridaje ideal y un ambiente perfecto para vivir una experiencia única. Exquisitos vinos, deliciosos fiambres y quesos, carnes, panes, productos gourmet, cervezas, espirituosas, destilados, café y chocolates, son los sabores que se podrán degustar en la quinta edición de la Feria.
-        Datos sobre la Feria Jumbo Deli &amp; Wine
-        Fecha: 23, 24 y 25 de noviembre 
-        Lugar: Tribuna Plaza, Av. Del Libertador 4401, Palermo 
-        Horario: 18 hs. a 22 hs. 
-        Valor de la entrada: $450 
-        Más información en: www.jumbodeliandwine.com.ar'''
-        ,nombre = 'ALTA GAMA BUENOS AIRES',caracteristicas= ' Por primera vez, desembarca en la gran capital latinoamericana esta feria que reúne eitquetas súper top, elaboradas a partir de la sapiencia de enólogos renombrados. La locación elegida es el sofisticado The Brick Hotel Buenos Aires (miembro d ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_18178_default_medium.jpeg','rb'))
-        db.evento.insert(
-        fecha=datetime.strptime('26/9/2016',fdate),
-        fecha_fin=datetime.strptime('26/9/2016',fdate),
-        precio='1800',
-        direccion='Hotel Faena, Martha Salotti 445, CABA.',
-        detalle='''Con contenidos de alto interés para la gestión de la comunicación y el comercio digital,
-        el lunes 26 de septiembre, de 8.30hs. a 18.00hs. tendrá lugar el&nbsp;Seminario del Vino
-        Online en el Hotel Faena&nbsp;de Puerto Madero.
-        En el encuentro se darán a conocer los resultados de la investigación “Radiografía del
-        Vino Online en la Argentina”, realizada por Consultora Stg, que devela el perfil del
-        consumidor argentino de vinos, su comportamiento y hábitos en la web.
-        Hoy es fundamental saber a quién nos dirigimos cuando comunicamos por Internet, las
-        nuevas demandas y tendencias del mercado, como también casos exitosos de e-
-        commerce y comunicación online.&nbsp;Oradores destacados como&nbsp;Lis Clement,&nbsp;Directora
-        de la agencia Foster Newton y ex Gerente de Marketing de WofA,&nbsp;Jonny Dayán, CEO
-        de Tonel Privado,&nbsp;Sebastián Balbo, Manager de E-commerce y Marketing Digital de
-        Tonel Privado,&nbsp;Gonzalo Peña,&nbsp;¡Socio-Gerente de Oh! Panel y Master en Investigación
-        de Opinión Pública,&nbsp;Pablo Santos,&nbsp;Director del proyecto VinoApp y Gerente de
-        Marketing de Xsi Latam, y&nbsp;Dolores Lavaque, Directora de Consultora Stg y Master del
-        Wine MBA de la Bordeaux Business School, entre otros, nos ayudarán a entender en
-        detalle insights, nuevas demandas, tendencias del mercado y casos exitosos de e-
-        commerce y de comunicación online del vino.
-        Inscripción: http://www.consultorastg.com/esp/eventos'''
-        ,nombre = 'EXPOVINOS BRAGADO 2016',caracteristicas= ' En Agosto llega la undécima edición de la exposición de vinos más reconocida del interior del país. Una propuesta cultural, turística y enogastronómica única en la provincia de Buenos Aires. Expovinos Bragado continúa con su objetivo de ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_18182_default_medium.jpeg','rb'))
-        db.evento.insert(
-        fecha=datetime.strptime('4/4/2016',fdate),
-        fecha_fin=datetime.strptime('10/4/2016',fdate),
-        precio='200',
-        direccion='"Ciudad de Buenos Aires"',
-        detalle='''4 al 10 de abril, con un despliegue de diferentes actividades en la Ciudad de Buenos Aires.
-        Para asistir a esta celebración, habrá una entrada que dará acceso a todas las actividades y se hará a beneficio del Hospital de Niños Dr. Ricardo Gutiérrez, de $200, en forma anticipada, y de $250 in situ."'''
-        ,nombre = 'CAMINOS Y SABORES 2016',caracteristicas= ' Caminos y Sabores, a lo largo de sus once ediciones, se ha convertido en una de las ferias de mayor crecimiento, potenciando a su vez el desarrollo de todos sus protagonistas: productores de alimentos típicos, artesanos y representantes de destinos ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_18232_default_medium.png','rb'))
-        db.evento.insert(
-        fecha=datetime.strptime('15/2/2016',fdate),
-        fecha_fin=datetime.strptime('19/2/2016',fdate),
-        direccion='Ciudad de Mendoza',
-        detalle='''Planeado para evaluar y premiar la calidad y los avances de la industria vitivinícola argentina, el Argentina Wine Awards ha ganado su lugar como el certamen más importante en la agenda local y gana cada vez más adeptos de otros rincones del mundo del vino. El año pasado participaron más de 669 vinos en el concurso.
-        Con el propósito de reflejar la proliferación de los vinos argentinos en todo el mundo y la importancia cada vez mayor de una variedad de mercados, se seleccionó un jurado que no sólo representa a diversos países y nacionalidades sino que también cuenta con un vasto conocimiento sobre la industria mundial. En esta edición, el panel Internacional estará compuesto por especialistas internacionales que han contribuido al crecimiento de la industria vitivinícola argentina bajo el concepto: 10 YEARS CREATING THE FUTURE.
-        Tal como se ha hecho durante este el 2015, Wines of Argentina incluirá todos los vinos ganadores de los Trophy y Oro en sus actividades de promoción en el exterior para demostrar la alta calidad de los vinos de la Argentina.
-        Las degustaciones del certamen tendrán lugar en Mendoza, del 15 al 19 de febrero de 2016.'''
-        ,nombre = 'PIPA',caracteristicas= ' Inédito encuentro entre salientes Productores Independientes de Paraje Altamira (PiPA), que desembarcan con sus interesantísimas etiquetas en Buenos Aires. Será una excelente oportunidad para descubrir bondades y secretos de este rincón especial ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_18253_default_medium.jpeg','rb'))
-        db.evento.insert(
-        fecha=datetime.strptime('18/11/2015',fdate),
-        fecha_fin=datetime.strptime('20/11/2015',fdate),
-        precio='$399',
-        direccion='Tribuna Plaza, Av. Del Libertador 4401, Palermo',
-        detalle='''Tribuna Plaza será nuevamente la sede de la tradicional Feria Jumbo Deli &amp; Wine, que cumple su cuarto año consecutivo en Buenos Aires, presentando toda la propuesta gourmet y productos premium que ofrece en sus góndolas durante todo el año.
-        Una vez más disfrutar es la consigna; Jumbo Deli &amp; Wine invita a quienes la visiten a sumergirse en diferentes espacios gourmet que prometen el maridaje ideal y un ambiente perfecto para vivir una experiencia única. Exquisitos vinos, deliciosos fiambres y quesos, carnes, panes, productos gourmet, cervezas, espirituosas, destilados, café y chocolates, son los sabores que se podrán degustar en la cuarta edición de la Feria.
-        Con una ambientación distinguida y original, transportará a los invitados a la época del Gran Gatsby de los años 30. Jumbo Deli &amp; Wine 2015 reúne a las marcas más prestigiosas que, con sus mejores propuestas gourmet, hacen deleitar a los argentinos.
-        Como destacado, este año la Feria incorpora un nuevo espacio, Jumbo Fresh donde la marca presentará y dará a degustar sus productos de elaboración propia y se podrán saborear los panes más exclusivos de Jumbo: sticks, saborizados, panes de queso, focaccia de salmón, entre otros. También, en ese mismo stand, se lucirán las distintas  variedades de frutas y verduras donde se degustarán dips de zanahoria, apio y morrón; pinchos de tomate cherry y fruta recién cortada; además de las carnes Premium de Jumbo. Jumbo Fresh ofrece productos frescos todos los días del año.
-
-        Jumbo Deli &amp; Wine 2015, sabores, placeres, experiencias y momentos para descubrir y dejarse sorprender. Todo en un solo lugar. Más información en www.jumbodeliandwine.com.ar
-
-        Datos sobre la Feria Jumbo Deli & Wine
-        Fecha: 18, 19 y 20 de noviembre 
-        Lugar: Tribuna Plaza, Av. Del Libertador 4401, Palermo 
-        Horario: 18 hs. a 23 hs. 
-        Valor de la entrada: $399"'''
-        ,nombre = 'LA SEMANA DEL MALBEC',caracteristicas= ' 4 al 10 de abril, con un despliegue de diferentes actividades en la Ciudad de Buenos Aires. Para asistir a esta celebración, habrá una entrada que dará acceso a todas las actividades y se hará a beneficio del Hospital de Niños Dr. Ricardo Gut ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_18313_default_medium.jpeg','rb'))
-        db.evento.insert(
-        fecha=datetime.strptime('7/7/2016',fdate),
-        fecha_fin=datetime.strptime('10/7/2016',fdate),
-        precio='$110',
-        direccion='La Rural, Predio Ferial de Buenos Aires.',
-        detalle='''Caminos y Sabores, a lo largo de sus once ediciones, se ha convertido en una de las ferias de mayor crecimiento, potenciando a su vez el desarrollo de todos sus protagonistas: productores de alimentos típicos, artesanos y representantes de destinos turísticos. En la última edición, la feria convocó a más de 80.000 personas que disfrutaron del recorrido por el mercado, de las demostraciones de cocina, disertaciones y espectáculos artísticos.
-        Lo que hay que saber
-        DATOS GENERALES:
-        • Fecha: del jueves 7 al domingo 10 de julio 
-        • Horario: de 12 a 21hs. 
-        •​ Lugar: La Rural, Predio Ferial de Buenos Aires – Ciudad Autónoma de Buenos Aires. 
-        •​ Ingreso: por Av. Sarmiento 2704. 
-        VALOR DE LA ENTRADA
-        •​ ​Entrada general $ 110 
-        •​ ​Entrada general con Catálogo de Expositores $ 150 
-        •​ Entrada Plus: $250 - ¡Numerosos beneficios pensados para vos! 
-        •​ Todos los días: Menores de 5 años –acompañados por un mayor- no abonan entrada.
-        Más información: http://www.caminosysabores.com.ar/"'''
-        ,nombre = 'RALLY DE LAS BODEGAS "COPA PARK HYATT" 2016',caracteristicas= ' El Rally de la Bodegas en su 14ª Edición consecutiva, organizado por el CLUB MENDOZA CLÁSICOS & SPORT es uno de los eventos de mayor importancia de autos históricos del país. Comenzó una nueva etapa con el acuerdo alcanzado con CLARAMUNT GARAG ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_18357_default_medium.jpeg','rb'))
-        db.evento.insert(
-        fecha=datetime.strptime('9/11/2016',fdate),
-        fecha_fin=datetime.strptime('11/11/2016',fdate),
-        precio='$420',
-        direccion='"Hotel Panamericano - Ciudad de Buenos Aires."',
-        detalle='''Sparkling Nights es la única feria de la Argentina dedicada exclusivamente a los espumantes. Esta será su octava edición.
-        Durante 3 días, 35 de las bodegas más prestigiosas de la Argentina ofrecerán a los amantes del champagne la posibilidad de degustar más de 200 variedades, para conocer las últimas tendencias y todas las novedades que ofrece este año el creciente mercado de los vinos espumantes.
-        La cita será en el elegante Hotel Panamericano de Buenos Aires, del 9 al 11 de noviembre, entre las 18 y las 23 horas.
-        Algunas de las bodegas que participarán en esta edición 2016 son las siguientes: Chandon, Norton, Catena Zapata, Casa Bianchi, Salentein, Altavista, Rosell Boher, Luigi Bosca, Freixenet, Argento, Estancia Mendoza , Navarro Correas, Familia Schroeder, Trapiche, Sophenia, Nieto Senetiner, Vistalba, Las Perdices, Finca La Linda, La Riojana, Secreto Patagónico, Dante Robino, Familia Zuccardi y Sáenz Briones, entre otras.
-        Sparkling Nights también ofrecerá a los asistentes la posibilidad de degustar una amplia variedad de delicatessen y productos gourmets: habrá quesos, sushi, patisserie, infusiones, chocolates y finger foods.
-        La entrada cuesta 420 pesos y con la misma se entrega una copa de champagne para la degustación.'''
-        ,nombre = 'FIESTA NACIONAL DE LA VENDIMIA 2016',caracteristicas= ' 80ª Fiesta Nacional de la vendimia, conmemora el esfuerzo y trabajo del viñatero mendocino. Diez noches de espectáculos con la inclusión de shows de nivel nacional, ceremonias y visitas a bodegas y viñedos. Los principales actos programados son ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_18377_default_medium.jpeg','rb'))
-        db.evento.insert(
-        fecha=17/3/2016 
-        fecha_fin=datetime.strptime('19/3/2016',fdate),
-        direccion='Mendoza',
-        detalle='''El Rally de la Bodegas  en su 14ª Edición consecutiva, organizado por el CLUB MENDOZA CLÁSICOS &amp; SPORT es uno de los eventos de mayor importancia de autos históricos del país. Comenzó una nueva etapa con el acuerdo alcanzado con CLARAMUNT GARAGE que realza el culto por el automovilismo histórico en un marco de curada hospitalidad.
-        El RDLB es un evento que fusiona la pasión por los autos clásicos sport, las rutas del vino con sus modernas e innovadoras bodegas y los más espectaculares paisajes mendocinos.
-        Un acontecimiento de nivel internacional en el que los participantes disfrutan de toda la excelencia de esta competencia en el marco ideal que brinda la Cordillera de Los Andes. 
-        Viñedos, gastronomía gourmet al pie de la montaña y exhibiciones de Polo, son parte del atractivo que conjugan una exigente competencia con un evento social de alto nivel.
-        Circuitos de montaña absolutamente de asfalto, especiales entre los viñedos, siempre en el ámbito de la regularidad, manteniendo promedios inferiores a 50 km/h.
-        La Fédération Internationale des Véhicules Anciens (FIVA) ha incluido el evento a su calendario internacional, compartiendo así con las manifestaciones de mayor relevancia de todo el mundo. Sólo automóviles sport, con su pasaporte de homologación FIVA son aceptados a participar del evento.
-        Este rally es puntuable para el Campeonato Argentino de Regularidad Sport del ACA y la Triple Corona, para el piloto de mejor performance entre el Rally de las Bodegas, el Rally de la Montaña y las 1000 Millas Sport.'''
-        ,nombre = 'ARGENTINA WINE AWARDS 2016',caracteristicas= ' Planeado para evaluar y premiar la calidad y los avances de la industria vitivinícola argentina, el Argentina Wine Awards ha ganado su lugar como el certamen más importante en la agenda local y gana cada vez más adeptos de otros rincones del mundo ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_18397_default_medium.jpeg','rb'))
-        db.evento.insert(
-        fecha=datetime.strptime('28/2/2016',fdate),
-        fecha_fin=datetime.strptime('8/3/2016',fdate),
-        precio='Desde $80.',
-        direccion='Ciudad de Mendoza',
-        detalle='''80ª Fiesta Nacional de la vendimia, conmemora el esfuerzo y trabajo del viñatero mendocino. Diez noches de espectáculos con la inclusión de shows de nivel nacional, ceremonias y visitas a bodegas y viñedos. Los principales actos programados son los siguientes:
-        • 28 Febrero (Domingo): “Bendición de los Frutos”. Ceremonia donde se agradece a Dios los frutos sanos obtenidos de la cosecha. Se ofrece el vino nuevo procediéndose al “Golpe en la Reja del Arado”, que simboliza al hombre que labra la tierra, bajo la advocación de la Virgen de la Carrodilla y la bendición del fruto nuevo.
-        • 4 Marzo (Viernes): “Vía Blanca de las Reinas”. Desfile de carros alegóricos lumínicos que transportan a las reinas tanto salientes como aspirantes al cetro nacional.
-        • 5 Marzo (Sábado): “Carrusel de la Vendimia”. Por la mañana desfilan los mismos carruajes, pero escoltados por agrupaciones gauchas con trajes típicos, montados a caballo, destacándose la tradicional carreta tirada por bueyes.
-        • 5 Marzo (Sábado): “Acto Central”. Espectáculo donde se realizan bailes folclóricos con más de mil bailarines en el escenario, representaciones artísticas, juegos de luces y sonido. Tiene lugar la elección y coronación de la reina nacional vendimial. Termina con un espectáculo de fuegos artificiales lanzados desde el “Cerro de la Gloria”.
-        • 6 Marzo (Domingo): “Segunda Noche”. Se repite el espectáculo artístico del Acto Central pero sin la elección de la reina nacional de la vendimia. Se presentan actuaciones en vivo de artistas reconocidos a nivel nacional e internacional.
-        • 7 Marzo (Lunes): “Tercera Noche”. Repetición del Acto Central con actuaciones en vivo de reconocidos artistas.
-        • 8 Marzo (Martes): “Cuarta Noche”. Repetición del Acto Central con actuaciones en vivo de reconocidos artistas.
-        Más información:  www.mendoza.gov.ar"'''
-        ,nombre = 'JUMBO DELI & WINE 2015',caracteristicas= ' Tribuna Plaza será nuevamente la sede de la tradicional Feria Jumbo Deli & Wine, que cumple su cuarto año consecutivo en Buenos Aires, presentando toda la propuesta gourmet y productos premium que ofrece en sus góndolas durante todo el año. U ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_18424_default_medium.jpeg','rb'))
-        db.evento.insert(
-        fecha=datetime.strptime('4/11/2015',fdate),
-        fecha_fin=datetime.strptime('6/11/2015',fdate),
-        precio='$224',
-        direccion='Hotel Panamericano de la Ciudad de Buenos Aires.',
-        detalle='''Sparkling Nights es la única feria de la Argentina dedicada exclusivamente a los espumantes.
-        Durante tres días, 40 de las bodegas más prestigiosas de la Argentina ofrecerán a los amantes del champagne la posibilidad de degustar más de 200 variedades, para conocer las últimas tendencias y todas las novedades que ofrece este año el creciente mercado de los vinos espumantes.
-        La cita será en el elegante Hotel Panamericano de la Ciudad de Buenos Aires, del 4 al 6 de Noviembre, entre las 18 y las 23 horas.
-        Algunas de las bodegas que participarán en esta edición son las siguientes: Chandon, Norton, Catena Zapata, Casa Bianchi, Familia Zuccardi, Altavista, Cruzat, Rosell Boher, Mumm, Luigi Bosca, Séptima, Argento, Dante Robino, Alamos, Estancia Mendoza,  Familia Schroeder, Finca Las Moras, Amalaya, Casarena, Nieto Senetiner, Las Perdices, La Riojana, Secreto Patagónico, Humberto Canale y Domaine Bousquet, entre otras.
-        Sparkling Nights también ofrecerá a los asistentes la posibilidad de degustar una amplia variedad de delicatessen y productos gourmet: habrá quesos, sushi, patisserie, café, chocolates y finger foods.
-        Sparkling Nights es organizada por Planeta Joy, el sitio de gastronomía, vinos y lifestyle más prestigioso de la Argentina."'''
-        ,nombre = 'SPARKLING NIGHTS 2015',caracteristicas= ' Sparkling Nights es la única feria de la Argentina dedicada exclusivamente a los espumantes. Durante tres días, 40 de las bodegas más prestigiosas de la Argentina ofrecerán a los amantes del champagne la posibilidad de degustar más de 200 var ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_18448_default_medium.jpeg','rb'))
-
-        db.evento.insert(
-        fecha=datetime.strptime('7/9/2015',fdate),
-        precio='Únicamente con invitación',
-        direccion='Algodon Mansion, Montevideo 1647, CABA',
-        detalle='''Llega la tercera edición de la Feria de Vinos de San Rafael. El próximo lunes 7 de septiembre tendrá lugar la tercera edición de la Feria de Vinos de San Rafael, con el objetivo que esta emblemática región de la producción de vinos de nuestro país se ha propuesto desde sus inicios: acercar su identidad al público de Buenos Aires, a representantes de los puntos de venta y a la prensa especializada, consolidando su posicionamiento. Por tercer año consecutivo, las principales bodegas de dicha región se reúnen en un solo lugar para compartir sus novedades y los sabores de su terroir.
-
-        El encuentro tendrá lugar el lunes 7 de septiembre en Algodon Mansion, Montevideo 1647, en diferentes horarios según el público y con invitación exclusiva. Las bodegas participantes son Bodega Alfredo Roca, Algodon Wine Estates, Bodegas Lavaque, Bodega Bombal y Aldao, Finca Dinamia, Funckenhausen Vineyards, Bodega Goyenechea, Bodegas Iaccarini, Bodega Jean Rivier, Casa Bianchi, FOW-Fabricio Orlando Winemaker y Bodegas Suter, que nuevamente ofrecerá en la barra innovadores cocktails a base de vino, uno de los hits de la edición 2014.&nbsp;&nbsp;&nbsp;Como novedad, se suma la bodega Mumm Domain, uno de los prestigiosos exponentes de los productores de espumantes de alta gama que la región brinda al mercado.
-        
-        Características del terroir 
-        
-        San Rafael es un terroir con más de dos siglos de historia y con características que lo hacen único: su ubicación en el sur mendocino; clima templado continental semiárido y una marcada amplitud térmica; una moderada cercanía con la Cordillera de los Andes, que lo convierte en tributario de las aguas provenientes de los ríos Atuel y Diamante, conducidas por sistemas de riego y acequias creadas por la industriosa mano mendocina y que a la vez asegura el reparo de las fuertes heladas; la altura sobre el nivel del mar, que oscila entre los 600 y los 800 m; escasas precipitaciones y baja humedad ambiente, junto a suelos profundos, permeables y pobres en materia orgánica; una gran proporción de días soleados. Finalmente su gente, el mayor de sus tesoros, que continúa una larga tradición vitivinícola y el amor al vino y a su tierra en el sur de la provincia de Mendoza. Todas condiciones decisivas para el logro de vinos de excelencia.
-
-        La presencia de bodegas familiares también es parte de la identidad de esta zona, con sus establecimientos, sus tradiciones y sus productos, que se ha adaptado a las exigencias de los mercados y los consumidores actuales, sin abandonar sus mejores prácticas.
-        
-        DATOS
-        
-        Fecha: lunes 7 de septiembre de 2015 
-        Lugar: Algodon Mansion, Montevideo 1647, CABA. 
-        Entradas: únicamente con invitación. 
-        Horario de trade y sommeliers: 14 a 16 hs 
-        Horario de prensa: 16 a 18 hs 
-        Horario de invitados especiales: 18 a 21 hs."'''
-        ,nombre = 'VINOS Y BODEGAS 2015',caracteristicas= ' Una nueva experiencia para los sentidos llega a La Rural de la mano de Vinos y Bodegas. Del 24 al 26 de septiembre, de 18 a 23hs. en el Pabellón Frers, más de 40 bodegas argentinas presentarán sus novedades y productos, en un espacio especialmente ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_18450_default_medium.jpeg','rb'))
-
-        db.evento.insert(
-        fecha=datetime.strptime('14/8/2015',fdate),
-        fecha_fin=datetime.strptime('16/8/2015',fdate),
-        direccion='Municipalidad de Bragado. Alsina 178, Bragado.',
-        detalle='''En agosto llega la décima edición de la exposición de vinos más reconocida del interior del país. Una propuesta cultural, turística y enogastronómica única en la provincia de Buenos Aires.
-
-        Expovinos Bragado continúa con su objetivo de acercar el mundo del vino y el buen vivir al interior del país, generando un espacio de disfrute, promoción y divulgación. Del 14 al 16 de agosto, la décima edición de la exposición de vinos más reconocida tendrá lugar en el Palacio Municipal de Bragado (Alsina 178, Bragado, Provincia de Buenos Aires). 
-
-        Durante tres días los visitantes de Expovinos Bragado podrán disfrutar de las etiquetas de más de 20 bodegas, productos gourmet, aceites de oliva, un espacio de alta gama con etiquetas Premium, un almacén de promociones con importantes descuentos, muestras de arte y más.
-
-        Además, en las vísperas de la feria se podrá disfrutar de ciclos de música y teatro, un encuentro de ceremonial y protocolo, el abierto de vinos y golf, y el imponente “Cóctel a orillas del viento”, un evento en el Club Náutico de Bragado. Con la laguna como marco, vinos, espumosos y una selección de productos gourmet para disfrutar al aire libre.
-
-        Estarán presentes aportando su energía y buen humor, Juan Braceli y Juan Ferrara de Cocineros Argentinos, realizando demostraciones de cocina.
-
-        Comprometidos con el municipio, parte de lo recaudado será a total beneficio de una institución bragadense. Además, continúa la campaña de concientización “Beber con estilo”, que promueve la cultura de la responsabilidad y moderación al beber.
-
-        Más información en www.expovinosbragado.com.ar"'''
-        ,nombre = 'VINOS DE SAN RAFAEL',caracteristicas= ' Llega la tercera edición de la Feria de Vinos de San Rafael. El próximo lunes 7 de septiembre tendrá lugar la tercera edición de la Feria de Vinos de San Rafael, con el objetivo que esta emblemática región de la producción de vinos de nuestro ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_18517_default_medium.jpeg','rb'))
-
-        db.evento.insert(
-        fecha=datetime.strptime('17/8/2015',fdate),
-        fecha_fin=datetime.strptime('22/8/2015',fdate),
-        direccion='Ciudad de Buenos Aires',
-        detalle='''Del 17 al 22 de agosto, Buenos Aires tendrá su primera semana dedicada a la coctelería. Una propuesta que reúne a más de 40 bares y restaurantes, decenas de bartenders, centenares de tragos a precios promocionales, clases maestras, conferencias, recorridos de bares y degustaciones. Un nuevo evento cultural en la agenda porteña, que busca reconocer a la ciudad como la gran capital sudamericana de la coctelería.
-
-        La coctelería es un hito cultural, que atraviesa a la ciudad en múltiples escenarios. En sus bares y restaurantes, en los hoteles y en los hogares, en la televisión y en la radio, en los libros y en las revistas. En encuentros de amigos y en fiestas, en la previa de un asado y como relax de after office.
-
-        Todo esto confluye en Buenos Aires Cóctel:
-        - A lo largo de una semana, los mejores bares de la ciudad ofrecerán una carta especial de cócteles propios a valores promocionales, en la búsqueda acercar al público a la coctelería y a los bares, para que conozca y disfrute las mejores mezclas y bebidas.
-
-        - Cada día se sucederán clases maestras para amateurs y aficionados que quieran aprender sobre el mundo de las bebidas, además de múltiples eventos lúdicos y educativos en los bares participantes.
-
-        - Se suma una jornada de charlas y conferencias en la Universidad de Palermo, dirigida específicamente a profesionales, bartenders, gastronómicos y estudiantes, sobre los distintos aspectos que hacen al trabajo de la barra, la creación de un bar, el diseño de una marca, los procesos de destilación, entre otros temas.
-
-        - Todo bajo el concepto de consumo responsable, parte inherente del disfrute y del aprendizaje, con actividades especiales, comunicación específica y sugerencias de recorridos a pie.
-
-        Buenos Aires Cóctel. Del 17 al 22 de agosto, en toda la ciudad porteña.
-
-        Con el apoyo del Ente de Turismo de la Ciudad de Buenos Aires, la Universidad de Palermo y las empresas Grupo Cepas, Pernod Ricard, Diageo, Gruppo Campari, Moët Hennessy, Mitre Fortín, Phaedrus, CCU, Familia Zuccardi, Fratelli Branca y Catena Zapata.'''
-        ,nombre = 'TERROIR CON HISTORIA 2015',caracteristicas= ' Del 17 al 22 de agosto, Buenos Aires tendrá su primera semana dedicada a la coctelería. Una propuesta que reúne a más de 40 bares y restaurantes, decenas de bartenders, centenares de tragos a precios promocionales, clases maestras, conferencias, ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_18521_default_medium.jpeg','rb'))
-
-        db.evento.insert(
-        fecha=datetime.strptime('9/7/2015',fdate),
-        fecha_fin=datetime.strptime('12/7/2015',fdate),
-        precio='$80',
-        direccion='La Rural - Av. Sarmiento 2704 - Palermo – Buenos Aires',
-        detalle='''La feria Caminos y Sabores 2015 se realizará del 9 al 12 de julio en el predio de La Rural, en Buenos Aires. Las entradas ya están a la venta.
-        
-        Caminos y Sabores es, más que una feria, una forma de apreciar nuestro país. Desde el jueves 9 al domingo 12 de julio de 2015 la principal feria que nuclea expositores de alimentos y artesanías de todo el país se desarrollará en dos pabellones de La Rural, en Buenos Aires.
-        
-        Como desde hace once años, la feria Caminos y Sabores expone las raíces gastronómicas y culturales argentinas de la mano de productores y artesanos provenientes de todas las regiones del país.
-        
-        En Caminos y Sabores el público puede acceder de primera mano a la historia de un determinado producto en el cual intervienen muchos protagonistas, familias y colaboradores, en una red de labores que se ha transmitido de generación en generación. Es así que una receta familiar se ve transformada en un producto regional  al alcance del público. 
-        
-        Las Novedades/ Mucho más que un paseo de compras
-        
-        En Caminos y Sabores 2015 se presenta un nuevo espacio gastronómico llamado “Maestros del Pan”, donde especialistas de la firma Calsa dispondrán sus conocimientos en materia de panificación para que en vivo y en directo elaboren panificaciones de la mejor calidad.
-        
-        El rincón donde los cinco sentidos se concentran en la diversidad de aromas, colores y sabores para disfrutar de platos con fuerte raigambre en cada pueblo del interior siguen siendo la Cocina y el Taller de Elaboración de Alimentos regionales. Allí, dentro de una escenografía mágica que replica lo cotidiano, el público se deleita y aprende de los mejores representantes de cada región del país. A veces las aves, otras los frutos de mar, cuando no los cabritos, corderos y cerdos, siempre condimentados con los mejores frutos de las sierras, fortalecen el alma, recorriendo todo el cuerpo hasta llegar a la degustación y el aplauso merecido a los mejores expositores.
-        
-        También sorprende en Caminos y Sabores 2015 la Plaza del Encuentro, un espacio donde se celebra la cultura a través de espectáculos representativos de la identidad de nuestro país y las tan vistosas Huertas, para que los visitantes puedan disfrutar del placer de cultivar desde el hogar.
-        
-        La frutilla del postre viene de la mano del Concurso Experiencias del Sabor. Organizado por la Consultora STG, este concurso tiene como objetivo reconocer la calidad de aquellos productos que participan de la exposición y de premiar la excelencia del trabajo desarrollado durante todo el año. El jurado del Concurso, integrado por un panel de testeadores no videntes, está especializado en el análisis sensorial de alimentos.
-        
-        Datos importantes:
-        
-        Fecha: del 9 al 12 de julio de 2015 
-        Horario: de 12 a 21 hs. 
-        Lugar: La Rural - Av. Sarmiento 2704 - Palermo – Buenos Aires 
-        Venta de entradas: En boletería de La Rural de 11:30 a 20:30 y on line en ticketek.com.ar 
-        Valor de la entrada: $ 80 Menores de 5 años NO abonan entrada. 
-        
-        Descuentos y bonificaciones (exclusivos para el VIERNES 10 DE JULIO) 
-        
-        Jubilados: 2×1 
-        Escuelas de Cocina: Vení vestido con tu chaqueta y obtené 2×1 en entradas 
-        Estudiantes universitarios y terciarios de carreras afines (Gastronomía, hotelería, turismo, ingeniería en alimentos, etc.): 2×1 presentando libreta o constancia de alumno regular. 
-        Escuelas primarias, sin cargo previa acreditación. Enviar previamente a la Organización una carta membretada con listado de alumnos, docentes a cargo (incluir N° de teléfono celular) con sello de la Institución. Enviarlo con anticipación al mail infocaminosysabores@caminosysabores.com.ar y llamar telefónicamente al (011) 5128 9800. Al ingresar a la feria, presentar el listado original en la zona de boleterías."'''
-        ,nombre = 'BUENOS AIRES CÓCTEL 2015',caracteristicas= ' En agosto llega la décima edición de la exposición de vinos más reconocida del interior del país. Una propuesta cultural, turística y enogastronómica única en la provincia de Buenos Aires. Expovinos Bragado continúa con su objetivo de ace ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_18602_default_medium.jpeg','rb'))
-
-        db.evento.insert(
-        fecha=datetime.strptime('6/6/2015',fdate),
-        direccion='Hotel NH Tango. Ciudad de Buenos Aires.',
-        detalle='''Quinta edición de la cata de vinos que busca juntar en una misma mesa a enólogos, sommeliers, especialistas, comunicadores y consumidores apasionados, para que en un ambiente distendido, aprendan unos de otros y en conjunto ayuden a difundir la cultura del vino. Como siempre, el gran objetivo es quitarle la solemnidad a la cata, volver a la esencia, disfrutar del vino y analizar sencillamente cual es el que gusta más. En 2011, el evento se realizó en torno al Malbec en el restaurante a puertas cerradas Treinta Sillas. Su repercusión sobrepaso las mejores expectativas: 30 cubiertos y 34 muestras diferentes de Malbec. En 2012, el tema fueron los Blends y en el restaurante Laurak Bat se reunieron 50 personas para degustar un total de 49 etiquetas de las diferentes regiones Argentinas. En 2013, nuevamente con el Malbec, 90 degustadores pudieron disfrutar de 64 etiquetas de Alta Gama en una inolvidable noche en el Hotel NH Tango. En 2014 fue el turno de los Cabernet (Sauvignon y Franc), donde 94 degustadores pudieron disfrutar de mas de 70 muestras de los distintos Cabernet que se dan en la Argentina. Este año la temática será nuevamente el Malbec. Nuestra cepa insignia, la que nos identifica en el mundo, la que podemos encontrar desde la Patagonia hasta los Valles Calchaquíes, con sus características propias y las que le imprime el terruño. El Desafío Federal 2015 se llevará a cabo el sábado 6 de Junio nuevamente en el Hotel NH Tango y constará de la cata a ciegas de 75 etiquetas de Malbec de alta gama, divididos en 3 categorías según su precio sugerido de venta al público. Como siempre, la cata será seguida de una de una cena distendida acompañada por los mismos vinos durante la cual se anunciarán los 6 preferidos de cada categoría. Este año, en el Desafío Federal también se premiará a la etiqueta más atractiva de todas las que serán degustadas, para de alguna manera premiar el esfuerzo y la creatividad de nuestros diseñadores, quienes también aportan con su trabajo a la venta y difusión de nuestros Malbec. Además en el mes de Julio se realizará la entrega de los diplomas a las bodegas que resulten premiadas, a la que serán invitadas las bodegas participantes y el periodismo a probar los 6 vinos premiados de cada categoría. Los 95 privilegiados que lograron conseguir una plaza para participar como degustadores (las mismas se agotaron en 72 horas) tendrán la oportunidad de degustar 75 muestras de malbec de entre 90 y 1100 pesos habrá exponentes de 8 provincias diferentes (Mendoza, Salta, Neuquén, Río Negro, Córdoba, La Rioja, Tucumán y La Pampa). Las bodegas que han confirmado su participación en el Desafío Federal 2015 son: Achaval Ferrer, Aleanna, Alta Vista, Altocedro, Altos las Hormigas, Amalaya, Atamisque, Bodega del Desierto, Bodega del Fin del Mundo, Bodega Enrique Foster, Bodega Posse, Bodega Séptima, Bodega SinFin, Bodega Toneles, Carinae, Chakana, Chaman, Clos de Chacras, Dante Robino, Domingo Molina, Dominio del Plata, Doña Paula, Durigutti, El Esteco, El Porvenir de Cafayate, Ernesto Catena Vineyards, Etchart, Familia Cassone, Finca Decero, Finca la Anita, Finca las Moras, Finca Sophenia, Gimenez Riili, Goyenechea, HDWines, Humanao, Impaciente, Insolente, Javier Collovati, Kaiken, Krontiras, La Mascota, Lagarde, Lamadrid, Las Perdices, Margot, Matías Riccitelli, Mauricio Lorca, Melipal, Miras, Mosquita Muerta Wines, Nieto Senetiner, Noble de San Javier, Norton, NQN, O. Fournier, Piatelli, Renacer, Pulenta Estate Riglos, Santonegro, Teho, Tempus Alba, Terrazas, Tintonegro, Trapiche, Trivento, Vicentin, Videla Dorna, Viña 1924 de Angeles, Viña Vida, Vistalba, Zorzal Wines y Zuccardi. Para más información comunicarse vía mail a info@eldesafiofederal.com.ar "'''
-        ,nombre = 'EXPOVINOS BRAGADO 2015',caracteristicas= ' Del 24 al 26 de julio próximo, en Espacio Pilar (Chile 1963 – salida km 47 de Panamericana), vuelve la celebración gastronómica para disfrutar del “buen comer y beber”, probar –y comprar- ingredientes que transforman una comida en un plat ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_18656_default_medium.jpeg','rb'))
-        db.evento.insert(
-        fecha=datetime.strptime('1/7/2015',fdate),
-        fecha_fin=datetime.strptime('3/7/2015',fdate),
-        precio='$350',
-        direccion='JA Vinoteca, Borges 1772, Palermo, CABA.',
-        detalle='''La fuerza de la historia unida a una nueva generación de enólogos que cambiaron para siempre el rumbo de la vitivinicultura local. Matias Michelini: Passionate Wine - SuperUco Gerardo Michelini: Gen del Alma - SuperUco Juan Pablo Michelini: SuperUco Manuel Michelini: Plop Andrea Mufatto: Gen del Alma Luis Reginato: Chaman Wines - Reginato Espumantes David Bonomi: Tierra Inti - Per Se Edgardo Del Popolo: Per Se Ariel Angelini: Tupun Francisco Bugallo: Cara Sur Pablo Bassin: Fuego Blanco En formato de feria, 11 enólogos, más de 80 vinos y sus últimas creaciones  Cuándo?: 1, 2 y 3 de Julio – 17 a 22hs Dónde?: JA Vinoteca, Borges 1772, Palermo, CABA Solo 80 entradas por día - Valor: $350 Puntos de Venta: Ozono Drinks - La Rioja 1823, Parque Patricios Vinoteca Taninos - Araoz 1227, Palermo JA - Borges 1772, Palermo Mr. Wines - Aranguren 1078, Caballito Alma de los Andes - Calle 44 nro. 857,  La Plata Online: www.ozonodrinks.com.ar"'''
-        ,nombre = 'ESPACIO GOURMET 2015 - SEGUNDA EDICIÓN',caracteristicas= ' La feria Caminos y Sabores 2015 se realizará del 9 al 12 de julio en el predio de La Rural, en Buenos Aires. Las entradas ya están a la venta. Caminos y Sabores es, más que una feria, una forma de apreciar nuestro país. Desde el jueves 9 al d ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_51494_default_medium.jpeg','rb'))
-        db.evento.insert(
-        fecha=datetime.strptime('24/7/2015',fdate),
-        fecha_fin=datetime.strptime('26/7/2015',fdate),
-        precio='$50.-',
-        direccion='Espacio Pilar Av. Chile 1963 Panamericana Ramal Pilar km 47',
-        detalle='''
-            Del 24 al 26 de julio próximo, en Espacio Pilar (Chile 1963 – salida km 47 de Panamericana),  vuelve la celebración gastronómica para disfrutar del “buen comer y beber”, probar –y comprar- ingredientes que transforman una comida en un plato inolvidable.  Esta 2ª edición cuenta con el apoyo de la Municipalidad de Pilar y con el auspicio de Banco Provincia, que ofrecerá beneficios especiales para sus clientes.
-
-        En Espacio Gourmet, los Food Trucks estarán a la orden del día.  Propuestas divertidas con diferentes variantes de cocina: árabe, mexicana, rápida, jugos de frutas con combinaciones exquisitas.  Participan B.A. Foodtruck, María Félix, Moros en la Costa, Bonnyuzz, entre otros.
-
-        Los más destacados Chefs de Cuisine de la Escuela de Cocineros Gato Dumas ofrecerán clases abiertas para develar los “secretos” aun de los platos más sencillos y comunes, para que sean apreciados como el manjar más exquisito.
-
-        En el mercado se podrán descubrir y obtener los ingredientes más curiosos para que la comida de todos los días sea también especial: Gaby Matchel con sus mermeladas y chutneys también presentará su nuevo servicio de delivery, las pastas de grano duro de Paese di Sapore, las variedades más deliciosas de Quesoteca Burgos, Cervezas Jarva con sus sabores únicos, Vegie Milk y sus leches gourmet, Tea Me con los blends más originales, la propuesta más gourmet de productos para celíacos, entre otros.  Utensilios y elementos originales de Ollas Essen, Metal Real con sus cubiertos, la artista plástica María Laura Pini con su “vajilla de autor”, los hornos artísticos de Cuisine, la artista textil Nadine Youssefian que auspiciada por Colibrí llevará sus manteles intervenidos, entre otros.
-
-        Además, como en la primera edición, Gorros Wine prepara “Los Caminos del Vino”, un paseo en el que se podrán degustar los vinos de las cepas más exclusivas.  Un programa imperdible.
-
-        En el restaurante Los visitantes podrán disfrutar también las propuestas gourmet de Jean Paul Bondoux y Jérôme Mathe con su “Cuisine du Sud”, así como las de Art Catering, Tree Cocina, Brazzi Catering, Crepas, La Arepería de Buenos Aires, Pancho Bonito, GuiLab Laboratorio de Helados con sus helados moleculares realizados con nitrógeno líquido a la vista del público.
-
-        Arte PHOS y el Ente de Promoción de la Municipalidad de Pilar presentarán las fotografías ganadoras del concurso “La Sal de la Vida”, el primer concurso fotográfico de gastronomía gourmet, una especialidad muy particular en fotografía.  Se convoca a mayores de 18 años, residentes en el territorio nacional, amantes de la fotografía y la gastronomía, profesionales y/o amateurs, que pueden presentar fotos sacadas con cualquier dispositivo sobre platos, ingredientes, presentaciones de gastronomía gourmet.  Inscripción hasta el 6 de julio de 2015.  Bases e informes en Facebook: La Sal de la Vida.
-
-        Dado que esta edición de Espacio Gourmet se realiza en plenas vacaciones de invierno, habrá un espacio para chicos con clases de cocina y otras actividades divertidas, especialmente pensadas para el “público menudo”.
-
-        Espacio Gourmet está pensada especialmente para un público “bon vivant” que conoce lo que le gusta y, a la vez, está abierto a descubrir nuevos sabores, nuevas texturas, a vivir nuevas experiencias placenteras.  Sabores de autor, productos nobles y paladares delicados, todo junto en un solo lugar. 
-
-        Espacio Gourmet es una propuesta que abarca desde sabores de autor, especias originales, productos nobles, nuevas texturas, nuevas formas de preparar y cocinar ingredientes tradicionales, hasta lo más novedoso en utensilios, mantelería, vajilla y cristalería, accesorios indispensables para enaltecer cualquier comida.  Propuestas de maridajes excepcionales.  Todo, en un solo lugar."'''
-        ,nombre = 'CAMINOS Y SABORES 2015',caracteristicas= ' La fuerza de la historia unida a una nueva generación de enólogos que cambiaron para siempre el rumbo de la vitivinicultura local. Matias Michelini: Passionate Wine - SuperUco Gerardo Michelini: Gen del Alma - SuperUco Juan Pablo Michelini: SuperUc ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_51495_default_medium.jpeg','rb'))
-
-        db.evento.insert(
-        fecha=datetime.strptime('27/4/2015',fdate),
-        direccion='Casal de Catalunya. Chacabuco 863, San Telmo.',
-        detalle='''
-            En conmemoración a la quinta celebracion del día internacional del Malbec, en el mes de Abril del 2015 les propondremos ser parte de +Wine Edition #2 bajo el slogan: "WE LOVE MALBEC" en donde, como ya es costumbre, contaremos con dos sectores de degustación.                                                                           SALON ANTONI TAPIES: Vinos rosados tranquilos y espumantes elaborados a base de malbec SALON PAU CASALS: Varietales, blend y fortificados de malbec El lunes 27 el Casal de Catalunya con su imponente edificio sera participe de la muestra de vinos que revoluciona Buenos Aires. "
-            '''
-            ,nombre = 'MEGA DEGUSTACIÓN ANUAL OZONO DRINKS 2015 - SEGUNDA EDICIÓN',caracteristicas= ' Quinta edición de la cata de vinos que busca juntar en una misma mesa a enólogos, sommeliers, especialistas, comunicadores y consumidores apasionados, para que en un ambiente distendido, aprendan unos de otros y en conjunto ayuden a difundir la cul ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_51561_default_medium.jpeg','rb'))
-        db.evento.insert(
-        fecha=datetime.strptime('18/4/2015',fdate),
-        precio='Venta de Entradas en Vinoteca Vides - Juan B Justo',
-        direccion='Club Italiano (Neuquén Capital),',
-        detalle='''Te invitamos a festejar el MALBEC WORLD DAY.&nbsp;No te lo pierdas este Sábado 18 de Abril en el Club Italiano de la Ciudad de Neuquén."'''
-        ,nombre = 'DESAFÍO FEDERAL 2015',caracteristicas= ' Alta Gama Rosario vuelve del 4 al 6 de junio de 2015 para brindar por sus 11 años con un recorrido totalmente renovado en el ámbito de Terrazas del Paraná, en La Estación Fluvial de Rosario, presentando una gran cantidad de expositores. En 2015 A ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_51719_default_medium.jpeg','rb'))
-        db.evento.insert(
-        fecha=datetime.strptime('24/9/2015',fdate),
-        fecha_fin=datetime.strptime('26/9/2015',fdate),
-        precio='$200.-',
-        direccion='Predio La Rural. Av. Santa Fe 4363.',
-        detalle='''
-            Una nueva experiencia para los sentidos llega a La Rural de la mano de Vinos y Bodegas. Del 24 al 26 de septiembre, de 18 a 23hs. en el Pabellón Frers, más de 40 bodegas argentinas presentarán sus novedades y productos, en un espacio especialmente pensado para los amantes del buen beber.
-
-        Una propuesta moderna que invita a descubrir las distintas regiones productoras de vinos, a través de sus cepas y la oportunidad única de degustar cada una de ellas. Un encuentro con las nuevas tendencias donde se podrá disfrutar de las catas guiadas por la Escuela de Sommeliers del Gato Dumas, acceder a la tienda de vinos con una selección de etiquetas a cargo de Enogarage y descubrir la cocktelería con vino: bartenders de la ciudad incorporan la bebida a sus barras para la creación de tragos imperdibles que llegan para quedarse.
-
-        Los visitantes más foodies también tendrán su lugar en Vinos &amp; Bodegas, a través del mercado gourmet, con productos destacados para transformar cada una de las comidas en verdaderos platos de autor. La propuesta se complementa con un sector de productos orgánicos de primera selección.
-
-        En el espacio al aire libre, la gastronomía será la protagonista con propuestas para todos los gustos: bar de tapas y finger food; que se suman a la novedosa propuesta de Food Trucks de La Cabrera, Los Petersen Cocineros, Street Food y Bon Bouquet, que ofrecerán innovadoras opciones de “gastronomía sobre ruedas”.
-
-        Peugeot Lounge también se suma a esta tendencia con su food truck y presenta una propuesta de Crepería &amp; Wine Bar: dos grandes tradiciones de la gastronomía francesa se unen en un mix perfecto y llegan a Vinos &amp; Bodegas para que los visitantes disfruten al máximo esta experiencia.
-
-        Por su parte Vinómanos, la primera guía mobile en Latinoamérica de vinos argentinos, volverá a estar presente con su plataforma online, que permitirá a todos los visitantes obtener mayor información sobre los productos presentados por cada bodega.
-
-        Por segundo año consecutivo, FM One 103.7 musicalizará en vivo el evento, con todos los hits del momento. La experiencia se completa con exclusivos Dj’s Sets y distintas sesiones de live music.
-
-        Asimismo, en el marco del evento, La Rural y Bodegas de Argentina llevarán a cabo iniciativas de sustentabilidad. A través de “La Rural Recicla” y con la colaboración de las bodegas participantes, se recuperarán el cartón y las botellas de vidrio consumidas durante la exposición, que luego serán donados a la Cooperativa El Ceibo para su reciclado. También se impulsará el programa “Wine in Moderation”, que fomenta el consumo moderado y responsable, como la forma más inteligente de apreciar las virtudes y características de los grandes vinos que se presentarán. Además, los visitantes tendrán acceso permanente a estaciones de hidratación libre.
-
-        Vinos y Bodegas | Edición 2015
-
-        Organizadores: organiza Bodegas de Argentina y realiza La Rural, Predio Ferial de Buenos Aires. 
-        Sede: La Rural, Predio Ferial de Buenos Aires, Pabellón Frers. 
-        Ingresos: Av. Santa Fe 4363 
-        Estacionamiento: Av. Sarmiento 2704 y Av. Cerviño 4476 
-        Días: 24, 25 y 26 de septiembre 
-        Horario: 18 a 23hs 
-        Valor de la entrada: $200.-. (Incluye 12 copas de degustación) 
-        Más información en: www.expovinosybodegas.com.ar"'''
-        ,nombre = 'ROSARIO ALTA GAMA 2015',caracteristicas= ' Llega la segunda edición de Vinos de Argentina. El próximo 8 y 9 de mayo se realizará la Segunda Edición de Vinos de Argentina en Casa Las Cañitas (Huergo 283, CABA) de 18 a 23 hs. Esta feria vuelve a reunir en un espacio cálido y distendido a ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_51793_default_medium.jpeg','rb'))
-        db.evento.insert(
-        fecha=datetime.strptime('17/4/2015',fdate),
-        direccion='Evento Global.',
-        detalle='''
-            En esta 5ta. Edición del Malbec World Day se llevarán a cabo más de 70 eventos en 64 ciudades de 50 países del mundo para hacerle honor a la cepa insignia de la Argentina. En todos ellos se exhibirán tres cortometrajes seleccionados por WofA y creados para que sus espectadores puedan realizar una inmersión en la cultura argentina y específicamente en el Malbec, un morocho nacido en Francia que supo convertirse en el argentino más grande. Este año el evento tendrá como coprotagonista al cine, que al igual que el vino combina arte e industria a la vez. Hacer cine implica crear experiencias audiovisuales, contar historias, agudizar nuestra percepción del mundo e inventar atmósferas que estimulan nuestros sentidos. La cinematografía engloba diversas disciplinas: fotografía, literatura (guión), música, actuación y montaje. Es un proceso largo que incluye el trabajo de toda una industria. Su parte final, el montaje, implica una selección cuidadosa de los elementos de trabajo y la realización de una síntesis perfecta. Del mismo modo, nuestro vino Malbec es arte porque refleja nuestra manera de ser argentinos, simboliza nuestro carácter, nuestra pasión y nuestra relación férrea con la tierra, crea atmósferas íntimas que refuerzan vínculos, aportan calidez y confianza, alteran nuestra percepción sensorial; y es industria porque reúne las capacidades de nuestro capital humano y los avances tecnológicos para mejorar con el tiempo. Lights, Camera, Malbec es una feria dirigida a jóvenes de 25 a 35 años y su propuesta incluye degustar vinos Malbec de todos los estilos y terroirs, disfrutar de la oferta gastronómica de los food trucks, incorporar tips en mini charlas, bajar gratis la aplicación oficial del evento, disponible para iPhone y Android, en la que se encontrarán con todos los vinos pre-cargados, para que los asistentes puedan clickear "Me Gusta" y de esa manera tenerlos entre sus favoritos. El mismo formato de Lights, Camera, Malbec se replicará en New York, Estados Unidos; Lima, Perú; San Pablo, Brasil, el Distrito Federal de México; Bogotá, Colombia y Buenos Aires, Argentina. Asimismo, se desarrollarán campañas con los principales retailers de Reino Unido, Canadá, Brasil y México para promover las ventas. Todas las acciones tienen como objetivo proporcionar a los asistentes una experiencia de inmersión en la cultura y el espíritu de Argentina, en el cual el vino es una parte esencial. Asimismo, junto con el Ministerio de Relaciones Exteriores, Comercio Internacional y Culto de la Nación Argentina y los Gobiernos Provinciales, se llevarán a cabo eventos con periodistas, compradores e invitados especiales, que incluyen degustaciones, shows de tango, comidas, en más de 64 representaciones de 50 países alrededor del mundo. LIGHTS, CAMERA, MALBEC - CALENDARIO 2015 Buenos Aires 10 de Abril Bogotá 16 de abril Lima 17 de Abril Nueva York 17 de Abril Londres 17 de abril San Pablo 23 de Abril Manitoba 27 de abril México DF 30 de Abril Más información: <a href="http://www.malbecworldday.com/" target="_blank">www.malbecworldday.com <center><img src="/images/eventos/MalbecWorldDay20152.jpg"></center>
-            "'''
-        ,nombre = 'VINOS DE ARGENTINA 2DA EDICIÓN',caracteristicas= ' Este año inaugura nueva sede sera en el resto bar La Reina (Cno. centenario y 511) los días jueves 7 y viernes 8 de mayo en el horario de 19 a 23 horas.  ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_51902_default_medium.jpeg','rb'))
-        db.evento.insert(
-        fecha=datetime.strptime('10/4/2015',fdate),
-        precio='A confirmar',
-        direccion='Reservas al 1532930227 o al 155041-2721. Cupos Limitados.',
-        detalle='''Mañana Viernes 10 de Abril estaremos participando en una de las&nbsp;Cenas Degustación de Mi Colección de Vinos.&nbsp;Sommelier : Augusto Zegarra.'''
-        ,nombre = 'FERIA DE VINOS CITY BELL 5TA EDICIÓN',caracteristicas= ' En conmemoración a la quinta celebracion del día internacional del Malbec, en el mes de Abril del 2015 les propondremos ser parte de +Wine Edition #2 bajo el slogan: "WE LOVE MALBEC" en donde, como ya es costumbre, contaremos con dos sectores de de ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_51979_default_medium.jpeg','rb'))
-        db.evento.insert(
-        fecha=datetime.strptime('9/4/2015',fdate),
-        precio='$150 efectivo',
-        direccion='Reservas al 4775-4369',
-        detalle='''
-            Esta noche te esperamos en&nbsp;Chenaut 1912 (Las Cañitas) para degustar la línea Primogénito. Para culminar habrá un tapeo especial, te lo vas a perder?"
-            '''
-        ,nombre = 'WINE EDITION #2',caracteristicas= ' Te invitamos a festejar el MALBEC WORLD DAY. No te lo pierdas este Sábado 18 de Abril en el Club Italiano de la Ciudad de Neuquén. ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_52089_default_medium.jpeg','rb'))
-        db.evento.insert(
-        fecha=datetime.strptime('4/6/2015',fdate),
-        fecha_fin=datetime.strptime('6/6/2015',fdate),
-        direccion='Terrazas del Paraná, Estación Fluvial de Rosario.',
-        detalle='''
-            Alta Gama Rosario vuelve del 4 al 6 de junio de 2015 para brindar por sus 11 años con un recorrido totalmente renovado en el ámbito de Terrazas del Paraná, en La Estación Fluvial de Rosario, presentando una gran cantidad de expositores. En 2015 Alta Gama Rosario se dedicará a presentar aquellos nuevos y grandes vinos de las distintas regiones de nuestro país. Todas las noches  habrá un brindis muy especial con música en vivo, charlas y degustaciones privadas, y la presencia de personalidades del mundo del vino. Confirmaron su participación en Alta Gama 2015 las bodegas: Casa Bianchi - Bodegas López - Finca La Luz (Callejón del Crímen) - Gouguenheim - Finca Flichman - Cafayate (Etchart) - Vistalba - Casarena - Hess Family - Humberto Canale - Gimenez Riili - Familia Zuccardi - Puertas de los Andes, Nómade Wines -  Jean Rivier - Dante Robino - Telteca - A16 (Auge Vinos) - Catena Zapata - Viña Las Perdices - Otaviano - Laureano Gómez - Angelado - Avarizza - El Equilibrista Wines - La Azul - Eduardo Vidal Wines - Fabricio Orlando Wines - La Rural - Chandon - Terrazas de los Andes - Domados Wines - Rutini Wines - CarinaE - Domingo Hnos. - Alto Uxmal - Fica Sophenia - Huarpe Wines - Joffré e Hijas - Casa Margot - Paiman - Los Cerrillos - Freixenet - Finca La Anita - Alfredo Roca - Finca Decero - Noemía - Aniello - Chacra - Fabre Montmayou - Flia. Schröeder - Kaikén - Vicentín Family Wines - Rosell Boher - Mosquita Muerta Wines - Bodega Raffy Junto a la gastronomía de: ISHyR / Alta Cocina, Paladini Quesos y sus selectos fiambres L'Abratto, Quesos Tregar,  Aceites Zuccardi, Catena Institute of Wines, Río Helados, establecimientos La Cumbre, Frozen Bag y Aguas Waterin. El jueves 4 de junio Alta Gama Rosario 2015 comenzará con un horario dedicado especialmente a traders, un espacio de contacto directo entre las bodegas y los compradores del vino y la prensa especializada. Ese mismo día, a partir de las 19, el salón se abrirá al público en general y a las 20.30 se llevará a cabo la inauguración oficial con el gran descorche de apertura a cargo de los organizadores junto a las autoridades de nuestra ciudad. Para más información: www.rosarioaltagama.com info@rosarioaltagama.com Facebook: Alta Gama Rosario Twitter: @AltaGamaRosario "'''
-        ,nombre = 'MALBEC WORLD DAY CON PATRITTI',caracteristicas= ' En esta 5ta. Edición del Malbec World Day se llevarán a cabo más de 70 eventos en 64 ciudades de 50 países del mundo para hacerle honor a la cepa insignia de la Argentina. En todos ellos se exhibirán tres cortometrajes seleccionados por WofA y c ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_52210_default_medium.jpeg','rb'))
-        db.evento.insert(
-        fecha=datetime.strptime('8/5/2015',fdate),
-        fecha_fin=datetime.strptime('9/5/2015',fdate),
-        precio='$150',
-        direccion='Casa Las Cañitas - Huergo 283, CABA.',
-        detalle='''
-            Llega la segunda edición de Vinos de Argentina. El próximo 8 y 9 de mayo se realizará la Segunda Edición de Vinos de Argentina en Casa Las Cañitas (Huergo 283, CABA) de 18 a 23 hs. Esta feria vuelve a reunir en un espacio cálido y distendido a las 14 provincias productoras de vinos en el país. Los invitados podrán degustar los diferentes varietales de Jujuy, Salta, Tucumán, Catamarca, La Rioja, San Juan, San Luis, Mendoza, Córdoba, Buenos Aires, La Pampa, Río Negro, Neuquén y Chubut. Además, las bodegas seleccionadas brindarán las claves de cada terruño en los que nacen sus vinos y darán a conocer sus más destacados productos. Tenemos un gran país productor, con tierra generosa, enólogos que apuestan a lo singular y una gran industria que se pone en movimiento detrás de cada copa. Vinos de Argentina se transforma en un paseo vitivinícola federal con vinos de altura, vinos patagónicos y vinos impensados. "'''
-        ,nombre = 'MALBEC WORLD DAY 2015',caracteristicas= ' En la tercera edición, la gran fiesta del Día del Gourmet extiende su duración: comienza el sábado 11 abril y cierra el 14, la fecha de su celebración. Serán cuatro días gloriosos para disfrutar el placer de los aromas y sabores de la gastrono ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_52214_default_medium.jpeg','rb'))
-        db.evento.insert(
-        fecha=datetime.strptime('29/3/2015',fdate),
-        precio='Gratis',
-        direccion='El Dorrego: Zapiola 50 - Palermo. Ciudad de Buenos Aires',
-        detalle='''
-            Este fin de semana nos vemos en Celebra Patagonia&nbsp;desde el mediodía en&nbsp;El Dorrego: &nbsp;Zapiola 50 (Palermo).                                                                                   Además de poder adquirir nuestros vinos y platos típicos de la región, &nbsp;podrás disfrutar de clases de cocina con Narda Lepes, Pablo Buzzo y&nbsp;<a href="https://www.facebook.com/PetersenRoberto">Roberto Petersen. También&nbsp;se presentará la Camerata Bariloche - Orquesta de Cámara Clásica y&nbsp;<a href="https://www.facebook.com/la.pipetua">La Pipetuá.&nbsp;Te esperamos!! "
-            '''
-        ,nombre = 'DÍA DEL GOURMET 2015',caracteristicas= ' Mañana Viernes 10 de Abril estaremos participando en una de las Cenas Degustación de Mi Colección de Vinos. Sommelier : Augusto Zegarra. ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_52702_default_medium.jpeg','rb'))
-        db.evento.insert(
-        fecha=datetime.strptime('7/5/2015',fdate),
-        fecha_fin=datetime.strptime('8/5/2015',fdate),
-        precio='A confirmar',
-        direccion='"https://www.facebook.com/feriadevinoscitybell',
-        detalle='''
-            Este año inaugura nueva sede sera en el resto bar La Reina (Cno. centenario y 511) los días jueves 7 y viernes 8 de mayo en el horario de 19 a 23 horas.&nbsp;
-            '''
-        ,nombre = 'CENA DEGUSTACIÓN EN MI COLECCIÓN DE VINOS - BODEGA PATRITTI',caracteristicas= ' Esta noche te esperamos en Chenaut 1912 (Las Cañitas) para degustar la línea Primogénito. Para culminar habrá un tapeo especial, te lo vas a perder? ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_52703_default_medium.jpeg','rb'))
-        db.evento.insert(
-        fecha=datetime.strptime('3/4/2015',fdate),
-        direccion='Centro de Convenciones Arrayanes - Villa la Angostura.',
-        detalle='''
-            Este viernes nos encontramos en Expo Vinos Angostura. Los esperamos de 12 a 23 hs en el Centro de Convenciones Arrayanes.                                                                                                                                                                               '''                                                                                                                                                                                             <center><img src="/images/eventos/ArrayanesPatri.jpg"></center>
-        ,nombre = 'BODEGA PATRITTI EN VINOTECA 1912',caracteristicas= ' Este viernes nos encontramos en Expo Vinos Angostura. Los esperamos de 12 a 23 hs en el Centro de Convenciones Arrayanes. ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_52704_default_medium.jpeg','rb'))
-        db.evento.insert(
-        fecha=datetime.strptime('11/4/2015',fdate),
-        fecha_fin=datetime.strptime('14/4/2015',fdate),
-        direccion='Ciudad de Buenos Aires.',
-        detalle='''
-            En la tercera edición, la gran fiesta del Día del Gourmet extiende su duración: comienza el sábado 11 abril y cierra el 14, la fecha de su celebración. Serán cuatro días gloriosos para disfrutar el placer de los aromas y sabores de la gastronomía argentina. Durante los festejos, foodies, gourmands, cocineros y público en general tendrán la oportunidad de degustar platos especiales en restaurantes a precio promocional, obtener descuentos en tiendas gourmets, asistir a charlas, degustaciones y demostraciones de cocina, además de participar de otras actividades que darán cuenta de la diversidad de oferta gastronómica de nuestro país. <center><img src="/images/eventos/DiadelGourmet20152.jpg"></center> Con un público creciente, la edición 2015 del Día del Gourmet contará con diferentes actividades y un centenar de establecimientos adheridos que cautivarán a los amantes del buen comer y beber: -Restaurantes que ofrecerán un plato especial a precio promocional -Tiendas especializadas que ofrecerán productos gourmet con un descuento mínimo del 10% en artículos seleccionados. -Charlas, degustaciones, demostraciones de cocina y otras actividades gastronómicas abiertas al público en general que se realizarán a lo largo de cuatro días consecutivos. Además, la gran fiesta del Día del Gourmet cierra con un broche de oro: el 14 de abril, se distinguirá a referentes de la gastronomía local. "Los premios Día del Gourmet", que se entregarán en el Four Season Hotel de la Ciudad, incluirán diferentes categorías como restaurante del año, chef del año, mejor nuevo restaurante, enólogo del año, periodista gourmet, mejor Libro Guía, mejor Libro Recetas, mejor Libro Vino, mejor programa TV gastronómico y mejor Blog gastronómico. <center><img src="/images/eventos/DiadelGourmet20153.jpg"></center> El Día del Gourmet se celebra cada 14 de abril, desde hace tres años. Dicho evento reúne a diferentes actores del sector como productores, cocineros, docentes, empresarios y medios especializados, y tiene como protagonista central al público: amantes del buen comer y beber, ávidos del disfrute culinario, de conocimientos y entretenimientos en el marco del auge de la nueva gastronomía argentina. Su objetivo principal es promocionar la cultura gastronómica a través de sus puntos emblemáticos y proponer a sus consumidores y turistas una oportunidad para aprovechar sus ofertas en toda su diversidad. En cada edición ha mostrado un crecimiento en la cantidad y calidad de restaurantes y tiendas adheridas, en la convocatoria de las actividades desarrolladas como en el aumento del público que participa, lo que confirma el interés y el atractivo de su propuesta. Fiesta del Día del Gourmet, del 11 al 14 de abril de 2015 www.eldiadelgourmet.com.ar "'''
-        ,nombre = 'EXPO VINOS ANGOSTURA - BODEGA PATRITTI',caracteristicas= ' Este fin de semana nos vemos en Celebra Patagonia desde el mediodía en El Dorrego:  Zapiola 50 (Palermo). Además de poder adquirir nuestros vinos y platos típicos ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_52714_default_medium.jpeg','rb'))
-        db.evento.insert(
-        fecha=datetime.strptime('13/3/2015',fdate),
-        direccion='Mendoza, Argentina.',
-        detalle='''
-            El Rally de la Bodegas en su 13° Edición consecutiva, organizado por el CLUB MENDOZA CLÁSICOS &amp; SPORT es uno de los eventos de mayor importancia de autos históricos del país. Comenzó una nueva etapa con el acuerdo alcanzado con CLARAMUNT GARAGE que realza el culto por el automovilismo histórico en un marco de curada hospitalidad.                                                                                                                                                   El RDLB es un evento que fusiona la pasión por los autos clásicos sport, las rutas del vino con sus modernas e innovadoras bodegas y los más espectaculares paisajes mendocinos. Un acontecimiento de nivel internacional en el que los participantes disfrutan de toda la excelencia de esta competencia en el marco ideal que brinda la Cordillera de Los Andes. Viñedos, gastronomía gourmet al pie de la montaña y exhibiciones de Polo, son parte del atractivo que conjugan una exigente competencia con un evento social de alto nivel. Circuitos de montaña absolutamente de asfalto, especiales entre los viñedos, siempre en el ámbito de la regularidad, manteniendo promedios inferiores a 50 km/h. La Fédération Internationale des Véhicules Anciens (FIVA) ha incluido el evento a su calendario internacional, compartiendo así con las manifestaciones de mayor relevancia de todo el mundo. Sólo automóviles sport, con su pasaporte de homologación FIVA son aceptados a participar del evento. Este rally es puntuable para el Campeonato Argentino de Regularidad Sport del ACA y la Triple Corona, para el piloto de mejor performance entre el Rally de las Bodegas, el Rally de la Montaña y las 1000 Millas Sport. Declarado de Interés Turístico Nacional por el Ministerio de Turismo de la Nación y de Interés Provincial por el Gobierno de la Provincia de Mendoza, formando parte del calendario oficial de la Vendimia 2015, el Rally de las Bodegas continuará en el concepto de Regularidad Sprint: Un nuevo modo de desarrollar la regularidad, que marca la tendencia en la actividad Sport Histórica, tanto en Argentina como en el mundo. Más información:  '''
-        ),nombre = 'BODEGA PATRITTI EN CELEBRA PATAGONIA',caracteristicas= ' Este fin de semana nos vemos en Celebra Patagonia desde el mediodía en El Dorrego:  Zapiola 50 (Palermo). Además de poder adquirir nuestros vinos y platos típicos ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_52715_default_medium.jpeg','rb'))
-        db.evento.insert(
-        fecha=datetime.strptime('28/3/2015',fdate),
-        precio='Gratis',
-        direccion='El Dorrego: Zapiola 50 - Palermo. Ciudad de Buenos Aires',
-        detalle='''
-            Este fin de semana nos vemos en Celebra Patagonia&nbsp;desde el mediodía en&nbsp;El Dorrego: &nbsp;Zapiola 50 (Palermo).                                                                                   Además de poder adquirir nuestros vinos y platos típicos de la región, &nbsp;podrás disfrutar de clases de cocina con Narda Lepes, Pablo Buzzo y&nbsp;<a href="https://www.facebook.com/PetersenRoberto">Roberto Petersen. También&nbsp;se presentará la Camerata Bariloche - Orquesta de Cámara Clásica y&nbsp;<a href="https://www.facebook.com/la.pipetua">La Pipetuá.&nbsp;Te esperamos!! '''
-        ,nombre = 'BODEGA PATRITTI EN CELEBRA PATAGONIA',caracteristicas= ' ¿Quién es San Patricio? San Patricio - St. Patricks (386-493), es el santo patrono de Irlanda, y apóstol nacional a quien se atribuye el haber extendido el cristianismo en dicho país. San Patricio es conocido por echar las serpientes de Irlanda. ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_52716_default_medium.jpeg','rb'))
-        db.evento.insert(
-        fecha=datetime.strptime('17/3/2015',fdate),
-        direccion='Ciudad de Buenos Aires.',
-        detalle='''
-            ¿Quién es San Patricio? San Patricio - St. Patricks (386-493), es el santo patrono de Irlanda, y apóstol nacional a quien se atribuye el haber extendido el cristianismo en dicho país. San Patricio es conocido por echar las serpientes de Irlanda. El símbolo de la serpiente es tomado como el paganismo, por lo que el conducir las serpientes fuera de Irlanda significaría poner fin a las prácticas paganas. Otra característica de su persona, recogida de sus escritos, es el uso del trébol de tres hojas como metáfora para explicar el concepto de la Santísima Trinidad (Padre, Hijo y Espíritu Santo). Decía que al igual que el trébol, era una misma unidad pero con tres personas diferentes (un mismo tallo, tres hojas). Hay varias versiones de la muerte de San Patricio. Una dice que San Patricio murió en Saúl, Downpatrick, Irlanda, el 17 de marzo del año 460 dC. Su mandíbula se conserva en un relicario de plata y ha sido invocado a menudo en partos, crisis epilépticas, y contra el "mal de ojo". Otra versión dice que San Patricio terminó sus días en Glastonbury, Inglaterra, y fue enterrado allí. La capilla de San Patricio todavía existe como parte de la Abadía de Glastonbury. Hoy en día, muchos lugares de culto católico en todo el mundo llevan el nombre de San Patricio, incluidas las catedrales de Nueva York y Dublín. ¿Por qué el día de San Patricio? El día de San Patricio ha sido asociado con todo lo irlandés: algo verde y oro, tréboles y suerte. Lo que es más importante, a los que celebran su significado, el Día de San Patricio es un día de renovación espiritual y oración por los misioneros en todo el mundo. Entonces, ¿por qué se celebra el 17 de marzo? Una teoría es que ese es el día en que San Patricio murió. Desde que esta festividad se inició en Irlanda, se cree que los irlandeses repartidos por todo el mundo se llevaron con ellos su historia y celebraciones. Gente que no tiene ascendencia irlandesa también festeja esta celebración en muchos lugares. La mayor observación de esta fiesta es en Irlanda. Con excepción de restaurantes y pubs, todos los negocios cierran el 17 de marzo. Al ser de origen religioso, muchos irlandeses asisten a misa para ofrecer sus oraciones por los misioneros en todo el mundo. Luego se celebra disfrutando de la gastronomía y bebidas irlandesas y los desfiles donde impera el color verde (incluso en algunos lugares se tiñe la cerveza de verde para esta festividad). ¿Por qué dura varios días? En el pasado, el día de San Patricio era celebrado solamente como una fiesta religiosa. Posteriormente se comenzó a utilizar la festividad como una campaña publicitaria para dar a conocer Irlanda y su cultura a nivel internacional. El primer festival de San Patricio se realizó el 17 de marzo de 1996. En 1997 se convirtió en un evento de tres días y en el año 2000 ya era un evento de cuatro días. Aquí en Argentina se concentra la celebración en el 17 de marzo y suele haber eventos relacionados a la fiesta en el fin de semana posterior. '''
-        ,nombre = 'ST PATRICKS DAY 2015',caracteristicas= ' El Rally de la Bodegas en su 13° Edición consecutiva, organizado por el CLUB MENDOZA CLÁSICOS & SPORT es uno de los eventos de mayor importancia de autos históricos del país. Comenzó una nueva etapa con el acuerdo alcanzado con CLARAMUNT GARAGE ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_52803_default_medium.jpeg','rb'))db.evento.insert(
-        fecha=datetime.strptime('14/3/2015',fdate),
-        direccion='Mendoza, Argentina.',
-        detalle='''
-            El Rally de la Bodegas en su 13° Edición consecutiva, organizado por el CLUB MENDOZA CLÁSICOS &amp; SPORT es uno de los eventos de mayor importancia de autos históricos del país. Comenzó una nueva etapa con el acuerdo alcanzado con CLARAMUNT GARAGE que realza el culto por el automovilismo histórico en un marco de curada hospitalidad.                                                                                                                                                   El RDLB es un evento que fusiona la pasión por los autos clásicos sport, las rutas del vino con sus modernas e innovadoras bodegas y los más espectaculares paisajes mendocinos. Un acontecimiento de nivel internacional en el que los participantes disfrutan de toda la excelencia de esta competencia en el marco ideal que brinda la Cordillera de Los Andes. Viñedos, gastronomía gourmet al pie de la montaña y exhibiciones de Polo, son parte del atractivo que conjugan una exigente competencia con un evento social de alto nivel. Circuitos de montaña absolutamente de asfalto, especiales entre los viñedos, siempre en el ámbito de la regularidad, manteniendo promedios inferiores a 50 km/h. La Fédération Internationale des Véhicules Anciens (FIVA) ha incluido el evento a su calendario internacional, compartiendo así con las manifestaciones de mayor relevancia de todo el mundo. Sólo automóviles sport, con su pasaporte de homologación FIVA son aceptados a participar del evento. Este rally es puntuable para el Campeonato Argentino de Regularidad Sport del ACA y la Triple Corona, para el piloto de mejor performance entre el Rally de las Bodegas, el Rally de la Montaña y las 1000 Millas Sport. Declarado de Interés Turístico Nacional por el Ministerio de Turismo de la Nación y de Interés Provincial por el Gobierno de la Provincia de Mendoza, formando parte del calendario oficial de la Vendimia 2015, el Rally de las Bodegas continuará en el concepto de Regularidad Sprint: Un nuevo modo de desarrollar la regularidad, que marca la tendencia en la actividad Sport Histórica, tanto en Argentina como en el mundo. Más información:  '''
-        ,nombre = '13º RALLY DE LAS BODEGAS - COPA PARK HYATT MENDOZA',caracteristicas= ' El Rally de la Bodegas en su 13° Edición consecutiva, organizado por el CLUB MENDOZA CLÁSICOS & SPORT es uno de los eventos de mayor importancia de autos históricos del país. Comenzó una nueva etapa con el acuerdo alcanzado con CLARAMUNT GARAGE ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_52845_default_medium.jpeg','rb'))
-        db.evento.insert(
-        fecha=datetime.strptime('11/3/2015',fdate),
-            
-        precio='$120',
-        direccion='"República de Eslovenia 1959 - Cañitas. Ciudad de Buenos Aires.',
-        detalle='''
-            Los esperamos el próximo Miércoles a las 21.00 hs para realizar una cata vertical con nuestro Primogénito Pinot Noir y Merlot en vinoteca Vinology! 
-        '''      
-        ,nombre = '13º RALLY DE LAS BODEGAS - COPA PARK HYATT MENDOZA',caracteristicas= ' El Rally de la Bodegas en su 13° Edición consecutiva, organizado por el CLUB MENDOZA CLÁSICOS & SPORT es uno de los eventos de mayor importancia de autos históricos del país. Comenzó una nueva etapa con el acuerdo alcanzado con CLARAMUNT GARAGE ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_53217_default_medium.jpeg','rb'))
-        db.evento.insert(
-        fecha=datetime.strptime('12/3/2015',fdate),
-        direccion='"Mendoza, Argentina.',
-        detalle='''
-            El Rally de la Bodegas en su 13° Edición consecutiva, organizado por el CLUB MENDOZA CLÁSICOS &amp; SPORT es uno de los eventos de mayor importancia de autos históricos del país. Comenzó una nueva etapa con el acuerdo alcanzado con CLARAMUNT GARAGE que realza el culto por el automovilismo histórico en un marco de curada hospitalidad.                                                                                                                                                   El RDLB es un evento que fusiona la pasión por los autos clásicos sport, las rutas del vino con sus modernas e innovadoras bodegas y los más espectaculares paisajes mendocinos. Un acontecimiento de nivel internacional en el que los participantes disfrutan de toda la excelencia de esta competencia en el marco ideal que brinda la Cordillera de Los Andes. Viñedos, gastronomía gourmet al pie de la montaña y exhibiciones de Polo, son parte del atractivo que conjugan una exigente competencia con un evento social de alto nivel. Circuitos de montaña absolutamente de asfalto, especiales entre los viñedos, siempre en el ámbito de la regularidad, manteniendo promedios inferiores a 50 km/h. La Fédération Internationale des Véhicules Anciens (FIVA) ha incluido el evento a su calendario internacional, compartiendo así con las manifestaciones de mayor relevancia de todo el mundo. Sólo automóviles sport, con su pasaporte de homologación FIVA son aceptados a participar del evento. Este rally es puntuable para el Campeonato Argentino de Regularidad Sport del ACA y la Triple Corona, para el piloto de mejor performance entre el Rally de las Bodegas, el Rally de la Montaña y las 1000 Millas Sport. Declarado de Interés Turístico Nacional por el Ministerio de Turismo de la Nación y de Interés Provincial por el Gobierno de la Provincia de Mendoza, formando parte del calendario oficial de la Vendimia 2015, el Rally de las Bodegas continuará en el concepto de Regularidad Sprint: Un nuevo modo de desarrollar la regularidad, que marca la tendencia en la actividad Sport Histórica, tanto en Argentina como en el mundo. Más información:  '''
-        ,nombre = '13º RALLY DE LAS BODEGAS - COPA PARK HYATT MENDOZA',caracteristicas= ' Los esperamos el próximo Miércoles a las 21.00 hs para realizar una cata vertical con nuestro Primogénito Pinot Noir y Merlot en vinoteca Vinology! ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_53219_default_medium.jpeg','rb'))
-        db.evento.insert(
-        fecha=datetime.strptime('9/3/2015',fdate),
-        direccion='"Ciudad de Mendoza, Argentina.',
-        detalle='''
-            La Fiesta Nacional de la Vendimia 2015 se realizará los días 7, 8, 9 y 10 de marzo de 2015 en la ciudad de Mendoza. La Fiesta que ya lleva más de 73 años de trayectoria y es una de las fiestas más esperadas por los turistas a nivel nacional. Este año la propuesta contiene los requisitos del género: guión - vendimia que manifieste el patrimonio cultural de la Provincia, entendiendo esto como redefinición de los parámetros culturales que conforman los festejos vendímiales, resaltando en particular el agua como recurso natural, vital y fundamental, transformador de la fisonomía de la Provincia de desiertos a oasis. La identidad de la Fiesta de la Vendimia como la Celebración de la Cosecha, y de la personificación escénica de sus Trabajadores. Durante la fiesta se presentarán alrededor de 1000 bailarines y 50 músicos en escena, lo que implica un arduo trabajo que impactará a todos los presentes en las noches de la fiesta. El Teatro posee una capacidad para 20.000 personas pero como paso en otras ediciones en los cerros que lo rodean otras 40.000 disfrutan del espectáculo superando así los 60.000 espectadores presenciales. Cronograma Fiesta Nacional de la Vendimia 2015 Cronograma vendimial: Domingo 1 marzo: "Bendición de los Frutos". Ceremonia donde se agradece a Dios los frutos sanos obtenidos de la cosecha. Se ofrece el vino nuevo procediéndose al "Golpe en la Reja del Arado", que simboliza al hombre que labra la tierra, bajo la advocación de la Virgen de la Carrodilla y la bendición del fruto nuevo. Viernes 6 marzo: "Vía Blanca de las Reinas". Desfile de carros alegóricos lumínicos que transportan a las reinas tanto salientes como aspirantes al cetro nacional. Sábado 7 marzo: "Carrusel de la Vendimia". Por la mañana desfilan los mismos carruajes, pero escoltados por agrupaciones gauchas con trajes típicos, montados a caballo, destacándose la tradicional carreta tirada por bueyes. "Acto Central". Espectáculo donde se realizan bailes folclóricos con más de mil bailarines en el escenario, representaciones artísticas, juegos de luces y sonido. Tiene lugar la elección y coronación de la reina nacional vendimial. Termina con un espectáculo de fuegos artificiales lanzados desde el "Cerro de la Gloria". Domingo 8, lunes 9 y martes 10: "Repeticiones". Se repite el espectáculo artístico del Acto Central pero sin la elección de la reina nacional de la vendimia. Se presentan actuaciones en vivo de artistas reconocidos a nivel nacional e internacional. 
-        '''      
-        ,nombre = 'CATA VERTICAL PATRITTI EN VINOLOGY',caracteristicas= ' La Fiesta Nacional de la Vendimia 2015 se realizará los días 7, 8, 9 y 10 de marzo de 2015 en la ciudad de Mendoza. La Fiesta que ya lleva más de 73 años de trayectoria y es una de las fiestas más esperadas por los turistas a nivel nacional. Est ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_53358_default_medium.jpeg','rb'))
-        db.evento.insert(
-        fecha=datetime.strptime('14/2/2015',fdate),
-            
-        precio='Precio por persona: $480',
-        direccion='"José León Pagano 2967',
-        detalle='''
-            SAN VALENTIN EN LA LOCANDAMenú especial para la noche del sábado 14 de FebreroEntrada a elecciónEnsaladita de langostinos fritos con pistachos, pulpa de naranja, rúcula y radiccio.Ostras frescas.Antipasto típicamente sardo: jamón de cerdeña, chorizo sardo, pecorino sardo, aceitunas secadas al sol, tomates secos y hongos.Primogénito Pinot Noir<p class="text_exposed_show">Plato principal a elecciónRisotto mantecato al tartufo con emulsión de espárragos.Lomo con salsa de vino Marsala acompañado de zuccini rellenos de scamorza ahumadaPesca fresca del día al cartoccio acompañado de funghi trifolatiPrimogénito MerlotPostre a elecciónMousse de chocolate belgaHelado de higos al cognacSambayón de frutilla y chocolateVin Doux Naturel de Bodega RutiniBrindis: Copa de espumante Trumpeter Extra BrutIncluye agua Mineral y caféPara mas info visitar:&nbsp;https://www.facebook.com/lalocandaristoranteitaliano'''
-        ,nombre = 'FIESTA NACIONAL DE LA VENDIMIA 2015',caracteristicas= ' La Fiesta Nacional de la Vendimia 2015 se realizará los días 7, 8, 9 y 10 de marzo de 2015 en la ciudad de Mendoza. La Fiesta que ya lleva más de 73 años de trayectoria y es una de las fiestas más esperadas por los turistas a nivel nacional. Est ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_53382_default_medium.jpeg','rb'))
-        db.evento.insert(
-        fecha=datetime.strptime('14/2/2015',fdate),
-            
-        precio='$590 por pareja',
-        direccion='"Arcos 2013 - Belgrano',
-        detalle='''
-            Los esperamos el SÁBADO 14 de FEBRERO&nbsp;en Mimí Restaurant &amp; Café&nbsp;para festejar el Día de los Enamorados!Reservas al 4781-1530 / 15 5801-3575'''
-        ,nombre = 'FIESTA NACIONAL DE LA VENDIMIA 2015',caracteristicas= ' La Fiesta Nacional de la Vendimia 2015 se realizará los días 7, 8, 9 y 10 de marzo de 2015 en la ciudad de Mendoza. La Fiesta que ya lleva más de 73 años de trayectoria y es una de las fiestas más esperadas por los turistas a nivel nacional. Est ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_53607_default_medium.jpeg','rb'))
-        db.evento.insert(
-        fecha=datetime.strptime('8/3/2015',fdate),
-        direccion='"Ciudad de Mendoza, Argentina.',
-        detalle='''
-            La Fiesta Nacional de la Vendimia 2015 se realizará los días 7, 8, 9 y 10 de marzo de 2015 en la ciudad de Mendoza. La Fiesta que ya lleva más de 73 años de trayectoria y es una de las fiestas más esperadas por los turistas a nivel nacional. Este año la propuesta contiene los requisitos del género: guión - vendimia que manifieste el patrimonio cultural de la Provincia, entendiendo esto como redefinición de los parámetros culturales que conforman los festejos vendímiales, resaltando en particular el agua como recurso natural, vital y fundamental, transformador de la fisonomía de la Provincia de desiertos a oasis. La identidad de la Fiesta de la Vendimia como la Celebración de la Cosecha, y de la personificación escénica de sus Trabajadores. Durante la fiesta se presentarán alrededor de 1000 bailarines y 50 músicos en escena, lo que implica un arduo trabajo que impactará a todos los presentes en las noches de la fiesta. El Teatro posee una capacidad para 20.000 personas pero como paso en otras ediciones en los cerros que lo rodean otras 40.000 disfrutan del espectáculo superando así los 60.000 espectadores presenciales. Cronograma Fiesta Nacional de la Vendimia 2015 Cronograma vendimial: Domingo 1 marzo: "Bendición de los Frutos". Ceremonia donde se agradece a Dios los frutos sanos obtenidos de la cosecha. Se ofrece el vino nuevo procediéndose al "Golpe en la Reja del Arado", que simboliza al hombre que labra la tierra, bajo la advocación de la Virgen de la Carrodilla y la bendición del fruto nuevo. Viernes 6 marzo: "Vía Blanca de las Reinas". Desfile de carros alegóricos lumínicos que transportan a las reinas tanto salientes como aspirantes al cetro nacional. Sábado 7 marzo: "Carrusel de la Vendimia". Por la mañana desfilan los mismos carruajes, pero escoltados por agrupaciones gauchas con trajes típicos, montados a caballo, destacándose la tradicional carreta tirada por bueyes. "Acto Central". Espectáculo donde se realizan bailes folclóricos con más de mil bailarines en el escenario, representaciones artísticas, juegos de luces y sonido. Tiene lugar la elección y coronación de la reina nacional vendimial. Termina con un espectáculo de fuegos artificiales lanzados desde el "Cerro de la Gloria". Domingo 8, lunes 9 y martes 10: "Repeticiones". Se repite el espectáculo artístico del Acto Central pero sin la elección de la reina nacional de la vendimia. Se presentan actuaciones en vivo de artistas reconocidos a nivel nacional e internacional. '''
-        ,nombre = 'FIESTA NACIONAL DE LA VENDIMIA 2015',caracteristicas= ' La Fiesta Nacional de la Vendimia 2015 se realizará los días 7, 8, 9 y 10 de marzo de 2015 en la ciudad de Mendoza. La Fiesta que ya lleva más de 73 años de trayectoria y es una de las fiestas más esperadas por los turistas a nivel nacional. Est ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_54129_default_medium.jpeg','rb'))
-        db.evento.insert(
-        fecha=datetime.strptime('7/3/2015',fdate),
-        direccion='"Ciudad de Mendoza, Argentina.',
-        detalle='''
-            La Fiesta Nacional de la Vendimia 2015 se realizará los días 7, 8, 9 y 10 de marzo de 2015 en la ciudad de Mendoza. La Fiesta que ya lleva más de 73 años de trayectoria y es una de las fiestas más esperadas por los turistas a nivel nacional. Este año la propuesta contiene los requisitos del género: guión - vendimia que manifieste el patrimonio cultural de la Provincia, entendiendo esto como redefinición de los parámetros culturales que conforman los festejos vendímiales, resaltando en particular el agua como recurso natural, vital y fundamental, transformador de la fisonomía de la Provincia de desiertos a oasis. La identidad de la Fiesta de la Vendimia como la Celebración de la Cosecha, y de la personificación escénica de sus Trabajadores. Durante la fiesta se presentarán alrededor de 1000 bailarines y 50 músicos en escena, lo que implica un arduo trabajo que impactará a todos los presentes en las noches de la fiesta. El Teatro posee una capacidad para 20.000 personas pero como paso en otras ediciones en los cerros que lo rodean otras 40.000 disfrutan del espectáculo superando así los 60.000 espectadores presenciales. Cronograma Fiesta Nacional de la Vendimia 2015 Cronograma vendimial: Domingo 1 marzo: "Bendición de los Frutos". Ceremonia donde se agradece a Dios los frutos sanos obtenidos de la cosecha. Se ofrece el vino nuevo procediéndose al "Golpe en la Reja del Arado", que simboliza al hombre que labra la tierra, bajo la advocación de la Virgen de la Carrodilla y la bendición del fruto nuevo. Viernes 6 marzo: "Vía Blanca de las Reinas". Desfile de carros alegóricos lumínicos que transportan a las reinas tanto salientes como aspirantes al cetro nacional. Sábado 7 marzo: "Carrusel de la Vendimia". Por la mañana desfilan los mismos carruajes, pero escoltados por agrupaciones gauchas con trajes típicos, montados a caballo, destacándose la tradicional carreta tirada por bueyes. "Acto Central". Espectáculo donde se realizan bailes folclóricos con más de mil bailarines en el escenario, representaciones artísticas, juegos de luces y sonido. Tiene lugar la elección y coronación de la reina nacional vendimial. Termina con un espectáculo de fuegos artificiales lanzados desde el "Cerro de la Gloria". Domingo 8, lunes 9 y martes 10: "Repeticiones". Se repite el espectáculo artístico del Acto Central pero sin la elección de la reina nacional de la vendimia. Se presentan actuaciones en vivo de artistas reconocidos a nivel nacional e internacional. '''
-        ,nombre = 'FIESTA NACIONAL DE LA VENDIMIA 2015',caracteristicas= ' Los esperamos el SÁBADO 14 de FEBRERO en Mimí Restaurant &amp; Café para festejar el Día de los Enamorados!Reservas al 4781-1530 / 15 5801-3575 ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_54130_default_medium.jpeg','rb'))
-        db.evento.insert(
-        fecha=datetime.strptime('6/2/2015',fdate),
-            
-        precio='A confirmar',
-        direccion='"Carlos Keen ',
-        detalle='''
-            Los esperamos a las 20.30 hs. en Restaurant Angelus en Carlos Keen para degustar nuestra línea Primogénito.&nbsp;Para reservar tu lugar comunicate con Vinoteca Cava Pampa en Lujan:&nbsp;http://www.cavapampa.com.ar/'''
-        ,nombre = 'DÍA DE LOS ENAMORADOS!',caracteristicas= ' SAN VALENTIN EN LA LOCANDAMenú especial para la noche del sábado 14 de FebreroEntrada a elecciónEnsaladita de langostinos fritos con pistachos, pulpa de naranja, rúcula y radiccio.Ostras frescas.Antipasto típicamente sardo: jamón de cerdeña, c ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_55029_default_medium.jpeg','rb'))
-        db.evento.insert(
-        fecha=datetime.strptime('10/3/2015',fdate),
-        direccion='Ciudad de Mendoza, Argentina.',
-        detalle='''La Fiesta Nacional de la Vendimia 2015 se realizará los días 7, 8, 9 y 10 de marzo de 2015 en la ciudad de Mendoza. La Fiesta que ya lleva más de 73 años de trayectoria y es una de las fiestas más esperadas por los turistas a nivel nacional. Este año la propuesta contiene los requisitos del género: guión - vendimia que manifieste el patrimonio cultural de la Provincia, entendiendo esto como redefinición de los parámetros culturales que conforman los festejos vendímiales, resaltando en particular el agua como recurso natural, vital y fundamental, transformador de la fisonomía de la Provincia de desiertos a oasis. La identidad de la Fiesta de la Vendimia como la Celebración de la Cosecha, y de la personificación escénica de sus Trabajadores. Durante la fiesta se presentarán alrededor de 1000 bailarines y 50 músicos en escena, lo que implica un arduo trabajo que impactará a todos los presentes en las noches de la fiesta. El Teatro posee una capacidad para 20.000 personas pero como paso en otras ediciones en los cerros que lo rodean otras 40.000 disfrutan del espectáculo superando así los 60.000 espectadores presenciales. Cronograma Fiesta Nacional de la Vendimia 2015 Cronograma vendimial: Domingo 1 marzo: "Bendición de los Frutos". Ceremonia donde se agradece a Dios los frutos sanos obtenidos de la cosecha. Se ofrece el vino nuevo procediéndose al "Golpe en la Reja del Arado", que simboliza al hombre que labra la tierra, bajo la advocación de la Virgen de la Carrodilla y la bendición del fruto nuevo. Viernes 6 marzo: "Vía Blanca de las Reinas". Desfile de carros alegóricos lumínicos que transportan a las reinas tanto salientes como aspirantes al cetro nacional. Sábado 7 marzo: "Carrusel de la Vendimia". Por la mañana desfilan los mismos carruajes, pero escoltados por agrupaciones gauchas con trajes típicos, montados a caballo, destacándose la tradicional carreta tirada por bueyes. "Acto Central". Espectáculo donde se realizan bailes folclóricos con más de mil bailarines en el escenario, representaciones artísticas, juegos de luces y sonido. Tiene lugar la elección y coronación de la reina nacional vendimial. Termina con un espectáculo de fuegos artificiales lanzados desde el "Cerro de la Gloria". Domingo 8, lunes 9 y martes 10: "Repeticiones". Se repite el espectáculo artístico del Acto Central pero sin la elección de la reina nacional de la vendimia. Se presentan actuaciones en vivo de artistas reconocidos a nivel nacional e internacional. '''
-        ,nombre = 'SEGUIMOS FESTEJANDO SAN VALENTÍN!',caracteristicas= ' Los esperamos a las 20.30 hs. en Restaurant Angelus en Carlos Keen para degustar nuestra línea Primogénito. Para reservar tu lugar comunicate con Vinoteca Cava Pampa en Lujan: http://www.cavapampa.com.ar/ ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_55106_default_medium.jpeg','rb'))
-        db.evento.insert(
-        fecha=datetime.strptime('10/1/2015',fdate),
-        precio='$120',
-        direccion='"Tower Inn &amp; Suites. San Rafael, Mendoza.',
-        detalle='''Organizada por Tower Inn &amp; Suites, Gran Casa Vinos y Wines of Mendoza, la Tower Wine Expo que se realizará el 9 y 10 de enero de 2015, propone un evento de vinos de excelencia donde se pueda interactuar con los enólogos y sommeliers de las 40 bodegas participantes. La Expo se llevará a cabo en el Hotel Tower de San Rafael en 3 diferentes salones: las bodegas sanrafaelinas estarán en el Salón Valle Grande, las bodegas nacionales se podrán encontrar en el Salón Nihuil, mientras que el Foyer del Hotel y el Salón Atuel será el espacio para los Stands Complementarios. "Es muy interesante y útil realizar un evento de estas características en el departamento de San Rafael ya que dará la oportunidad a los locales de probar vinos de otras regiones y así ampliar su conocimiento sobre vinos Argentinos" expresa Marcelo Rivier, dueño de la Bodega Jean Rivier. La entrada tendrá un valor de $120 y con la misma se entregará una copa de degustación, el derecho a 10 vouchers para intercambiar por vino de las bodegas participantes y un "Eating Break" para canjear por una degustación gastronómica del Chef del Hotel. Además de un troquel que se podrá canjear en Casino Tower por un voucher promocional de juego. Las entradas se podrán adquirir den la Recepción del Hotel y vinotecas de San Rafael. <center><img src="/images/eventos/WineExpoSanRafael2.jpg"></center>
-        'TOWER WINE EXPO 2015 SAN RAFAEL '''
-        ,nombre = 'NOS JUNTAMOS ESTE VIERNES??',caracteristicas= ' Organizada por Tower Inn & Suites, Gran Casa Vinos y Wines of Mendoza, la Tower Wine Expo que se realizará el 9 y 10 de enero de 2015, propone un evento de vinos de excelencia donde se pueda interactuar con los enólogos y sommeliers de las 40 bodeg ...',  imagen = open('C:\\imagenes\\eventos\\thumb_55321_default_medium.jpeg','rb'))
-        print 'termino bien'
+        a()
+        b()
+        c()
     except Exception as e:
         print e
     return True
@@ -618,3 +71,339 @@ def insertPromociones():
 
     return True
 
+def a():
+    from datetime import datetime
+    fdate='%d/%m/%Y'
+    try:
+        db.evento.insert(
+            fecha=datetime.strptime('15/9/2016',fdate),              fecha_fin=datetime.strptime('17/9/2016',fdate),                 precio='$250',                  direccion='La Rural, Predio Ferial de Buenos Aires',            detalle='''Del 15 al 17 de septiembre, de 18 a 23hs. en el Pabellón Frers, La Rural recibe al mundo del vino en la decimosexta edición de la feria Vinos &amp; Bodegas, un clásico que se renueva cada año para brindar a los visitantes una experiencia de disfrute única. Con las nuevas propuestas de más de 40 bodegas argentinas, catas guiadas, Dj´s, food trucks y mercado gourmet, este evento se consolida como el espacio de reunión por excelencia de los amantes del vino.
+            Vinos &amp; Bodegas invita a descubrir en un mismo lugar y a través de un recorrido temático las distintas regiones productoras de vino: la ruta del Malbec, cepa emblemática de la argentina; la ruta del Torrontés, una variedad blanca autóctona con gran presencia en el norte del país; la ruta Crianza pensada para conocer y entender las distintas denominaciones que encontramos en las etiquetas; la ruta de variedades no tradicionales, que transportan al Tempranillo, la Bonarda y el Cabernet Franc y la ruta de Dulces y Espumantes, una categoría ideal para cocktails, postres y festejos. Todo un recorrido organizado por la Escuela de Sommeliers del Gato Dumas, quienes a su vez, ofrecerán catas guiadas y maridajes, a cargo de sommeliers de su staff.
+            Entre las bodegas que participan, se encuentran: Bodega Altus, Bodega Fabre, Finca Sophenia, Bodegas Bianchi, Bodega del Fin del Mundo, Casarena Bodega y Viñedos, Bodega Norton, Viña las Perdices, Domaine Bousquet, Chakana Wines, Bodega Domingo Hermano, RPB, Bodega Tapiz, Bodega Trivento, Huarpe Wine, Bodega Salentein, Bodega Santa Julia, Bodega La Memé, Antonio Mas, RJ Viñedos, Bodega Riglos, JLW Wines, Estancia Mendoza, Viñas de UCO, Pontilli Wines, Mendoza Vineyards, Don Héctor, Bodega La Rural, Bodega Patritti, Bodega Schroeder, Bodega Secreto Patagónico, Escorihuela y Grupo Monet.
+            Dentro de las novedades de esta edición se destaca el desafío Vinos &amp; Bodegas Challenge, un concurso donde los asistentes podrán puntuar los vinos que van probando y así premiar a los favoritos. Mediante catas a ciegas podrán votar los vinos agrupados en diferentes categorías (mejor cepa, mejor relación precio/calidad, mejor blend, entre otras). Desarrollado por WineOn, la propuesta invitará a los visitantes a dar su opinión acerca de cada etiqueta.
+            Los más foodies también tendrán lugar en Vinos &amp; Bodegas, con muy buenas propuestas gastronómicas de los Food Trucks de Los Petersen, Guapaletas y Chivitos Rex, entre otros. También podrán acceder al Mercado Gourmet, que ofrecerá productos orgánicos así como aquellos seleccionados especialmente para la ocasión.
+            Vinos &amp; Bodegas es un evento social cuyo objetivo es que los consumidores puedan apreciar los vinos disfrutando de sus características, aromas y sabores, junto a la oferta gastronómica del sector de food trucks. En este sentido y fomentando un consumo moderado de alcohol a través del programa Wine in Moderation, cada asistente contará con 12 cupones de degustación, disfrutando así de un consumo responsable.
+
+            Organizadores: organiza Bodegas de Argentina y realiza La Rural S.A 
+            Sede: La Rural, Predio Ferial de Buenos Aires, Pabellón Frers. 
+            Ingresos: Av. Santa Fe 4363 
+            Estacionamiento: Av. Sarmiento 2704 y Av. Cerviño 4476 
+            Días: 15, 16 y 17 de septiembre 
+            Horario: 18 a 23hs. 
+            Valor de la entrada: $250.-. (Incluye 12 copas de degustación) 
+            Más información en: www.expovinosybodegas.com.ar''', nombre = 'JUMBO DELI & WINE 2016',caracteristicas= ' Tribuna Plaza será la sede de la tradicional Feria Jumbo Deli & Wine, que cumple su quinto año consecutivo en Buenos Aires, presentando toda la propuesta gourmet y productos premium que ofrece en sus góndolas durante todo el año. Una vez más ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_18160_default_medium.jpeg','rb'))
+        db.evento.insert(
+            fecha=datetime.strptime('29/9/2016',fdate),               fecha_fin=datetime.strptime('30/9/2016',fdate),                 direccion='Sheraton Mar del Plata Hotel',               detalle='''Expo Di Vino, es un concepto de feria creado para cumplir, satisfacer y superar las expectativas comerciales de los expositores. Así también, fue diseñada para que toda persona del trade y el público especializado pueda disfrutar, bajo condiciones óptimas, de los mejores vinos de Argentina.''', nombre = 'SPARKLING NIGHTS 2016',caracteristicas= ' Sparkling Nights es la única feria de la Argentina dedicada exclusivamente a los espumantes. Esta será su octava edición. Durante 3 días, 35 de las bodegas más prestigiosas de la Argentina ofrecerán a los amantes del champagne la posibilidad ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_18166_default_medium.jpeg','rb'))
+        db.evento.insert(
+            fecha=datetime.strptime('12/8/2016',fdate),               fecha_fin=datetime.strptime('14/8/2016',fdate),                 direccion='"Municipalidad de Bragado. Alsina 178, Bragado."',           detalle='''En Agosto llega la undécima edición de la exposición de vinos más reconocida del interior del país. Una propuesta cultural, turística y enogastronómica única en la provincia de Buenos Aires. 
+            Expovinos Bragado continúa con su objetivo de acercar el mundo del vino y el buen vivir al interior del país, generando un espacio de disfrute, promoción y divulgación. Del 12 al 14 de Agosto, la undécima edición de la exposición de vinos más reconocida tendrá lugar en el Palacio Municipal de Bragado (Alsina 178, Bragado, Provincia de Buenos Aires). 
+            Durante tres días los visitantes de Expovinos Bragado podrán disfrutar de las etiquetas de más de 20 bodegas, productos gourmet, aceites de oliva, un espacio de alta gama con etiquetas Premium, un almacén de promociones con importantes descuentos, muestras de arte y más. 
+            Más información en: www.expovinosbragado.com.ar''', nombre = 'EXPO DI VINO',caracteristicas= ' Expo Di Vino, es un concepto de feria creado para cumplir, satisfacer y superar las expectativas comerciales de los expositores. Así también, fue diseñada para que toda persona del trade y el público especializado pueda disfrutar, bajo condicione ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_18168_default_medium.jpeg','rb'))
+        db.evento.insert(
+            fecha=datetime.strptime('18/8/2016',fdate),               fecha_fin=datetime.strptime('19/8/2016',fdate),                 precio='$400',                  direccion='"The Brick Hotel Buenos Aires (Posadas 1232),"',             detalle='''Por primera vez, desembarca en la gran capital latinoamericana esta feria que reúne eitquetas súper top, elaboradas a partir de la sapiencia de enólogos renombrados.
+            La locación elegida es el sofisticado The Brick Hotel Buenos Aires (miembro de la colección de hoteles MGallery by Sofitel, de Accorhotels), en el corazón de Recoleta, frente al Patio Bullrich.
+            La organización estará a cargo de Augusto Saracco y César Moreno, en tándem con Javier Menajovsky (Wine Revolution).''', nombre = 'SEMINARIO DEL VINO ONLINE',caracteristicas= ' Con contenidos de alto interés para la gestión de la comunicación y el comercio digital, el lunes 26 de septiembre, de 8.30hs. a 18.00hs. tendrá lugar el Seminario del Vino Online en el Hotel Faena de Puerto Madero. En el encuentro s ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_18176_default_medium.jpeg','rb'))
+        db.evento.insert(
+            fecha=datetime.strptime('30/6/2016',fdate),               fecha_fin=datetime.strptime('30/6/2016',fdate),                 precio='$600',                  direccion='"La Bumón (Francisco Acuña de Figueroa 1800, CABA),"',               detalle='''Inédito encuentro entre salientes Productores Independientes de Paraje Altamira (PiPA), que desembarcan con sus interesantísimas etiquetas en Buenos Aires. Será una excelente oportunidad para descubrir bondades y secretos de este rincón especial del Valle de Uco mendocino.
+            La propuesta contará con más de 30 vinos (partidas limitadas, súper cuidadas), cuyo valor parte de los $250. Lo más jugoso será la presencia de propietarios y winemakers, que interactuarán de manera muy distendida con el público.
+            Atención: solo hay 70 lugares disponibles. ¿Qué bodegas darán el presente? Altos las Hormigas, Chakana, Fincas Adrián Río, Finca Beth, Finca La Igriega, Finca Las Glicinas, Finca Suarez, Lupa, Son Vida, Teho y Traslapiedra.Paraje Altamira.
+            La buena noticia es que habrá un maridaje para el churrete con exquisiteces de La Bumón, la nueva apuesta gastronómica de la city.
+            Reservas: entradas@parajealtamira.org''', nombre = 'VINOS & BODEGAS 2016',caracteristicas= ' Del 15 al 17 de septiembre, de 18 a 23hs. en el Pabellón Frers, La Rural recibe al mundo del vino en la decimosexta edición de la feria Vinos & Bodegas, un clásico que se renueva cada año para brindar a los visitantes una experiencia de disfrute ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_18177_default_medium.jpeg','rb'))
+        db.evento.insert(
+            fecha=datetime.strptime('23/11/2016',fdate),              fecha_fin=datetime.strptime('25/11/2016',fdate),                precio='$450',                  direccion='"Tribuna Plaza, Av. Del Libertador 4401, Palermo"',                  detalle='''Tribuna Plaza será la sede de la tradicional Feria Jumbo Deli &amp; Wine, que cumple su quinto año consecutivo en Buenos Aires, presentando toda la propuesta gourmet y productos premium que ofrece en sus góndolas durante todo el año.
+            Una vez más disfrutar es la consigna; Jumbo Deli &amp; Wine invita a quienes la visiten a sumergirse en diferentes espacios gourmet que prometen el maridaje ideal y un ambiente perfecto para vivir una experiencia única. Exquisitos vinos, deliciosos fiambres y quesos, carnes, panes, productos gourmet, cervezas, espirituosas, destilados, café y chocolates, son los sabores que se podrán degustar en la quinta edición de la Feria.
+            Datos sobre la Feria Jumbo Deli &amp; Wine
+            Fecha: 23, 24 y 25 de noviembre 
+            Lugar: Tribuna Plaza, Av. Del Libertador 4401, Palermo 
+            Horario: 18 hs. a 22 hs. 
+            Valor de la entrada: $450 
+            Más información en: www.jumbodeliandwine.com.ar''', nombre = 'ALTA GAMA BUENOS AIRES',caracteristicas= ' Por primera vez, desembarca en la gran capital latinoamericana esta feria que reúne eitquetas súper top, elaboradas a partir de la sapiencia de enólogos renombrados. La locación elegida es el sofisticado The Brick Hotel Buenos Aires (miembro d ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_18178_default_medium.jpeg','rb'))
+        db.evento.insert(
+            fecha=datetime.strptime('26/9/2016',fdate),               fecha_fin=datetime.strptime('26/9/2016',fdate),                 precio='1800',                  direccion='Hotel Faena, Martha Salotti 445, CABA.',             detalle='''Con contenidos de alto interés para la gestión de la comunicación y el comercio digital,             el lunes 26 de septiembre, de 8.30hs. a 18.00hs. tendrá lugar el&nbsp;Seminario del Vino
+            Online en el Hotel Faena&nbsp;de Puerto Madero.
+            En el encuentro se darán a conocer los resultados de la investigación “Radiografía del
+            Vino Online en la Argentina”, realizada por Consultora Stg, que devela el perfil del
+            consumidor argentino de vinos, su comportamiento y hábitos en la web.
+            Hoy es fundamental saber a quién nos dirigimos cuando comunicamos por Internet, las
+            nuevas demandas y tendencias del mercado, como también casos exitosos de e-
+            commerce y comunicación online.&nbsp;Oradores destacados como&nbsp;Lis Clement,&nbsp;Directora
+            de la agencia Foster Newton y ex Gerente de Marketing de WofA,&nbsp;Jonny Dayán, CEO
+            de Tonel Privado,&nbsp;Sebastián Balbo, Manager de E-commerce y Marketing Digital de
+            Tonel Privado,&nbsp;Gonzalo Peña,&nbsp;¡Socio-Gerente de Oh! Panel y Master en Investigación
+            de Opinión Pública,&nbsp;Pablo Santos,&nbsp;Director del proyecto VinoApp y Gerente de
+            Marketing de Xsi Latam, y&nbsp;Dolores Lavaque, Directora de Consultora Stg y Master del
+            Wine MBA de la Bordeaux Business School, entre otros, nos ayudarán a entender en
+            detalle insights, nuevas demandas, tendencias del mercado y casos exitosos de e-
+            commerce y de comunicación online del vino.
+            Inscripción: http://www.consultorastg.com/esp/eventos''', nombre = 'EXPOVINOS BRAGADO 2016',caracteristicas= ' En Agosto llega la undécima edición de la exposición de vinos más reconocida del interior del país. Una propuesta cultural, turística y enogastronómica única en la provincia de Buenos Aires. Expovinos Bragado continúa con su objetivo de ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_18182_default_medium.jpeg','rb'))
+        db.evento.insert(
+            fecha=datetime.strptime('4/4/2016',fdate),                fecha_fin=datetime.strptime('10/4/2016',fdate),                 precio='200',           direccion='"Ciudad de Buenos Aires"',           detalle='''4 al 10 de abril, con un despliegue de diferentes actividades en la Ciudad de Buenos Aires.
+            Para asistir a esta celebración, habrá una entrada que dará acceso a todas las actividades y se hará a beneficio del Hospital de Niños Dr. Ricardo Gutiérrez, de $200, en forma anticipada, y de $250 in situ."''', nombre = 'CAMINOS Y SABORES 2016',caracteristicas= ' Caminos y Sabores, a lo largo de sus once ediciones, se ha convertido en una de las ferias de mayor crecimiento, potenciando a su vez el desarrollo de todos sus protagonistas: productores de alimentos típicos, artesanos y representantes de destinos ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_18232_default_medium.png','rb'))
+        db.evento.insert(
+            fecha=datetime.strptime('15/2/2016',fdate),               fecha_fin=datetime.strptime('19/2/2016',fdate),                 direccion='Ciudad de Mendoza',                  detalle='''Planeado para evaluar y premiar la calidad y los avances de la industria vitivinícola argentina, el Argentina Wine Awards ha ganado su lugar como el certamen más importante en la agenda local y gana cada vez más adeptos de otros rincones del mundo del vino. El año pasado participaron más de 669 vinos en el concurso.
+            Con el propósito de reflejar la proliferación de los vinos argentinos en todo el mundo y la importancia cada vez mayor de una variedad de mercados, se seleccionó un jurado que no sólo representa a diversos países y nacionalidades sino que también cuenta con un vasto conocimiento sobre la industria mundial. En esta edición, el panel Internacional estará compuesto por especialistas internacionales que han contribuido al crecimiento de la industria vitivinícola argentina bajo el concepto: 10 YEARS CREATING THE FUTURE.
+            Tal como se ha hecho durante este el 2015, Wines of Argentina incluirá todos los vinos ganadores de los Trophy y Oro en sus actividades de promoción en el exterior para demostrar la alta calidad de los vinos de la Argentina.
+            Las degustaciones del certamen tendrán lugar en Mendoza, del 15 al 19 de febrero de 2016.''', nombre = 'PIPA',caracteristicas= ' Inédito encuentro entre salientes Productores Independientes de Paraje Altamira (PiPA), que desembarcan con sus interesantísimas etiquetas en Buenos Aires. Será una excelente oportunidad para descubrir bondades y secretos de este rincón especial ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_18253_default_medium.jpeg','rb'))
+        db.evento.insert(
+            fecha=datetime.strptime('18/11/2015',fdate),              fecha_fin=datetime.strptime('20/11/2015',fdate),                precio='$399',                  direccion='Tribuna Plaza, Av. Del Libertador 4401, Palermo',            detalle='''Tribuna Plaza será nuevamente la sede de la tradicional Feria Jumbo Deli &amp; Wine, que cumple su cuarto año consecutivo en Buenos Aires, presentando toda la propuesta gourmet y productos premium que ofrece en sus góndolas durante todo el año.
+            Una vez más disfrutar es la consigna; Jumbo Deli &amp; Wine invita a quienes la visiten a sumergirse en diferentes espacios gourmet que prometen el maridaje ideal y un ambiente perfecto para vivir una experiencia única. Exquisitos vinos, deliciosos fiambres y quesos, carnes, panes, productos gourmet, cervezas, espirituosas, destilados, café y chocolates, son los sabores que se podrán degustar en la cuarta edición de la Feria.
+            Con una ambientación distinguida y original, transportará a los invitados a la época del Gran Gatsby de los años 30. Jumbo Deli &amp; Wine 2015 reúne a las marcas más prestigiosas que, con sus mejores propuestas gourmet, hacen deleitar a los argentinos.
+            Como destacado, este año la Feria incorpora un nuevo espacio, Jumbo Fresh donde la marca presentará y dará a degustar sus productos de elaboración propia y se podrán saborear los panes más exclusivos de Jumbo: sticks, saborizados, panes de queso, focaccia de salmón, entre otros. También, en ese mismo stand, se lucirán las distintas  variedades de frutas y verduras donde se degustarán dips de zanahoria, apio y morrón; pinchos de tomate cherry y fruta recién cortada; además de las carnes Premium de Jumbo. Jumbo Fresh ofrece productos frescos todos los días del año.
+
+            Jumbo Deli &amp; Wine 2015, sabores, placeres, experiencias y momentos para descubrir y dejarse sorprender. Todo en un solo lugar. Más información en www.jumbodeliandwine.com.ar
+
+            Datos sobre la Feria Jumbo Deli & Wine
+            Fecha: 18, 19 y 20 de noviembre 
+            Lugar: Tribuna Plaza, Av. Del Libertador 4401, Palermo 
+            Horario: 18 hs. a 23 hs. 
+            Valor de la entrada: $399"''', nombre = 'LA SEMANA DEL MALBEC',caracteristicas= ' 4 al 10 de abril, con un despliegue de diferentes actividades en la Ciudad de Buenos Aires. Para asistir a esta celebración, habrá una entrada que dará acceso a todas las actividades y se hará a beneficio del Hospital de Niños Dr. Ricardo Gut ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_18313_default_medium.jpeg','rb'))
+        db.evento.insert(
+            fecha=datetime.strptime('7/7/2016',fdate),                fecha_fin=datetime.strptime('10/7/2016',fdate),                 precio='$110',                  direccion='La Rural, Predio Ferial de Buenos Aires.',           detalle='''Caminos y Sabores, a lo largo de sus once ediciones, se ha convertido en una de las ferias de mayor crecimiento, potenciando a su vez el desarrollo de todos sus protagonistas: productores de alimentos típicos, artesanos y representantes de destinos turísticos. En la última edición, la feria convocó a más de 80.000 personas que disfrutaron del recorrido por el mercado, de las demostraciones de cocina, disertaciones y espectáculos artísticos.
+            Lo que hay que saber
+            DATOS GENERALES:
+            • Fecha: del jueves 7 al domingo 10 de julio 
+            • Horario: de 12 a 21hs. 
+            •​ Lugar: La Rural, Predio Ferial de Buenos Aires – Ciudad Autónoma de Buenos Aires. 
+            •​ Ingreso: por Av. Sarmiento 2704. 
+            VALOR DE LA ENTRADA
+            •​ ​Entrada general $ 110 
+            •​ ​Entrada general con Catálogo de Expositores $ 150 
+            •​ Entrada Plus: $250 - ¡Numerosos beneficios pensados para vos! 
+            •​ Todos los días: Menores de 5 años –acompañados por un mayor- no abonan entrada.
+            Más información: http://www.caminosysabores.com.ar/ ''', nombre = 'RALLY DE LAS BODEGAS "COPA PARK HYATT" 2016',caracteristicas= ' El Rally de la Bodegas en su 14ª Edición consecutiva, organizado por el CLUB MENDOZA CLÁSICOS & SPORT es uno de los eventos de mayor importancia de autos históricos del país. Comenzó una nueva etapa con el acuerdo alcanzado con CLARAMUNT GARAG ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_18357_default_medium.jpeg','rb'))
+
+    except Exception as e:
+        print e
+    return True
+
+def b():
+    from datetime import datetime
+    fdate='%d/%m/%Y'
+    
+    try:
+        db.evento.insert(
+            fecha=datetime.strptime('9/11/2016',fdate), fecha_fin=datetime.strptime('11/11/2016',fdate), precio='$420', direccion='Hotel Panamericano - Ciudad de Buenos Aires.', detalle='''Sparkling Nights es la única feria de la Argentina dedicada exclusivamente a los espumantes. Esta será su octava edición.
+            Durante 3 días, 35 de las bodegas más prestigiosas de la Argentina ofrecerán a los amantes del champagne la posibilidad de degustar más de 200 variedades, para conocer las últimas tendencias y todas las novedades que ofrece este año el creciente mercado de los vinos espumantes.
+            La cita será en el elegante Hotel Panamericano de Buenos Aires, del 9 al 11 de noviembre, entre las 18 y las 23 horas.
+            Algunas de las bodegas que participarán en esta edición 2016 son las siguientes: Chandon, Norton, Catena Zapata, Casa Bianchi, Salentein, Altavista, Rosell Boher, Luigi Bosca, Freixenet, Argento, Estancia Mendoza , Navarro Correas, Familia Schroeder, Trapiche, Sophenia, Nieto Senetiner, Vistalba, Las Perdices, Finca La Linda, La Riojana, Secreto Patagónico, Dante Robino, Familia Zuccardi y Sáenz Briones, entre otras.
+            Sparkling Nights también ofrecerá a los asistentes la posibilidad de degustar una amplia variedad de delicatessen y productos gourmets: habrá quesos, sushi, patisserie, infusiones, chocolates y finger foods.
+            La entrada cuesta 420 pesos y con la misma se entrega una copa de champagne para la degustación.''', nombre = 'FIESTA NACIONAL DE LA VENDIMIA 2016',caracteristicas= ' 80ª Fiesta Nacional de la vendimia, conmemora el esfuerzo y trabajo del viñatero mendocino. Diez noches de espectáculos con la inclusión de shows de nivel nacional, ceremonias y visitas a bodegas y viñedos. Los principales actos programados son ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_18377_default_medium.jpeg','rb'))
+        db.evento.insert(
+            fecha=datetime.strptime('17/3/2016',fdate),
+            fecha_fin=datetime.strptime('19/3/2016',fdate),           direccion='Mendoza',            detalle='''El Rally de la Bodegas  en su 14ª Edición consecutiva, organizado por el CLUB MENDOZA CLÁSICOS &amp; SPORT es uno de los eventos de mayor importancia de autos históricos del país. Comenzó una nueva etapa con el acuerdo alcanzado con CLARAMUNT GARAGE que realza el culto por el automovilismo histórico en un marco de curada hospitalidad.
+            El RDLB es un evento que fusiona la pasión por los autos clásicos sport, las rutas del vino con sus modernas e innovadoras bodegas y los más espectaculares paisajes mendocinos.
+            Un acontecimiento de nivel internacional en el que los participantes disfrutan de toda la excelencia de esta competencia en el marco ideal que brinda la Cordillera de Los Andes. 
+            Viñedos, gastronomía gourmet al pie de la montaña y exhibiciones de Polo, son parte del atractivo que conjugan una exigente competencia con un evento social de alto nivel.
+            Circuitos de montaña absolutamente de asfalto, especiales entre los viñedos, siempre en el ámbito de la regularidad, manteniendo promedios inferiores a 50 km/h.
+            La Fédération Internationale des Véhicules Anciens (FIVA) ha incluido el evento a su calendario internacional, compartiendo así con las manifestaciones de mayor relevancia de todo el mundo. Sólo automóviles sport, con su pasaporte de homologación FIVA son aceptados a participar del evento.
+            Este rally es puntuable para el Campeonato Argentino de Regularidad Sport del ACA y la Triple Corona, para el piloto de mejor performance entre el Rally de las Bodegas, el Rally de la Montaña y las 1000 Millas Sport.''', nombre = 'ARGENTINA WINE AWARDS 2016',caracteristicas= ' Planeado para evaluar y premiar la calidad y los avances de la industria vitivinícola argentina, el Argentina Wine Awards ha ganado su lugar como el certamen más importante en la agenda local y gana cada vez más adeptos de otros rincones del mundo ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_18397_default_medium.jpeg','rb'))
+        db.evento.insert(
+            fecha=datetime.strptime('28/2/2016',fdate),               fecha_fin=datetime.strptime('8/3/2016',fdate),                  precio='Desde $80.',            direccion='Ciudad de Mendoza',                  detalle='''80ª Fiesta Nacional de la vendimia, conmemora el esfuerzo y trabajo del viñatero mendocino. Diez noches de espectáculos con la inclusión de shows de nivel nacional, ceremonias y visitas a bodegas y viñedos. Los principales actos programados son los siguientes:
+            • 28 Febrero (Domingo): “Bendición de los Frutos”. Ceremonia donde se agradece a Dios los frutos sanos obtenidos de la cosecha. Se ofrece el vino nuevo procediéndose al “Golpe en la Reja del Arado”, que simboliza al hombre que labra la tierra, bajo la advocación de la Virgen de la Carrodilla y la bendición del fruto nuevo.
+            • 4 Marzo (Viernes): “Vía Blanca de las Reinas”. Desfile de carros alegóricos lumínicos que transportan a las reinas tanto salientes como aspirantes al cetro nacional.
+            • 5 Marzo (Sábado): “Carrusel de la Vendimia”. Por la mañana desfilan los mismos carruajes, pero escoltados por agrupaciones gauchas con trajes típicos, montados a caballo, destacándose la tradicional carreta tirada por bueyes.
+            • 5 Marzo (Sábado): “Acto Central”. Espectáculo donde se realizan bailes folclóricos con más de mil bailarines en el escenario, representaciones artísticas, juegos de luces y sonido. Tiene lugar la elección y coronación de la reina nacional vendimial. Termina con un espectáculo de fuegos artificiales lanzados desde el “Cerro de la Gloria”.
+            • 6 Marzo (Domingo): “Segunda Noche”. Se repite el espectáculo artístico del Acto Central pero sin la elección de la reina nacional de la vendimia. Se presentan actuaciones en vivo de artistas reconocidos a nivel nacional e internacional.
+            • 7 Marzo (Lunes): “Tercera Noche”. Repetición del Acto Central con actuaciones en vivo de reconocidos artistas.
+            • 8 Marzo (Martes): “Cuarta Noche”. Repetición del Acto Central con actuaciones en vivo de reconocidos artistas.
+            Más información:  www.mendoza.gov.ar"''', nombre = 'JUMBO DELI & WINE 2015',caracteristicas= ' Tribuna Plaza será nuevamente la sede de la tradicional Feria Jumbo Deli & Wine, que cumple su cuarto año consecutivo en Buenos Aires, presentando toda la propuesta gourmet y productos premium que ofrece en sus góndolas durante todo el año. U ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_18424_default_medium.jpeg','rb'))
+        db.evento.insert(
+            fecha=datetime.strptime('4/11/2015',fdate),               fecha_fin=datetime.strptime('6/11/2015',fdate),                 precio='$224',                  direccion='Hotel Panamericano de la Ciudad de Buenos Aires.',           detalle='''Sparkling Nights es la única feria de la Argentina dedicada exclusivamente a los espumantes.
+            Durante tres días, 40 de las bodegas más prestigiosas de la Argentina ofrecerán a los amantes del champagne la posibilidad de degustar más de 200 variedades, para conocer las últimas tendencias y todas las novedades que ofrece este año el creciente mercado de los vinos espumantes.
+            La cita será en el elegante Hotel Panamericano de la Ciudad de Buenos Aires, del 4 al 6 de Noviembre, entre las 18 y las 23 horas.
+            Algunas de las bodegas que participarán en esta edición son las siguientes: Chandon, Norton, Catena Zapata, Casa Bianchi, Familia Zuccardi, Altavista, Cruzat, Rosell Boher, Mumm, Luigi Bosca, Séptima, Argento, Dante Robino, Alamos, Estancia Mendoza,  Familia Schroeder, Finca Las Moras, Amalaya, Casarena, Nieto Senetiner, Las Perdices, La Riojana, Secreto Patagónico, Humberto Canale y Domaine Bousquet, entre otras.
+            Sparkling Nights también ofrecerá a los asistentes la posibilidad de degustar una amplia variedad de delicatessen y productos gourmet: habrá quesos, sushi, patisserie, café, chocolates y finger foods.
+            Sparkling Nights es organizada por Planeta Joy, el sitio de gastronomía, vinos y lifestyle más prestigioso de la Argentina."''', nombre = 'SPARKLING NIGHTS 2015',caracteristicas= ' Sparkling Nights es la única feria de la Argentina dedicada exclusivamente a los espumantes. Durante tres días, 40 de las bodegas más prestigiosas de la Argentina ofrecerán a los amantes del champagne la posibilidad de degustar más de 200 var ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_18448_default_medium.jpeg','rb'))
+    except Exception as e:
+            print e
+    return True
+
+def c():
+    from datetime import datetime
+    fdate='%d/%m/%Y'
+    try:
+
+        db.evento.insert(
+            fecha=datetime.strptime('7/9/2015',fdate),                precio='Únicamente con invitación',             direccion='Algodon Mansion, Montevideo 1647, CABA',             detalle='''Llega la tercera edición de la Feria de Vinos de San Rafael. El próximo lunes 7 de septiembre tendrá lugar la tercera edición de la Feria de Vinos de San Rafael, con el objetivo que esta emblemática región de la producción de vinos de nuestro país se ha propuesto desde sus inicios: acercar su identidad al público de Buenos Aires, a representantes de los puntos de venta y a la prensa especializada, consolidando su posicionamiento. Por tercer año consecutivo, las principales bodegas de dicha región se reúnen en un solo lugar para compartir sus novedades y los sabores de su terroir.
+
+            El encuentro tendrá lugar el lunes 7 de septiembre en Algodon Mansion, Montevideo 1647, en diferentes horarios según el público y con invitación exclusiva. Las bodegas participantes son Bodega Alfredo Roca, Algodon Wine Estates, Bodegas Lavaque, Bodega Bombal y Aldao, Finca Dinamia, Funckenhausen Vineyards, Bodega Goyenechea, Bodegas Iaccarini, Bodega Jean Rivier, Casa Bianchi, FOW-Fabricio Orlando Winemaker y Bodegas Suter, que nuevamente ofrecerá en la barra innovadores cocktails a base de vino, uno de los hits de la edición 2014.&nbsp;&nbsp;&nbsp;Como novedad, se suma la bodega Mumm Domain, uno de los prestigiosos exponentes de los productores de espumantes de alta gama que la región brinda al mercado.
+
+            Características del terroir 
+
+            San Rafael es un terroir con más de dos siglos de historia y con características que lo hacen único: su ubicación en el sur mendocino; clima templado continental semiárido y una marcada amplitud térmica; una moderada cercanía con la Cordillera de los Andes, que lo convierte en tributario de las aguas provenientes de los ríos Atuel y Diamante, conducidas por sistemas de riego y acequias creadas por la industriosa mano mendocina y que a la vez asegura el reparo de las fuertes heladas; la altura sobre el nivel del mar, que oscila entre los 600 y los 800 m; escasas precipitaciones y baja humedad ambiente, junto a suelos profundos, permeables y pobres en materia orgánica; una gran proporción de días soleados. Finalmente su gente, el mayor de sus tesoros, que continúa una larga tradición vitivinícola y el amor al vino y a su tierra en el sur de la provincia de Mendoza. Todas condiciones decisivas para el logro de vinos de excelencia.
+
+            La presencia de bodegas familiares también es parte de la identidad de esta zona, con sus establecimientos, sus tradiciones y sus productos, que se ha adaptado a las exigencias de los mercados y los consumidores actuales, sin abandonar sus mejores prácticas.
+
+            DATOS
+
+            Fecha: lunes 7 de septiembre de 2015 
+            Lugar: Algodon Mansion, Montevideo 1647, CABA. 
+            Entradas: únicamente con invitación. 
+            Horario de trade y sommeliers: 14 a 16 hs 
+            Horario de prensa: 16 a 18 hs 
+            Horario de invitados especiales: 18 a 21 hs."''', nombre = 'VINOS Y BODEGAS 2015',caracteristicas= ' Una nueva experiencia para los sentidos llega a La Rural de la mano de Vinos y Bodegas. Del 24 al 26 de septiembre, de 18 a 23hs. en el Pabellón Frers, más de 40 bodegas argentinas presentarán sus novedades y productos, en un espacio especialmente ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_18450_default_medium.jpeg','rb'))
+
+        db.evento.insert(
+            fecha=datetime.strptime('14/8/2015',fdate),               fecha_fin=datetime.strptime('16/8/2015',fdate),                 direccion='Municipalidad de Bragado. Alsina 178, Bragado.',             detalle='''En agosto llega la décima edición de la exposición de vinos más reconocida del interior del país. Una propuesta cultural, turística y enogastronómica única en la provincia de Buenos Aires.
+
+            Expovinos Bragado continúa con su objetivo de acercar el mundo del vino y el buen vivir al interior del país, generando un espacio de disfrute, promoción y divulgación. Del 14 al 16 de agosto, la décima edición de la exposición de vinos más reconocida tendrá lugar en el Palacio Municipal de Bragado (Alsina 178, Bragado, Provincia de Buenos Aires). 
+
+            Durante tres días los visitantes de Expovinos Bragado podrán disfrutar de las etiquetas de más de 20 bodegas, productos gourmet, aceites de oliva, un espacio de alta gama con etiquetas Premium, un almacén de promociones con importantes descuentos, muestras de arte y más.
+
+            Además, en las vísperas de la feria se podrá disfrutar de ciclos de música y teatro, un encuentro de ceremonial y protocolo, el abierto de vinos y golf, y el imponente “Cóctel a orillas del viento”, un evento en el Club Náutico de Bragado. Con la laguna como marco, vinos, espumosos y una selección de productos gourmet para disfrutar al aire libre.
+
+            Estarán presentes aportando su energía y buen humor, Juan Braceli y Juan Ferrara de Cocineros Argentinos, realizando demostraciones de cocina.
+
+            Comprometidos con el municipio, parte de lo recaudado será a total beneficio de una institución bragadense. Además, continúa la campaña de concientización “Beber con estilo”, que promueve la cultura de la responsabilidad y moderación al beber.
+
+            Más información en www.expovinosbragado.com.ar"''', nombre = 'VINOS DE SAN RAFAEL',caracteristicas= ' Llega la tercera edición de la Feria de Vinos de San Rafael. El próximo lunes 7 de septiembre tendrá lugar la tercera edición de la Feria de Vinos de San Rafael, con el objetivo que esta emblemática región de la producción de vinos de nuestro ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_18517_default_medium.jpeg','rb'))
+
+        db.evento.insert(
+        fecha=datetime.strptime('17/8/2015',fdate),               fecha_fin=datetime.strptime('22/8/2015',fdate),                 direccion='Ciudad de Buenos Aires',             detalle='''Del 17 al 22 de agosto, Buenos Aires tendrá su primera semana dedicada a la coctelería. Una propuesta que reúne a más de 40 bares y restaurantes, decenas de bartenders, centenares de tragos a precios promocionales, clases maestras, conferencias, recorridos de bares y degustaciones. Un nuevo evento cultural en la agenda porteña, que busca reconocer a la ciudad como la gran capital sudamericana de la coctelería.
+
+            La coctelería es un hito cultural, que atraviesa a la ciudad en múltiples escenarios. En sus bares y restaurantes, en los hoteles y en los hogares, en la televisión y en la radio, en los libros y en las revistas. En encuentros de amigos y en fiestas, en la previa de un asado y como relax de after office.
+
+            Todo esto confluye en Buenos Aires Cóctel:
+            - A lo largo de una semana, los mejores bares de la ciudad ofrecerán una carta especial de cócteles propios a valores promocionales, en la búsqueda acercar al público a la coctelería y a los bares, para que conozca y disfrute las mejores mezclas y bebidas.
+
+            - Cada día se sucederán clases maestras para amateurs y aficionados que quieran aprender sobre el mundo de las bebidas, además de múltiples eventos lúdicos y educativos en los bares participantes.
+
+            - Se suma una jornada de charlas y conferencias en la Universidad de Palermo, dirigida específicamente a profesionales, bartenders, gastronómicos y estudiantes, sobre los distintos aspectos que hacen al trabajo de la barra, la creación de un bar, el diseño de una marca, los procesos de destilación, entre otros temas.
+
+            - Todo bajo el concepto de consumo responsable, parte inherente del disfrute y del aprendizaje, con actividades especiales, comunicación específica y sugerencias de recorridos a pie.
+
+            Buenos Aires Cóctel. Del 17 al 22 de agosto, en toda la ciudad porteña.
+
+            Con el apoyo del Ente de Turismo de la Ciudad de Buenos Aires, la Universidad de Palermo y las empresas Grupo Cepas, Pernod Ricard, Diageo, Gruppo Campari, Moët Hennessy, Mitre Fortín, Phaedrus, CCU, Familia Zuccardi, Fratelli Branca y Catena Zapata.''', nombre = 'TERROIR CON HISTORIA 2015',caracteristicas= ' Del 17 al 22 de agosto, Buenos Aires tendrá su primera semana dedicada a la coctelería. Una propuesta que reúne a más de 40 bares y restaurantes, decenas de bartenders, centenares de tragos a precios promocionales, clases maestras, conferencias, ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_18521_default_medium.jpeg','rb'))
+
+        db.evento.insert(
+            fecha=datetime.strptime('9/7/2015',fdate),                fecha_fin=datetime.strptime('12/7/2015',fdate),                 precio='$80',           direccion='La Rural - Av. Sarmiento 2704 - Palermo – Buenos Aires',             detalle='''La feria Caminos y Sabores 2015 se realizará del 9 al 12 de julio en el predio de La Rural, en Buenos Aires. Las entradas ya están a la venta.
+
+            Caminos y Sabores es, más que una feria, una forma de apreciar nuestro país. Desde el jueves 9 al domingo 12 de julio de 2015 la principal feria que nuclea expositores de alimentos y artesanías de todo el país se desarrollará en dos pabellones de La Rural, en Buenos Aires.
+
+            Como desde hace once años, la feria Caminos y Sabores expone las raíces gastronómicas y culturales argentinas de la mano de productores y artesanos provenientes de todas las regiones del país.
+
+            En Caminos y Sabores el público puede acceder de primera mano a la historia de un determinado producto en el cual intervienen muchos protagonistas, familias y colaboradores, en una red de labores que se ha transmitido de generación en generación. Es así que una receta familiar se ve transformada en un producto regional  al alcance del público. 
+
+            Las Novedades/ Mucho más que un paseo de compras
+
+            En Caminos y Sabores 2015 se presenta un nuevo espacio gastronómico llamado “Maestros del Pan”, donde especialistas de la firma Calsa dispondrán sus conocimientos en materia de panificación para que en vivo y en directo elaboren panificaciones de la mejor calidad.
+
+            El rincón donde los cinco sentidos se concentran en la diversidad de aromas, colores y sabores para disfrutar de platos con fuerte raigambre en cada pueblo del interior siguen siendo la Cocina y el Taller de Elaboración de Alimentos regionales. Allí, dentro de una escenografía mágica que replica lo cotidiano, el público se deleita y aprende de los mejores representantes de cada región del país. A veces las aves, otras los frutos de mar, cuando no los cabritos, corderos y cerdos, siempre condimentados con los mejores frutos de las sierras, fortalecen el alma, recorriendo todo el cuerpo hasta llegar a la degustación y el aplauso merecido a los mejores expositores.
+
+            También sorprende en Caminos y Sabores 2015 la Plaza del Encuentro, un espacio donde se celebra la cultura a través de espectáculos representativos de la identidad de nuestro país y las tan vistosas Huertas, para que los visitantes puedan disfrutar del placer de cultivar desde el hogar.
+
+            La frutilla del postre viene de la mano del Concurso Experiencias del Sabor. Organizado por la Consultora STG, este concurso tiene como objetivo reconocer la calidad de aquellos productos que participan de la exposición y de premiar la excelencia del trabajo desarrollado durante todo el año. El jurado del Concurso, integrado por un panel de testeadores no videntes, está especializado en el análisis sensorial de alimentos.
+
+            Datos importantes:
+
+            Fecha: del 9 al 12 de julio de 2015 
+            Horario: de 12 a 21 hs. 
+            Lugar: La Rural - Av. Sarmiento 2704 - Palermo – Buenos Aires 
+            Venta de entradas: En boletería de La Rural de 11:30 a 20:30 y on line en ticketek.com.ar 
+            Valor de la entrada: $ 80 Menores de 5 años NO abonan entrada. 
+
+            Descuentos y bonificaciones (exclusivos para el VIERNES 10 DE JULIO) 
+
+            Jubilados: 2×1 
+            Escuelas de Cocina: Vení vestido con tu chaqueta y obtené 2×1 en entradas 
+            Estudiantes universitarios y terciarios de carreras afines (Gastronomía, hotelería, turismo, ingeniería en alimentos, etc.): 2×1 presentando libreta o constancia de alumno regular. 
+            Escuelas primarias, sin cargo previa acreditación. Enviar previamente a la Organización una carta membretada con listado de alumnos, docentes a cargo (incluir N° de teléfono celular) con sello de la Institución. Enviarlo con anticipación al mail infocaminosysabores@caminosysabores.com.ar y llamar telefónicamente al (011) 5128 9800. Al ingresar a la feria, presentar el listado original en la zona de boleterías."''', nombre = 'BUENOS AIRES CÓCTEL 2015',caracteristicas= ' En agosto llega la décima edición de la exposición de vinos más reconocida del interior del país. Una propuesta cultural, turística y enogastronómica única en la provincia de Buenos Aires. Expovinos Bragado continúa con su objetivo de ace ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_18602_default_medium.jpeg','rb'))
+
+        db.evento.insert(
+            fecha=datetime.strptime('6/6/2015',fdate),                direccion='Hotel NH Tango. Ciudad de Buenos Aires.',            detalle='''Quinta edición de la cata de vinos que busca juntar en una misma mesa a enólogos, sommeliers, especialistas, comunicadores y consumidores apasionados, para que en un ambiente distendido, aprendan unos de otros y en conjunto ayuden a difundir la cultura del vino. Como siempre, el gran objetivo es quitarle la solemnidad a la cata, volver a la esencia, disfrutar del vino y analizar sencillamente cual es el que gusta más. En 2011, el evento se realizó en torno al Malbec en el restaurante a puertas cerradas Treinta Sillas. Su repercusión sobrepaso las mejores expectativas: 30 cubiertos y 34 muestras diferentes de Malbec. En 2012, el tema fueron los Blends y en el restaurante Laurak Bat se reunieron 50 personas para degustar un total de 49 etiquetas de las diferentes regiones Argentinas. En 2013, nuevamente con el Malbec, 90 degustadores pudieron disfrutar de 64 etiquetas de Alta Gama en una inolvidable noche en el Hotel NH Tango. En 2014 fue el turno de los Cabernet (Sauvignon y Franc), donde 94 degustadores pudieron disfrutar de mas de 70 muestras de los distintos Cabernet que se dan en la Argentina. Este año la temática será nuevamente el Malbec. Nuestra cepa insignia, la que nos identifica en el mundo, la que podemos encontrar desde la Patagonia hasta los Valles Calchaquíes, con sus características propias y las que le imprime el terruño. El Desafío Federal 2015 se llevará a cabo el sábado 6 de Junio nuevamente en el Hotel NH Tango y constará de la cata a ciegas de 75 etiquetas de Malbec de alta gama, divididos en 3 categorías según su precio sugerido de venta al público. Como siempre, la cata será seguida de una de una cena distendida acompañada por los mismos vinos durante la cual se anunciarán los 6 preferidos de cada categoría. Este año, en el Desafío Federal también se premiará a la etiqueta más atractiva de todas las que serán degustadas, para de alguna manera premiar el esfuerzo y la creatividad de nuestros diseñadores, quienes también aportan con su trabajo a la venta y difusión de nuestros Malbec. Además en el mes de Julio se realizará la entrega de los diplomas a las bodegas que resulten premiadas, a la que serán invitadas las bodegas participantes y el periodismo a probar los 6 vinos premiados de cada categoría. Los 95 privilegiados que lograron conseguir una plaza para participar como degustadores (las mismas se agotaron en 72 horas) tendrán la oportunidad de degustar 75 muestras de malbec de entre 90 y 1100 pesos habrá exponentes de 8 provincias diferentes (Mendoza, Salta, Neuquén, Río Negro, Córdoba, La Rioja, Tucumán y La Pampa). Las bodegas que han confirmado su participación en el Desafío Federal 2015 son: Achaval Ferrer, Aleanna, Alta Vista, Altocedro, Altos las Hormigas, Amalaya, Atamisque, Bodega del Desierto, Bodega del Fin del Mundo, Bodega Enrique Foster, Bodega Posse, Bodega Séptima, Bodega SinFin, Bodega Toneles, Carinae, Chakana, Chaman, Clos de Chacras, Dante Robino, Domingo Molina, Dominio del Plata, Doña Paula, Durigutti, El Esteco, El Porvenir de Cafayate, Ernesto Catena Vineyards, Etchart, Familia Cassone, Finca Decero, Finca la Anita, Finca las Moras, Finca Sophenia, Gimenez Riili, Goyenechea, HDWines, Humanao, Impaciente, Insolente, Javier Collovati, Kaiken, Krontiras, La Mascota, Lagarde, Lamadrid, Las Perdices, Margot, Matías Riccitelli, Mauricio Lorca, Melipal, Miras, Mosquita Muerta Wines, Nieto Senetiner, Noble de San Javier, Norton, NQN, O. Fournier, Piatelli, Renacer, Pulenta Estate Riglos, Santonegro, Teho, Tempus Alba, Terrazas, Tintonegro, Trapiche, Trivento, Vicentin, Videla Dorna, Viña 1924 de Angeles, Viña Vida, Vistalba, Zorzal Wines y Zuccardi. Para más información comunicarse vía mail a info@eldesafiofederal.com.ar "''', nombre = 'EXPOVINOS BRAGADO 2015',caracteristicas= ' Del 24 al 26 de julio próximo, en Espacio Pilar (Chile 1963 – salida km 47 de Panamericana), vuelve la celebración gastronómica para disfrutar del “buen comer y beber”, probar –y comprar- ingredientes que transforman una comida en un plat ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_18656_default_medium.jpeg','rb'))
+        db.evento.insert(
+            fecha=datetime.strptime('1/7/2015',fdate),                fecha_fin=datetime.strptime('3/7/2015',fdate),                  precio='$350',                  direccion='JA Vinoteca, Borges 1772, Palermo, CABA.',           detalle='''La fuerza de la historia unida a una nueva generación de enólogos que cambiaron para siempre el rumbo de la vitivinicultura local. Matias Michelini: Passionate Wine - SuperUco Gerardo Michelini: Gen del Alma - SuperUco Juan Pablo Michelini: SuperUco Manuel Michelini: Plop Andrea Mufatto: Gen del Alma Luis Reginato: Chaman Wines - Reginato Espumantes David Bonomi: Tierra Inti - Per Se Edgardo Del Popolo: Per Se Ariel Angelini: Tupun Francisco Bugallo: Cara Sur Pablo Bassin: Fuego Blanco En formato de feria, 11 enólogos, más de 80 vinos y sus últimas creaciones  Cuándo?: 1, 2 y 3 de Julio – 17 a 22hs Dónde?: JA Vinoteca, Borges 1772, Palermo, CABA Solo 80 entradas por día - Valor: $350 Puntos de Venta: Ozono Drinks - La Rioja 1823, Parque Patricios Vinoteca Taninos - Araoz 1227, Palermo JA - Borges 1772, Palermo Mr. Wines - Aranguren 1078, Caballito Alma de los Andes - Calle 44 nro. 857,  La Plata Online: www.ozonodrinks.com.ar"''', nombre = 'ESPACIO GOURMET 2015 - SEGUNDA EDICIÓN',caracteristicas= ' La feria Caminos y Sabores 2015 se realizará del 9 al 12 de julio en el predio de La Rural, en Buenos Aires. Las entradas ya están a la venta. Caminos y Sabores es, más que una feria, una forma de apreciar nuestro país. Desde el jueves 9 al d ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_51494_default_medium.jpeg','rb'))
+
+        db.evento.insert(
+            fecha=datetime.strptime('24/7/2015',fdate),               fecha_fin=datetime.strptime('26/7/2015',fdate),                 precio='$50.-',                 direccion='Espacio Pilar Av. Chile 1963 Panamericana Ramal Pilar km 47',                detalle='''
+            Del 24 al 26 de julio próximo, en Espacio Pilar (Chile 1963 – salida km 47 de Panamericana),  vuelve la celebración gastronómica para disfrutar del “buen comer y beber”, probar –y comprar- ingredientes que transforman una comida en un plato inolvidable.  Esta 2ª edición cuenta con el apoyo de la Municipalidad de Pilar y con el auspicio de Banco Provincia, que ofrecerá beneficios especiales para sus clientes.
+            
+            En Espacio Gourmet, los Food Trucks estarán a la orden del día.  Propuestas divertidas con diferentes variantes de cocina: árabe, mexicana, rápida, jugos de frutas con combinaciones exquisitas.  Participan B.A. Foodtruck, María Félix, Moros en la Costa, Bonnyuzz, entre otros.
+            
+            Los más destacados Chefs de Cuisine de la Escuela de Cocineros Gato Dumas ofrecerán clases abiertas para develar los “secretos” aun de los platos más sencillos y comunes, para que sean apreciados como el manjar más exquisito.
+            
+            En el mercado se podrán descubrir y obtener los ingredientes más curiosos para que la comida de todos los días sea también especial: Gaby Matchel con sus mermeladas y chutneys también presentará su nuevo servicio de delivery, las pastas de grano duro de Paese di Sapore, las variedades más deliciosas de Quesoteca Burgos, Cervezas Jarva con sus sabores únicos, Vegie Milk y sus leches gourmet, Tea Me con los blends más originales, la propuesta más gourmet de productos para celíacos, entre otros.  Utensilios y elementos originales de Ollas Essen, Metal Real con sus cubiertos, la artista plástica María Laura Pini con su “vajilla de autor”, los hornos artísticos de Cuisine, la artista textil Nadine Youssefian que auspiciada por Colibrí llevará sus manteles intervenidos, entre otros.
+            
+            Además, como en la primera edición, Gorros Wine prepara “Los Caminos del Vino”, un paseo en el que se podrán degustar los vinos de las cepas más exclusivas.  Un programa imperdible.
+            
+            En el restaurante Los visitantes podrán disfrutar también las propuestas gourmet de Jean Paul Bondoux y Jérôme Mathe con su “Cuisine du Sud”, así como las de Art Catering, Tree Cocina, Brazzi Catering, Crepas, La Arepería de Buenos Aires, Pancho Bonito, GuiLab Laboratorio de Helados con sus helados moleculares realizados con nitrógeno líquido a la vista del público.
+            
+            Arte PHOS y el Ente de Promoción de la Municipalidad de Pilar presentarán las fotografías ganadoras del concurso “La Sal de la Vida”, el primer concurso fotográfico de gastronomía gourmet, una especialidad muy particular en fotografía.  Se convoca a mayores de 18 años, residentes en el territorio nacional, amantes de la fotografía y la gastronomía, profesionales y/o amateurs, que pueden presentar fotos sacadas con cualquier dispositivo sobre platos, ingredientes, presentaciones de gastronomía gourmet.  Inscripción hasta el 6 de julio de 2015.  Bases e informes en Facebook: La Sal de la Vida.
+            
+            Dado que esta edición de Espacio Gourmet se realiza en plenas vacaciones de invierno, habrá un espacio para chicos con clases de cocina y otras actividades divertidas, especialmente pensadas para el “público menudo”.
+            
+            Espacio Gourmet está pensada especialmente para un público “bon vivant” que conoce lo que le gusta y, a la vez, está abierto a descubrir nuevos sabores, nuevas texturas, a vivir nuevas experiencias placenteras.  Sabores de autor, productos nobles y paladares delicados, todo junto en un solo lugar. 
+            
+            Espacio Gourmet es una propuesta que abarca desde sabores de autor, especias originales, productos nobles, nuevas texturas, nuevas formas de preparar y cocinar ingredientes tradicionales, hasta lo más novedoso en utensilios, mantelería, vajilla y cristalería, accesorios indispensables para enaltecer cualquier comida.  Propuestas de maridajes excepcionales.  Todo, en un solo lugar."''', nombre = 'CAMINOS Y SABORES 2015',caracteristicas= ' La fuerza de la historia unida a una nueva generación de enólogos que cambiaron para siempre el rumbo de la vitivinicultura local. Matias Michelini: Passionate Wine - SuperUco Gerardo Michelini: Gen del Alma - SuperUco Juan Pablo Michelini: SuperUc ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_51495_default_medium.jpeg','rb'))
+        		
+        db.evento.insert(
+            fecha=datetime.strptime('27/4/2015',fdate),               direccion='Casal de Catalunya. Chacabuco 863, San Telmo.',              detalle='''
+            En conmemoración a la quinta celebracion del día internacional del Malbec, en el mes de Abril del 2015 les propondremos ser parte de +Wine Edition #2 bajo el slogan: "WE LOVE MALBEC" en donde, como ya es costumbre, contaremos con dos sectores de degustación.                                                                                                                                              SALON ANTONI TAPIES: Vinos rosados tranquilos y espumantes elaborados a base de malbec SALON PAU CASALS: Varietales, blend y fortificados de malbec El lunes 27 el Casal de Catalunya con su imponente edificio sera participe de la muestra de vinos que revoluciona Buenos Aires. "
+            '''
+            ,nombre = 'MEGA DEGUSTACIÓN ANUAL OZONO DRINKS 2015 - SEGUNDA EDICIÓN',caracteristicas= ' Quinta edición de la cata de vinos que busca juntar en una misma mesa a enólogos, sommeliers, especialistas, comunicadores y consumidores apasionados, para que en un ambiente distendido, aprendan unos de otros y en conjunto ayuden a difundir la cul ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_51561_default_medium.jpeg','rb'))
+        db.evento.insert(
+            fecha=datetime.strptime('18/4/2015',fdate),               precio='Venta de Entradas en Vinoteca Vides - Juan B Justo',            direccion='Club Italiano (Neuquén Capital),',           detalle='''Te invitamos a festejar el MALBEC WORLD DAY.&nbsp;No te lo pierdas este Sábado 18 de Abril en el Club Italiano de la Ciudad de Neuquén."''', nombre = 'DESAFÍO FEDERAL 2015',caracteristicas= ' Alta Gama Rosario vuelve del 4 al 6 de junio de 2015 para brindar por sus 11 años con un recorrido totalmente renovado en el ámbito de Terrazas del Paraná, en La Estación Fluvial de Rosario, presentando una gran cantidad de expositores. En 2015 A ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_51719_default_medium.jpeg','rb'))
+        db.evento.insert(
+            fecha=datetime.strptime('24/9/2015',fdate),               fecha_fin=datetime.strptime('26/9/2015',fdate),                 precio='$200.-',                direccion='Predio La Rural. Av. Santa Fe 4363.',                detalle='''
+            Una nueva experiencia para los sentidos llega a La Rural de la mano de Vinos y Bodegas. Del 24 al 26 de septiembre, de 18 a 23hs. en el Pabellón Frers, más de 40 bodegas argentinas presentarán sus novedades y productos, en un espacio especialmente pensado para los amantes del buen beber.
+            
+            Una propuesta moderna que invita a descubrir las distintas regiones productoras de vinos, a través de sus cepas y la oportunidad única de degustar cada una de ellas. Un encuentro con las nuevas tendencias donde se podrá disfrutar de las catas guiadas por la Escuela de Sommeliers del Gato Dumas, acceder a la tienda de vinos con una selección de etiquetas a cargo de Enogarage y descubrir la cocktelería con vino: bartenders de la ciudad incorporan la bebida a sus barras para la creación de tragos imperdibles que llegan para quedarse.
+            
+            Los visitantes más foodies también tendrán su lugar en Vinos &amp; Bodegas, a través del mercado gourmet, con productos destacados para transformar cada una de las comidas en verdaderos platos de autor. La propuesta se complementa con un sector de productos orgánicos de primera selección.
+            
+            En el espacio al aire libre, la gastronomía será la protagonista con propuestas para todos los gustos: bar de tapas y finger food; que se suman a la novedosa propuesta de Food Trucks de La Cabrera, Los Petersen Cocineros, Street Food y Bon Bouquet, que ofrecerán innovadoras opciones de “gastronomía sobre ruedas”.
+            
+            Peugeot Lounge también se suma a esta tendencia con su food truck y presenta una propuesta de Crepería &amp; Wine Bar: dos grandes tradiciones de la gastronomía francesa se unen en un mix perfecto y llegan a Vinos &amp; Bodegas para que los visitantes disfruten al máximo esta experiencia.
+            
+            Por su parte Vinómanos, la primera guía mobile en Latinoamérica de vinos argentinos, volverá a estar presente con su plataforma online, que permitirá a todos los visitantes obtener mayor información sobre los productos presentados por cada bodega.
+            
+            Por segundo año consecutivo, FM One 103.7 musicalizará en vivo el evento, con todos los hits del momento. La experiencia se completa con exclusivos Dj’s Sets y distintas sesiones de live music.
+            
+            Asimismo, en el marco del evento, La Rural y Bodegas de Argentina llevarán a cabo iniciativas de sustentabilidad. A través de “La Rural Recicla” y con la colaboración de las bodegas participantes, se recuperarán el cartón y las botellas de vidrio consumidas durante la exposición, que luego serán donados a la Cooperativa El Ceibo para su reciclado. También se impulsará el programa “Wine in Moderation”, que fomenta el consumo moderado y responsable, como la forma más inteligente de apreciar las virtudes y características de los grandes vinos que se presentarán. Además, los visitantes tendrán acceso permanente a estaciones de hidratación libre.
+            
+            Vinos y Bodegas | Edición 2015
+            
+            Organizadores: organiza Bodegas de Argentina y realiza La Rural, Predio Ferial de Buenos Aires. 
+            Sede: La Rural, Predio Ferial de Buenos Aires, Pabellón Frers. 
+            Ingresos: Av. Santa Fe 4363 
+            Estacionamiento: Av. Sarmiento 2704 y Av. Cerviño 4476 
+            Días: 24, 25 y 26 de septiembre 
+            Horario: 18 a 23hs 
+            Valor de la entrada: $200.-. (Incluye 12 copas de degustación) 
+            Más información en: www.expovinosybodegas.com.ar"''', nombre = 'ROSARIO ALTA GAMA 2015',caracteristicas= ' Llega la segunda edición de Vinos de Argentina. El próximo 8 y 9 de mayo se realizará la Segunda Edición de Vinos de Argentina en Casa Las Cañitas (Huergo 283, CABA) de 18 a 23 hs. Esta feria vuelve a reunir en un espacio cálido y distendido a ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_51793_default_medium.jpeg','rb'))
+
+
+        db.evento.insert(
+            fecha=datetime.strptime('17/4/2015',fdate),               direccion='Evento Global.',             detalle='''
+            En esta 5ta. Edición del Malbec World Day se llevarán a cabo más de 70 eventos en 64 ciudades de 50 países del mundo para hacerle honor a la cepa insignia de la Argentina. En todos ellos se exhibirán tres cortometrajes seleccionados por WofA y creados para que sus espectadores puedan realizar una inmersión en la cultura argentina y específicamente en el Malbec, un morocho nacido en Francia que supo convertirse en el argentino más grande. Este año el evento tendrá como coprotagonista al cine, que al igual que el vino combina arte e industria a la vez. Hacer cine implica crear experiencias audiovisuales, contar historias, agudizar nuestra percepción del mundo e inventar atmósferas que estimulan nuestros sentidos. La cinematografía engloba diversas disciplinas: fotografía, literatura (guión), música, actuación y montaje. Es un proceso largo que incluye el trabajo de toda una industria. Su parte final, el montaje, implica una selección cuidadosa de los elementos de trabajo y la realización de una síntesis perfecta. Del mismo modo, nuestro vino Malbec es arte porque refleja nuestra manera de ser argentinos, simboliza nuestro carácter, nuestra pasión y nuestra relación férrea con la tierra, crea atmósferas íntimas que refuerzan vínculos, aportan calidez y confianza, alteran nuestra percepción sensorial; y es industria porque reúne las capacidades de nuestro capital humano y los avances tecnológicos para mejorar con el tiempo. Lights, Camera, Malbec es una feria dirigida a jóvenes de 25 a 35 años y su propuesta incluye degustar vinos Malbec de todos los estilos y terroirs, disfrutar de la oferta gastronómica de los food trucks, incorporar tips en mini charlas, bajar gratis la aplicación oficial del evento, disponible para iPhone y Android, en la que se encontrarán con todos los vinos pre-cargados, para que los asistentes puedan clickear "Me Gusta" y de esa manera tenerlos entre sus favoritos. El mismo formato de Lights, Camera, Malbec se replicará en New York, Estados Unidos; Lima, Perú; San Pablo, Brasil, el Distrito Federal de México; Bogotá, Colombia y Buenos Aires, Argentina. Asimismo, se desarrollarán campañas con los principales retailers de Reino Unido, Canadá, Brasil y México para promover las ventas. Todas las acciones tienen como objetivo proporcionar a los asistentes una experiencia de inmersión en la cultura y el espíritu de Argentina, en el cual el vino es una parte esencial. Asimismo, junto con el Ministerio de Relaciones Exteriores, Comercio Internacional y Culto de la Nación Argentina y los Gobiernos Provinciales, se llevarán a cabo eventos con periodistas, compradores e invitados especiales, que incluyen degustaciones, shows de tango, comidas, en más de 64 representaciones de 50 países alrededor del mundo. LIGHTS, CAMERA, MALBEC - CALENDARIO 2015 Buenos Aires 10 de Abril Bogotá 16 de abril Lima 17 de Abril Nueva York 17 de Abril Londres 17 de abril San Pablo 23 de Abril Manitoba 27 de abril México DF 30 de Abril Más información: <a href="http://www.malbecworldday.com/" target="_blank">www.malbecworldday.com <center><img src="/images/eventos/MalbecWorldDay20152.jpg"></center>
+            "''', nombre = 'VINOS DE ARGENTINA 2DA EDICIÓN',caracteristicas= ' Este año inaugura nueva sede sera en el resto bar La Reina (Cno. centenario y 511) los días jueves 7 y viernes 8 de mayo en el horario de 19 a 23 horas.  ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_51902_default_medium.jpeg','rb'))
+        db.evento.insert(
+            fecha=datetime.strptime('10/4/2015',fdate),               precio='A confirmar',           direccion='Reservas al 1532930227 o al 155041-2721. Cupos Limitados.',                  detalle='''Mañana Viernes 10 de Abril estaremos participando en una de las&nbsp;Cenas Degustación de Mi Colección de Vinos.&nbsp;Sommelier : Augusto Zegarra.''', nombre = 'FERIA DE VINOS CITY BELL 5TA EDICIÓN',caracteristicas= ' En conmemoración a la quinta celebracion del día internacional del Malbec, en el mes de Abril del 2015 les propondremos ser parte de +Wine Edition #2 bajo el slogan: "WE LOVE MALBEC" en donde, como ya es costumbre, contaremos con dos sectores de de ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_51979_default_medium.jpeg','rb'))
+        db.evento.insert(
+            fecha=datetime.strptime('9/4/2015',fdate),                precio='$150 efectivo',                 direccion='Reservas al 4775-4369',              detalle='''
+            Esta noche te esperamos en&nbsp;Chenaut 1912 (Las Cañitas) para degustar la línea Primogénito. Para culminar habrá un tapeo especial, te lo vas a perder?"
+            ''', nombre = 'WINE EDITION #2',caracteristicas= ' Te invitamos a festejar el MALBEC WORLD DAY. No te lo pierdas este Sábado 18 de Abril en el Club Italiano de la Ciudad de Neuquén. ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_52089_default_medium.jpeg','rb'))
+        db.evento.insert(
+            fecha=datetime.strptime('4/6/2015',fdate),                fecha_fin=datetime.strptime('6/6/2015',fdate),                  direccion='Terrazas del Paraná, Estación Fluvial de Rosario.',                  detalle='''
+            Alta Gama Rosario vuelve del 4 al 6 de junio de 2015 para brindar por sus 11 años con un recorrido totalmente renovado en el ámbito de Terrazas del Paraná, en La Estación Fluvial de Rosario, presentando una gran cantidad de expositores. En 2015 Alta Gama Rosario se dedicará a presentar aquellos nuevos y grandes vinos de las distintas regiones de nuestro país. Todas las noches  habrá un brindis muy especial con música en vivo, charlas y degustaciones privadas, y la presencia de personalidades del mundo del vino. Confirmaron su participación en Alta Gama 2015 las bodegas: Casa Bianchi - Bodegas López - Finca La Luz (Callejón del Crímen) - Gouguenheim - Finca Flichman - Cafayate (Etchart) - Vistalba - Casarena - Hess Family - Humberto Canale - Gimenez Riili - Familia Zuccardi - Puertas de los Andes, Nómade Wines -  Jean Rivier - Dante Robino - Telteca - A16 (Auge Vinos) - Catena Zapata - Viña Las Perdices - Otaviano - Laureano Gómez - Angelado - Avarizza - El Equilibrista Wines - La Azul - Eduardo Vidal Wines - Fabricio Orlando Wines - La Rural - Chandon - Terrazas de los Andes - Domados Wines - Rutini Wines - CarinaE - Domingo Hnos. - Alto Uxmal - Fica Sophenia - Huarpe Wines - Joffré e Hijas - Casa Margot - Paiman - Los Cerrillos - Freixenet - Finca La Anita - Alfredo Roca - Finca Decero - Noemía - Aniello - Chacra - Fabre Montmayou - Flia. Schröeder - Kaikén - Vicentín Family Wines - Rosell Boher - Mosquita Muerta Wines - Bodega Raffy Junto a la gastronomía de: ISHyR / Alta Cocina, Paladini Quesos y sus selectos fiambres L'Abratto, Quesos Tregar,  Aceites Zuccardi, Catena Institute of Wines, Río Helados, establecimientos La Cumbre, Frozen Bag y Aguas Waterin. El jueves 4 de junio Alta Gama Rosario 2015 comenzará con un horario dedicado especialmente a traders, un espacio de contacto directo entre las bodegas y los compradores del vino y la prensa especializada. Ese mismo día, a partir de las 19, el salón se abrirá al público en general y a las 20.30 se llevará a cabo la inauguración oficial con el gran descorche de apertura a cargo de los organizadores junto a las autoridades de nuestra ciudad. Para más información: www.rosarioaltagama.com info@rosarioaltagama.com Facebook: Alta Gama Rosario Twitter: @AltaGamaRosario "''', nombre = 'MALBEC WORLD DAY CON PATRITTI',caracteristicas= ' En esta 5ta. Edición del Malbec World Day se llevarán a cabo más de 70 eventos en 64 ciudades de 50 países del mundo para hacerle honor a la cepa insignia de la Argentina. En todos ellos se exhibirán tres cortometrajes seleccionados por WofA y c ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_52210_default_medium.jpeg','rb'))
+        db.evento.insert(
+            fecha=datetime.strptime('8/5/2015',fdate),                fecha_fin=datetime.strptime('9/5/2015',fdate),                  precio='$150',                  direccion='Casa Las Cañitas - Huergo 283, CABA.',               detalle='''
+            Llega la segunda edición de Vinos de Argentina. El próximo 8 y 9 de mayo se realizará la Segunda Edición de Vinos de Argentina en Casa Las Cañitas (Huergo 283, CABA) de 18 a 23 hs. Esta feria vuelve a reunir en un espacio cálido y distendido a las 14 provincias productoras de vinos en el país. Los invitados podrán degustar los diferentes varietales de Jujuy, Salta, Tucumán, Catamarca, La Rioja, San Juan, San Luis, Mendoza, Córdoba, Buenos Aires, La Pampa, Río Negro, Neuquén y Chubut. Además, las bodegas seleccionadas brindarán las claves de cada terruño en los que nacen sus vinos y darán a conocer sus más destacados productos. Tenemos un gran país productor, con tierra generosa, enólogos que apuestan a lo singular y una gran industria que se pone en movimiento detrás de cada copa. Vinos de Argentina se transforma en un paseo vitivinícola federal con vinos de altura, vinos patagónicos y vinos impensados. "''', nombre = 'MALBEC WORLD DAY 2015',caracteristicas= ' En la tercera edición, la gran fiesta del Día del Gourmet extiende su duración: comienza el sábado 11 abril y cierra el 14, la fecha de su celebración. Serán cuatro días gloriosos para disfrutar el placer de los aromas y sabores de la gastrono ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_52214_default_medium.jpeg','rb'))
+        db.evento.insert(
+            fecha=datetime.strptime('29/3/2015',fdate),               precio='Gratis',                direccion='El Dorrego: Zapiola 50 - Palermo. Ciudad de Buenos Aires',           detalle='''
+            Este fin de semana nos vemos en Celebra Patagonia&nbsp;desde el mediodía en&nbsp;El Dorrego: &nbsp;Zapiola 50 (Palermo).                                                                                                                                                                Además de poder adquirir nuestros vinos y platos típicos de la región, &nbsp;podrás disfrutar de clases de cocina con Narda Lepes, Pablo Buzzo y&nbsp;<a href="https://www.facebook.com/PetersenRoberto">Roberto Petersen. También&nbsp;se presentará la Camerata Bariloche - Orquesta de Cámara Clásica y&nbsp;<a href="https://www.facebook.com/la.pipetua">La Pipetuá.&nbsp;Te esperamos!! "
+            ''', nombre = 'DÍA DEL GOURMET 2015',caracteristicas= ' Mañana Viernes 10 de Abril estaremos participando en una de las Cenas Degustación de Mi Colección de Vinos. Sommelier : Augusto Zegarra. ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_52702_default_medium.jpeg','rb'))
+        db.evento.insert(
+            fecha=datetime.strptime('7/5/2015',fdate),                fecha_fin=datetime.strptime('8/5/2015',fdate),                  precio='A confirmar',           direccion='"https://www.facebook.com/feriadevinoscitybell',             detalle='''
+            Este año inaugura nueva sede sera en el resto bar La Reina (Cno. centenario y 511) los días jueves 7 y viernes 8 de mayo en el horario de 19 a 23 horas.&nbsp;
+            ''', nombre = 'CENA DEGUSTACIÓN EN MI COLECCIÓN DE VINOS - BODEGA PATRITTI',caracteristicas= ' Esta noche te esperamos en Chenaut 1912 (Las Cañitas) para degustar la línea Primogénito. Para culminar habrá un tapeo especial, te lo vas a perder? ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_52703_default_medium.jpeg','rb'))
+        db.evento.insert(
+            fecha=datetime.strptime('3/4/2015',fdate),                direccion='Centro de Convenciones Arrayanes - Villa la Angostura.', detalle='''
+            Este viernes nos encontramos en Expo Vinos Angostura. Los esperamos de 12 a 23 hs en el Centro de Convenciones Arrayanes. ''', nombre = 'BODEGA PATRITTI EN VINOTECA 1912',caracteristicas= ' Este viernes nos encontramos en Expo Vinos Angostura. Los esperamos de 12 a 23 hs en el Centro de Convenciones Arrayanes. ...,',  imagen = open('C:\\imagenes\\eventos\\thumb_52704_default_medium.jpeg','rb'))
+
+
+
+
+    except Exception as e:
+            print e
+    return True

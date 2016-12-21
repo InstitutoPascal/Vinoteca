@@ -7,7 +7,7 @@ def index():
 
 def admin():
     titulo = T(' Administración de eventos' )
-    grid = SQLFORM.grid(db.evento, deletable = True, csv = False , editable=False, create=False, details=True, )
+    grid = SQLFORM.grid(db.evento, deletable = True, csv = False , editable=False, create=False, details=True, user_signature = False)
     agregar = A('Agregar evento', _href=URL('agregar'), _class='btn btn-default btn-large')
     return locals()
 
@@ -23,11 +23,9 @@ def agregar():
     return locals()
 
 def listado():
-    from datetime import datetime
-    eventos = db(db.evento.fecha>datetime.today()).select()
-    return locals()
-
-def detalle():
+    from datetime import date
+    date = date.today()
+    eventos = db(db.evento.fecha<date).select()
     return locals()
 
 def detalle():
