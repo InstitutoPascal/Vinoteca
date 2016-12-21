@@ -124,7 +124,7 @@ def cancela():
     #print idVenta
     db(db.detalleVenta.idVenta == idVenta).delete()
     db(db.venta.id == idVenta).delete()
-    redirect(URL('producto', 'productosListados/1' ))
+    redirect(URL('default', 'index' ))
     return locals()
 
 

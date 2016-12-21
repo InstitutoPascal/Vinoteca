@@ -140,25 +140,25 @@ def tituloCategoria(categoria):
         titulo = ' El link ingresado no es correcto '
     return titulo
 
-def armarQuery(filtros, categoria):
+def armarQuery(form, categoria):
     try:
         query=None
         #print '1 - ' + form.vars.nombre
         #print '2 - ' + form.vars.precioMenor
         #print '3 - ' + form.vars.precioMayor
-        if filtros is not None:
-            nombre, precioMenor, precioMayor = filtros
-            if nombre != '':
-                query = (db.producto.nombre.like('%'+nombre+'%'))
+        #, , 
 
-            if precioMenor != '' and precioMayor != '':
-                query = isNoneConcat(query,(db.producto.precioVenta >= precioMenor) & (db.producto.precioVenta <= precioMayor))
-            elif precioMenor != '':
-                query = isNoneConcat(query,(db.producto.precioVenta >= precioMenor))
-            elif precioMayor != '':
-                query = isNoneConcat(query,(db.producto.precioVenta <= precioMayor))
-            else:
-                pass
+        if form.vars.nombre != '':
+            query = (db.producto.nombre.like('%'+form.vars.nombre+'%'))
+
+        if form.vars.precioMenor != '' and form.vars.precioMayor != '':
+            query = isNoneConcat(query,(db.producto.precioVenta >= form.vars.precioMenor) & (db.producto.precioVenta <= form.vars.precioMayor))
+        elif form.vars.precioMenor != '':
+            query = isNoneConcat(query,(db.producto.precioVenta >= form.vars.precioMenor))
+        elif form.vars.precioMayor != '':
+            query = isNoneConcat(query,(db.producto.precioVenta <= form.vars.precioMayor))
+        else:
+            pass
 
         query = isNoneConcat(query,(db.producto.categoria == categoria)&(db.producto.cantidad > 0))
         print query

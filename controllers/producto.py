@@ -70,15 +70,10 @@ def productosListados():
         submit_button='Buscar')
 
     if form.process().accepted:
-        filtros = [form.vars.nombre, form.vars.precioMenor, form.vars.precioMayor]
-        query = armarQuery(filtros,categoria)
+        query = armarQuery(form,categoria)
         productos = db(query).select(orderby = db.producto.precioVenta)#,limitby=limitby)
-        session.filtros = filtros
-        print session.filtros
-        #response.flash = None
+        response.flash = None
     else:
-        #print session.filtros
-        #query = armarQuery(session.filtros,categoria)
         productos = db((db.producto.categoria == categoria)&(db.producto.cantidad > 0)).select(orderby = db.producto.precioVenta,limitby=limitby)
 
     #except Exception as blumba:
