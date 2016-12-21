@@ -22,8 +22,8 @@ if auth.has_membership(role="Administrador"):
                 (T('Vinos'), False, URL('producto','productosListados/3') ),
                 ]),
             (T('Ventas'), False, '#', [
-                (T('Lista Ventas'), False, URL('venta','index') ),
-                #(T('Pendientes'), False, URL('compra','listadoCompras') ),
+                (T('Lista ventas pendientes'), False, URL('venta','index') ),
+                (T('Ventas concretadas'), False, URL('venta','reporte') ),
             ]),
             (T('Compras'), False, '#', [
                 (T('Administrar productos'), False, URL('producto','admin') ),
@@ -46,9 +46,9 @@ if auth.has_membership(role="Administrador"):
                 (T('Baja usuario'), False, URL('usuario','bajaAltaUsuario') ),
                 (T('Listado de usuarios'), False, URL('usuario','administrarUsuarios') ),
             ]),
-            (T('Administrar seleccionables'), False, '#', [
+            (T('Seleccionables'), False, '#', [
                 (T('Bodega'), False, URL('abm', 'bodegaAbm')), LI(_class="divider"),
-                (T('Categoria'), False, URL('abm', 'categoriaAbm')), LI(_class="divider"),
+                #(T('Categoria'), False, URL('abm', 'categoriaAbm')), LI(_class="divider"),
                 (T('Formas de Pago'), False, URL('abm', 'formaPagoAbm')), LI(_class="divider"),
                 (T('Tipo de Vino'), False, URL('abm', 'tipoVinoAbm')), LI(_class="divider"),
                 (T('Varietal'), False, URL('abm', 'varietalAbm')), LI(_class="divider"),
@@ -98,32 +98,32 @@ elif auth.has_membership(role="Desarrollador"):
             ]),
             (T('Ventas'), False, '#', [
                 (T('Lista Ventas'), False, URL('venta','index') ),
-                #(T('Pendientes'), False, URL('compra','listadoCompras') ),
+                (T('Ventas concretadas'), False, URL('venta','reporte') ),
             ]),
             (T('Eventos'), False, '#', [
                 (T('Administrar eventos'), False, URL('evento','admin') ),
                 (T('Ver'), False, URL('default','index') ),
                 (T('Listado'), False, URL('evento','listado') ),
                 ]),
-            (T('Noticias'), False, '#', [
+            (T('Notas'), False, '#', [
                 (T('Administrar noticias'), False, URL('noticia','admin') ),
                 (T('Ver'), False, URL('noticia','index') ),
                 (T('Listado'), False, URL('noticia','listado') ),
             ]),
-            (T('Productos'), False, '#', [
+            (T('Stock'), False, '#', [
                 (T('Administrar productos'), False, URL('producto','admin') ),
                 (T('Listado productos faltantes'), False, URL('producto','index') ),
             ]),
-            (T('Promociones'), False, '#', [
+            (T('Promos'), False, '#', [
                 (T('Administrar promociones'), False, URL('promocion','admin') ),
                 (T('Ver'), False, URL('promocion','index') ),
                 (T('listado'), False, URL('promocion','listado') ),
             ]),
-            (T('Usuarios'), False, '#', [
+            (T('Users'), False, '#', [
                 (T('Baja usuario'), False, URL('usuario','bajaAltaUsuario') ),
                 (T('Listado de usuarios'), False, URL('usuario','administrarUsuarios') ),
             ]),
-            (T('Seleccionables'), False, '#', [
+            (T('Combos'), False, '#', [
                 (T('Bodega'), False, URL('abm', 'bodegaAbm')), LI(_class="divider"),
                 (T('Categoria'), False, URL('abm', 'categoriaAbm')), LI(_class="divider"),
                 (T('Formas de Pago'), False, URL('abm', 'formaPagoAbm')), LI(_class="divider"),

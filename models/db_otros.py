@@ -47,4 +47,3 @@ contacto.telefono.requires = IS_NOT_EMPTY(error_message=T('Falta ingresar el tel
 contacto.email.requires = IS_NOT_EMPTY(error_message=T('Falta ingresar el email'))
 contacto.email.requires = IS_EMAIL(error_message=T('No tiene formato de email'))
 contacto.motivo.requires = IS_NOT_EMPTY(error_message=T('Falta ingresar el motivo'))
-

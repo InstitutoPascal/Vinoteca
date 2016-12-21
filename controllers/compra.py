@@ -6,40 +6,45 @@ def impactarProducto():
     cantidad = request.vars.cantidad
     categoria = request.vars.categoria
     if auth.user:
-        if tieneVentaVigente(auth.user.id):
-            #do update
-            print 'tiene'
-            ventaVigente = db((db.venta.idCliente == auth.user.id) & (db.venta.estado == 'Pendiente')).select(db.venta.id).first()
-            existe = db((db.detalleVenta.idVenta == ventaVigente)&(db.detalleVenta.idProducto == producto)).count()
-            print existe
-            if existe > 0:
-                print 'tiene en el carrito'
-                db((db.detalleVenta.idVenta == ventaVigente)&(db.detalleVenta.idProducto == producto)).update(cantidad = cantidad)
-                session.flash = 'El articulo ya se encuentra en el carrito. Se actualizó la cantidad requerida.'
-            else:
-                resultadoDet = db.detalleVenta.insert(idVenta = ventaVigente, idProducto = producto, cantidad = cantidad)
-                if resultadoDet is not None:
-                    print 'insertó'
-                    session.flash = 'Artículo agregado al carrito de compra.'
+        if cantidad == 0:
+            print 'fallo cantidad = cero'
+            session.flash = 'Verifique la cantidad que quiso inresar.'
             redirect(URL('producto', 'productosListados/%s'%categoria ))
         else:
-            #do inserts venta- detalle
-            print 'no tiene venta vigente'
-            resultado = db.venta.insert(idCliente = auth.user.id, estado = 'Pendiente')
-            print resultado
-            if resultado  is not None:
-                resultadoDet = db.detalleVenta.insert(idVenta = resultado, idProducto = producto, cantidad = cantidad)
-                if resultadoDet  is not None:
-                    print 'insertó'
-                    session.flash = 'Artículo agregado al carrito de compra.'
+            if tieneVentaVigente(auth.user.id):
+                #do update
+                print 'tiene'
+                ventaVigente = db((db.venta.idCliente == auth.user.id) & (db.venta.estado == 'Pendiente')).select(db.venta.id).first()
+                existe = db((db.detalleVenta.idVenta == ventaVigente)&(db.detalleVenta.idProducto == producto)).count()
+                print existe
+                if existe > 0:
+                    print 'tiene en el carrito'
+                    db((db.detalleVenta.idVenta == ventaVigente)&(db.detalleVenta.idProducto == producto)).update(cantidad = cantidad)
+                    session.flash = 'El articulo ya se encuentra en el carrito. Se actualizó la cantidad requerida.'
                 else:
-                    session.flash = 'Falló al  agregarlo.'
-
+                    resultadoDet = db.detalleVenta.insert(idVenta = ventaVigente, idProducto = producto, cantidad = cantidad)
+                    if resultadoDet is not None:
+                        print 'insertó'
+                        session.flash = 'Artículo agregado al carrito de compra.'
                 redirect(URL('producto', 'productosListados/%s'%categoria ))
             else:
-                print 'fallo'
-                session.flash = 'Intentó realizar una acción que requiere que se encuentre logueado.'
-                redirect(URL('producto', 'productosListados/%s'%categoria ))
+                #do inserts venta- detalle
+                print 'no tiene venta vigente'
+                resultado = db.venta.insert(idCliente = auth.user.id, estado = 'Pendiente')
+                print resultado
+                if resultado  is not None:
+                    resultadoDet = db.detalleVenta.insert(idVenta = resultado, idProducto = producto, cantidad = cantidad)
+                    if resultadoDet  is not None:
+                        print 'insertó'
+                        session.flash = 'Artículo agregado al carrito de compra.'
+                    else:
+                        session.flash = 'Falló al  agregarlo.'
+
+                    redirect(URL('producto', 'productosListados/%s'%categoria ))
+                else:
+                    print 'fallo'
+                    session.flash = 'Ocurrió un error al intentar guardar el producto en el carrito.'
+                    redirect(URL('producto', 'productosListados/%s'%categoria ))
 
 
     else:
