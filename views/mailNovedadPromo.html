@@ -1,18 +1,53 @@
 <html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <style>
+            .firma {
+                position: absolute;
+                font-weight: bold;
+                right: 0;
+                bottom: 0;
+                height: 50px;
+                width: 50%;
+            }
+        </style>
+    </head>
+    <body>
+        Estimado {{=usuario.first_name}},
+        <p>Le informamos de la siguiente promocion.<br />
+        <b>{{=informa.promo}}</b><br />
+            {{=informa.descripcion}}
+            <i>{{=informa.fechaDesde}}</i><br />
+            <i>{{=informa.fechaHasta}}</i>
+        </p>
+        <p>Saluda atentamente.-</p>
+        <div class='firma'>
+            Bukino Vinoteca <br />
+            Tel: 011-4951-2236 <br />
+            Cel:15-4787-7909<br />
+            Local: Av. Salmón 1919 Entre calles Av. Bagre y Tiburoncin
+        </div>
+        P.D.: Recuerde que todas las promociones mecionadas son solo efectivas en el local.
+    </body>
+</html>
+
+
+<html>
     <body>
         <div>
             <table>
                 <tr>
                     <td> Estimado {{=usuario.first_name}},
-                                            Le informamos de la siguiente promocion.
+                                            
                     </td>
-                    <td> {{=informa.promo}}
+                    <td> 
                     </td>
-                    <td> {{=informa.descripcion}}
+                    <td> 
                     </td>
                     <td> {{=informa.fechaDesde}}
                     </td>
-                    <td> {{=informa.fechaHasta}}
+                    <td> 
                     </td>
                 </tr>
             </table>

@@ -50,6 +50,7 @@ auth_table_especial = db[auth.settings.table_user_name]
 auth_table_especial.first_name.requires =   IS_NOT_EMPTY(error_message = auth.messages.is_empty)
 auth_table_especial.last_name.requires =   IS_NOT_EMPTY(error_message = auth.messages.is_empty)
 auth_table_especial.password.requires = [IS_STRONG(error_message = 'La longitud mínima es 8 caracteres. Debe incluir al menos 1 minúscula, 1 mayúscula, 1 número y un simbolo. Ej: Pepe!001'), CRYPT()]
+auth_table_especial.nacimiento.requires = IS_DATE(error_message = 'Debe ingresar una fecha')
 auth_table_especial.email.requires = [IS_EMAIL(error_message = auth.messages.invalid_email),
                                       IS_NOT_IN_DB(db, auth_table_especial.email)]
 auth_table_especial.nacimiento.represent = lambda v, r: '' if v is None else v
@@ -67,7 +68,7 @@ auth.settings.password_min_length = 6
 # configure email
 # -------------------------------------------------------------------------
 mail = auth.settings.mailer
-mail.settings.server = myconf.get('smtp.server')#'logging'#
+mail.settings.server = 'logging'#myconf.get('smtp.server')#
 mail.settings.sender = myconf.get('smtp.sender')
 mail.settings.login = myconf.get('smtp.login')
 mail.settings.tls = myconf.get('smtp.tls') or False
@@ -83,7 +84,7 @@ def usuarioBaneado(form):
 
 auth.settings.login_onvalidation = usuarioBaneado
 
-# auth.settings.on_failed_authentication=` form 
+# auth.settings.on_failed_authentication=` form
 # auth.settings.login_url = URL('default','login')
 
 

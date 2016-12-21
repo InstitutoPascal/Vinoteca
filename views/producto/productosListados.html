@@ -54,11 +54,11 @@
 </div>
 <div style="width:100%;text-align:center;">
     {{if pagina:}}
-    <a href="{{=URL(args = categoria, vars=dict(pagina=pagina-1))}}" class="btn btn-default">previa</a>
+    <a href="{{=URL(args = categoria, vars=dict(pagina=pagina-1))}}" class="btn btn-default">Anterior</a>
     {{pass}}
 
     {{if len(productos)>elementos_por_pagina:}}
-    <a href="{{=URL(args = categoria, vars=dict(pagina=pagina+1))}}" class="btn btn-default">próxima</a>
+    <a href="{{=URL(args = categoria, vars=dict(pagina=pagina+1))}}" class="btn btn-default">Siguiente</a>
     {{pass}}
 
 </div>

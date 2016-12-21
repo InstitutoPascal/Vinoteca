@@ -82,7 +82,7 @@ db.promocion.promo.requires = [IS_NOT_EMPTY(error_message=' Falta ingresar la pr
                               IS_NOT_IN_DB(db, 'promocion.promo', error_message=' Ya existe ')]
 db.promocion.fechaDesde.requires = IS_DATE(error_message='Ingrese una fecha con formato 24/10/2016')
 db.promocion.fechaHasta.requires = IS_DATE(error_message='Ingrese una fecha con formato 24/10/2016')
-db.promocion.porcentaje.requires = IS_INT_IN_RANGE(-1, 101,error_message='Ingrese un número del 1 al 99')
+db.promocion.porcentaje.requires = IS_EMPTY_OR(IS_INT_IN_RANGE(-1, 101,error_message='Ingrese un número del 1 al 99'))
 db.promocion.producto.requires = IS_EMPTY_OR(IS_IN_DB(db,db.producto.id,'%(nombre)s'))
 db.promocion.varietal.requires = IS_EMPTY_OR(IS_IN_DB(db,db.varietal.id,'%(tipoVarietal)s'))
 #db.promocion.producto.widget = SQLFORM.widgets.autocomplete(request, db.producto.nombre, id_field=db.producto.id)
